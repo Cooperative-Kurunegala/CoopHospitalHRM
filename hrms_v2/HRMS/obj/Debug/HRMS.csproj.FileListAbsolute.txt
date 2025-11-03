@@ -1,0 +1,2 @@
+D:\manahara\hrms_v2\HRMS\obj\Debug\HRMS.csproj.AssemblyReference.cache
+D:\manahara\hrms_v2\HRMS\obj\Debug\HRMS.csproj.CoreCompileInputs.cache
