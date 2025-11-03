@@ -10,7 +10,9 @@ namespace HRMS.Models
         public int EmployeeBenefitId { get; set; }
         public int EmployeeId { get; set; }
         public int BenefitId { get; set; }
-        public virtual EmployeeModel Employee { get; set; }
-        public virtual BenifitModel Benefit { get; set; }
+
+        // Navigation Properties (Many-to-Many junction)
+        public EmployeeModel Employee { get; set; }
+        public BenifitModel Benefit { get; set; }
     }
 }

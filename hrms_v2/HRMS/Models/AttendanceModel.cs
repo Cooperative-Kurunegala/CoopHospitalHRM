@@ -8,13 +8,14 @@ namespace HRMS.Models
     public class AttendanceModel
     {
         public int AttendanceId { get; set; }
-        public DateTime InTime { get; set; }
-        public DateTime OutTime { get; set; }
-        public DateTime Attendance_Date {get; set; }
-        public DateTime MiddleInteruptTimeIn { get; set; }
-        public DateTime MiddleInteruptTimeOut { get; set; }
-        //Create A Foreign Key Relationship With Employee
+        public string InTime { get; set; }
+        public string OutTime { get; set; }
+        public string AttendanceDate { get; set; }
+        public string MiddleInteruptTimeIn { get; set; }
+        public string MiddleInteruptTimeOut { get; set; }
         public int EmployeeId { get; set; }
-        public virtual EmployeeModel Employee { get; set; }
+
+        // Navigation Properties
+        public EmployeeModel Employee { get; set; }
     }
 }

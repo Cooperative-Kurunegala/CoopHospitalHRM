@@ -11,7 +11,8 @@ namespace HRMS.Models
         public string BenefitName { get; set; }
         public string BenefitDescription { get; set; }
         public string BenefitAmount { get; set; }
-        //Create A Relationship With Employee
-        public virtual ICollection<EmployeeBenefitModel> EmployeeBenefits { get; set; }
+
+        // Collections (Many-to-Many through EmployeeBenefitModel)
+        public List<EmployeeBenefitModel> EmployeeBenefits { get; set; }
     }
 }

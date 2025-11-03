@@ -5,12 +5,13 @@ using System.Web;
 
 namespace HRMS.Models
 {
-    public class CategoryModel
+    public class LeaveCategoryModel
     {
-        public int CategoryId { get; set; }
+        public int ID { get; set; }
         public string CategoryName { get; set; }
+        public string LeaveCode { get; set; }
 
         // Collections (1-to-Many)
-        public List<DepartmentModel> Departments { get; set; }
+        public List<LeaveMasterModel> LeaveMasters { get; set; }
     }
 }

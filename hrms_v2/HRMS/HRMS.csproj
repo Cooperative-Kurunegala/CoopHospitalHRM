@@ -198,20 +198,31 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AttendanceModel.cs" />
-    <Compile Include="Models\BenifitModel.cs" />
+    <Compile Include="Models\BankBranchesModel.cs" />
+    <Compile Include="Models\BankModel.cs" />
+    <Compile Include="Models\BenefitModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\CompanyModel.cs" />
+    <Compile Include="Models\CurrentPayrollMonthModel.cs" />
+    <Compile Include="Models\DayTypeModel.cs" />
     <Compile Include="Models\DepartmentModel.cs" />
     <Compile Include="Models\DesignationModel.cs" />
     <Compile Include="Models\EmployeeBenefitModel.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
-    <Compile Include="Models\Enum\EmployeeTypeEnum.cs" />
-    <Compile Include="Models\Enum\GenderEnum.cs" />
-    <Compile Include="Models\Enum\MaritalStatusEnum.cs" />
-    <Compile Include="Models\Enum\ProvinceEnum.cs" />
-    <Compile Include="Models\Enum\ReligionEnum.cs" />
     <Compile Include="Models\GradeModel.cs" />
+    <Compile Include="Models\LeaveCategoryModel.cs" />
+    <Compile Include="Models\LeaveMasterModel.cs" />
+    <Compile Include="Models\LoanCategoryModel.cs" />
+    <Compile Include="Models\RelatedPartyBankAccountsModel.cs" />
+    <Compile Include="Models\RelatedPartyLoanModel.cs" />
+    <Compile Include="Models\RelatedPartyModel.cs" />
+    <Compile Include="Models\RelatedPartySalaryModel.cs" />
+    <Compile Include="Models\RelatedPartySalaryModifierMappingModel.cs" />
+    <Compile Include="Models\RelatedPartySessionModel.cs" />
     <Compile Include="Models\SalaryModel.cs" />
+    <Compile Include="Models\SalaryModifiersModel.cs" />
+    <Compile Include="Models\SalaryTypeModel.cs" />
+    <Compile Include="Models\ShiftModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

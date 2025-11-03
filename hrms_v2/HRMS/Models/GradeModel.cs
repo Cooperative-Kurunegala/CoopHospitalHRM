@@ -10,7 +10,8 @@ namespace HRMS.Models
         public int GradeId { get; set; }
         public string GradeName { get; set; }
         public string GradeSalary { get; set; }
-        //Create A Relationship With Employee
-        public virtual ICollection<EmployeeModel> Employees { get; set; }
+
+        // Collections (1-to-Many)
+        public List<EmployeeModel> Employees { get; set; }
     }
 }

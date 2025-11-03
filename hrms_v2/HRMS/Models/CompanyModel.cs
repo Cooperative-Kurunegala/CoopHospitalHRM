@@ -11,7 +11,9 @@ namespace HRMS.Models
         public string CompanyName { get; set; }
         public string Location { get; set; }
 
-        //Create A Relationship With Employee
-        public virtual ICollection<EmployeeModel> Employees { get; set; }
+        // Collections (1-to-Many)
+        public List<EmployeeModel> Employees { get; set; }
+        public List<RelatedPartyModel> RelatedParties { get; set; }
+        public List<DepartmentModel> Departments { get; set; }
     }
 }

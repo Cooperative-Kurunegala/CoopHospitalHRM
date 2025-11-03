@@ -10,10 +10,13 @@ namespace HRMS.Models
         public int DesignationId { get; set; }
         public string DesignationName { get; set; }
         public string Description { get; set; }
-        //Get Foreign Key Relationship With Department
         public int DepartmentId { get; set; }
+
+        // Navigation Properties
         public DepartmentModel Department { get; set; }
-        //Create A Relationship With Employee
-        public virtual ICollection<EmployeeModel> Employees { get; set; }
+
+        // Collections (1-to-Many)
+        public List<EmployeeModel> Employees { get; set; }
+        public List<RelatedPartyModel> RelatedParties { get; set; }
     }
 }
