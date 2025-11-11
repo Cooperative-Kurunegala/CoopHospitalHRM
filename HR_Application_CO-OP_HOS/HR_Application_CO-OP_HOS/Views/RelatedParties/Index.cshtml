@@ -1,0 +1,405 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.RelatedParty>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RegistrationNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RelatedPartyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RelatedPartyAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RelatedPartyNIC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DivisionMasterID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DesignationID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RelatedPartyCategoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegisteredDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelephoneNumberList)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNoList)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofJoin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofResignation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RelatedPartyPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RelatedPartyRoleID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefaultSplashScreenItemID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Height)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDivisionHead)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasicSalary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RelatedPartyEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactPerson)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountAppliedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDiscountApplicable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DailyPaidAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChannellingConsultantCharge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChannellingHospitalCharge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RelatedPartySubCategoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WardHospitalCharge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotherCompanyID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Designation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BudgetAllowance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BOIAllowance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagementAllowance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UniformAllowance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TravelAllowance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISresigned)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AttendanceIncentive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RelatedPartyTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PerformanceIncentive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpeningBalance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpeningBalanceDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HostelFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OutTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsSetforPayroll)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PayeeTaxID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsRosterAvailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Initials)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RosterType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RosterID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RelatedPartyType.RelatedPartyTypeName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegistrationNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelatedPartyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelatedPartyAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelatedPartyNIC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DivisionMasterID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DesignationID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelatedPartyCategoryID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegisteredDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelephoneNumberList)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MobileNoList)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofJoin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofResignation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelatedPartyPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelatedPartyRoleID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefaultSplashScreenItemID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocationID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Height)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDivisionHead)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BasicSalary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelatedPartyEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactPerson)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscountAppliedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDiscountApplicable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DailyPaidAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChannellingConsultantCharge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChannellingHospitalCharge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelatedPartySubCategoryID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WardHospitalCharge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MotherCompanyID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Designation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BudgetAllowance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BOIAllowance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManagementAllowance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UniformAllowance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TravelAllowance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ISresigned)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AttendanceIncentive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelatedPartyTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PerformanceIncentive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OpeningBalance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OpeningBalanceDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HostelFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OutTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsSetforPayroll)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PayeeTaxID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsRosterAvailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Initials)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RosterType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RosterID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelatedPartyType.RelatedPartyTypeName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

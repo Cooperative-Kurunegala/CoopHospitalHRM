@@ -1,0 +1,83 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.NurseShift>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AdmissionType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReceivedNurse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NurseInChargeAdditional)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssitantNurse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NurseInCharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shift)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedPartySessionID)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdmissionType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceivedNurse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NurseInChargeAdditional)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssitantNurse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NurseInCharge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shift)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedPartySessionID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

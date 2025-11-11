@@ -1,0 +1,146 @@
+﻿@model HR_Application_CO_OP_HOS.Models.RelatedPartyOrderPayment
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>RelatedPartyOrderPayment</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PaymentAmount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PaymentAmount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrderID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreditCardNumber)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreditCardNumber)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MCashCode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MCashCode)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PaymentDateTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PaymentDateTime)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Balance)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Balance)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreditCardExpiryDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreditCardExpiryDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ChequeNumber)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ChequeNumber)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ChequeDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ChequeDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsAccountsRecommended)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsAccountsRecommended)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RecommendedComment)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RecommendedComment)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RecommendedUserID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RecommendedUserID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AdmissionID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AdmissionID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreditCardType.CreditCardTypeName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreditCardType.CreditCardTypeName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PaymentType.PaymentTypeName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PaymentType.PaymentTypeName)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

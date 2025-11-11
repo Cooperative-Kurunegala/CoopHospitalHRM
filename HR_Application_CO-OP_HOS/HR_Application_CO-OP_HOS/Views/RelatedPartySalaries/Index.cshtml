@@ -1,0 +1,197 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.RelatedPartySalary>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedPartyEPF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Month)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoPayDays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LateMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OTMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsPayoutGenerated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsLocked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalaryTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoubleOTMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayeeTaxRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkedDays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualNoPayDays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualLateHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualOTHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualDBLOTHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsVerified)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAttendanceVerified)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalShifts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalInLate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalOutLate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinalLateCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalAdditionalShifts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedParty.RegistrationNumber)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedPartyEPF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Month)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoPayDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LateMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OTMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsPayoutGenerated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsLocked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalaryTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoubleOTMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayeeTaxRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkedDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualNoPayDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualLateHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualOTHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualDBLOTHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsVerified)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAttendanceVerified)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalShifts)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalInLate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalOutLate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinalLateCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalAdditionalShifts)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedParty.RegistrationNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

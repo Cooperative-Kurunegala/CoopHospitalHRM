@@ -1,0 +1,112 @@
+﻿@model HR_Application_CO_OP_HOS.Models.Leave
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Leave</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.RelatedPartyID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RelatedPartyID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LeaveCategoryID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LeaveCategoryID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LeaveTypeID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LeaveTypeID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LeaveDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LeaveDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LeaveAmount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LeaveAmount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LeaveMasterID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LeaveMasterID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LeaveFrom)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LeaveFrom)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LeaveTo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LeaveTo)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

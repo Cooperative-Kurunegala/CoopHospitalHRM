@@ -1,0 +1,125 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.RelatedPartyOrderPayment>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreditCardNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MCashCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Balance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreditCardExpiryDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChequeNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChequeDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAccountsRecommended)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecommendedComment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecommendedUserID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdmissionID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreditCardType.CreditCardTypeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentType.PaymentTypeName)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreditCardNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MCashCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreditCardExpiryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChequeNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChequeDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAccountsRecommended)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecommendedComment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecommendedUserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdmissionID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreditCardType.CreditCardTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentType.PaymentTypeName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

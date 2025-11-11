@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - HRM System - Co-Operative Hospital Kurunegala</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .navbar-inverse {
+            background-color: #2c3e50;
+            border-color: #2c3e50;
+        }
+
+            .navbar-inverse .navbar-brand {
+                color: #ecf0f1;
+                font-weight: bold;
+            }
+
+            .navbar-inverse .navbar-nav > li > a {
+                color: #ecf0f1;
+            }
+
+                .navbar-inverse .navbar-nav > li > a:hover {
+                    color: #3498db;
+                    background-color: transparent;
+                }
+
+        .footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+
+            .footer a {
+                color: #3498db;
+            }
+
+                .footer a:hover {
+                    color: #ecf0f1;
+                    text-decoration: none;
+                }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("HRM System - Co-Operative Hospital Kurunegala", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Modules <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Employee Management", "Index", "RelatedParties")</li>
+                            <li>@Html.ActionLink("Attendance", "Index", "AttendanceRecords")</li>
+                            <li>@Html.ActionLink("Payroll", "Index", "PayrollRecords")</li>
+                            <li>@Html.ActionLink("Leave Management", "Index", "Leaves")</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("System Settings", "Index", "AppSettings")</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; @DateTime.Now.Year - HRM System - Co-Operative Hospital Kurunegala</p>
+                        <p>Powered by <a href="https://ehealthcare.lk" target="_blank">eHealthcare Solutions</a></p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p>
+                            <strong>Support:</strong> <a href="mailto:support@ehealthcare.lk">support@ehealthcare.lk</a><br />
+                            <strong>Website:</strong> <a href="https://ehealthcare.lk" target="_blank">https://ehealthcare.lk</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

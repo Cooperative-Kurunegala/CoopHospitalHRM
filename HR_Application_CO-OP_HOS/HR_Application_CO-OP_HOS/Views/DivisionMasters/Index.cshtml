@@ -1,0 +1,125 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.DivisionMaster>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DivisionMasterName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DivisionMasterCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MenuTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MenuTypeDetailID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DivisionMasterDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsStockManaged)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentDivisionMasterID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DivisionMasterTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderSequence)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsReserved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccoutClassID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccoutClassCode)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DivisionMasterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DivisionMasterCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuTypeDetailID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DivisionMasterDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsStockManaged)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentDivisionMasterID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DivisionMasterTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderSequence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsReserved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccoutClassID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccoutClassCode)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

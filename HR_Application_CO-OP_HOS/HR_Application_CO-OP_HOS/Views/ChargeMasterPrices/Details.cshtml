@@ -1,0 +1,98 @@
+﻿@model HR_Application_CO_OP_HOS.Models.ChargeMasterPrice
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>ChargeMasterPrice</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsDefault)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsDefault)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CostPrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CostPrice)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Margin)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Margin)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SellingPrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SellingPrice)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RefDivisionMasterID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RefDivisionMasterID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ChargeMaster.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ChargeMaster.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderType.OrderTypeName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrderType.OrderTypeName)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

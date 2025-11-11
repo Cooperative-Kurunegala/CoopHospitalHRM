@@ -1,0 +1,50 @@
+﻿@model HR_Application_CO_OP_HOS.Models.AttendanceRecord
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AttendanceRecord</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EPFNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EPFNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AttendanceDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AttendanceDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsProcessed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsProcessed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

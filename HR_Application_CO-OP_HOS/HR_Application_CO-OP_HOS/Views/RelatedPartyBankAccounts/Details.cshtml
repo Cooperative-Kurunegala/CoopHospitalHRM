@@ -1,0 +1,90 @@
+﻿@model HR_Application_CO_OP_HOS.Models.RelatedPartyBankAccount
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>RelatedPartyBankAccount</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.RelatedPartyID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RelatedPartyID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BankID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BankID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BranchID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BranchID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.StandingOrderAmount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.StandingOrderAmount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BankAccountNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BankAccountNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsEnable)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsEnable)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

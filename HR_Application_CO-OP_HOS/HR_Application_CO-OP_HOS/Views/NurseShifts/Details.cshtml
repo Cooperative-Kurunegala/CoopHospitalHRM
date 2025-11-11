@@ -1,0 +1,90 @@
+﻿@model HR_Application_CO_OP_HOS.Models.NurseShift
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>NurseShift</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AdmissionType)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AdmissionType)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ReceivedNurse)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ReceivedNurse)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NurseInChargeAdditional)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NurseInChargeAdditional)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AssitantNurse)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AssitantNurse)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NurseInCharge)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NurseInCharge)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Shift)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Shift)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RelatedPartySessionID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RelatedPartySessionID)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

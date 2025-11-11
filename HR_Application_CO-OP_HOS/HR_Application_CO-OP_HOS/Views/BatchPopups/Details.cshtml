@@ -1,0 +1,82 @@
+﻿@model HR_Application_CO_OP_HOS.Models.BatchPopup
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BatchPopup</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DivisionChargeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DivisionChargeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BatchNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BatchNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpiryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpeningStockDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpeningStockDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpeningStock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpeningStock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BatchSellingPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BatchSellingPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostPrice)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

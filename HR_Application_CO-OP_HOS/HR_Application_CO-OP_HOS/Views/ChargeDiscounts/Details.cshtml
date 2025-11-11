@@ -1,0 +1,114 @@
+﻿@model HR_Application_CO_OP_HOS.Models.ChargeDiscount
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>ChargeDiscount</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DiscountTypeName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DiscountTypeName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DiscountTypeCode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DiscountTypeCode)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DiscountPercentage)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DiscountPercentage)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ChargeTypeID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ChargeTypeID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RelatedPartyTypeID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RelatedPartyTypeID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderTypeID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrderTypeID)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

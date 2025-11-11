@@ -1,0 +1,101 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.RelatedPartyCategory>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedPartyCategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedPartyTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedPartyCategoryCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedPartyGrade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedPartyCategoryDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttendanceInCaptureStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttendanceInCaptureEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttendanceOutCaptureStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttendanceOutCaptureEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpectedIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpectedOut)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedPartyCategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedPartyTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedPartyCategoryCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedPartyGrade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedPartyCategoryDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceInCaptureStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceInCaptureEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceOutCaptureStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceOutCaptureEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpectedIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpectedOut)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
