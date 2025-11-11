@@ -1,0 +1,113 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.LeaveMaster>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ApprovedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApprovedDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecommendedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecommendedDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoOfLeaves)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedPartyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveDate)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApprovedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApprovedDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecommendedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecommendedDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfLeaves)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedPartyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

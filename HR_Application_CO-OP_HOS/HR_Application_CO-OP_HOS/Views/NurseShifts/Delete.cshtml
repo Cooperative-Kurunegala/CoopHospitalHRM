@@ -1,0 +1,96 @@
+﻿@model HR_Application_CO_OP_HOS.Models.NurseShift
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>NurseShift</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AdmissionType)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AdmissionType)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ReceivedNurse)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ReceivedNurse)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NurseInChargeAdditional)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NurseInChargeAdditional)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AssitantNurse)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AssitantNurse)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NurseInCharge)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NurseInCharge)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Shift)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Shift)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RelatedPartySessionID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RelatedPartySessionID)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

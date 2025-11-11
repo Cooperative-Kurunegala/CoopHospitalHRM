@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|g:\\coop\\coophospitalhrm\\hr_application_co-op_hos\\hr_application_co-op_hos\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|g:\\coop\\coophospitalhrm\\hr_application_co-op_hos\\hr_application_co-op_hos\\views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|solutionrelative:views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|g:\\coop\\coophospitalhrm\\hr_application_co-op_hos\\hr_application_co-op_hos\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|solutionrelative:views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|g:\\coop\\coophospitalhrm\\hr_application_co-op_hos\\hr_application_co-op_hos\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAswFQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T09:32:07.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "About.cshtml",
+              "DocumentMoniker": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\Home\\About.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\About.cshtml",
+              "ToolTip": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\Home\\About.cshtml",
+              "RelativeToolTip": "Views\\Home\\About.cshtml",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAswGAAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T09:30:43.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Contact.cshtml",
+              "DocumentMoniker": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\Home\\Contact.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Contact.cshtml",
+              "ToolTip": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\Home\\Contact.cshtml",
+              "RelativeToolTip": "Views\\Home\\Contact.cshtml",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAswJYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T09:30:41.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T09:30:27.278Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+﻿@model HR_Application_CO_OP_HOS.Models.AppSettingsDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AppSettingsDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AppSettingsDetailKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppSettingsDetailKey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppSettingDetailValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppSettingDetailValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppSettingsID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppSettingsID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPerHour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPerHour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsMinimumFor24Hours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsMinimumFor24Hours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPercentage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DivisionMasterTypeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DivisionMasterTypeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RelatedPartyOrderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RelatedPartyOrderID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

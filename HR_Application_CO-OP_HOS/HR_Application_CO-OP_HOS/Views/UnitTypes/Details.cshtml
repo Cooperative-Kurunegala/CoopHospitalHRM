@@ -1,0 +1,58 @@
+﻿@model HR_Application_CO_OP_HOS.Models.UnitType
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>UnitType</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsBoxItem)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsBoxItem)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UnitTypeCode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UnitTypeCode)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

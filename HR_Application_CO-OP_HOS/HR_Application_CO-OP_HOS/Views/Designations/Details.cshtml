@@ -1,0 +1,82 @@
+﻿@model HR_Application_CO_OP_HOS.Models.Designation
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Designation</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.designationName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.designationName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AttendanceInCaptureStart)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AttendanceInCaptureStart)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AttendanceInCaptureEnd)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AttendanceInCaptureEnd)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AttendanceOutCaptureStart)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AttendanceOutCaptureStart)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AttendanceOutCaptureEnd)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AttendanceOutCaptureEnd)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ExpectedIn)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ExpectedIn)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ExpectedOut)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ExpectedOut)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

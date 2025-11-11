@@ -1,0 +1,586 @@
+﻿@model HR_Application_CO_OP_HOS.Models.RelatedPartyOrder
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>RelatedPartyOrder</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.RelatedPartyID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RelatedPartyID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrderDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderTypeID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrderTypeID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrderNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderStatus)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrderStatus)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LocationID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LocationID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ChargeDiscountID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ChargeDiscountID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RelatedPartyIdentityCardNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RelatedPartyIdentityCardNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.InvolvedPerson)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.InvolvedPerson)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DivisionMasterID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DivisionMasterID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsNightTest)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsNightTest)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AssignedPerson)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AssignedPerson)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AdmissionTypeID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AdmissionTypeID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsHomeVisit)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsHomeVisit)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.HomeVisitHospitalCharge)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.HomeVisitHospitalCharge)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RefPurchaseOrderID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RefPurchaseOrderID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RelatedPartySessionID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RelatedPartySessionID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OperationTheatreAssistanceNurse)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OperationTheatreAssistanceNurse)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OperationTheatreRunningNurse)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OperationTheatreRunningNurse)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OperationTheatreMinusNurse)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OperationTheatreMinusNurse)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OperationTheatreAssistanceNurseIncentiveValue)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OperationTheatreAssistanceNurseIncentiveValue)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OperationTheatreRunningNurseIncentiveValue)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OperationTheatreRunningNurseIncentiveValue)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OperationTheatreMinusNurseIncentiveValue)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OperationTheatreMinusNurseIncentiveValue)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsOrderReturned)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsOrderReturned)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RefSalesOrderID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RefSalesOrderID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RefGRNID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RefGRNID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DiscountPercentage)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DiscountPercentage)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BHTNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BHTNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.InvoiceDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.InvoiceDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PaymentDueDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PaymentDueDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Remarks)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Remarks)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Deviation)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Deviation)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OPDDiscount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OPDDiscount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PatientVisitID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PatientVisitID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AppointmentNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AppointmentNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ConsultantID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ConsultantID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RequestDivisionMasterID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RequestDivisionMasterID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DistributorID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DistributorID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.InvoiceNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.InvoiceNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ConsultantName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ConsultantName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.isSafeDeleted)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.isSafeDeleted)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TimeSlotID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TimeSlotID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsConfirmed)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsConfirmed)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RoomID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RoomID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OutSiderID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OutSiderID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Drawer)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Drawer)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ConfirmedDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ConfirmedDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ConfirmedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ConfirmedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.isVerified)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.isVerified)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.isPaid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.isPaid)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PaidBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PaidBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PaidDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PaidDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AppointmentDateTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AppointmentDateTime)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Times)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Times)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PaymentCategoryID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PaymentCategoryID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NoOfprint)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NoOfprint)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsPosted)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsPosted)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsCancelPosted)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsCancelPosted)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AccountingInvoiceID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AccountingInvoiceID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CancelReturnBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CancelReturnBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CancelReturnDateTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CancelReturnDateTime)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ReportGivenDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ReportGivenDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsUrgent)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsUrgent)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CashPaid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CashPaid)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SelectedDivisionMasterID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SelectedDivisionMasterID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PaymentSubCategoryID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PaymentSubCategoryID)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -1,0 +1,120 @@
+﻿@model HR_Application_CO_OP_HOS.Models.RelatedPartyCategory
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>RelatedPartyCategory</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.RelatedPartyCategoryName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RelatedPartyCategoryName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RelatedPartyTypeID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RelatedPartyTypeID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RelatedPartyCategoryCode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RelatedPartyCategoryCode)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RelatedPartyGrade)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RelatedPartyGrade)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RelatedPartyCategoryDescription)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RelatedPartyCategoryDescription)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AttendanceInCaptureStart)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AttendanceInCaptureStart)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AttendanceInCaptureEnd)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AttendanceInCaptureEnd)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AttendanceOutCaptureStart)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AttendanceOutCaptureStart)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AttendanceOutCaptureEnd)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AttendanceOutCaptureEnd)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ExpectedIn)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ExpectedIn)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ExpectedOut)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ExpectedOut)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

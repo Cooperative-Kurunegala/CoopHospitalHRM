@@ -1,0 +1,905 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.RelatedPartySession>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EPF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayMonth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CalendarDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DayTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckInDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckOutDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualInDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualOutDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkedMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EarlyInMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LateInMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EarlyOutMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LateOutMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OTMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedPartyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdmissionTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdmissionNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReceivedNurse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NurseInChargeAdditional)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NurseInCharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistanceNurse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedPartyTyeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsHomeVisit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsNurseInChargeAdditionalSatisfactory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsNurseInChargeSatisfactory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAssistanceNurseSatisfactory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsReceivedNurseSatisfactory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Consultant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfNoPayLeaveHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoPayleaveDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsOTPaid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HomeVisitNurse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoginBalance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogoutBalance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedPartySessionNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserSessionDivisionMasterID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SessionStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MainConsultant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BedID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BillTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InsuranceCompanyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InsuranceCompanyBranchID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OldAdmissionNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdmissionCategoryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsWithMeal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAirConditioned)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VisitReason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Symtoms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Treatments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedPartySessionTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DrawerBalance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExcessOrShortage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualCashBalance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalSales)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCancel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalReturns)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CashBalace)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChannelSales)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScanSales)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LabSales)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.XraySales)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Drawer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProcedureSales)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NextSessionID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecomendedHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkedDivision)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttendanceStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsRecommended)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OverInDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OverOutDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecomendedOTHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSetBillNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAdmissionIncentive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinalBillTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecomendedLateHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecomendedLieuHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FriendshipBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecomendedFriendshipHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecomendedCoverdHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecomendedExcessHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FriendshipTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalInDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalOutDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsOTApproved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReasonsOfOT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalWorkedHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecommendHoursBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecommendOTHoursBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeSlotID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HCGSales)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ECGSales)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheatreSales)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VoucherPayments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OPDSales)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceSales)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecomendedDoubleOTHrs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsPosted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsCancelPosted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PapsmearSale)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoPayValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveAppliedValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LateMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShiftID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualWorkedDepartment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualShiftID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalLeaveStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualLeaveStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualAdditionalLeaveStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveCategoryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAttendanceRemoved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WeekDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InLateCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OutLateCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InLateHalfDayDeductionCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OutLateHalfDayDeductionCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsWorked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalShiftID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalActualShiftID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalCheckInDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalCheckOutDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsShift)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinalLateCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeauLeaveDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeauLeaveValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalActualCheckInDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalActualCheckOutDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAdditionalShift)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalShiftRelatedOTMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualOTHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualWorkedHours)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EPF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayMonth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CalendarDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DayTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckInDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckOutDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualInDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualOutDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkedMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EarlyInMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LateInMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EarlyOutMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LateOutMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OTMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedPartyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdmissionTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdmissionNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceivedNurse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NurseInChargeAdditional)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NurseInCharge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssistanceNurse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedPartyTyeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsHomeVisit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsNurseInChargeAdditionalSatisfactory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsNurseInChargeSatisfactory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAssistanceNurseSatisfactory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsReceivedNurseSatisfactory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Consultant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfNoPayLeaveHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoPayleaveDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsOTPaid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomeVisitNurse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoginBalance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LogoutBalance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedPartySessionNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserSessionDivisionMasterID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SessionStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MainConsultant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BedID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InsuranceCompanyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InsuranceCompanyBranchID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OldAdmissionNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdmissionCategoryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsWithMeal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAirConditioned)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisitReason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Symtoms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Treatments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedPartySessionTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DrawerBalance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExcessOrShortage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualCashBalance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalSales)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalCancel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalReturns)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CashBalace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChannelSales)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScanSales)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LabSales)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.XraySales)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Drawer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProcedureSales)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NextSessionID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecomendedHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkedDivision)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsRecommended)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OverInDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OverOutDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecomendedOTHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSetBillNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAdmissionIncentive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinalBillTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecomendedLateHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecomendedLieuHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FriendshipBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecomendedFriendshipHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecomendedCoverdHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecomendedExcessHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FriendshipTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalInDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalOutDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsOTApproved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReasonsOfOT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalWorkedHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecommendHoursBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecommendOTHoursBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeSlotID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HCGSales)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ECGSales)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheatreSales)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VoucherPayments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OPDSales)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceSales)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecomendedDoubleOTHrs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsPosted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsCancelPosted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PapsmearSale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoPayValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveAppliedValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LateMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShiftID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualWorkedDepartment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualShiftID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalLeaveStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualLeaveStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualAdditionalLeaveStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveCategoryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAttendanceRemoved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WeekDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InLateCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OutLateCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InLateHalfDayDeductionCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OutLateHalfDayDeductionCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsWorked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalShiftID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalActualShiftID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalCheckInDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalCheckOutDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsShift)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinalLateCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeauLeaveDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeauLeaveValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalActualCheckInDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalActualCheckOutDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAdditionalShift)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalShiftRelatedOTMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualOTHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualWorkedHours)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

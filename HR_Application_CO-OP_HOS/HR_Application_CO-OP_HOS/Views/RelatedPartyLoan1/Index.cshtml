@@ -1,0 +1,65 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.RelatedPartyLoan1>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Premium)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanEndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InterestPercentage)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoanAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Premium)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoanStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoanEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InterestPercentage)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

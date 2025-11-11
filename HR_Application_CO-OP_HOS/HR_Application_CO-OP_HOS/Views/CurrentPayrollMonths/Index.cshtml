@@ -1,0 +1,89 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.CurrentPayrollMonth>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentPayrollMonthValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentPayrollYearValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalaryTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsCurrentPayrollMonth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MonthName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsClosed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DurationFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DurationTo)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentPayrollMonthValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentPayrollYearValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalaryTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsCurrentPayrollMonth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonthName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsClosed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DurationFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DurationTo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

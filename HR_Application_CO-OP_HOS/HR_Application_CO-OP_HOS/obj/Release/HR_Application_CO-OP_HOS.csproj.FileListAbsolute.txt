@@ -1,0 +1,2 @@
+G:\Coop\CoopHospitalHRM\HR_Application_CO-OP_HOS\HR_Application_CO-OP_HOS\obj\Release\HR_Application_CO-OP_HOS.csproj.AssemblyReference.cache
+G:\Coop\CoopHospitalHRM\HR_Application_CO-OP_HOS\HR_Application_CO-OP_HOS\obj\Release\HR_Application_CO-OP_HOS.csproj.CoreCompileInputs.cache

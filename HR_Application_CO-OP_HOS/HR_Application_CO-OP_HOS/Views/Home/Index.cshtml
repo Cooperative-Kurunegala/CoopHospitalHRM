@@ -1,0 +1,213 @@
+﻿@{
+    ViewBag.Title = "HRM Dashboard - Co-Operative Hospital Kurunegala";
+}
+
+<div class="jumbotron">
+    <h1>HRM System</h1>
+    <p class="lead">Human Resources Management System for Co-Operative Hospital Kurunegala</p>
+    <p>Developed by <a href="https://ehealthcare.lk" target="_blank">eHealthcare Solutions</a></p>
+</div>
+
+<div class="row">
+    <!-- Admission Management -->
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Admission Management</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">@Html.ActionLink("Admission Categories", "Index", "AdmissionCategories")</li>
+                    <li class="list-group-item">@Html.ActionLink("Admission Types", "Index", "AdmissionTypes")</li>
+                    <li class="list-group-item">@Html.ActionLink("OT Types", "Index", "OTTypes")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Attendance & Time Management -->
+    <div class="col-md-4">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Attendance & Time Management</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">@Html.ActionLink("Attendance Data", "Index", "AttendanceDatas")</li>
+                    <li class="list-group-item">@Html.ActionLink("Attendance Details", "Index", "AttendanceDetails")</li>
+                    <li class="list-group-item">@Html.ActionLink("Attendance Records", "Index", "AttendanceRecords")</li>
+                    <li class="list-group-item">@Html.ActionLink("Attendance Times", "Index", "AttendanceTimes")</li>
+                    <li class="list-group-item">@Html.ActionLink("Shifts", "Index", "Shifts")</li>
+                    <li class="list-group-item">@Html.ActionLink("Nurse Shifts", "Index", "NurseShifts")</li>
+                    <li class="list-group-item">@Html.ActionLink("Roster Types", "Index", "RosterTypes")</li>
+                    <li class="list-group-item">@Html.ActionLink("Roster Status", "Index", "RosterStatus")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payroll & Compensation -->
+    <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Payroll & Compensation</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">@Html.ActionLink("Payroll Records", "Index", "PayrollRecords")</li>
+                    <li class="list-group-item">@Html.ActionLink("Current Payroll Months", "Index", "CurrentPayrollMonths")</li>
+                    <li class="list-group-item">@Html.ActionLink("Pay Month Masters", "Index", "PayMonthMasters")</li>
+                    <li class="list-group-item">@Html.ActionLink("Allowances", "Index", "Allowances")</li>
+                    <li class="list-group-item">@Html.ActionLink("Salary Types", "Index", "SalaryTypes")</li>
+                    <li class="list-group-item">@Html.ActionLink("Salary Modifiers", "Index", "SalaryModifiers")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Employee Management -->
+    <div class="col-md-4">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">Employee Management</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">@Html.ActionLink("Related Parties", "Index", "RelatedParties")</li>
+                    <li class="list-group-item">@Html.ActionLink("Related Party Types", "Index", "RelatedPartyTypes")</li>
+                    <li class="list-group-item">@Html.ActionLink("Related Party Categories", "Index", "RelatedPartyCategories")</li>
+                    <li class="list-group-item">@Html.ActionLink("Related Party Roles", "Index", "RelatedPartyRoles")</li>
+                    <li class="list-group-item">@Html.ActionLink("Designations", "Index", "Designations")</li>
+                    <li class="list-group-item">@Html.ActionLink("Locations", "Index", "Locations")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leave Management -->
+    <div class="col-md-4">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h3 class="panel-title">Leave Management</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">@Html.ActionLink("Leaves", "Index", "Leaves")</li>
+                    <li class="list-group-item">@Html.ActionLink("Leave Masters", "Index", "LeaveMasters")</li>
+                    <li class="list-group-item">@Html.ActionLink("Leave Types", "Index", "LeaveTypes")</li>
+                    <li class="list-group-item">@Html.ActionLink("Leave Categories", "Index", "LeaveCategories")</li>
+                    <li class="list-group-item">@Html.ActionLink("Leave Status", "Index", "LeaveStatus")</li>
+                    <li class="list-group-item">@Html.ActionLink("Related Party Leave Allocations", "Index", "RelatedPartyLeaveAllocations")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Financial Management -->
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Financial Management</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">@Html.ActionLink("Banks", "Index", "Banks")</li>
+                    <li class="list-group-item">@Html.ActionLink("Bank Branches", "Index", "BankBranches")</li>
+                    <li class="list-group-item">@Html.ActionLink("Bank Deposits", "Index", "BankDeposits")</li>
+                    <li class="list-group-item">@Html.ActionLink("Payment Types", "Index", "PaymentTypes")</li>
+                    <li class="list-group-item">@Html.ActionLink("Payment Categories", "Index", "PaymentCategories")</li>
+                    <li class="list-group-item">@Html.ActionLink("Tax Types", "Index", "TaxTypes")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- System Administration -->
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">System Administration</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">@Html.ActionLink("App Settings", "Index", "AppSettings")</li>
+                    <li class="list-group-item">@Html.ActionLink("Menu Configurations", "Index", "MenuConfigurations")</li>
+                    <li class="list-group-item">@Html.ActionLink("System Logs", "Index", "SystemLogs")</li>
+                    <li class="list-group-item">@Html.ActionLink("Log Details", "Index", "LogDetails")</li>
+                    <li class="list-group-item">@Html.ActionLink("Companies", "Index", "Companies")</li>
+                    <li class="list-group-item">@Html.ActionLink("Unit Types", "Index", "UnitTypes")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Modules -->
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Additional Modules</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">@Html.ActionLink("Channeling Management", "Index", "ChannelingSquences")</li>
+                    <li class="list-group-item">@Html.ActionLink("Charge Management", "Index", "ChargeMasters")</li>
+                    <li class="list-group-item">@Html.ActionLink("Loan Management", "Index", "RelatedPartyLoans")</li>
+                    <li class="list-group-item">@Html.ActionLink("Bill Finalizations", "Index", "BillFinalizations")</li>
+                    <li class="list-group-item">@Html.ActionLink("Insurance Claims", "Index", "InPatientInsuranceClaims")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Stats Section -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Quick Statistics</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                        <h4>Employees</h4>
+                        <p class="stat-number">--</p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <h4>Active Leaves</h4>
+                        <p class="stat-number">--</p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <h4>Pending Payroll</h4>
+                        <p class="stat-number">--</p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <h4>System Health</h4>
+                        <p class="stat-number text-success">Good</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .panel {
+        margin-bottom: 20px;
+    }
+
+    .list-group-item {
+        border: none;
+        padding: 8px 15px;
+    }
+
+    .stat-number {
+        font-size: 24px;
+        font-weight: bold;
+        color: #2c3e50;
+    }
+</style>

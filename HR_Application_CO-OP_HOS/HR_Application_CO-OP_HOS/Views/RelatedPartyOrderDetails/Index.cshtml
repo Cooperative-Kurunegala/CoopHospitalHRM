@@ -1,0 +1,203 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.RelatedPartyOrderDetail>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Qty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LineTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DivisionChargeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DivisionChargeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChargeTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BatchNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpiryDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReorderLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChargeMasterPriceID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsNurseCharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BonusQty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DocFee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HosFee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WardDocFee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BatchPopupID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsNightTest)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.involvedperson)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtyPerPack)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalesPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TechnicianCharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttachmentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NurseFee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedPartyOrder.OrderNo)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LineTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DivisionChargeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DivisionChargeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChargeTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BatchNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpiryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReorderLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChargeMasterPriceID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsNurseCharge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BonusQty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HosFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WardDocFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BatchPopupID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsNightTest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.involvedperson)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtyPerPack)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalesPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TechnicianCharge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttachmentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NurseFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedPartyOrder.OrderNo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

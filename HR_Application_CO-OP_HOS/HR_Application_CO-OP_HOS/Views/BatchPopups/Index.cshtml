@@ -1,0 +1,75 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.BatchPopup>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DivisionChargeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BatchNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpeningStockDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpeningStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BatchSellingPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CostPrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DivisionChargeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BatchNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpiryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OpeningStockDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OpeningStock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BatchSellingPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CostPrice)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

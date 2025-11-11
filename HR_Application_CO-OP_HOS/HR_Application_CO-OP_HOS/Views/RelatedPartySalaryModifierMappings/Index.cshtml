@@ -1,0 +1,137 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.RelatedPartySalaryModifierMapping>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderIndex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupingForSlip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalaryModifierName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalaryModifierTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsNoPay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsLateHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaxTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OTTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsEditable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAllawance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsRemoved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsLoan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedPartySalary.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalaryModifier.SalaryModifierName)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderIndex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupingForSlip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalaryModifierName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalaryModifierTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsNoPay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsLateHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaxTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OTTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsEditable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAllawance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsRemoved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsLoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedPartySalary.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalaryModifier.SalaryModifierName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

@@ -1,0 +1,1862 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdmissionCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Category" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AdmissionType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdmissionTypeName" Type="varchar" MaxLength="200" />
+    <Property Name="AdmissionTypeDescription" Type="varchar" MaxLength="500" />
+    <Property Name="AdmissionTypeSequence" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="AdmissionTypeCode" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Allowance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="AllowanceType" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="EffectiveDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="AppSettings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AppSettingKey" Type="varchar" MaxLength="50" />
+    <Property Name="AppSettingValue" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="AppSettingsDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AppSettingsDetailKey" Type="varchar" MaxLength="50" />
+    <Property Name="AppSettingDetailValue" Type="varchar" MaxLength="500" />
+    <Property Name="AppSettingsID" Type="int" />
+    <Property Name="IsPerHour" Type="bit" />
+    <Property Name="IsMinimumFor24Hours" Type="bit" />
+    <Property Name="IsPercentage" Type="bit" />
+    <Property Name="DivisionMasterTypeID" Type="int" />
+    <Property Name="RelatedPartyOrderID" Type="int" />
+  </EntityType>
+  <EntityType Name="AttendanceData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EPF" Type="int" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="InTime" Type="datetime" />
+    <Property Name="OutTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AttendanceDetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartyID" Type="int" />
+    <Property Name="WorkedMonth" Type="int" />
+    <Property Name="WorkedYear" Type="int" />
+    <Property Name="IsOTRecommended" Type="bit" />
+  </EntityType>
+  <EntityType Name="AttendanceLastRecordDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="AttendanceLastRecord" Type="varchar" MaxLength="50" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AttendanceRecords">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EPFNo" Type="int" />
+    <Property Name="AttendanceDateTime" Type="datetime" />
+    <Property Name="IsProcessed" Type="bit" />
+    <Property Name="CompanyID" Type="int" />
+  </EntityType>
+  <EntityType Name="AttendanceTime">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttendanceFromTime" Type="time" Precision="7" />
+    <Property Name="AttendanceToTime" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BankName" Type="varchar" MaxLength="500" />
+    <Property Name="IsEnabled" Type="bit" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="BankBranches">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BranchName" Type="varchar" MaxLength="500" />
+    <Property Name="BankID" Type="int" />
+    <Property Name="BranchCode" Type="varchar" MaxLength="50" />
+    <Property Name="IsEnabled" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="BankDeposit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pharmacy_Deposit" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Reception_Deposit" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DepositDatetime" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="Cheque_Deposit" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CashInHand" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="BatchPopup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DivisionChargeID" Type="int" />
+    <Property Name="BatchNo" Type="varchar" MaxLength="50" />
+    <Property Name="ExpiryDate" Type="datetime" />
+    <Property Name="Stock" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="OpeningStockDate" Type="datetime" />
+    <Property Name="OpeningStock" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="BatchSellingPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CostPrice" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="BillFinalization">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AppSettingDetailID" Type="int" />
+    <Property Name="RelatedPartySessionID" Type="int" />
+    <Property Name="ChargeName" Type="varchar" MaxLength="500" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsPerHour" Type="bit" />
+    <Property Name="IsMinimumFor24Hours" Type="bit" />
+    <Property Name="PerDayValue" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NoOfHours" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsPercentage" Type="bit" />
+    <Property Name="DivisionMasterTypeID" Type="int" />
+    <Property Name="RelatedPartyOrderID" Type="int" />
+    <Property Name="IsThisBillIncentive" Type="bit" />
+    <Property Name="SnapShotDateTime" Type="datetime" />
+    <Property Name="ConsultantID" Type="int" />
+  </EntityType>
+  <EntityType Name="BillFinalization_Last">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AppSettingDetailID" Type="int" />
+    <Property Name="RelatedPartySessionID" Type="int" />
+    <Property Name="ChargeName" Type="varchar" MaxLength="500" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsPerHour" Type="bit" />
+    <Property Name="IsMinimumFor24Hours" Type="bit" />
+    <Property Name="PerDayValue" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NoOfHours" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsPercentage" Type="bit" />
+    <Property Name="DivisionMasterTypeID" Type="int" />
+    <Property Name="RelatedPartyOrderID" Type="int" />
+    <Property Name="IsThisBillIncentive" Type="bit" />
+    <Property Name="SnapShotDateTime" Type="datetime" />
+    <Property Name="ConsultantID" Type="int" />
+  </EntityType>
+  <EntityType Name="CalanderForPayout">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CalanderDay" Type="datetime" />
+    <Property Name="DayTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="ChannelingSquence">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="DoctorID" Type="int" />
+    <Property Name="ChannelDate" Type="datetime" />
+    <Property Name="TimeSlotID" Type="int" />
+    <Property Name="Sequence" Type="int" />
+    <Property Name="SquenceStatus" Type="bit" />
+    <Property Name="Times" Type="varchar" MaxLength="50" />
+    <Property Name="PatientLimits" Type="int" />
+    <Property Name="DivisionMasterID" Type="int" />
+    <Property Name="TimeInterval" Type="int" />
+  </EntityType>
+  <EntityType Name="ChannelingTimeSlot">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TimeSlot" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ChargeCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="varchar" MaxLength="200" />
+    <Property Name="CategoryDescription" Type="varchar" MaxLength="1000" />
+    <Property Name="ChargeTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="ChargeDiscount">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DiscountTypeName" Type="varchar" MaxLength="100" />
+    <Property Name="DiscountTypeCode" Type="int" />
+    <Property Name="DiscountPercentage" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ChargeTypeID" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="RelatedPartyTypeID" Type="int" />
+    <Property Name="OrderTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="ChargeItemList">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Type" Type="int" />
+  </EntityType>
+  <EntityType Name="ChargeMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="500" />
+    <Property Name="Description" Type="varchar" MaxLength="1000" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Code" Type="varchar" MaxLength="50" />
+    <Property Name="UnitTypeID" Type="int" />
+    <Property Name="MenuTypeID" Type="int" />
+    <Property Name="MenuTypeDetailID" Type="int" />
+    <Property Name="ChargeTypeID" Type="int" />
+    <Property Name="ChargeCategoryID" Type="int" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="IsIncentiveCalculate" Type="bit" />
+  </EntityType>
+  <EntityType Name="ChargeMasterPrice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChargeMasterID" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Description" Type="varchar" MaxLength="1000" />
+    <Property Name="IsDefault" Type="bit" />
+    <Property Name="OrderTypeID" Type="int" />
+    <Property Name="CostPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Margin" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SellingPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RefDivisionMasterID" Type="int" />
+  </EntityType>
+  <EntityType Name="ChargeType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChargeTypeName" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="CheckManagment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CheckDate" Type="datetime" />
+    <Property Name="PostDate" Type="datetime" />
+    <Property Name="InvoiceNo" Type="varchar(max)" />
+    <Property Name="CheckNumber" Type="varchar" MaxLength="50" />
+    <Property Name="RelatedpartyID" Type="int" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="DivisionMasterID" Type="int" />
+    <Property Name="PaymentCategoryID" Type="int" />
+    <Property Name="ChequeType" Type="int" />
+    <Property Name="IsIssued" Type="int" />
+    <Property Name="OrderStatus" Type="int" />
+    <Property Name="IssueDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="companyName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CreditCardType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreditCardTypeName" Type="varchar" MaxLength="200" />
+    <Property Name="CreditCardTypeCode" Type="int" />
+  </EntityType>
+  <EntityType Name="CurrentPayrollMonth">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CurrentPayrollMonthValue" Type="int" />
+    <Property Name="CurrentPayrollYearValue" Type="int" />
+    <Property Name="SalaryTypeID" Type="int" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="IsCurrentPayrollMonth" Type="bit" />
+    <Property Name="MonthName" Type="varchar" MaxLength="50" />
+    <Property Name="IsClosed" Type="bit" />
+    <Property Name="DurationFrom" Type="datetime" />
+    <Property Name="DurationTo" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DayType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DayTypeName" Type="varchar" MaxLength="500" />
+    <Property Name="ShiftID" Type="int" />
+  </EntityType>
+  <EntityType Name="Designation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="designationName" Type="varchar" MaxLength="500" />
+    <Property Name="AttendanceInCaptureStart" Type="datetime" />
+    <Property Name="AttendanceInCaptureEnd" Type="datetime" />
+    <Property Name="AttendanceOutCaptureStart" Type="datetime" />
+    <Property Name="AttendanceOutCaptureEnd" Type="datetime" />
+    <Property Name="ExpectedIn" Type="datetime" />
+    <Property Name="ExpectedOut" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DivisionCharge">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChargeMasterID" Type="int" />
+    <Property Name="DivisionMasterID" Type="int" />
+    <Property Name="Qty" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="OpeningBalanceDate" Type="datetime" />
+    <Property Name="ChargeTypeID" Type="int" />
+    <Property Name="BatchNumber" Type="varchar" MaxLength="50" />
+    <Property Name="ExpiryDate" Type="datetime" />
+    <Property Name="ReorderLevel" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="ChargeMasterPriceID" Type="int" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="IsBoxItem" Type="bit" />
+    <Property Name="PerBoxQty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CostPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Margin" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SellingPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="WardPharmacyPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ParentDivisionChargeID" Type="int" />
+    <Property Name="ConsultantID" Type="int" />
+    <Property Name="PhysicalStock" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="OpeningStock" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="IsIncentiveCalculate" Type="bit" />
+    <Property Name="AttachmentID" Type="int" />
+  </EntityType>
+  <EntityType Name="DivisionMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DivisionMasterName" Type="varchar" MaxLength="100" />
+    <Property Name="DivisionMasterCode" Type="varchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="MenuTypeID" Type="int" />
+    <Property Name="MenuTypeDetailID" Type="int" />
+    <Property Name="DivisionMasterDescription" Type="varchar" MaxLength="1000" />
+    <Property Name="IsStockManaged" Type="bit" />
+    <Property Name="ParentDivisionMasterID" Type="int" />
+    <Property Name="DivisionMasterTypeID" Type="int" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="OrderTypeID" Type="int" />
+    <Property Name="OrderSequence" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="IsReserved" Type="bit" />
+    <Property Name="AccoutClassID" Type="int" />
+    <Property Name="AccoutClassCode" Type="int" />
+  </EntityType>
+  <EntityType Name="DivisionMasterOrderTypeMapping">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DivisionMasterID" Type="int" />
+    <Property Name="OrderTypeID" Type="int" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="OrderSequence" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="DivisionMasterType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DivisionMasterTypeName" Type="varchar" MaxLength="150" />
+    <Property Name="DivisionMasterID" Type="int" />
+    <Property Name="DivisionMasterTypeDescription" Type="varchar" MaxLength="500" />
+    <Property Name="ParentDivisionMasterTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="DoctorDivisionChargeMapping">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorID" Type="int" />
+    <Property Name="DivisionChargeID" Type="int" />
+    <Property Name="DivisionMasterID" Type="int" />
+    <Property Name="DoctorCharge" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="HospitalCharge" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="WardDoctorCharge" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TechnicianCharge" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="DoctorWiseTimeSlot">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartyID" Type="int" />
+    <Property Name="TimeSlotID" Type="int" />
+    <Property Name="Times" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="InPatientInsuranceClaim">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartySessionID" Type="int" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="200" />
+    <Property Name="PatientName" Type="varchar" MaxLength="200" />
+    <Property Name="CompanyName" Type="varchar" MaxLength="200" />
+    <Property Name="BillAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ClaimAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ReceivedAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="BillNo" Type="varchar" MaxLength="50" />
+    <Property Name="ChequeNo" Type="varchar" MaxLength="50" />
+    <Property Name="ChequeDate" Type="datetime" />
+    <Property Name="Remarks" Type="varchar" MaxLength="1000" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsChequeReceived" Type="bit" />
+  </EntityType>
+  <EntityType Name="Leave">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartyID" Type="int" />
+    <Property Name="LeaveCategoryID" Type="int" />
+    <Property Name="LeaveTypeID" Type="int" />
+    <Property Name="LeaveDate" Type="datetime" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="LeaveAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LeaveMasterID" Type="int" />
+    <Property Name="LeaveFrom" Type="datetime" />
+    <Property Name="LeaveTo" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LeaveCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+    <Property Name="LeaveCode" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LeaveMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApprovedBy" Type="int" />
+    <Property Name="ApprovedDateTime" Type="datetime" />
+    <Property Name="RecommendedBy" Type="int" />
+    <Property Name="RecommendedDateTime" Type="datetime" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="LeaveFrom" Type="datetime" />
+    <Property Name="LeaveTo" Type="datetime" />
+    <Property Name="NoOfLeaves" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RelatedPartyID" Type="int" />
+    <Property Name="LeaveDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LeaveStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DayStatusDescription" Type="varchar" MaxLength="50" />
+    <Property Name="OrderIndex" Type="int" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="LeaveCount" Type="decimal" Precision="18" Scale="1" />
+  </EntityType>
+  <EntityType Name="LeaveType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="varchar" MaxLength="50" />
+    <Property Name="LeaveDuration" Type="int" />
+  </EntityType>
+  <EntityType Name="LoanCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DefaultAllocation" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LoanCategoryName" Type="varchar" MaxLength="100" />
+    <Property Name="IsFixedLoanInstallments" Type="bit" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocationName" Type="varchar" MaxLength="500" />
+    <Property Name="OrderIndex" Type="int" />
+  </EntityType>
+  <EntityType Name="LogDetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="log_date" Type="datetime" />
+    <Property Name="usr_sys_code" Type="int" />
+    <Property Name="RelatedID" Type="int" />
+    <Property Name="RelatedTable" Type="varchar" MaxLength="50" />
+    <Property Name="log_desc" Type="varchar" MaxLength="50" />
+    <Property Name="log_event" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MenuConfiguration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuItemName" Type="varchar" MaxLength="50" />
+    <Property Name="MenuItemDescription" Type="varchar" MaxLength="1000" />
+    <Property Name="ParentMenuItemID" Type="int" />
+    <Property Name="MenuLevel" Type="int" />
+    <Property Name="MenuItemControlName" Type="varchar" MaxLength="50" />
+    <Property Name="UIType" Type="varchar" MaxLength="100" />
+    <Property Name="MenuTypeID" Type="int" />
+    <Property Name="MenuTypeDetailID" Type="int" />
+    <Property Name="SplashScreenItemID" Type="int" />
+    <Property Name="OrderIndex" Type="int" />
+    <Property Name="DivisionMasterID" Type="int" />
+    <Property Name="ChargeTypeID" Type="int" />
+    <Property Name="RelatedPartyTypeID" Type="int" />
+    <Property Name="OrderTypeID" Type="int" />
+    <Property Name="IsSellWardPharmacyPrice" Type="bit" />
+    <Property Name="AdmissionTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="Nopay">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartyID" Type="int" />
+    <Property Name="PayMonth" Type="int" />
+    <Property Name="PayYear" Type="int" />
+    <Property Name="NoPayDays" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="NurseShift">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdmissionType" Type="int" />
+    <Property Name="ReceivedNurse" Type="int" />
+    <Property Name="NurseInChargeAdditional" Type="int" />
+    <Property Name="AssitantNurse" Type="int" />
+    <Property Name="NurseInCharge" Type="int" />
+    <Property Name="Shift" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="RelatedPartySessionID" Type="int" />
+  </EntityType>
+  <EntityType Name="OPDSquence">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="DoctorID" Type="int" />
+    <Property Name="OPDDate" Type="datetime" />
+    <Property Name="TimeSlotID" Type="int" />
+    <Property Name="Sequence" Type="int" />
+    <Property Name="SquenceStatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="OPDTimeSlot">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TimeSlot" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="OrderType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderTypeName" Type="varchar" MaxLength="1000" />
+    <Property Name="OrderSequence" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="OrderTypeCode" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="OTType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OTTypeName" Type="varchar" MaxLength="50" />
+    <Property Name="Rate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsEnabled" Type="bit" />
+  </EntityType>
+  <EntityType Name="PayeeTax">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PayeeRate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Conditions" Type="varchar" MaxLength="500" />
+    <Property Name="TaxTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="PaymentCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="varchar(max)" />
+    <Property Name="OrderTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="PaymentDetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChargeItemListID" Type="int" />
+    <Property Name="AdmissionType" Type="int" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="50" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Drawer" Type="int" />
+    <Property Name="DoctorID" Type="int" />
+    <Property Name="PatientName" Type="varchar(max)" />
+    <Property Name="BHT" Type="varchar" MaxLength="50" />
+    <Property Name="DoctorCharge" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="HospitalCharge" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Reason" Type="varchar(max)" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="OrderStatus" Type="tinyint" />
+    <Property Name="ReceivedBy" Type="varchar(max)" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="IsPosted" Type="int" />
+    <Property Name="IsCancelPosted" Type="int" />
+  </EntityType>
+  <EntityType Name="PaymentSubCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="varchar(max)" />
+    <Property Name="OrderTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="PaymentType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentTypeName" Type="varchar" MaxLength="200" />
+    <Property Name="PaymentTypeCode" Type="int" />
+  </EntityType>
+  <EntityType Name="PayMonthMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PayMonth" Type="int" />
+    <Property Name="PayYear" Type="int" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="isCurrentMonth" Type="bit" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDateTime" Type="datetime" />
+    <Property Name="isProcessed" Type="bit" />
+  </EntityType>
+  <EntityType Name="PayrollRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="Month" Type="int" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="BasicSalary" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TotalAllowances" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TotalDeductions" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NetSalary" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="GeneratedDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="RelatedParty">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RegistrationNumber" Type="varchar" MaxLength="100" />
+    <Property Name="RelatedPartyName" Type="varchar" MaxLength="100" />
+    <Property Name="RelatedPartyAddress" Type="varchar" MaxLength="1000" />
+    <Property Name="RelatedPartyNIC" Type="varchar" MaxLength="50" />
+    <Property Name="DateOfBirth" Type="datetime" />
+    <Property Name="Gender" Type="tinyint" />
+    <Property Name="DivisionMasterID" Type="int" />
+    <Property Name="RelatedPartyTypeID" Type="int" />
+    <Property Name="DesignationID" Type="int" />
+    <Property Name="RelatedPartyCategoryID" Type="int" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="RegisteredDate" Type="datetime" />
+    <Property Name="TelephoneNumberList" Type="varchar" MaxLength="200" />
+    <Property Name="MobileNoList" Type="varchar" MaxLength="200" />
+    <Property Name="DateofJoin" Type="datetime" />
+    <Property Name="DateofResignation" Type="datetime" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="RelatedPartyPassword" Type="varchar" MaxLength="50" />
+    <Property Name="RelatedPartyRoleID" Type="int" />
+    <Property Name="DefaultSplashScreenItemID" Type="int" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="Weight" Type="varchar" MaxLength="100" />
+    <Property Name="Height" Type="varchar" MaxLength="100" />
+    <Property Name="IsDivisionHead" Type="bit" />
+    <Property Name="BasicSalary" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RelatedPartyEmail" Type="varchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CompanyName" Type="varchar" MaxLength="200" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="200" />
+    <Property Name="DiscountAppliedDate" Type="datetime" />
+    <Property Name="IsDiscountApplicable" Type="bit" />
+    <Property Name="DailyPaidAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ChannellingConsultantCharge" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ChannellingHospitalCharge" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Age" Type="varchar" MaxLength="100" />
+    <Property Name="RelatedPartySubCategoryID" Type="int" />
+    <Property Name="WardHospitalCharge" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="StaffID" Type="int" />
+    <Property Name="MotherCompanyID" Type="int" />
+    <Property Name="Designation" Type="varchar" MaxLength="50" />
+    <Property Name="RoomID" Type="int" />
+    <Property Name="BudgetAllowance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="BOIAllowance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ManagementAllowance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="UniformAllowance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TravelAllowance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ISresigned" Type="bit" />
+    <Property Name="AttendanceIncentive" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RelatedPartyTitle" Type="varchar" MaxLength="50" />
+    <Property Name="PerformanceIncentive" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VendorId" Type="int" />
+    <Property Name="OpeningBalance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OpeningBalanceDate" Type="datetime" />
+    <Property Name="HostelFee" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="InTime" Type="time" Precision="7" />
+    <Property Name="OutTime" Type="time" Precision="7" />
+    <Property Name="IsSetforPayroll" Type="bit" />
+    <Property Name="PayeeTaxID" Type="int" />
+    <Property Name="IsRosterAvailable" Type="bit" />
+    <Property Name="Initials" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="100" />
+    <Property Name="RosterType" Type="int" />
+    <Property Name="RosterID" Type="int" />
+  </EntityType>
+  <EntityType Name="RelatedPartyBankAccounts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartyID" Type="int" />
+    <Property Name="BankID" Type="int" />
+    <Property Name="BranchID" Type="int" />
+    <Property Name="StandingOrderAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="BankAccountNo" Type="varchar" MaxLength="50" />
+    <Property Name="IsEnable" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="RelatedPartyCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartyCategoryName" Type="varchar" MaxLength="50" />
+    <Property Name="RelatedPartyTypeID" Type="int" />
+    <Property Name="RelatedPartyCategoryCode" Type="varchar" MaxLength="50" />
+    <Property Name="RelatedPartyGrade" Type="int" />
+    <Property Name="RelatedPartyCategoryDescription" Type="varchar" MaxLength="1000" />
+    <Property Name="AttendanceInCaptureStart" Type="datetime" />
+    <Property Name="AttendanceInCaptureEnd" Type="datetime" />
+    <Property Name="AttendanceOutCaptureStart" Type="datetime" />
+    <Property Name="AttendanceOutCaptureEnd" Type="datetime" />
+    <Property Name="ExpectedIn" Type="datetime" />
+    <Property Name="ExpectedOut" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RelatedPartyDefaultSalaryModifiers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartyID" Type="int" />
+    <Property Name="SalaryModifierID" Type="int" />
+    <Property Name="OrderIndex" Type="int" />
+    <Property Name="IsEnabled" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="DefaultValue" Type="varchar(max)" />
+    <Property Name="IsPayee" Type="bit" />
+    <Property Name="IsRemoved" Type="bit" />
+  </EntityType>
+  <EntityType Name="RelatedPartyFixedRoster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RosterID" Type="int" />
+    <Property Name="RelatedPartyID" Type="int" />
+    <Property Name="WeekDay" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="RelatedPartyLeaveAllocation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartyID" Type="int" />
+    <Property Name="HRYear" Type="int" />
+    <Property Name="LeaveCategoryID" Type="int" />
+    <Property Name="StartingValue" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="StartingValueDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RelatedPartyLeaveType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LeaveTypeName" Type="varchar" MaxLength="200" />
+    <Property Name="LeaveTypeCode" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RelatedPartyLoan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartyID" Type="int" />
+    <Property Name="LoanTotalAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="MonthlyAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NoOfInstallments" Type="int" />
+    <Property Name="LoanStartDate" Type="datetime" />
+    <Property Name="LoanCategoryID" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LoanEndDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RelatedPartyLoans">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoanAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Premium" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LoanStartDate" Type="datetime" />
+    <Property Name="LoanEndDate" Type="datetime" />
+    <Property Name="InterestPercentage" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="RelatedPartyOrder">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartyID" Type="int" />
+    <Property Name="OrderDate" Type="datetime" />
+    <Property Name="OrderTypeID" Type="int" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="OrderStatus" Type="tinyint" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="ChargeDiscountID" Type="int" />
+    <Property Name="RelatedPartyIdentityCardNo" Type="varchar" MaxLength="50" />
+    <Property Name="InvolvedPerson" Type="int" />
+    <Property Name="DivisionMasterID" Type="int" />
+    <Property Name="IsNightTest" Type="bit" />
+    <Property Name="AssignedPerson" Type="int" />
+    <Property Name="AdmissionTypeID" Type="int" />
+    <Property Name="IsHomeVisit" Type="bit" />
+    <Property Name="HomeVisitHospitalCharge" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RefPurchaseOrderID" Type="int" />
+    <Property Name="RelatedPartySessionID" Type="int" />
+    <Property Name="OperationTheatreAssistanceNurse" Type="int" />
+    <Property Name="OperationTheatreRunningNurse" Type="int" />
+    <Property Name="OperationTheatreMinusNurse" Type="int" />
+    <Property Name="OperationTheatreAssistanceNurseIncentiveValue" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OperationTheatreRunningNurseIncentiveValue" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OperationTheatreMinusNurseIncentiveValue" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsOrderReturned" Type="bit" />
+    <Property Name="RefSalesOrderID" Type="int" />
+    <Property Name="RefGRNID" Type="int" />
+    <Property Name="DiscountPercentage" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="BHTNo" Type="varchar" MaxLength="50" />
+    <Property Name="InvoiceDate" Type="datetime" />
+    <Property Name="PaymentDueDate" Type="datetime" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="Deviation" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OPDDiscount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PatientVisitID" Type="int" />
+    <Property Name="AppointmentNo" Type="varchar" MaxLength="50" />
+    <Property Name="ConsultantID" Type="int" />
+    <Property Name="RequestDivisionMasterID" Type="int" />
+    <Property Name="DistributorID" Type="int" />
+    <Property Name="InvoiceNo" Type="varchar" MaxLength="50" />
+    <Property Name="ConsultantName" Type="varchar(max)" />
+    <Property Name="isSafeDeleted" Type="bit" />
+    <Property Name="TimeSlotID" Type="int" />
+    <Property Name="IsConfirmed" Type="bit" />
+    <Property Name="RoomID" Type="int" />
+    <Property Name="OutSiderID" Type="int" />
+    <Property Name="Drawer" Type="int" />
+    <Property Name="ConfirmedDate" Type="datetime" />
+    <Property Name="ConfirmedBy" Type="int" />
+    <Property Name="isVerified" Type="bit" />
+    <Property Name="isPaid" Type="bit" />
+    <Property Name="PaidBy" Type="int" />
+    <Property Name="PaidDate" Type="datetime" />
+    <Property Name="AppointmentDateTime" Type="datetime" />
+    <Property Name="Times" Type="varchar" MaxLength="50" />
+    <Property Name="PaymentCategoryID" Type="int" />
+    <Property Name="NoOfprint" Type="int" />
+    <Property Name="IsPosted" Type="int" />
+    <Property Name="IsCancelPosted" Type="int" />
+    <Property Name="AccountingInvoiceID" Type="int" />
+    <Property Name="CancelReturnBy" Type="varchar(max)" />
+    <Property Name="CancelReturnDateTime" Type="datetime" />
+    <Property Name="ReportGivenDate" Type="datetime" />
+    <Property Name="IsUrgent" Type="int" />
+    <Property Name="CashPaid" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SelectedDivisionMasterID" Type="int" />
+    <Property Name="PaymentSubCategoryID" Type="int" />
+  </EntityType>
+  <EntityType Name="RelatedPartyOrderDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="Qty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LineTotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DivisionChargeID" Type="int" />
+    <Property Name="DivisionChargeName" Type="varchar" MaxLength="100" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ChargeTypeID" Type="int" />
+    <Property Name="BatchNumber" Type="varchar" MaxLength="50" />
+    <Property Name="ExpiryDate" Type="datetime" />
+    <Property Name="ReorderLevel" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="ChargeMasterPriceID" Type="int" />
+    <Property Name="IsNurseCharge" Type="bit" />
+    <Property Name="BonusQty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DocFee" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="HosFee" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="WardDocFee" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="BatchPopupID" Type="int" />
+    <Property Name="IsNightTest" Type="bit" />
+    <Property Name="involvedperson" Type="int" />
+    <Property Name="QtyPerPack" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="SalesPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TechnicianCharge" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AttachmentID" Type="int" />
+    <Property Name="NurseFee" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="RelatedPartyOrderPayments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentTypeID" Type="int" />
+    <Property Name="PaymentAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="CreditCardNumber" Type="varchar" MaxLength="50" />
+    <Property Name="MCashCode" Type="varchar" MaxLength="50" />
+    <Property Name="PaymentDateTime" Type="datetime" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CreditCardTypeID" Type="int" />
+    <Property Name="CreditCardExpiryDate" Type="datetime" />
+    <Property Name="ChequeNumber" Type="varchar" MaxLength="50" />
+    <Property Name="ChequeDate" Type="datetime" />
+    <Property Name="IsAccountsRecommended" Type="bit" />
+    <Property Name="RecommendedComment" Type="varchar" MaxLength="50" />
+    <Property Name="RecommendedUserID" Type="int" />
+    <Property Name="AdmissionID" Type="int" />
+  </EntityType>
+  <EntityType Name="RelatedPartyRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartyRoleName" Type="varchar" MaxLength="50" />
+    <Property Name="RelatedPartyRoleDescription" Type="varchar" MaxLength="500" />
+    <Property Name="RelatedPartyRoleCode" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RelatedPartyRoleAndSplashScreenItemMapping">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SplashScreenItemID" Type="int" />
+    <Property Name="RelatedPartyRoleID" Type="int" />
+  </EntityType>
+  <EntityType Name="RelatedPartySalary">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartyEPF" Type="int" />
+    <Property Name="Month" Type="int" />
+    <Property Name="Year" Type="int" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="NoPayDays" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LateMinutes" Type="int" />
+    <Property Name="OTMinutes" Type="int" />
+    <Property Name="RelatedPartyID" Type="int" />
+    <Property Name="IsPayoutGenerated" Type="bit" />
+    <Property Name="IsLocked" Type="bit" />
+    <Property Name="SalaryTypeID" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="DoubleOTMinutes" Type="int" />
+    <Property Name="PayeeTaxRate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="WorkedDays" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ActualNoPayDays" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ActualLateHours" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ActualOTHours" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ActualDBLOTHours" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsVerified" Type="bit" />
+    <Property Name="IsAttendanceVerified" Type="bit" />
+    <Property Name="TotalShifts" Type="int" />
+    <Property Name="TotalInLate" Type="int" />
+    <Property Name="TotalOutLate" Type="int" />
+    <Property Name="FinalLateCount" Type="int" />
+    <Property Name="TotalAdditionalShifts" Type="int" />
+  </EntityType>
+  <EntityType Name="RelatedPartySalaryBankAccountsMapping">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartyID" Type="int" />
+    <Property Name="IsEnabled" Type="bit" />
+    <Property Name="DepositAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RelatedPartySalaryID" Type="int" />
+    <Property Name="RelatedPartyBankAccountID" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="RelatedPartySalaryModifierMapping">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartySalaryID" Type="int" />
+    <Property Name="SalaryModifierID" Type="int" />
+    <Property Name="OrderIndex" Type="int" />
+    <Property Name="GroupingForSlip" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ActualAmount" Type="varchar(max)" />
+    <Property Name="SalaryModifierName" Type="varchar" MaxLength="100" />
+    <Property Name="SalaryModifierTypeID" Type="int" />
+    <Property Name="IsNoPay" Type="bit" />
+    <Property Name="IsLateHours" Type="bit" />
+    <Property Name="TaxTypeID" Type="int" />
+    <Property Name="OTTypeID" Type="int" />
+    <Property Name="IsEditable" Type="bit" />
+    <Property Name="IsAllawance" Type="bit" />
+    <Property Name="IsRemoved" Type="bit" />
+    <Property Name="IsLoan" Type="bit" />
+  </EntityType>
+  <EntityType Name="RelatedPartySession">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EPF" Type="int" />
+    <Property Name="PayMonth" Type="int" />
+    <Property Name="PayYear" Type="int" />
+    <Property Name="CalendarDay" Type="datetime" />
+    <Property Name="DayTypeID" Type="int" />
+    <Property Name="CheckInDateTime" Type="datetime" />
+    <Property Name="CheckOutDateTime" Type="datetime" />
+    <Property Name="ActualInDateTime" Type="datetime" />
+    <Property Name="ActualOutDateTime" Type="datetime" />
+    <Property Name="WorkedMinutes" Type="int" />
+    <Property Name="EarlyInMinutes" Type="int" />
+    <Property Name="LateInMinutes" Type="int" />
+    <Property Name="EarlyOutMinutes" Type="int" />
+    <Property Name="LateOutMinutes" Type="int" />
+    <Property Name="OTMinutes" Type="int" />
+    <Property Name="RelatedPartyID" Type="int" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="AdmissionTypeID" Type="int" />
+    <Property Name="AdmissionNumber" Type="varchar" MaxLength="50" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="ReceivedNurse" Type="int" />
+    <Property Name="NurseInChargeAdditional" Type="int" />
+    <Property Name="NurseInCharge" Type="int" />
+    <Property Name="AssistanceNurse" Type="int" />
+    <Property Name="RelatedPartyTyeID" Type="int" />
+    <Property Name="IsHomeVisit" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsNurseInChargeAdditionalSatisfactory" Type="bit" />
+    <Property Name="IsNurseInChargeSatisfactory" Type="bit" />
+    <Property Name="IsAssistanceNurseSatisfactory" Type="bit" />
+    <Property Name="IsReceivedNurseSatisfactory" Type="bit" />
+    <Property Name="Consultant" Type="int" />
+    <Property Name="NumberOfNoPayLeaveHours" Type="int" />
+    <Property Name="NoPayleaveDate" Type="datetime" />
+    <Property Name="IsOTPaid" Type="bit" />
+    <Property Name="HomeVisitNurse" Type="int" />
+    <Property Name="LoginBalance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LogoutBalance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RelatedPartySessionNo" Type="varchar" MaxLength="200" />
+    <Property Name="UserSessionDivisionMasterID" Type="int" />
+    <Property Name="AppointmentDateTime" Type="datetime" />
+    <Property Name="SessionStatus" Type="tinyint" />
+    <Property Name="MainConsultant" Type="varchar" MaxLength="50" />
+    <Property Name="RoomID" Type="int" />
+    <Property Name="BedID" Type="int" />
+    <Property Name="BillTotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="InsuranceCompanyID" Type="int" />
+    <Property Name="InsuranceCompanyBranchID" Type="int" />
+    <Property Name="OldAdmissionNumber" Type="varchar" MaxLength="50" />
+    <Property Name="AdmissionCategoryID" Type="int" />
+    <Property Name="IsWithMeal" Type="bit" />
+    <Property Name="IsAirConditioned" Type="bit" />
+    <Property Name="VisitReason" Type="varchar(max)" />
+    <Property Name="Symtoms" Type="varchar(max)" />
+    <Property Name="Treatments" Type="varchar(max)" />
+    <Property Name="Comments" Type="varchar(max)" />
+    <Property Name="RelatedPartySessionTypeID" Type="int" />
+    <Property Name="DrawerBalance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ExcessOrShortage" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ActualCashBalance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TotalSales" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TotalCancel" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TotalReturns" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CashBalace" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ChannelSales" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ScanSales" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LabSales" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="XraySales" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Drawer" Type="int" />
+    <Property Name="ProcedureSales" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NextSessionID" Type="int" />
+    <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RecomendedHours" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="WorkedDivision" Type="int" />
+    <Property Name="AttendanceStatus" Type="varchar" MaxLength="50" />
+    <Property Name="IsRecommended" Type="bit" />
+    <Property Name="InvoiceNo" Type="bit" />
+    <Property Name="OverInDateTime" Type="datetime" />
+    <Property Name="OverOutDateTime" Type="datetime" />
+    <Property Name="RecomendedOTHours" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsSetBillNo" Type="bit" />
+    <Property Name="IsAdmissionIncentive" Type="bit" />
+    <Property Name="FinalBillTotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RecomendedLateHours" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RecomendedLieuHours" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="FriendshipBy" Type="varchar" MaxLength="100" />
+    <Property Name="RecomendedFriendshipHours" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RecomendedCoverdHours" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RecomendedExcessHours" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="FriendshipTo" Type="varchar" MaxLength="100" />
+    <Property Name="AdditionalInDateTime" Type="datetime" />
+    <Property Name="AdditionalOutDateTime" Type="datetime" />
+    <Property Name="IsOTApproved" Type="bit" />
+    <Property Name="ReasonsOfOT" Type="varchar(max)" />
+    <Property Name="TotalWorkedHours" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RecommendHoursBy" Type="int" />
+    <Property Name="RecommendOTHoursBy" Type="int" />
+    <Property Name="TimeSlotID" Type="int" />
+    <Property Name="AppointmentNo" Type="varchar" MaxLength="50" />
+    <Property Name="HCGSales" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ECGSales" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TheatreSales" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VoucherPayments" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OPDSales" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="InvoiceSales" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RecomendedDoubleOTHrs" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsPosted" Type="int" />
+    <Property Name="IsCancelPosted" Type="int" />
+    <Property Name="PapsmearSale" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NoPayValue" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LeaveAppliedValue" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LateMinutes" Type="int" />
+    <Property Name="ShiftID" Type="int" />
+    <Property Name="ActualWorkedDepartment" Type="int" />
+    <Property Name="ActualShiftID" Type="int" />
+    <Property Name="LeaveStatus" Type="int" />
+    <Property Name="AdditionalLeaveStatus" Type="int" />
+    <Property Name="ActualLeaveStatus" Type="int" />
+    <Property Name="ActualAdditionalLeaveStatus" Type="int" />
+    <Property Name="LeaveCategoryID" Type="int" />
+    <Property Name="LeaveTypeID" Type="int" />
+    <Property Name="IsAttendanceRemoved" Type="bit" />
+    <Property Name="WeekDay" Type="varchar" MaxLength="20" />
+    <Property Name="InLateCount" Type="int" />
+    <Property Name="OutLateCount" Type="int" />
+    <Property Name="InLateHalfDayDeductionCount" Type="int" />
+    <Property Name="OutLateHalfDayDeductionCount" Type="int" />
+    <Property Name="IsWorked" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AdditionalShiftID" Type="int" />
+    <Property Name="AdditionalActualShiftID" Type="int" />
+    <Property Name="AdditionalCheckInDateTime" Type="datetime" />
+    <Property Name="AdditionalCheckOutDateTime" Type="datetime" />
+    <Property Name="IsShift" Type="int" />
+    <Property Name="FinalLateCount" Type="int" />
+    <Property Name="LeauLeaveDay" Type="datetime" />
+    <Property Name="LeauLeaveValue" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AdditionalActualCheckInDateTime" Type="datetime" />
+    <Property Name="AdditionalActualCheckOutDateTime" Type="datetime" />
+    <Property Name="IsAdditionalShift" Type="int" />
+    <Property Name="AdditionalShiftRelatedOTMinutes" Type="int" />
+    <Property Name="ActualOTHours" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ActualWorkedHours" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="RelatedPartySessionType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartySessionTypeName" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="RelatedPartySubCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubCategoryName" Type="varchar" MaxLength="50" />
+    <Property Name="RelatedPartyCategoryID" Type="int" />
+    <Property Name="HospitalCharge" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="RelatedPartyType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedPartyTypeName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RosterStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DayStatusDescription" Type="varchar" MaxLength="50" />
+    <Property Name="OrderIndex" Type="int" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="RosterRelated" Type="bit" />
+    <Property Name="RosterTypeID" Type="int" />
+    <Property Name="NoOfMinutes" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="WithNextDay" Type="bit" />
+  </EntityType>
+  <EntityType Name="RosterType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RosterTypeName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SalaryModifierDefaultValues">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalaryModifierID" Type="int" />
+    <Property Name="DefaultValue" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PayMonth" Type="int" />
+    <Property Name="PayYear" Type="int" />
+    <Property Name="SalaryTypeID" Type="int" />
+    <Property Name="SkipThisFor" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="SalaryModifiers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalaryModifierName" Type="varchar" MaxLength="100" />
+    <Property Name="SalaryModifierTypeID" Type="int" />
+    <Property Name="IsNoPay" Type="bit" />
+    <Property Name="IsLateHours" Type="bit" />
+    <Property Name="TaxTypeID" Type="int" />
+    <Property Name="IsEnabled" Type="bit" />
+    <Property Name="OrderIndex" Type="int" />
+    <Property Name="OTTypeID" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="IsBasicSalary" Type="bit" />
+    <Property Name="IsAllawance" Type="bit" />
+    <Property Name="IsEditable" Type="bit" />
+    <Property Name="PreviousSalaryModifierID" Type="int" />
+    <Property Name="IsRemoved" Type="bit" />
+    <Property Name="CommonValueForAll" Type="bit" />
+    <Property Name="SalaryTypeID" Type="int" />
+    <Property Name="IsLoan" Type="bit" />
+  </EntityType>
+  <EntityType Name="SalaryModifierTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalaryModifierTypeName" Type="varchar" MaxLength="100" />
+    <Property Name="Type" Type="int" />
+    <Property Name="GroupsForPlaySlip" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="DigitalSign" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="SalaryType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalaryTypeName" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'HR.dbo.Sheet1$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Sheet1$">
+          <Property Name="EPF" Type="float" />
+          <Property Name="NAME " Type="nvarchar" MaxLength="255" />
+          <Property Name="DESIGNATION" Type="nvarchar" MaxLength="255" />
+          <Property Name="Appointment" Type="datetime" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="NIC" Type="nvarchar" MaxLength="255" />
+          <Property Name="F7" Type="nvarchar" MaxLength="255" />
+          <Property Name="F8" Type="nvarchar" MaxLength="255" />
+          <Property Name="F9" Type="nvarchar" MaxLength="255" />
+          <Property Name="F10" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <EntityType Name="Shift">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShiftCode" Type="int" />
+    <Property Name="ShiftDescription" Type="varchar" MaxLength="100" />
+    <Property Name="StartDateTime" Type="datetime" />
+    <Property Name="EndDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SplashScreenItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SplashScreenItemName" Type="varchar" MaxLength="100" />
+    <Property Name="SplashScreenItemDescription" Type="varchar" MaxLength="1000" />
+    <Property Name="OrderIndex" Type="int" />
+    <Property Name="AttachmentID" Type="int" />
+    <Property Name="LocationID" Type="int" />
+  </EntityType>
+  <EntityType Name="SystemLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LogContent" Type="text" />
+    <Property Name="DivisionMasterID" Type="int" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="TaxType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="TaxTypeName" Type="varchar" MaxLength="50" />
+    <Property Name="TaxRate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsEnabled" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'HR.dbo.temp1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="temp1">
+          <Property Name="departmentname" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'HR.dbo.temp2' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="temp2">
+          <Property Name="designation" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="UnitType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="500" />
+    <Property Name="Description" Type="varchar" MaxLength="1000" />
+    <Property Name="IsBoxItem" Type="bit" />
+    <Property Name="UnitTypeCode" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Allowance_RelatedParty">
+    <End Role="RelatedParty" Type="Self.RelatedParty" Multiplicity="1" />
+    <End Role="Allowance" Type="Self.Allowance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RelatedParty">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Allowance">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChargeMaster_ChargeType">
+    <End Role="ChargeType" Type="Self.ChargeType" Multiplicity="0..1" />
+    <End Role="ChargeMaster" Type="Self.ChargeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChargeType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChargeMaster">
+        <PropertyRef Name="ChargeTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChargeMasterPrice_OrderType">
+    <End Role="OrderType" Type="Self.OrderType" Multiplicity="0..1" />
+    <End Role="ChargeMasterPrice" Type="Self.ChargeMasterPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChargeMasterPrice">
+        <PropertyRef Name="OrderTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChargMasterPrice_ChargeMaster">
+    <End Role="ChargeMaster" Type="Self.ChargeMaster" Multiplicity="0..1" />
+    <End Role="ChargeMasterPrice" Type="Self.ChargeMasterPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChargeMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChargeMasterPrice">
+        <PropertyRef Name="ChargeMasterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DivisionCharge_ChargeMaster">
+    <End Role="ChargeMaster" Type="Self.ChargeMaster" Multiplicity="0..1" />
+    <End Role="DivisionCharge" Type="Self.DivisionCharge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChargeMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DivisionCharge">
+        <PropertyRef Name="ChargeMasterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DivisionCharge_ChargeType">
+    <End Role="ChargeType" Type="Self.ChargeType" Multiplicity="0..1" />
+    <End Role="DivisionCharge" Type="Self.DivisionCharge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChargeType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DivisionCharge">
+        <PropertyRef Name="ChargeTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DivisionCharge_DivisionMaster">
+    <End Role="DivisionMaster" Type="Self.DivisionMaster" Multiplicity="0..1" />
+    <End Role="DivisionCharge" Type="Self.DivisionCharge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DivisionMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DivisionCharge">
+        <PropertyRef Name="DivisionMasterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Order">
+    <End Role="RelatedPartyOrder" Type="Self.RelatedPartyOrder" Multiplicity="0..1" />
+    <End Role="RelatedPartyOrderDetail" Type="Self.RelatedPartyOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RelatedPartyOrder">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RelatedPartyOrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PayrollRecord_RelatedParty">
+    <End Role="RelatedParty" Type="Self.RelatedParty" Multiplicity="1" />
+    <End Role="PayrollRecord" Type="Self.PayrollRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RelatedParty">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PayrollRecord">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelatedParty_RelatedPartyType">
+    <End Role="RelatedPartyType" Type="Self.RelatedPartyType" Multiplicity="0..1" />
+    <End Role="RelatedParty" Type="Self.RelatedParty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RelatedPartyType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RelatedParty">
+        <PropertyRef Name="RelatedPartyTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelatedPartyDefaultSalaryModifiers_RelatedParty">
+    <End Role="RelatedParty" Type="Self.RelatedParty" Multiplicity="0..1" />
+    <End Role="RelatedPartyDefaultSalaryModifiers" Type="Self.RelatedPartyDefaultSalaryModifiers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RelatedParty">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RelatedPartyDefaultSalaryModifiers">
+        <PropertyRef Name="RelatedPartyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelatedPartyDefaultSalaryModifiers_SalaryModifiers">
+    <End Role="SalaryModifiers" Type="Self.SalaryModifiers" Multiplicity="0..1" />
+    <End Role="RelatedPartyDefaultSalaryModifiers" Type="Self.RelatedPartyDefaultSalaryModifiers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalaryModifiers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RelatedPartyDefaultSalaryModifiers">
+        <PropertyRef Name="SalaryModifierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelatedPartyOrderPayments_CreditCardType">
+    <End Role="CreditCardType" Type="Self.CreditCardType" Multiplicity="0..1" />
+    <End Role="RelatedPartyOrderPayments" Type="Self.RelatedPartyOrderPayments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CreditCardType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RelatedPartyOrderPayments">
+        <PropertyRef Name="CreditCardTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelatedPartyOrderPayments_PaymentType">
+    <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="0..1" />
+    <End Role="RelatedPartyOrderPayments" Type="Self.RelatedPartyOrderPayments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RelatedPartyOrderPayments">
+        <PropertyRef Name="PaymentTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelatedPartySalary_RelatedParty">
+    <End Role="RelatedParty" Type="Self.RelatedParty" Multiplicity="0..1" />
+    <End Role="RelatedPartySalary" Type="Self.RelatedPartySalary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RelatedParty">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RelatedPartySalary">
+        <PropertyRef Name="RelatedPartyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelatedPartySalaryModifierMapping_RelatedPartySalary">
+    <End Role="RelatedPartySalary" Type="Self.RelatedPartySalary" Multiplicity="0..1" />
+    <End Role="RelatedPartySalaryModifierMapping" Type="Self.RelatedPartySalaryModifierMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RelatedPartySalary">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RelatedPartySalaryModifierMapping">
+        <PropertyRef Name="RelatedPartySalaryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelatedPartySalaryModifierMapping_SalaryModifiers">
+    <End Role="SalaryModifiers" Type="Self.SalaryModifiers" Multiplicity="0..1" />
+    <End Role="RelatedPartySalaryModifierMapping" Type="Self.RelatedPartySalaryModifierMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalaryModifiers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RelatedPartySalaryModifierMapping">
+        <PropertyRef Name="SalaryModifierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SplashScreenItem_Location">
+    <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="SplashScreenItem" Type="Self.SplashScreenItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SplashScreenItem">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HRModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdmissionCategory" EntityType="Self.AdmissionCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdmissionType" EntityType="Self.AdmissionType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Allowance" EntityType="Self.Allowance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AppSettings" EntityType="Self.AppSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AppSettingsDetail" EntityType="Self.AppSettingsDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AttendanceData" EntityType="Self.AttendanceData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AttendanceDetails" EntityType="Self.AttendanceDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AttendanceLastRecordDetail" EntityType="Self.AttendanceLastRecordDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AttendanceRecords" EntityType="Self.AttendanceRecords" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AttendanceTime" EntityType="Self.AttendanceTime" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BankBranches" EntityType="Self.BankBranches" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BankDeposit" EntityType="Self.BankDeposit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BatchPopup" EntityType="Self.BatchPopup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BillFinalization" EntityType="Self.BillFinalization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BillFinalization_Last" EntityType="Self.BillFinalization_Last" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CalanderForPayout" EntityType="Self.CalanderForPayout" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChannelingSquence" EntityType="Self.ChannelingSquence" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChannelingTimeSlot" EntityType="Self.ChannelingTimeSlot" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChargeCategory" EntityType="Self.ChargeCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChargeDiscount" EntityType="Self.ChargeDiscount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChargeItemList" EntityType="Self.ChargeItemList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChargeMaster" EntityType="Self.ChargeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChargeMasterPrice" EntityType="Self.ChargeMasterPrice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChargeType" EntityType="Self.ChargeType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CheckManagment" EntityType="Self.CheckManagment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CreditCardType" EntityType="Self.CreditCardType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CurrentPayrollMonth" EntityType="Self.CurrentPayrollMonth" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DayType" EntityType="Self.DayType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DivisionCharge" EntityType="Self.DivisionCharge" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DivisionMaster" EntityType="Self.DivisionMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DivisionMasterOrderTypeMapping" EntityType="Self.DivisionMasterOrderTypeMapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DivisionMasterType" EntityType="Self.DivisionMasterType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoctorDivisionChargeMapping" EntityType="Self.DoctorDivisionChargeMapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoctorWiseTimeSlot" EntityType="Self.DoctorWiseTimeSlot" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InPatientInsuranceClaim" EntityType="Self.InPatientInsuranceClaim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Leave" EntityType="Self.Leave" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeaveCategory" EntityType="Self.LeaveCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeaveMaster" EntityType="Self.LeaveMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeaveStatus" EntityType="Self.LeaveStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeaveType" EntityType="Self.LeaveType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoanCategory" EntityType="Self.LoanCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogDetails" EntityType="Self.LogDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MenuConfiguration" EntityType="Self.MenuConfiguration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nopay" EntityType="Self.Nopay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NurseShift" EntityType="Self.NurseShift" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OPDSquence" EntityType="Self.OPDSquence" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OPDTimeSlot" EntityType="Self.OPDTimeSlot" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderType" EntityType="Self.OrderType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OTType" EntityType="Self.OTType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PayeeTax" EntityType="Self.PayeeTax" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentCategory" EntityType="Self.PaymentCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentSubCategory" EntityType="Self.PaymentSubCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentType" EntityType="Self.PaymentType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PayMonthMaster" EntityType="Self.PayMonthMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PayrollRecord" EntityType="Self.PayrollRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedParty" EntityType="Self.RelatedParty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartyBankAccounts" EntityType="Self.RelatedPartyBankAccounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartyCategory" EntityType="Self.RelatedPartyCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartyDefaultSalaryModifiers" EntityType="Self.RelatedPartyDefaultSalaryModifiers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartyFixedRoster" EntityType="Self.RelatedPartyFixedRoster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartyLeaveAllocation" EntityType="Self.RelatedPartyLeaveAllocation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartyLeaveType" EntityType="Self.RelatedPartyLeaveType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartyLoan" EntityType="Self.RelatedPartyLoan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartyLoans" EntityType="Self.RelatedPartyLoans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartyOrder" EntityType="Self.RelatedPartyOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartyOrderDetail" EntityType="Self.RelatedPartyOrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartyOrderPayments" EntityType="Self.RelatedPartyOrderPayments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartyRole" EntityType="Self.RelatedPartyRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartyRoleAndSplashScreenItemMapping" EntityType="Self.RelatedPartyRoleAndSplashScreenItemMapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartySalary" EntityType="Self.RelatedPartySalary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartySalaryBankAccountsMapping" EntityType="Self.RelatedPartySalaryBankAccountsMapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartySalaryModifierMapping" EntityType="Self.RelatedPartySalaryModifierMapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartySession" EntityType="Self.RelatedPartySession" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartySessionType" EntityType="Self.RelatedPartySessionType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartySubCategory" EntityType="Self.RelatedPartySubCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedPartyType" EntityType="Self.RelatedPartyType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RosterStatus" EntityType="Self.RosterStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RosterType" EntityType="Self.RosterType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalaryModifierDefaultValues" EntityType="Self.SalaryModifierDefaultValues" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalaryModifiers" EntityType="Self.SalaryModifiers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalaryModifierTypes" EntityType="Self.SalaryModifierTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalaryType" EntityType="Self.SalaryType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shift" EntityType="Self.Shift" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SplashScreenItem" EntityType="Self.SplashScreenItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemLog" EntityType="Self.SystemLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaxType" EntityType="Self.TaxType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UnitType" EntityType="Self.UnitType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Allowance_RelatedParty" Association="Self.FK_Allowance_RelatedParty">
+      <End Role="RelatedParty" EntitySet="RelatedParty" />
+      <End Role="Allowance" EntitySet="Allowance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChargeMaster_ChargeType" Association="Self.FK_ChargeMaster_ChargeType">
+      <End Role="ChargeType" EntitySet="ChargeType" />
+      <End Role="ChargeMaster" EntitySet="ChargeMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChargeMasterPrice_OrderType" Association="Self.FK_ChargeMasterPrice_OrderType">
+      <End Role="OrderType" EntitySet="OrderType" />
+      <End Role="ChargeMasterPrice" EntitySet="ChargeMasterPrice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChargMasterPrice_ChargeMaster" Association="Self.FK_ChargMasterPrice_ChargeMaster">
+      <End Role="ChargeMaster" EntitySet="ChargeMaster" />
+      <End Role="ChargeMasterPrice" EntitySet="ChargeMasterPrice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DivisionCharge_ChargeMaster" Association="Self.FK_DivisionCharge_ChargeMaster">
+      <End Role="ChargeMaster" EntitySet="ChargeMaster" />
+      <End Role="DivisionCharge" EntitySet="DivisionCharge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DivisionCharge_ChargeType" Association="Self.FK_DivisionCharge_ChargeType">
+      <End Role="ChargeType" EntitySet="ChargeType" />
+      <End Role="DivisionCharge" EntitySet="DivisionCharge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DivisionCharge_DivisionMaster" Association="Self.FK_DivisionCharge_DivisionMaster">
+      <End Role="DivisionMaster" EntitySet="DivisionMaster" />
+      <End Role="DivisionCharge" EntitySet="DivisionCharge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+      <End Role="RelatedPartyOrder" EntitySet="RelatedPartyOrder" />
+      <End Role="RelatedPartyOrderDetail" EntitySet="RelatedPartyOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PayrollRecord_RelatedParty" Association="Self.FK_PayrollRecord_RelatedParty">
+      <End Role="RelatedParty" EntitySet="RelatedParty" />
+      <End Role="PayrollRecord" EntitySet="PayrollRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelatedParty_RelatedPartyType" Association="Self.FK_RelatedParty_RelatedPartyType">
+      <End Role="RelatedPartyType" EntitySet="RelatedPartyType" />
+      <End Role="RelatedParty" EntitySet="RelatedParty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelatedPartyDefaultSalaryModifiers_RelatedParty" Association="Self.FK_RelatedPartyDefaultSalaryModifiers_RelatedParty">
+      <End Role="RelatedParty" EntitySet="RelatedParty" />
+      <End Role="RelatedPartyDefaultSalaryModifiers" EntitySet="RelatedPartyDefaultSalaryModifiers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelatedPartyDefaultSalaryModifiers_SalaryModifiers" Association="Self.FK_RelatedPartyDefaultSalaryModifiers_SalaryModifiers">
+      <End Role="SalaryModifiers" EntitySet="SalaryModifiers" />
+      <End Role="RelatedPartyDefaultSalaryModifiers" EntitySet="RelatedPartyDefaultSalaryModifiers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelatedPartyOrderPayments_CreditCardType" Association="Self.FK_RelatedPartyOrderPayments_CreditCardType">
+      <End Role="CreditCardType" EntitySet="CreditCardType" />
+      <End Role="RelatedPartyOrderPayments" EntitySet="RelatedPartyOrderPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelatedPartyOrderPayments_PaymentType" Association="Self.FK_RelatedPartyOrderPayments_PaymentType">
+      <End Role="PaymentType" EntitySet="PaymentType" />
+      <End Role="RelatedPartyOrderPayments" EntitySet="RelatedPartyOrderPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelatedPartySalary_RelatedParty" Association="Self.FK_RelatedPartySalary_RelatedParty">
+      <End Role="RelatedParty" EntitySet="RelatedParty" />
+      <End Role="RelatedPartySalary" EntitySet="RelatedPartySalary" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelatedPartySalaryModifierMapping_RelatedPartySalary" Association="Self.FK_RelatedPartySalaryModifierMapping_RelatedPartySalary">
+      <End Role="RelatedPartySalary" EntitySet="RelatedPartySalary" />
+      <End Role="RelatedPartySalaryModifierMapping" EntitySet="RelatedPartySalaryModifierMapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelatedPartySalaryModifierMapping_SalaryModifiers" Association="Self.FK_RelatedPartySalaryModifierMapping_SalaryModifiers">
+      <End Role="SalaryModifiers" EntitySet="SalaryModifiers" />
+      <End Role="RelatedPartySalaryModifierMapping" EntitySet="RelatedPartySalaryModifierMapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SplashScreenItem_Location" Association="Self.FK_SplashScreenItem_Location">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="SplashScreenItem" EntitySet="SplashScreenItem" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,168 @@
+﻿@model HR_Application_CO_OP_HOS.Models.RelatedPartySalaryModifierMapping
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>RelatedPartySalaryModifierMapping</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderIndex)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrderIndex)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.GroupingForSlip)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.GroupingForSlip)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ActualAmount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ActualAmount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SalaryModifierName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SalaryModifierName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SalaryModifierTypeID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SalaryModifierTypeID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsNoPay)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsNoPay)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsLateHours)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsLateHours)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TaxTypeID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TaxTypeID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OTTypeID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OTTypeID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsEditable)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsEditable)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsAllawance)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsAllawance)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsRemoved)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsRemoved)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsLoan)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsLoan)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RelatedPartySalary.ID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RelatedPartySalary.ID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SalaryModifier.SalaryModifierName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SalaryModifier.SalaryModifierName)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>
