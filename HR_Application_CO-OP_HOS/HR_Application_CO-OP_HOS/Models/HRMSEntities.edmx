@@ -147,20 +147,6 @@
           <Property Name="Cheque_Deposit" Type="decimal" Precision="18" Scale="2" />
           <Property Name="CashInHand" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
-        <EntityType Name="BatchPopup">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DivisionChargeID" Type="int" />
-          <Property Name="BatchNo" Type="varchar" MaxLength="50" />
-          <Property Name="ExpiryDate" Type="datetime" />
-          <Property Name="Stock" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="OpeningStockDate" Type="datetime" />
-          <Property Name="OpeningStock" Type="decimal" Precision="18" Scale="4" />
-          <Property Name="BatchSellingPrice" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="CostPrice" Type="decimal" Precision="18" Scale="2" />
-        </EntityType>
         <EntityType Name="BillFinalization">
           <Key>
             <PropertyRef Name="ID" />
@@ -1712,7 +1698,6 @@ warning 6013: The table/view 'HR.dbo.temp2' does not have a primary key defined 
           <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BankBranches" EntityType="Self.BankBranches" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BankDeposit" EntityType="Self.BankDeposit" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BatchPopup" EntityType="Self.BatchPopup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BillFinalization" EntityType="Self.BillFinalization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BillFinalization_Last" EntityType="Self.BillFinalization_Last" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CalanderForPayout" EntityType="Self.CalanderForPayout" Schema="dbo" store:Type="Tables" />
@@ -2011,20 +1996,6 @@ warning 6013: The table/view 'HR.dbo.temp2' does not have a primary key defined 
           <Property Name="CreatedBy" Type="Int32" />
           <Property Name="Cheque_Deposit" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="CashInHand" Type="Decimal" Precision="18" Scale="2" />
-        </EntityType>
-        <EntityType Name="BatchPopup">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DivisionChargeID" Type="Int32" />
-          <Property Name="BatchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
-          <Property Name="Stock" Type="Decimal" Precision="18" Scale="4" />
-          <Property Name="OpeningStockDate" Type="DateTime" Precision="3" />
-          <Property Name="OpeningStock" Type="Decimal" Precision="18" Scale="4" />
-          <Property Name="BatchSellingPrice" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="CostPrice" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="BillFinalization">
           <Key>
@@ -3588,7 +3559,6 @@ warning 6013: The table/view 'HR.dbo.temp2' does not have a primary key defined 
           <EntitySet Name="Banks" EntityType="Self.Bank" />
           <EntitySet Name="BankBranches" EntityType="Self.BankBranch" />
           <EntitySet Name="BankDeposits" EntityType="Self.BankDeposit" />
-          <EntitySet Name="BatchPopups" EntityType="Self.BatchPopup" />
           <EntitySet Name="BillFinalizations" EntityType="Self.BillFinalization" />
           <EntitySet Name="BillFinalization_Last" EntityType="Self.BillFinalization_Last" />
           <EntitySet Name="CalanderForPayouts" EntityType="Self.CalanderForPayout" />
@@ -3898,21 +3868,6 @@ warning 6013: The table/view 'HR.dbo.temp2' does not have a primary key defined 
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="Cheque_Deposit" ColumnName="Cheque_Deposit" />
                 <ScalarProperty Name="CashInHand" ColumnName="CashInHand" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BatchPopups">
-            <EntityTypeMapping TypeName="HRModel.BatchPopup">
-              <MappingFragment StoreEntitySet="BatchPopup">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="DivisionChargeID" ColumnName="DivisionChargeID" />
-                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
-                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-                <ScalarProperty Name="Stock" ColumnName="Stock" />
-                <ScalarProperty Name="OpeningStockDate" ColumnName="OpeningStockDate" />
-                <ScalarProperty Name="OpeningStock" ColumnName="OpeningStock" />
-                <ScalarProperty Name="BatchSellingPrice" ColumnName="BatchSellingPrice" />
-                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

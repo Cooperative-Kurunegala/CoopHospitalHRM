@@ -261,7 +261,6 @@
     <Compile Include="Controllers\BankBranchesController.cs" />
     <Compile Include="Controllers\BankDepositsController.cs" />
     <Compile Include="Controllers\BanksController.cs" />
-    <Compile Include="Controllers\BatchPopupsController.cs" />
     <Compile Include="Controllers\BillFinalizationsController.cs" />
     <Compile Include="Controllers\BillFinalization_LastController.cs" />
     <Compile Include="Controllers\ChannelingSquencesController.cs" />
@@ -298,6 +297,7 @@
     <Compile Include="Controllers\NurseShiftsController.cs" />
     <Compile Include="Controllers\OPDSquencesController.cs" />
     <Compile Include="Controllers\OPDTimeSlotsController.cs" />
+    <Compile Include="Controllers\OrderTypesController.cs" />
     <Compile Include="Controllers\OTTypesController.cs" />
     <Compile Include="Controllers\PayeeTaxesController.cs" />
     <Compile Include="Controllers\PaymentCategoriesController.cs" />
@@ -380,9 +380,6 @@
       <DependentUpon>HRMSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BankDeposit.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BatchPopUp.cs">
       <DependentUpon>HRMSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BillFinalization.cs">
@@ -668,7 +665,6 @@
     <Compile Include="Services\BankBranchService.cs" />
     <Compile Include="Services\BankDepositService.cs" />
     <Compile Include="Services\BankService.cs" />
-    <Compile Include="Services\BatchPopUpService.cs" />
     <Compile Include="Services\BillFinalizationService.cs" />
     <Compile Include="Services\BillFinalization_LastService.cs" />
     <Compile Include="Services\CalendarForPayoutService.cs" />
@@ -705,7 +701,6 @@
     <Compile Include="Services\IBankBranchService.cs" />
     <Compile Include="Services\IBankDepositService.cs" />
     <Compile Include="Services\IBankService.cs" />
-    <Compile Include="Services\IBatchPopUpService.cs" />
     <Compile Include="Services\IBillFinalizationService.cs" />
     <Compile Include="Services\IBillFinalization_LastService.cs" />
     <Compile Include="Services\ICalendarForPayoutService.cs" />
@@ -964,11 +959,6 @@
     <Content Include="Views\BankDeposits\Details.cshtml" />
     <Content Include="Views\BankDeposits\Edit.cshtml" />
     <Content Include="Views\BankDeposits\Index.cshtml" />
-    <Content Include="Views\BatchPopups\Create.cshtml" />
-    <Content Include="Views\BatchPopups\Delete.cshtml" />
-    <Content Include="Views\BatchPopups\Details.cshtml" />
-    <Content Include="Views\BatchPopups\Edit.cshtml" />
-    <Content Include="Views\BatchPopups\Index.cshtml" />
     <Content Include="Views\BillFinalizations\Create.cshtml" />
     <Content Include="Views\BillFinalizations\Delete.cshtml" />
     <Content Include="Views\BillFinalizations\Details.cshtml" />
@@ -1339,6 +1329,11 @@
     <Content Include="Views\UnitTypes\Details.cshtml" />
     <Content Include="Views\UnitTypes\Edit.cshtml" />
     <Content Include="Views\UnitTypes\Index.cshtml" />
+    <Content Include="Views\OrderTypes\Create.cshtml" />
+    <Content Include="Views\OrderTypes\Delete.cshtml" />
+    <Content Include="Views\OrderTypes\Details.cshtml" />
+    <Content Include="Views\OrderTypes\Edit.cshtml" />
+    <Content Include="Views\OrderTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

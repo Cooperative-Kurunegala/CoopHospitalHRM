@@ -156,21 +156,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="BatchPopups">
-      <EntityTypeMapping TypeName="HRModel.BatchPopup">
-        <MappingFragment StoreEntitySet="BatchPopup">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="DivisionChargeID" ColumnName="DivisionChargeID" />
-          <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
-          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-          <ScalarProperty Name="Stock" ColumnName="Stock" />
-          <ScalarProperty Name="OpeningStockDate" ColumnName="OpeningStockDate" />
-          <ScalarProperty Name="OpeningStock" ColumnName="OpeningStock" />
-          <ScalarProperty Name="BatchSellingPrice" ColumnName="BatchSellingPrice" />
-          <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="BillFinalizations">
       <EntityTypeMapping TypeName="HRModel.BillFinalization">
         <MappingFragment StoreEntitySet="BillFinalization">

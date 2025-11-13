@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -10,107 +10,107 @@ using HR_Application_CO_OP_HOS.Models;
 
 namespace HR_Application_CO_OP_HOS.Controllers
 {
-    public class BatchPopupsController : Controller
+    public class OrderTypesController : Controller
     {
         private HREntities db = new HREntities();
 
-        // GET: BatchPopups
+        // GET: OrderTypes
         public ActionResult Index()
         {
-            return View(db.BatchPopups.ToList());
+            return View(db.OrderTypes.ToList());
         }
 
-        // GET: BatchPopups/Details/5
+        // GET: OrderTypes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BatchPopup batchPopup = db.BatchPopups.Find(id);
-            if (batchPopup == null)
+            OrderType orderType = db.OrderTypes.Find(id);
+            if (orderType == null)
             {
                 return HttpNotFound();
             }
-            return View(batchPopup);
+            return View(orderType);
         }
 
-        // GET: BatchPopups/Create
+        // GET: OrderTypes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: BatchPopups/Create
+        // POST: OrderTypes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,DivisionChargeID,BatchNo,ExpiryDate,Stock,OpeningStockDate,OpeningStock,BatchSellingPrice,CostPrice")] BatchPopup batchPopup)
+        public ActionResult Create([Bind(Include = "ID,OrderTypeName,OrderSequence,OrderTypeCode")] OrderType orderType)
         {
             if (ModelState.IsValid)
             {
-                db.BatchPopups.Add(batchPopup);
+                db.OrderTypes.Add(orderType);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(batchPopup);
+            return View(orderType);
         }
 
-        // GET: BatchPopups/Edit/5
+        // GET: OrderTypes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BatchPopup batchPopup = db.BatchPopups.Find(id);
-            if (batchPopup == null)
+            OrderType orderType = db.OrderTypes.Find(id);
+            if (orderType == null)
             {
                 return HttpNotFound();
             }
-            return View(batchPopup);
+            return View(orderType);
         }
 
-        // POST: BatchPopups/Edit/5
+        // POST: OrderTypes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,DivisionChargeID,BatchNo,ExpiryDate,Stock,OpeningStockDate,OpeningStock,BatchSellingPrice,CostPrice")] BatchPopup batchPopup)
+        public ActionResult Edit([Bind(Include = "ID,OrderTypeName,OrderSequence,OrderTypeCode")] OrderType orderType)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(batchPopup).State = EntityState.Modified;
+                db.Entry(orderType).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(batchPopup);
+            return View(orderType);
         }
 
-        // GET: BatchPopups/Delete/5
+        // GET: OrderTypes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BatchPopup batchPopup = db.BatchPopups.Find(id);
-            if (batchPopup == null)
+            OrderType orderType = db.OrderTypes.Find(id);
+            if (orderType == null)
             {
                 return HttpNotFound();
             }
-            return View(batchPopup);
+            return View(orderType);
         }
 
-        // POST: BatchPopups/Delete/5
+        // POST: OrderTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            BatchPopup batchPopup = db.BatchPopups.Find(id);
-            db.BatchPopups.Remove(batchPopup);
+            OrderType orderType = db.OrderTypes.Find(id);
+            db.OrderTypes.Remove(orderType);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

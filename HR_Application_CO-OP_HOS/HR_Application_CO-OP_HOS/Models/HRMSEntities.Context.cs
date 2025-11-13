@@ -39,7 +39,6 @@ namespace HR_Application_CO_OP_HOS.Models
         public virtual DbSet<Bank> Banks { get; set; }
         public virtual DbSet<BankBranch> BankBranches { get; set; }
         public virtual DbSet<BankDeposit> BankDeposits { get; set; }
-        public virtual DbSet<BatchPopup> BatchPopups { get; set; }
         public virtual DbSet<BillFinalization> BillFinalizations { get; set; }
         public virtual DbSet<BillFinalization_Last> BillFinalization_Last { get; set; }
         public virtual DbSet<CalanderForPayout> CalanderForPayouts { get; set; }

@@ -2,192 +2,337 @@
     ViewBag.Title = "HRM Dashboard - Co-Operative Hospital Kurunegala";
 }
 
-<div class="jumbotron">
-    <h1>HRM System</h1>
-    <p class="lead">Human Resources Management System for Co-Operative Hospital Kurunegala</p>
-    <p>Developed by <a href="https://ehealthcare.lk" target="_blank">eHealthcare Solutions</a></p>
-</div>
-
-<div class="row">
-    <!-- Admission Management -->
-    <div class="col-md-4">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Admission Management</h3>
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">@Html.ActionLink("Admission Categories", "Index", "AdmissionCategories")</li>
-                    <li class="list-group-item">@Html.ActionLink("Admission Types", "Index", "AdmissionTypes")</li>
-                    <li class="list-group-item">@Html.ActionLink("OT Types", "Index", "OTTypes")</li>
-                </ul>
-            </div>
+<!-- Full Screen Dashboard Container -->
+<div class="dashboard-container">
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+        <div class="jumbotron">
+            <h1><i class="fa fa-dashboard"></i> HRM System Dashboard</h1>
+            <p class="lead">Comprehensive Human Resources Management System for Co-Operative Hospital Kurunegala</p>
+            <p>Developed by <a href="https://ehealthcare.lk" target="_blank" class="developer-link">eHealthcare Solutions</a></p>
         </div>
     </div>
 
-    <!-- Attendance & Time Management -->
-    <div class="col-md-4">
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <h3 class="panel-title">Attendance & Time Management</h3>
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">@Html.ActionLink("Attendance Data", "Index", "AttendanceDatas")</li>
-                    <li class="list-group-item">@Html.ActionLink("Attendance Details", "Index", "AttendanceDetails")</li>
-                    <li class="list-group-item">@Html.ActionLink("Attendance Records", "Index", "AttendanceRecords")</li>
-                    <li class="list-group-item">@Html.ActionLink("Attendance Times", "Index", "AttendanceTimes")</li>
-                    <li class="list-group-item">@Html.ActionLink("Shifts", "Index", "Shifts")</li>
-                    <li class="list-group-item">@Html.ActionLink("Nurse Shifts", "Index", "NurseShifts")</li>
-                    <li class="list-group-item">@Html.ActionLink("Roster Types", "Index", "RosterTypes")</li>
-                    <li class="list-group-item">@Html.ActionLink("Roster Status", "Index", "RosterStatus")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Payroll & Compensation -->
-    <div class="col-md-4">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">Payroll & Compensation</h3>
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">@Html.ActionLink("Payroll Records", "Index", "PayrollRecords")</li>
-                    <li class="list-group-item">@Html.ActionLink("Current Payroll Months", "Index", "CurrentPayrollMonths")</li>
-                    <li class="list-group-item">@Html.ActionLink("Pay Month Masters", "Index", "PayMonthMasters")</li>
-                    <li class="list-group-item">@Html.ActionLink("Allowances", "Index", "Allowances")</li>
-                    <li class="list-group-item">@Html.ActionLink("Salary Types", "Index", "SalaryTypes")</li>
-                    <li class="list-group-item">@Html.ActionLink("Salary Modifiers", "Index", "SalaryModifiers")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <!-- Employee Management -->
-    <div class="col-md-4">
-        <div class="panel panel-warning">
-            <div class="panel-heading">
-                <h3 class="panel-title">Employee Management</h3>
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">@Html.ActionLink("Related Parties", "Index", "RelatedParties")</li>
-                    <li class="list-group-item">@Html.ActionLink("Related Party Types", "Index", "RelatedPartyTypes")</li>
-                    <li class="list-group-item">@Html.ActionLink("Related Party Categories", "Index", "RelatedPartyCategories")</li>
-                    <li class="list-group-item">@Html.ActionLink("Related Party Roles", "Index", "RelatedPartyRoles")</li>
-                    <li class="list-group-item">@Html.ActionLink("Designations", "Index", "Designations")</li>
-                    <li class="list-group-item">@Html.ActionLink("Locations", "Index", "Locations")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Leave Management -->
-    <div class="col-md-4">
-        <div class="panel panel-danger">
-            <div class="panel-heading">
-                <h3 class="panel-title">Leave Management</h3>
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">@Html.ActionLink("Leaves", "Index", "Leaves")</li>
-                    <li class="list-group-item">@Html.ActionLink("Leave Masters", "Index", "LeaveMasters")</li>
-                    <li class="list-group-item">@Html.ActionLink("Leave Types", "Index", "LeaveTypes")</li>
-                    <li class="list-group-item">@Html.ActionLink("Leave Categories", "Index", "LeaveCategories")</li>
-                    <li class="list-group-item">@Html.ActionLink("Leave Status", "Index", "LeaveStatus")</li>
-                    <li class="list-group-item">@Html.ActionLink("Related Party Leave Allocations", "Index", "RelatedPartyLeaveAllocations")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Financial Management -->
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Financial Management</h3>
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">@Html.ActionLink("Banks", "Index", "Banks")</li>
-                    <li class="list-group-item">@Html.ActionLink("Bank Branches", "Index", "BankBranches")</li>
-                    <li class="list-group-item">@Html.ActionLink("Bank Deposits", "Index", "BankDeposits")</li>
-                    <li class="list-group-item">@Html.ActionLink("Payment Types", "Index", "PaymentTypes")</li>
-                    <li class="list-group-item">@Html.ActionLink("Payment Categories", "Index", "PaymentCategories")</li>
-                    <li class="list-group-item">@Html.ActionLink("Tax Types", "Index", "TaxTypes")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <!-- System Administration -->
-    <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">System Administration</h3>
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">@Html.ActionLink("App Settings", "Index", "AppSettings")</li>
-                    <li class="list-group-item">@Html.ActionLink("Menu Configurations", "Index", "MenuConfigurations")</li>
-                    <li class="list-group-item">@Html.ActionLink("System Logs", "Index", "SystemLogs")</li>
-                    <li class="list-group-item">@Html.ActionLink("Log Details", "Index", "LogDetails")</li>
-                    <li class="list-group-item">@Html.ActionLink("Companies", "Index", "Companies")</li>
-                    <li class="list-group-item">@Html.ActionLink("Unit Types", "Index", "UnitTypes")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Additional Modules -->
-    <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Additional Modules</h3>
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">@Html.ActionLink("Channeling Management", "Index", "ChannelingSquences")</li>
-                    <li class="list-group-item">@Html.ActionLink("Charge Management", "Index", "ChargeMasters")</li>
-                    <li class="list-group-item">@Html.ActionLink("Loan Management", "Index", "RelatedPartyLoans")</li>
-                    <li class="list-group-item">@Html.ActionLink("Bill Finalizations", "Index", "BillFinalizations")</li>
-                    <li class="list-group-item">@Html.ActionLink("Insurance Claims", "Index", "InPatientInsuranceClaims")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Quick Stats Section -->
-<div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Quick Statistics</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-3 text-center">
-                        <h4>Employees</h4>
-                        <p class="stat-number">--</p>
+    <!-- Quick Stats Section -->
+    <div class="row no-gutters">
+        <div class="col-12">
+            <div class="panel panel-primary quick-stats-panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-line-chart"></i> Quick Statistics</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row no-gutters">
+                        <div class="col-md-2 text-center stat-item">
+                            <div class="stat-icon">
+                                <i class="fa fa-users"></i>
+                            </div>
+                            <h4>Total Employees</h4>
+                            <p class="stat-number">--</p>
+                        </div>
+                        <div class="col-md-2 text-center stat-item">
+                            <div class="stat-icon">
+                                <i class="fa fa-calendar-times-o"></i>
+                            </div>
+                            <h4>Active Leaves</h4>
+                            <p class="stat-number">--</p>
+                        </div>
+                        <div class="col-md-2 text-center stat-item">
+                            <div class="stat-icon">
+                                <i class="fa fa-money"></i>
+                            </div>
+                            <h4>Pending Payroll</h4>
+                            <p class="stat-number">--</p>
+                        </div>
+                        <div class="col-md-2 text-center stat-item">
+                            <div class="stat-icon">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                            <h4>Today's Attendance</h4>
+                            <p class="stat-number">--</p>
+                        </div>
+                        <div class="col-md-2 text-center stat-item">
+                            <div class="stat-icon">
+                                <i class="fa fa-hospital-o"></i>
+                            </div>
+                            <h4>Active Patients</h4>
+                            <p class="stat-number">--</p>
+                        </div>
+                        <div class="col-md-2 text-center stat-item">
+                            <div class="stat-icon">
+                                <i class="fa fa-heartbeat"></i>
+                            </div>
+                            <h4>System Health</h4>
+                            <p class="stat-number text-success">Excellent</p>
+                        </div>
                     </div>
-                    <div class="col-md-3 text-center">
-                        <h4>Active Leaves</h4>
-                        <p class="stat-number">--</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Sections -->
+    <div class="row no-gutters">
+        <!-- Employee & HR Management -->
+        <div class="col-md-6">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-user-md"></i> Employee & HR Management</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">@Html.ActionLink("Employees", "Index", "RelatedParties")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Types", "Index", "RelatedPartyTypes")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Categories", "Index", "RelatedPartyCategories")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Roles", "Index", "RelatedPartyRoles")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Sub Categories", "Index", "RelatedPartySubCategories")</li>
+                                <li class="list-group-item">@Html.ActionLink("Designations", "Index", "Designations")</li>
+                                <li class="list-group-item">@Html.ActionLink("Locations", "Index", "Locations")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Bank Accounts", "Index", "RelatedPartyBankAccounts")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Sessions", "Index", "RelatedPartySessions")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Session Types", "Index", "RelatedPartySessionTypes")</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">@Html.ActionLink("Employee Orders", "Index", "RelatedPartyOrders")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Order Details", "Index", "RelatedPartyOrderDetails")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Order Payments", "Index", "RelatedPartyOrderPayments")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Fixed Rosters", "Index", "RelatedPartyFixedRosters")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Role Mappings", "Index", "RelatedPartyRoleAndSplashScreenItemMappings")</li>
+                                <li class="list-group-item">@Html.ActionLink("Companies", "Index", "Companies")</li>
+                                <li class="list-group-item">@Html.ActionLink("Unit Types", "Index", "UnitTypes")</li>
+                                <li class="list-group-item">@Html.ActionLink("Order Types", "Index", "OrderTypes")</li>
+                                <li class="list-group-item">@Html.ActionLink("Division Masters", "Index", "DivisionMasters")</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="col-md-3 text-center">
-                        <h4>Pending Payroll</h4>
-                        <p class="stat-number">--</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attendance & Time Management -->
+        <div class="col-md-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-clock-o"></i> Attendance & Time Management</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">@Html.ActionLink("Attendance Data", "Index", "AttendanceDatas")</li>
+                                <li class="list-group-item">@Html.ActionLink("Attendance Details", "Index", "AttendanceDetails")</li>
+                                <li class="list-group-item">@Html.ActionLink("Attendance Records", "Index", "AttendanceRecords")</li>
+                                <li class="list-group-item">@Html.ActionLink("Attendance Times", "Index", "AttendanceTimes")</li>
+                                <li class="list-group-item">@Html.ActionLink("Attendance Last Records", "Index", "AttendanceLastRecordDetails")</li>
+                                <li class="list-group-item">@Html.ActionLink("Shifts", "Index", "Shifts")</li>
+                                <li class="list-group-item">@Html.ActionLink("Nurse Shifts", "Index", "NurseShifts")</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">@Html.ActionLink("Roster Types", "Index", "RosterTypes")</li>
+                                <li class="list-group-item">@Html.ActionLink("Roster Status", "Index", "RosterStatus")</li>
+                                <li class="list-group-item">@Html.ActionLink("Day Types", "Index", "DayTypes")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Salaries", "Index", "RelatedPartySalaries")</li>
+                                <li class="list-group-item">@Html.ActionLink("No Pays", "Index", "Nopays")</li>
+                                <li class="list-group-item">@Html.ActionLink("Division Master Order Mappings", "Index", "DivisionMasterOrderTypeMappings")</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="col-md-3 text-center">
-                        <h4>System Health</h4>
-                        <p class="stat-number text-success">Good</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row no-gutters">
+        <!-- Payroll & Compensation -->
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-money"></i> Payroll & Compensation</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">@Html.ActionLink("Payroll Records", "Index", "PayrollRecords")</li>
+                                <li class="list-group-item">@Html.ActionLink("Current Payroll Months", "Index", "CurrentPayrollMonths")</li>
+                                <li class="list-group-item">@Html.ActionLink("Pay Month Masters", "Index", "PayMonthMasters")</li>
+                                <li class="list-group-item">@Html.ActionLink("Allowances", "Index", "Allowances")</li>
+                                <li class="list-group-item">@Html.ActionLink("Salary Types", "Index", "SalaryTypes")</li>
+                                <li class="list-group-item">@Html.ActionLink("Salary Modifiers", "Index", "SalaryModifiers")</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">@Html.ActionLink("Salary Modifier Types", "Index", "SalaryModifierTypes")</li>
+                                <li class="list-group-item">@Html.ActionLink("Salary Modifier Default Values", "Index", "SalaryModifierDefaultValues")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Salary Modifiers", "Index", "RelatedPartySalaryModifierMappings")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Default Salary Modifiers", "Index", "RelatedPartyDefaultSalaryModifiers")</li>
+                                <li class="list-group-item">@Html.ActionLink("Payee Taxes", "Index", "PayeeTaxes")</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leave Management -->
+        <div class="col-md-6">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-calendar"></i> Leave Management</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">@Html.ActionLink("Leaves", "Index", "Leaves")</li>
+                                <li class="list-group-item">@Html.ActionLink("Leave Masters", "Index", "LeaveMasters")</li>
+                                <li class="list-group-item">@Html.ActionLink("Leave Types", "Index", "LeaveTypes")</li>
+                                <li class="list-group-item">@Html.ActionLink("Leave Categories", "Index", "LeaveCategories")</li>
+                                <li class="list-group-item">@Html.ActionLink("Leave Status", "Index", "LeaveStatus")</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">@Html.ActionLink("Employee Leave Allocations", "Index", "RelatedPartyLeaveAllocations")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Leave Types", "Index", "RelatedPartyLeaveTypes")</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row no-gutters">
+        <!-- Financial Management -->
+        <div class="col-md-6">
+            <div class="panel panel-purple">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-credit-card"></i> Financial Management</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">@Html.ActionLink("Banks", "Index", "Banks")</li>
+                                <li class="list-group-item">@Html.ActionLink("Bank Branches", "Index", "BankBranches")</li>
+                                <li class="list-group-item">@Html.ActionLink("Bank Deposits", "Index", "BankDeposits")</li>
+                                <li class="list-group-item">@Html.ActionLink("Payment Types", "Index", "PaymentTypes")</li>
+                                <li class="list-group-item">@Html.ActionLink("Payment Categories", "Index", "PaymentCategories")</li>
+                                <li class="list-group-item">@Html.ActionLink("Payment Sub Categories", "Index", "PaymentSubCategories")</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">@Html.ActionLink("Payment Details", "Index", "PaymentDetails")</li>
+                                <li class="list-group-item">@Html.ActionLink("Tax Types", "Index", "TaxTypes")</li>
+                                <li class="list-group-item">@Html.ActionLink("OT Types", "Index", "OTTypes")</li>
+                                <li class="list-group-item">@Html.ActionLink("Credit Card Types", "Index", "CreditCardTypes")</li>
+                                <li class="list-group-item">@Html.ActionLink("Check Managements", "Index", "CheckManagments")</li>
+                                <li class="list-group-item">@Html.ActionLink("Loan Categories", "Index", "LoanCategories")</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loan Management -->
+        <div class="col-md-6">
+            <div class="panel panel-orange">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-handshake-o"></i> Loan Management</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">@Html.ActionLink("Employee Loans", "Index", "RelatedPartyLoans")</li>
+                                <li class="list-group-item">@Html.ActionLink("Employee Loan Types", "Index", "RelatedPartyLoan1")</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row no-gutters">
+        <!-- System Administration -->
+        <div class="col-md-6">
+            <div class="panel panel-dark">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-cogs"></i> System Administration</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">@Html.ActionLink("App Settings", "Index", "AppSettings")</li>
+                                <li class="list-group-item">@Html.ActionLink("App Settings Details", "Index", "AppSettingsDetails")</li>
+                                <li class="list-group-item">@Html.ActionLink("Menu Configurations", "Index", "MenuConfigurations")</li>
+                                <li class="list-group-item">@Html.ActionLink("System Logs", "Index", "SystemLogs")</li>
+                                <li class="list-group-item">@Html.ActionLink("Log Details", "Index", "LogDetails")</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">@Html.ActionLink("Splash Screen Items", "Index", "SplashScreenItems")</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-rocket"></i> Quick Actions</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <div class="quick-action-item">
+                                <a href="@Url.Action("Index", "RelatedParties")" class="btn btn-primary btn-block">
+                                    <i class="fa fa-users"></i> Manage Employees
+                                </a>
+                            </div>
+                            <div class="quick-action-item">
+                                <a href="@Url.Action("Index", "PayrollRecords")" class="btn btn-success btn-block">
+                                    <i class="fa fa-money"></i> Process Payroll
+                                </a>
+                            </div>
+                            <div class="quick-action-item">
+                                <a href="@Url.Action("Index", "AttendanceRecords")" class="btn btn-info btn-block">
+                                    <i class="fa fa-clock-o"></i> View Attendance
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="quick-action-item">
+                                <a href="@Url.Action("Index", "Leaves")" class="btn btn-warning btn-block">
+                                    <i class="fa fa-calendar"></i> Leave Management
+                                </a>
+                            </div>
+                            <div class="quick-action-item">
+                                <a href="@Url.Action("Index", "SystemLogs")" class="btn btn-dark btn-block">
+                                    <i class="fa fa-list-alt"></i> System Logs
+                                </a>
+                            </div>
+                            <div class="quick-action-item">
+                                <a href="@Url.Action("Index", "AppSettings")" class="btn btn-danger btn-block">
+                                    <i class="fa fa-cog"></i> System Settings
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -196,18 +341,367 @@
 </div>
 
 <style>
+    /* Full Screen Dashboard Styles */
+    .dashboard-container {
+        width: 100%;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 0;
+        margin: 0;
+        font-size: 18px; /* Base font size increased */
+    }
+
+    /* Remove all default padding and margins */
+    body {
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow-x: hidden;
+        font-size: 18px; /* Base font size increased */
+    }
+
+    .container.body-content {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Dashboard Header */
+    .dashboard-header .jumbotron {
+        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        color: white;
+        border-radius: 0;
+        padding: 60px 30px; /* Increased padding */
+        margin: 0 0 0 0;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        width: 100%;
+    }
+
+    .jumbotron h1 {
+        font-size: 3.5rem; /* Significantly increased */
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+
+    .jumbotron .lead {
+        font-size: 1.8rem; /* Significantly increased */
+        opacity: 0.9;
+        margin-bottom: 15px;
+    }
+
+    .developer-link {
+        color: #ecf0f1;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 1.5rem; /* Increased */
+    }
+
+        .developer-link:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+    /* Remove gutters from all rows */
+    .no-gutters {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+        .no-gutters > .col,
+        .no-gutters > [class*="col-"] {
+            padding-right: 8px; /* Slightly increased */
+            padding-left: 8px; /* Slightly increased */
+        }
+
+    /* Panel Enhancements */
     .panel {
-        margin-bottom: 20px;
+        border: none;
+        border-radius: 12px; /* Slightly increased */
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        margin-bottom: 15px; /* Increased */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        min-height: 350px; /* Increased */
+    }
+
+        .panel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        }
+
+    .panel-heading {
+        border-radius: 12px 12px 0 0 !important; /* Slightly increased */
+        border: none;
+        padding: 20px 25px; /* Increased */
+        font-weight: 600;
+        font-size: 1.5rem; /* Significantly increased */
+    }
+
+    .panel-title {
+        font-size: 1.5rem; /* Significantly increased */
+        margin: 0;
+    }
+
+        .panel-title i {
+            margin-right: 15px; /* Increased */
+            font-size: 1.6rem; /* Increased */
+        }
+
+    .panel-body {
+        padding: 25px; /* Increased */
+        height: calc(100% - 70px); /* Adjusted for larger heading */
+        overflow-y: auto;
+    }
+
+    /* Custom Panel Colors */
+    .panel-purple {
+        border-left: 6px solid #9b59b6; /* Increased border */
+    }
+
+        .panel-purple .panel-heading {
+            background-color: #9b59b6 !important;
+            color: white;
+        }
+
+    .panel-orange {
+        border-left: 6px solid #e67e22; /* Increased border */
+    }
+
+        .panel-orange .panel-heading {
+            background-color: #e67e22 !important;
+            color: white;
+        }
+
+    .panel-teal {
+        border-left: 6px solid #1abc9c; /* Increased border */
+    }
+
+        .panel-teal .panel-heading {
+            background-color: #1abc9c !important;
+            color: white;
+        }
+
+    .panel-pink {
+        border-left: 6px solid #e84393; /* Increased border */
+    }
+
+        .panel-pink .panel-heading {
+            background-color: #e84393 !important;
+            color: white;
+        }
+
+    .panel-dark {
+        border-left: 6px solid #34495e; /* Increased border */
+    }
+
+        .panel-dark .panel-heading {
+            background-color: #34495e !important;
+            color: white;
+        }
+
+    /* List Group Enhancements */
+    .list-group {
+        margin-bottom: 0;
     }
 
     .list-group-item {
         border: none;
-        padding: 8px 15px;
+        padding: 18px 20px; /* Significantly increased */
+        margin-bottom: 5px; /* Increased */
+        border-radius: 8px !important; /* Increased */
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent; /* Increased border */
+        background-color: #fff;
+        font-size: 1.2rem; /* Significantly increased */
+    }
+
+        .list-group-item:hover {
+            background-color: #f8f9fa;
+            border-left-color: #3498db;
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .list-group-item a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            font-size: 1.2rem; /* Significantly increased */
+        }
+
+            .list-group-item a:hover {
+                color: #3498db;
+            }
+
+    /* Quick Stats */
+    .quick-stats-panel {
+        border-left: 6px solid #3498db; /* Increased border */
+        margin-bottom: 20px; /* Increased */
+    }
+
+    .stat-item {
+        padding: 30px 15px; /* Increased */
+        border-right: 1px solid #eee;
+    }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+    .stat-icon {
+        font-size: 3.5rem; /* Significantly increased */
+        color: #3498db;
+        margin-bottom: 20px; /* Increased */
     }
 
     .stat-number {
-        font-size: 24px;
+        font-size: 2.8rem; /* Significantly increased */
         font-weight: bold;
         color: #2c3e50;
+        margin: 15px 0; /* Increased */
+    }
+
+    .stat-item h4 {
+        font-size: 1.4rem; /* Significantly increased */
+        color: #7f8c8d;
+        margin-bottom: 15px; /* Increased */
+        font-weight: 600;
+    }
+
+    /* Quick Actions */
+    .quick-action-item {
+        margin-bottom: 18px; /* Increased */
+    }
+
+    .btn-block {
+        padding: 20px; /* Significantly increased */
+        font-weight: 600;
+        border-radius: 10px; /* Increased */
+        transition: all 0.3s ease;
+        font-size: 1.4rem; /* Significantly increased */
+        border: none;
+    }
+
+        .btn-block:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+    /* Responsive Design */
+    @@media (max-width: 768px) {
+        .dashboard-container {
+            padding: 8px; /* Increased */
+            font-size: 16px; /* Adjusted for mobile */
+        }
+
+        .jumbotron h1 {
+            font-size: 2.5rem; /* Adjusted for mobile */
+        }
+
+        .jumbotron .lead {
+            font-size: 1.4rem; /* Adjusted for mobile */
+        }
+
+        .panel-body .row .col-md-6 {
+            margin-bottom: 15px; /* Increased */
+        }
+
+        .stat-item {
+            margin-bottom: 20px; /* Increased */
+            border-right: none;
+            border-bottom: 1px solid #eee;
+            padding: 20px 10px; /* Increased */
+        }
+
+            .stat-item:last-child {
+                border-bottom: none;
+            }
+
+        .stat-number {
+            font-size: 2.2rem; /* Adjusted for mobile */
+        }
+
+        .stat-icon {
+            font-size: 2.8rem; /* Adjusted for mobile */
+        }
+
+        .no-gutters > .col,
+        .no-gutters > [class*="col-"] {
+            padding-right: 4px; /* Slightly increased */
+            padding-left: 4px; /* Slightly increased */
+        }
+
+        .panel-heading {
+            font-size: 1.3rem; /* Adjusted for mobile */
+            padding: 15px 20px; /* Adjusted for mobile */
+        }
+
+        .panel-title {
+            font-size: 1.3rem; /* Adjusted for mobile */
+        }
+
+        .list-group-item {
+            font-size: 1.1rem; /* Adjusted for mobile */
+            padding: 15px 18px; /* Adjusted for mobile */
+        }
+
+        .btn-block {
+            font-size: 1.2rem; /* Adjusted for mobile */
+            padding: 16px; /* Adjusted for mobile */
+        }
+    }
+
+    /* Animation for panels */
+    .panel {
+        animation: fadeInUp 0.6s ease;
+    }
+
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Scrollbar styling for panel bodies */
+    .panel-body::-webkit-scrollbar {
+        width: 8px; /* Increased */
+    }
+
+    .panel-body::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px; /* Increased */
+    }
+
+    .panel-body::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 4px; /* Increased */
+    }
+
+        .panel-body::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+    /* Additional accessibility improvements */
+    .btn, .list-group-item {
+        cursor: pointer;
+    }
+
+    /* High contrast improvements for better readability */
+    .panel-heading {
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .stat-number {
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
 </style>
+
+<!-- Font Awesome for Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">

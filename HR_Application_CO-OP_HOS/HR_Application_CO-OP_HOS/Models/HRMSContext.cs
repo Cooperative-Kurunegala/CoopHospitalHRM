@@ -68,7 +68,6 @@ namespace HR_Application_CO_OP_HOS.Models
         public virtual DbSet<PaymentSubCategory> PaymentSubCategories { get; set; }
         public virtual DbSet<BillFinalization> BillFinalizations { get; set; }
         public virtual DbSet<BankDeposit> BankDeposits { get; set; }
-        public virtual DbSet<BatchPopup> BatchPopups { get; set; }
 
         // Channeling / OPD
         public virtual DbSet<ChannelingSquence> ChannelingSquences { get; set; }
@@ -111,7 +110,6 @@ namespace HR_Application_CO_OP_HOS.Models
             modelBuilder.Entity<PayMonth>().ToTable("PayMonthMaster");
             modelBuilder.Entity<Division>().ToTable("DivisionMaster");
             modelBuilder.Entity<ChargeMasterPrice>().ToTable("ChargeMasterPrice");
-            modelBuilder.Entity<BatchPopup>().ToTable("BatchPopup");
             modelBuilder.Entity<RelatedPartyOrder>().ToTable("RelatedPartyOrder");
             modelBuilder.Entity<RelatedPartyOrderDetail>().ToTable("RelatedPartyOrderDetail");
             modelBuilder.Entity<RelatedPartyOrderPayments>().ToTable("RelatedPartyOrderPayments");
