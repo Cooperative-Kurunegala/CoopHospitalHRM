@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3258b48d776b4e94ae3e5463f26c31c0" Name="Diagram1" ZoomLevel="20">
+        <EntityTypeShape EntityType="HRModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.AdmissionCategory" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.AdmissionType" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Allowance" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.AppSetting" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.AppSettingsDetail" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.AttendanceData" Width="1.5" PointX="7.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.AttendanceDetail" Width="1.5" PointX="14.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.AttendanceLastRecordDetail" Width="1.5" PointX="16.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.AttendanceRecord" Width="1.5" PointX="9.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.AttendanceTime" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Bank" Width="1.5" PointX="18.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.BankBranch" Width="1.5" PointX="17.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.BankDeposit" Width="1.5" PointX="0.75" PointY="22.75" IsExpanded="true" />
+  
+        <EntityTypeShape EntityType="HRModel.BillFinalization" Width="1.5" PointX="20.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.BillFinalization_Last" Width="1.5" PointX="20.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.CalanderForPayout" Width="1.5" PointX="9.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.ChannelingSquence" Width="1.5" PointX="20.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.ChannelingTimeSlot" Width="1.5" PointX="21.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.ChargeCategory" Width="1.5" PointX="21.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.ChargeDiscount" Width="1.5" PointX="22.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.ChargeItemList" Width="1.5" PointX="22.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.ChargeMaster" Width="1.5" PointX="13" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.ChargeMasterPrice" Width="1.5" PointX="15.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.ChargeType" Width="1.5" PointX="10.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.CheckManagment" Width="1.5" PointX="22.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Company" Width="1.5" PointX="22.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.CreditCardType" Width="1.5" PointX="10.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.CurrentPayrollMonth" Width="1.5" PointX="17.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.DayType" Width="1.5" PointX="19.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Designation" Width="1.5" PointX="21.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.DivisionCharge" Width="1.5" PointX="18.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.DivisionMaster" Width="1.5" PointX="16" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.DivisionMasterOrderTypeMapping" Width="1.5" PointX="0.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.DivisionMasterType" Width="1.5" PointX="2.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.DoctorDivisionChargeMapping" Width="1.5" PointX="4.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.DoctorWiseTimeSlot" Width="1.5" PointX="6.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.InPatientInsuranceClaim" Width="1.5" PointX="8.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Leave" Width="1.5" PointX="23.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.LeaveCategory" Width="1.5" PointX="23.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.LeaveMaster" Width="1.5" PointX="23.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.LeaveStatu" Width="1.5" PointX="24.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.LeaveType" Width="1.5" PointX="24.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.LoanCategory" Width="1.5" PointX="24.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Location" Width="1.5" PointX="15.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.LogDetail" Width="1.5" PointX="24.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.MenuConfiguration" Width="1.5" PointX="25.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Nopay" Width="1.5" PointX="25.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.NurseShift" Width="1.5" PointX="25.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.OPDSquence" Width="1.5" PointX="26.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.OPDTimeSlot" Width="1.5" PointX="0.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.OrderType" Width="1.5" PointX="13" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.OTType" Width="1.5" PointX="26.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.PayeeTax" Width="1.5" PointX="26.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.PaymentCategory" Width="1.5" PointX="26.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.PaymentDetail" Width="1.5" PointX="17.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.PaymentSubCategory" Width="1.5" PointX="19.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.PaymentType" Width="1.5" PointX="10.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.PayMonthMaster" Width="1.5" PointX="25.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.PayrollRecord" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedParty" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartyBankAccount" Width="1.5" PointX="2.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartyCategory" Width="1.5" PointX="4.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartyDefaultSalaryModifier" Width="1.5" PointX="8.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartyFixedRoster" Width="1.5" PointX="27.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartyLeaveAllocation" Width="1.5" PointX="27.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartyLeaveType" Width="1.5" PointX="27.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartyLoan" Width="1.5" PointX="27.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartyLoan1" Width="1.5" PointX="27.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartyOrder" Width="1.5" PointX="12.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartyOrderDetail" Width="1.5" PointX="15" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartyOrderPayment" Width="1.5" PointX="13" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartyRole" Width="1.5" PointX="28.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartyRoleAndSplashScreenItemMapping" Width="1.5" PointX="28.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartySalary" Width="1.5" PointX="5.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartySalaryBankAccountsMapping" Width="1.5" PointX="28.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartySalaryModifierMapping" Width="1.5" PointX="7.5" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartySession" Width="1.5" PointX="14.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartySessionType" Width="1.5" PointX="28.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartySubCategory" Width="1.5" PointX="21.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RelatedPartyType" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RosterStatu" Width="1.5" PointX="6.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RosterType" Width="1.5" PointX="8.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.SalaryModifierDefaultValue" Width="1.5" PointX="29.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.SalaryModifier" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.SalaryModifierType" Width="1.5" PointX="29.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.SalaryType" Width="1.5" PointX="29.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Shift" Width="1.5" PointX="29.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.SplashScreenItem" Width="1.5" PointX="18" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.SystemLog" Width="1.5" PointX="29.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.TaxType" Width="1.5" PointX="30.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.UnitType" Width="1.5" PointX="30.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="HRModel.FK_Allowance_RelatedParty" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_ChargeMaster_ChargeType" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_ChargMasterPrice_ChargeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_DivisionCharge_ChargeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_ChargeMasterPrice_OrderType" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_DivisionCharge_ChargeType" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_RelatedPartyOrderPayments_CreditCardType" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_DivisionCharge_DivisionMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_SplashScreenItem_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_RelatedPartyOrderPayments_PaymentType" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_PayrollRecord_RelatedParty" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_RelatedParty_RelatedPartyType" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_RelatedPartyDefaultSalaryModifiers_RelatedParty" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_RelatedPartySalary_RelatedParty" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_RelatedPartyDefaultSalaryModifiers_SalaryModifiers" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_OrderDetail_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_RelatedPartySalaryModifierMapping_RelatedPartySalary" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK_RelatedPartySalaryModifierMapping_SalaryModifiers" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,95 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.Leave>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedPartyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveCategoryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveMasterID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveTo)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedPartyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveCategoryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveMasterID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveTo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

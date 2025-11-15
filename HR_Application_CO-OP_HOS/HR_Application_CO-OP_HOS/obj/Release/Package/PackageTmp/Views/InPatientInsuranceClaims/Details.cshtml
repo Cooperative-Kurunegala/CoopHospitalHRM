@@ -1,0 +1,154 @@
+﻿@model HR_Application_CO_OP_HOS.Models.InPatientInsuranceClaim
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>InPatientInsuranceClaim</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.RelatedPartySessionID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RelatedPartySessionID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CustomerName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PatientName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PatientName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CompanyName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BillAmount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BillAmount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ClaimAmount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ClaimAmount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ReceivedAmount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ReceivedAmount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BillNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BillNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ChequeNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ChequeNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ChequeDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ChequeDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Remarks)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Remarks)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsChequeReceived)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsChequeReceived)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

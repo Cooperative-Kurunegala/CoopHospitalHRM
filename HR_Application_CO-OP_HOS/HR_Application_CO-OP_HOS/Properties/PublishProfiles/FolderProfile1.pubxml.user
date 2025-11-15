@@ -1,0 +1,1826 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>G:\Coop</_PublishTargetUrl>
+    <History>True|2025-11-15T11:22:22.6839962Z||;True|2025-11-15T16:51:52.4726738+05:30||;True|2025-11-15T07:08:58.1722539+05:30||;True|2025-11-15T00:13:29.8869412+05:30||;True|2025-11-15T00:12:55.6170070+05:30||;True|2025-11-14T17:00:28.0680093+05:30||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Azure.Core.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Azure.Identity.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/cs/Microsoft.Data.SqlClient.resources.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Dapper.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.Data.SqlClient.resources.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.Data.SqlClient.resources.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.Data.SqlClient.resources.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/HR_Application_CO-OP_HOS.dll">
+      <publishTime>11/15/2025 16:52:18</publishTime>
+    </File>
+    <File Include="bin/HR_Application_CO-OP_HOS.pdb">
+      <publishTime>11/15/2025 16:52:18</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.Data.SqlClient.resources.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.Data.SqlClient.resources.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.Data.SqlClient.resources.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Bcl.AsyncInterfaces.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Bcl.Cryptography.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.SqlClient.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.SqlClient.SNI.arm64.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.SqlClient.SNI.arm64.pdb">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.SqlClient.SNI.x64.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.SqlClient.SNI.x64.pdb">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.SqlClient.SNI.x86.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.SqlClient.SNI.x86.pdb">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Extensions.Caching.Abstractions.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Extensions.Caching.Memory.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Extensions.DependencyInjection.Abstractions.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Extensions.Logging.Abstractions.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Extensions.Options.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Extensions.Primitives.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Identity.Client.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Identity.Client.Extensions.Msal.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.Abstractions.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.JsonWebTokens.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.Logging.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.Protocols.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.Tokens.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/pl/Microsoft.Data.SqlClient.resources.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/pt-BR/Microsoft.Data.SqlClient.resources.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe.config">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Managed.Core.targets">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Console.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Globalization.Calendars.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.ZipFile.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Http.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Sockets.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Runtime.InteropServices.RuntimeInformation.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Threading.Tasks.Extensions.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.ValueTuple.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.Data.SqlClient.resources.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/System.Buffers.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.ClientModel.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.IdentityModel.Tokens.Jwt.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.IO.FileSystem.AccessControl.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.Memory.Data.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.Memory.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.Numerics.Vectors.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.Runtime.CompilerServices.Unsafe.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.Security.AccessControl.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.Security.Cryptography.Pkcs.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.Security.Cryptography.ProtectedData.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.Security.Principal.Windows.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.Text.Encodings.Web.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.Text.Json.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.Threading.Tasks.Extensions.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.ValueTuple.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/tr/Microsoft.Data.SqlClient.resources.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>11/05/2025 21:05:38</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Data.SqlClient.resources.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/Microsoft.Data.SqlClient.resources.dll">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css.map">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css.map">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css.map">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css.map">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Models/HRMSEntities.edmx.diagram">
+      <publishTime>11/12/2025 16:36:08</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.js">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.min.js">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.min.map">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.js">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.min.js">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.min.map">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.8.3.js">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Views/AdmissionCategories/Create.cshtml">
+      <publishTime>11/13/2025 12:15:12</publishTime>
+    </File>
+    <File Include="Views/AdmissionCategories/Delete.cshtml">
+      <publishTime>11/13/2025 12:15:13</publishTime>
+    </File>
+    <File Include="Views/AdmissionCategories/Details.cshtml">
+      <publishTime>11/13/2025 12:15:13</publishTime>
+    </File>
+    <File Include="Views/AdmissionCategories/Edit.cshtml">
+      <publishTime>11/13/2025 12:15:13</publishTime>
+    </File>
+    <File Include="Views/AdmissionCategories/Index.cshtml">
+      <publishTime>11/13/2025 12:15:13</publishTime>
+    </File>
+    <File Include="Views/AdmissionTypes/Create.cshtml">
+      <publishTime>11/13/2025 12:15:05</publishTime>
+    </File>
+    <File Include="Views/AdmissionTypes/Delete.cshtml">
+      <publishTime>11/13/2025 12:15:05</publishTime>
+    </File>
+    <File Include="Views/AdmissionTypes/Details.cshtml">
+      <publishTime>11/13/2025 12:15:05</publishTime>
+    </File>
+    <File Include="Views/AdmissionTypes/Edit.cshtml">
+      <publishTime>11/13/2025 12:15:05</publishTime>
+    </File>
+    <File Include="Views/AdmissionTypes/Index.cshtml">
+      <publishTime>11/13/2025 12:15:05</publishTime>
+    </File>
+    <File Include="Views/Allowances/Create.cshtml">
+      <publishTime>11/15/2025 16:01:53</publishTime>
+    </File>
+    <File Include="Views/Allowances/Delete.cshtml">
+      <publishTime>11/15/2025 16:02:44</publishTime>
+    </File>
+    <File Include="Views/Allowances/Details.cshtml">
+      <publishTime>11/15/2025 16:02:35</publishTime>
+    </File>
+    <File Include="Views/Allowances/Edit.cshtml">
+      <publishTime>11/15/2025 16:02:10</publishTime>
+    </File>
+    <File Include="Views/Allowances/Index.cshtml">
+      <publishTime>11/15/2025 16:01:33</publishTime>
+    </File>
+    <File Include="Views/AppSettings/Create.cshtml">
+      <publishTime>11/13/2025 12:14:56</publishTime>
+    </File>
+    <File Include="Views/AppSettings/Delete.cshtml">
+      <publishTime>11/13/2025 12:14:57</publishTime>
+    </File>
+    <File Include="Views/AppSettings/Details.cshtml">
+      <publishTime>11/13/2025 12:14:57</publishTime>
+    </File>
+    <File Include="Views/AppSettings/Edit.cshtml">
+      <publishTime>11/13/2025 12:14:57</publishTime>
+    </File>
+    <File Include="Views/AppSettings/Index.cshtml">
+      <publishTime>11/13/2025 12:14:57</publishTime>
+    </File>
+    <File Include="Views/AppSettingsDetails/Create.cshtml">
+      <publishTime>11/13/2025 12:14:50</publishTime>
+    </File>
+    <File Include="Views/AppSettingsDetails/Delete.cshtml">
+      <publishTime>11/13/2025 12:14:50</publishTime>
+    </File>
+    <File Include="Views/AppSettingsDetails/Details.cshtml">
+      <publishTime>11/13/2025 12:14:50</publishTime>
+    </File>
+    <File Include="Views/AppSettingsDetails/Edit.cshtml">
+      <publishTime>11/13/2025 12:14:50</publishTime>
+    </File>
+    <File Include="Views/AppSettingsDetails/Index.cshtml">
+      <publishTime>11/13/2025 12:14:50</publishTime>
+    </File>
+    <File Include="Views/AttendanceDatas/Create.cshtml">
+      <publishTime>11/15/2025 01:02:38</publishTime>
+    </File>
+    <File Include="Views/AttendanceDatas/Delete.cshtml">
+      <publishTime>11/15/2025 01:03:42</publishTime>
+    </File>
+    <File Include="Views/AttendanceDatas/Details.cshtml">
+      <publishTime>11/15/2025 01:03:16</publishTime>
+    </File>
+    <File Include="Views/AttendanceDatas/Edit.cshtml">
+      <publishTime>11/15/2025 01:02:58</publishTime>
+    </File>
+    <File Include="Views/AttendanceDatas/Index.cshtml">
+      <publishTime>11/15/2025 01:02:20</publishTime>
+    </File>
+    <File Include="Views/AttendanceDetails/Create.cshtml">
+      <publishTime>11/15/2025 01:12:01</publishTime>
+    </File>
+    <File Include="Views/AttendanceDetails/Delete.cshtml">
+      <publishTime>11/15/2025 01:21:21</publishTime>
+    </File>
+    <File Include="Views/AttendanceDetails/Details.cshtml">
+      <publishTime>11/15/2025 01:15:52</publishTime>
+    </File>
+    <File Include="Views/AttendanceDetails/Edit.cshtml">
+      <publishTime>11/15/2025 01:13:53</publishTime>
+    </File>
+    <File Include="Views/AttendanceDetails/Index.cshtml">
+      <publishTime>11/15/2025 01:10:00</publishTime>
+    </File>
+    <File Include="Views/AttendanceLastRecordDetails/Create.cshtml">
+      <publishTime>11/15/2025 02:04:13</publishTime>
+    </File>
+    <File Include="Views/AttendanceLastRecordDetails/Delete.cshtml">
+      <publishTime>11/15/2025 02:05:01</publishTime>
+    </File>
+    <File Include="Views/AttendanceLastRecordDetails/Details.cshtml">
+      <publishTime>11/15/2025 02:04:42</publishTime>
+    </File>
+    <File Include="Views/AttendanceLastRecordDetails/Edit.cshtml">
+      <publishTime>11/15/2025 02:04:27</publishTime>
+    </File>
+    <File Include="Views/AttendanceLastRecordDetails/Index.cshtml">
+      <publishTime>11/15/2025 02:03:56</publishTime>
+    </File>
+    <File Include="Views/AttendanceRecords/Create.cshtml">
+      <publishTime>11/15/2025 01:47:22</publishTime>
+    </File>
+    <File Include="Views/AttendanceRecords/Delete.cshtml">
+      <publishTime>11/15/2025 01:38:12</publishTime>
+    </File>
+    <File Include="Views/AttendanceRecords/Details.cshtml">
+      <publishTime>11/15/2025 01:41:35</publishTime>
+    </File>
+    <File Include="Views/AttendanceRecords/Edit.cshtml">
+      <publishTime>11/15/2025 01:45:53</publishTime>
+    </File>
+    <File Include="Views/AttendanceRecords/Index.cshtml">
+      <publishTime>11/15/2025 01:50:13</publishTime>
+    </File>
+    <File Include="Views/AttendanceTimes/Create.cshtml">
+      <publishTime>11/15/2025 01:53:35</publishTime>
+    </File>
+    <File Include="Views/AttendanceTimes/Delete.cshtml">
+      <publishTime>11/15/2025 02:01:05</publishTime>
+    </File>
+    <File Include="Views/AttendanceTimes/Details.cshtml">
+      <publishTime>11/15/2025 01:57:50</publishTime>
+    </File>
+    <File Include="Views/AttendanceTimes/Edit.cshtml">
+      <publishTime>11/15/2025 01:54:53</publishTime>
+    </File>
+    <File Include="Views/AttendanceTimes/Index.cshtml">
+      <publishTime>11/15/2025 01:53:10</publishTime>
+    </File>
+    <File Include="Views/BankBranches/Create.cshtml">
+      <publishTime>11/10/2025 10:01:00</publishTime>
+    </File>
+    <File Include="Views/BankBranches/Delete.cshtml">
+      <publishTime>11/10/2025 10:01:01</publishTime>
+    </File>
+    <File Include="Views/BankBranches/Details.cshtml">
+      <publishTime>11/10/2025 10:01:02</publishTime>
+    </File>
+    <File Include="Views/BankBranches/Edit.cshtml">
+      <publishTime>11/10/2025 10:01:03</publishTime>
+    </File>
+    <File Include="Views/BankBranches/Index.cshtml">
+      <publishTime>11/10/2025 10:01:04</publishTime>
+    </File>
+    <File Include="Views/BankDeposits/Create.cshtml">
+      <publishTime>11/10/2025 10:32:30</publishTime>
+    </File>
+    <File Include="Views/BankDeposits/Delete.cshtml">
+      <publishTime>11/10/2025 10:32:31</publishTime>
+    </File>
+    <File Include="Views/BankDeposits/Details.cshtml">
+      <publishTime>11/10/2025 10:32:33</publishTime>
+    </File>
+    <File Include="Views/BankDeposits/Edit.cshtml">
+      <publishTime>11/10/2025 10:32:34</publishTime>
+    </File>
+    <File Include="Views/BankDeposits/Index.cshtml">
+      <publishTime>11/10/2025 10:32:35</publishTime>
+    </File>
+    <File Include="Views/Banks/Create.cshtml">
+      <publishTime>11/10/2025 09:54:37</publishTime>
+    </File>
+    <File Include="Views/Banks/Delete.cshtml">
+      <publishTime>11/10/2025 09:54:37</publishTime>
+    </File>
+    <File Include="Views/Banks/Details.cshtml">
+      <publishTime>11/10/2025 09:54:38</publishTime>
+    </File>
+    <File Include="Views/Banks/Edit.cshtml">
+      <publishTime>11/10/2025 09:54:39</publishTime>
+    </File>
+    <File Include="Views/Banks/Index.cshtml">
+      <publishTime>11/10/2025 09:54:40</publishTime>
+    </File>
+    <File Include="Views/BillFinalizations/Create.cshtml">
+      <publishTime>11/10/2025 10:45:44</publishTime>
+    </File>
+    <File Include="Views/BillFinalizations/Delete.cshtml">
+      <publishTime>11/10/2025 10:45:45</publishTime>
+    </File>
+    <File Include="Views/BillFinalizations/Details.cshtml">
+      <publishTime>11/10/2025 10:45:47</publishTime>
+    </File>
+    <File Include="Views/BillFinalizations/Edit.cshtml">
+      <publishTime>11/10/2025 10:45:48</publishTime>
+    </File>
+    <File Include="Views/BillFinalizations/Index.cshtml">
+      <publishTime>11/10/2025 10:45:49</publishTime>
+    </File>
+    <File Include="Views/BillFinalization_Last/Create.cshtml">
+      <publishTime>11/10/2025 10:50:48</publishTime>
+    </File>
+    <File Include="Views/BillFinalization_Last/Delete.cshtml">
+      <publishTime>11/10/2025 10:50:50</publishTime>
+    </File>
+    <File Include="Views/BillFinalization_Last/Details.cshtml">
+      <publishTime>11/10/2025 10:50:51</publishTime>
+    </File>
+    <File Include="Views/BillFinalization_Last/Edit.cshtml">
+      <publishTime>11/10/2025 10:50:52</publishTime>
+    </File>
+    <File Include="Views/BillFinalization_Last/Index.cshtml">
+      <publishTime>11/10/2025 10:50:54</publishTime>
+    </File>
+    <File Include="Views/ChannelingSquences/Create.cshtml">
+      <publishTime>11/10/2025 11:07:48</publishTime>
+    </File>
+    <File Include="Views/ChannelingSquences/Delete.cshtml">
+      <publishTime>11/10/2025 11:07:49</publishTime>
+    </File>
+    <File Include="Views/ChannelingSquences/Details.cshtml">
+      <publishTime>11/10/2025 11:07:51</publishTime>
+    </File>
+    <File Include="Views/ChannelingSquences/Edit.cshtml">
+      <publishTime>11/10/2025 11:07:52</publishTime>
+    </File>
+    <File Include="Views/ChannelingSquences/Index.cshtml">
+      <publishTime>11/10/2025 11:07:53</publishTime>
+    </File>
+    <File Include="Views/ChannelingTimeSlots/Create.cshtml">
+      <publishTime>11/10/2025 11:19:01</publishTime>
+    </File>
+    <File Include="Views/ChannelingTimeSlots/Delete.cshtml">
+      <publishTime>11/10/2025 11:19:03</publishTime>
+    </File>
+    <File Include="Views/ChannelingTimeSlots/Details.cshtml">
+      <publishTime>11/10/2025 11:19:04</publishTime>
+    </File>
+    <File Include="Views/ChannelingTimeSlots/Edit.cshtml">
+      <publishTime>11/10/2025 11:19:05</publishTime>
+    </File>
+    <File Include="Views/ChannelingTimeSlots/Index.cshtml">
+      <publishTime>11/10/2025 11:19:07</publishTime>
+    </File>
+    <File Include="Views/ChargeCategories/Create.cshtml">
+      <publishTime>11/10/2025 11:31:23</publishTime>
+    </File>
+    <File Include="Views/ChargeCategories/Delete.cshtml">
+      <publishTime>11/10/2025 11:31:24</publishTime>
+    </File>
+    <File Include="Views/ChargeCategories/Details.cshtml">
+      <publishTime>11/10/2025 11:31:26</publishTime>
+    </File>
+    <File Include="Views/ChargeCategories/Edit.cshtml">
+      <publishTime>11/10/2025 11:31:27</publishTime>
+    </File>
+    <File Include="Views/ChargeCategories/Index.cshtml">
+      <publishTime>11/10/2025 11:31:28</publishTime>
+    </File>
+    <File Include="Views/ChargeDiscounts/Create.cshtml">
+      <publishTime>11/10/2025 11:39:57</publishTime>
+    </File>
+    <File Include="Views/ChargeDiscounts/Delete.cshtml">
+      <publishTime>11/10/2025 11:39:58</publishTime>
+    </File>
+    <File Include="Views/ChargeDiscounts/Details.cshtml">
+      <publishTime>11/10/2025 11:39:59</publishTime>
+    </File>
+    <File Include="Views/ChargeDiscounts/Edit.cshtml">
+      <publishTime>11/10/2025 11:40:00</publishTime>
+    </File>
+    <File Include="Views/ChargeDiscounts/Index.cshtml">
+      <publishTime>11/10/2025 11:40:01</publishTime>
+    </File>
+    <File Include="Views/ChargeItemLists/Create.cshtml">
+      <publishTime>11/10/2025 11:46:12</publishTime>
+    </File>
+    <File Include="Views/ChargeItemLists/Delete.cshtml">
+      <publishTime>11/10/2025 11:46:13</publishTime>
+    </File>
+    <File Include="Views/ChargeItemLists/Details.cshtml">
+      <publishTime>11/10/2025 11:46:14</publishTime>
+    </File>
+    <File Include="Views/ChargeItemLists/Edit.cshtml">
+      <publishTime>11/10/2025 11:46:15</publishTime>
+    </File>
+    <File Include="Views/ChargeItemLists/Index.cshtml">
+      <publishTime>11/10/2025 11:46:16</publishTime>
+    </File>
+    <File Include="Views/ChargeMasterPrices/Create.cshtml">
+      <publishTime>11/10/2025 12:15:54</publishTime>
+    </File>
+    <File Include="Views/ChargeMasterPrices/Delete.cshtml">
+      <publishTime>11/10/2025 12:15:55</publishTime>
+    </File>
+    <File Include="Views/ChargeMasterPrices/Details.cshtml">
+      <publishTime>11/10/2025 12:15:56</publishTime>
+    </File>
+    <File Include="Views/ChargeMasterPrices/Edit.cshtml">
+      <publishTime>11/10/2025 12:15:57</publishTime>
+    </File>
+    <File Include="Views/ChargeMasterPrices/Index.cshtml">
+      <publishTime>11/10/2025 12:15:58</publishTime>
+    </File>
+    <File Include="Views/ChargeMasters/Create.cshtml">
+      <publishTime>11/10/2025 11:54:36</publishTime>
+    </File>
+    <File Include="Views/ChargeMasters/Delete.cshtml">
+      <publishTime>11/10/2025 11:54:37</publishTime>
+    </File>
+    <File Include="Views/ChargeMasters/Details.cshtml">
+      <publishTime>11/10/2025 11:54:38</publishTime>
+    </File>
+    <File Include="Views/ChargeMasters/Edit.cshtml">
+      <publishTime>11/10/2025 11:54:39</publishTime>
+    </File>
+    <File Include="Views/ChargeMasters/Index.cshtml">
+      <publishTime>11/10/2025 11:54:40</publishTime>
+    </File>
+    <File Include="Views/ChargeTypes/Create.cshtml">
+      <publishTime>11/10/2025 12:19:00</publishTime>
+    </File>
+    <File Include="Views/ChargeTypes/Delete.cshtml">
+      <publishTime>11/10/2025 12:19:01</publishTime>
+    </File>
+    <File Include="Views/ChargeTypes/Details.cshtml">
+      <publishTime>11/10/2025 12:19:02</publishTime>
+    </File>
+    <File Include="Views/ChargeTypes/Edit.cshtml">
+      <publishTime>11/10/2025 12:19:03</publishTime>
+    </File>
+    <File Include="Views/ChargeTypes/Index.cshtml">
+      <publishTime>11/10/2025 12:19:04</publishTime>
+    </File>
+    <File Include="Views/CheckManagments/Create.cshtml">
+      <publishTime>11/10/2025 12:21:57</publishTime>
+    </File>
+    <File Include="Views/CheckManagments/Delete.cshtml">
+      <publishTime>11/10/2025 12:21:58</publishTime>
+    </File>
+    <File Include="Views/CheckManagments/Details.cshtml">
+      <publishTime>11/10/2025 12:21:59</publishTime>
+    </File>
+    <File Include="Views/CheckManagments/Edit.cshtml">
+      <publishTime>11/10/2025 12:22:00</publishTime>
+    </File>
+    <File Include="Views/CheckManagments/Index.cshtml">
+      <publishTime>11/10/2025 12:22:01</publishTime>
+    </File>
+    <File Include="Views/Companies/Create.cshtml">
+      <publishTime>11/15/2025 00:00:30</publishTime>
+    </File>
+    <File Include="Views/Companies/Delete.cshtml">
+      <publishTime>11/15/2025 00:01:15</publishTime>
+    </File>
+    <File Include="Views/Companies/Details.cshtml">
+      <publishTime>11/15/2025 00:01:00</publishTime>
+    </File>
+    <File Include="Views/Companies/Edit.cshtml">
+      <publishTime>11/15/2025 00:00:44</publishTime>
+    </File>
+    <File Include="Views/Companies/Index.cshtml">
+      <publishTime>11/15/2025 00:00:20</publishTime>
+    </File>
+    <File Include="Views/CreditCardTypes/Create.cshtml">
+      <publishTime>11/10/2025 12:27:07</publishTime>
+    </File>
+    <File Include="Views/CreditCardTypes/Delete.cshtml">
+      <publishTime>11/10/2025 12:27:08</publishTime>
+    </File>
+    <File Include="Views/CreditCardTypes/Details.cshtml">
+      <publishTime>11/10/2025 12:27:09</publishTime>
+    </File>
+    <File Include="Views/CreditCardTypes/Edit.cshtml">
+      <publishTime>11/10/2025 12:27:10</publishTime>
+    </File>
+    <File Include="Views/CreditCardTypes/Index.cshtml">
+      <publishTime>11/10/2025 12:27:11</publishTime>
+    </File>
+    <File Include="Views/CurrentPayrollMonths/Create.cshtml">
+      <publishTime>11/15/2025 12:10:16</publishTime>
+    </File>
+    <File Include="Views/CurrentPayrollMonths/Delete.cshtml">
+      <publishTime>11/15/2025 12:12:55</publishTime>
+    </File>
+    <File Include="Views/CurrentPayrollMonths/Details.cshtml">
+      <publishTime>11/15/2025 12:12:15</publishTime>
+    </File>
+    <File Include="Views/CurrentPayrollMonths/Edit.cshtml">
+      <publishTime>11/15/2025 12:10:59</publishTime>
+    </File>
+    <File Include="Views/CurrentPayrollMonths/Index.cshtml">
+      <publishTime>11/15/2025 12:10:14</publishTime>
+    </File>
+    <File Include="Views/DayTypes/Create.cshtml">
+      <publishTime>11/15/2025 06:42:57</publishTime>
+    </File>
+    <File Include="Views/DayTypes/Delete.cshtml">
+      <publishTime>11/15/2025 06:42:03</publishTime>
+    </File>
+    <File Include="Views/DayTypes/Details.cshtml">
+      <publishTime>11/15/2025 06:42:25</publishTime>
+    </File>
+    <File Include="Views/DayTypes/Edit.cshtml">
+      <publishTime>11/15/2025 06:42:41</publishTime>
+    </File>
+    <File Include="Views/DayTypes/Index.cshtml">
+      <publishTime>11/15/2025 06:43:14</publishTime>
+    </File>
+    <File Include="Views/Designations/Create.cshtml">
+      <publishTime>11/14/2025 21:52:50</publishTime>
+    </File>
+    <File Include="Views/Designations/Delete.cshtml">
+      <publishTime>11/14/2025 21:59:28</publishTime>
+    </File>
+    <File Include="Views/Designations/Details.cshtml">
+      <publishTime>11/14/2025 21:57:53</publishTime>
+    </File>
+    <File Include="Views/Designations/Edit.cshtml">
+      <publishTime>11/14/2025 21:55:19</publishTime>
+    </File>
+    <File Include="Views/Designations/Index.cshtml">
+      <publishTime>11/14/2025 21:51:29</publishTime>
+    </File>
+    <File Include="Views/DivisionCharges/Create.cshtml">
+      <publishTime>11/10/2025 13:26:40</publishTime>
+    </File>
+    <File Include="Views/DivisionCharges/Delete.cshtml">
+      <publishTime>11/10/2025 13:26:41</publishTime>
+    </File>
+    <File Include="Views/DivisionCharges/Details.cshtml">
+      <publishTime>11/10/2025 13:26:42</publishTime>
+    </File>
+    <File Include="Views/DivisionCharges/Edit.cshtml">
+      <publishTime>11/10/2025 13:26:43</publishTime>
+    </File>
+    <File Include="Views/DivisionCharges/Index.cshtml">
+      <publishTime>11/10/2025 13:26:45</publishTime>
+    </File>
+    <File Include="Views/DivisionMasterOrderTypeMappings/Create.cshtml">
+      <publishTime>11/15/2025 06:45:22</publishTime>
+    </File>
+    <File Include="Views/DivisionMasterOrderTypeMappings/Delete.cshtml">
+      <publishTime>11/15/2025 06:44:34</publishTime>
+    </File>
+    <File Include="Views/DivisionMasterOrderTypeMappings/Details.cshtml">
+      <publishTime>11/15/2025 06:44:56</publishTime>
+    </File>
+    <File Include="Views/DivisionMasterOrderTypeMappings/Edit.cshtml">
+      <publishTime>11/15/2025 06:45:05</publishTime>
+    </File>
+    <File Include="Views/DivisionMasterOrderTypeMappings/Index.cshtml">
+      <publishTime>11/15/2025 06:45:38</publishTime>
+    </File>
+    <File Include="Views/DivisionMasters/Create.cshtml">
+      <publishTime>11/15/2025 00:10:20</publishTime>
+    </File>
+    <File Include="Views/DivisionMasters/Delete.cshtml">
+      <publishTime>11/15/2025 00:12:38</publishTime>
+    </File>
+    <File Include="Views/DivisionMasters/Details.cshtml">
+      <publishTime>11/15/2025 00:11:45</publishTime>
+    </File>
+    <File Include="Views/DivisionMasters/Edit.cshtml">
+      <publishTime>11/15/2025 00:11:07</publishTime>
+    </File>
+    <File Include="Views/DivisionMasters/Index.cshtml">
+      <publishTime>11/15/2025 00:10:10</publishTime>
+    </File>
+    <File Include="Views/DivisionMasterTypes/Create.cshtml">
+      <publishTime>11/10/2025 13:40:43</publishTime>
+    </File>
+    <File Include="Views/DivisionMasterTypes/Delete.cshtml">
+      <publishTime>11/10/2025 13:40:44</publishTime>
+    </File>
+    <File Include="Views/DivisionMasterTypes/Details.cshtml">
+      <publishTime>11/10/2025 13:40:45</publishTime>
+    </File>
+    <File Include="Views/DivisionMasterTypes/Edit.cshtml">
+      <publishTime>11/10/2025 13:40:46</publishTime>
+    </File>
+    <File Include="Views/DivisionMasterTypes/Index.cshtml">
+      <publishTime>11/10/2025 13:40:47</publishTime>
+    </File>
+    <File Include="Views/DoctorDivisionChargeMappings/Create.cshtml">
+      <publishTime>11/10/2025 13:44:25</publishTime>
+    </File>
+    <File Include="Views/DoctorDivisionChargeMappings/Delete.cshtml">
+      <publishTime>11/10/2025 13:44:26</publishTime>
+    </File>
+    <File Include="Views/DoctorDivisionChargeMappings/Details.cshtml">
+      <publishTime>11/10/2025 13:44:27</publishTime>
+    </File>
+    <File Include="Views/DoctorDivisionChargeMappings/Edit.cshtml">
+      <publishTime>11/10/2025 13:44:28</publishTime>
+    </File>
+    <File Include="Views/DoctorDivisionChargeMappings/Index.cshtml">
+      <publishTime>11/10/2025 13:44:29</publishTime>
+    </File>
+    <File Include="Views/DoctorWiseTimeSlots/Create.cshtml">
+      <publishTime>11/10/2025 13:48:27</publishTime>
+    </File>
+    <File Include="Views/DoctorWiseTimeSlots/Delete.cshtml">
+      <publishTime>11/10/2025 13:48:28</publishTime>
+    </File>
+    <File Include="Views/DoctorWiseTimeSlots/Details.cshtml">
+      <publishTime>11/10/2025 13:48:30</publishTime>
+    </File>
+    <File Include="Views/DoctorWiseTimeSlots/Edit.cshtml">
+      <publishTime>11/10/2025 13:48:31</publishTime>
+    </File>
+    <File Include="Views/DoctorWiseTimeSlots/Index.cshtml">
+      <publishTime>11/10/2025 13:48:32</publishTime>
+    </File>
+    <File Include="Views/Home/About.cshtml">
+      <publishTime>11/14/2025 10:44:50</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>11/14/2025 10:44:50</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>11/14/2025 10:45:25</publishTime>
+    </File>
+    <File Include="Views/InPatientInsuranceClaims/Create.cshtml">
+      <publishTime>11/10/2025 13:53:11</publishTime>
+    </File>
+    <File Include="Views/InPatientInsuranceClaims/Delete.cshtml">
+      <publishTime>11/10/2025 13:53:12</publishTime>
+    </File>
+    <File Include="Views/InPatientInsuranceClaims/Details.cshtml">
+      <publishTime>11/10/2025 13:53:13</publishTime>
+    </File>
+    <File Include="Views/InPatientInsuranceClaims/Edit.cshtml">
+      <publishTime>11/10/2025 13:53:14</publishTime>
+    </File>
+    <File Include="Views/InPatientInsuranceClaims/Index.cshtml">
+      <publishTime>11/10/2025 13:53:15</publishTime>
+    </File>
+    <File Include="Views/LeaveCategories/Create.cshtml">
+      <publishTime>11/10/2025 14:06:55</publishTime>
+    </File>
+    <File Include="Views/LeaveCategories/Delete.cshtml">
+      <publishTime>11/10/2025 14:06:56</publishTime>
+    </File>
+    <File Include="Views/LeaveCategories/Details.cshtml">
+      <publishTime>11/10/2025 14:06:58</publishTime>
+    </File>
+    <File Include="Views/LeaveCategories/Edit.cshtml">
+      <publishTime>11/10/2025 14:06:59</publishTime>
+    </File>
+    <File Include="Views/LeaveCategories/Index.cshtml">
+      <publishTime>11/10/2025 14:07:00</publishTime>
+    </File>
+    <File Include="Views/LeaveMasters/Create.cshtml">
+      <publishTime>11/10/2025 14:11:36</publishTime>
+    </File>
+    <File Include="Views/LeaveMasters/Delete.cshtml">
+      <publishTime>11/10/2025 14:11:38</publishTime>
+    </File>
+    <File Include="Views/LeaveMasters/Details.cshtml">
+      <publishTime>11/10/2025 14:11:39</publishTime>
+    </File>
+    <File Include="Views/LeaveMasters/Edit.cshtml">
+      <publishTime>11/10/2025 14:11:40</publishTime>
+    </File>
+    <File Include="Views/LeaveMasters/Index.cshtml">
+      <publishTime>11/10/2025 14:11:41</publishTime>
+    </File>
+    <File Include="Views/Leaves/Create.cshtml">
+      <publishTime>11/10/2025 14:02:38</publishTime>
+    </File>
+    <File Include="Views/Leaves/Delete.cshtml">
+      <publishTime>11/10/2025 14:02:39</publishTime>
+    </File>
+    <File Include="Views/Leaves/Details.cshtml">
+      <publishTime>11/10/2025 14:02:40</publishTime>
+    </File>
+    <File Include="Views/Leaves/Edit.cshtml">
+      <publishTime>11/10/2025 14:02:42</publishTime>
+    </File>
+    <File Include="Views/Leaves/Index.cshtml">
+      <publishTime>11/10/2025 14:02:43</publishTime>
+    </File>
+    <File Include="Views/LeaveStatus/Create.cshtml">
+      <publishTime>11/10/2025 14:15:56</publishTime>
+    </File>
+    <File Include="Views/LeaveStatus/Delete.cshtml">
+      <publishTime>11/10/2025 14:15:57</publishTime>
+    </File>
+    <File Include="Views/LeaveStatus/Details.cshtml">
+      <publishTime>11/10/2025 14:15:58</publishTime>
+    </File>
+    <File Include="Views/LeaveStatus/Edit.cshtml">
+      <publishTime>11/10/2025 14:15:59</publishTime>
+    </File>
+    <File Include="Views/LeaveStatus/Index.cshtml">
+      <publishTime>11/10/2025 14:16:00</publishTime>
+    </File>
+    <File Include="Views/LeaveTypes/Create.cshtml">
+      <publishTime>11/10/2025 14:18:53</publishTime>
+    </File>
+    <File Include="Views/LeaveTypes/Delete.cshtml">
+      <publishTime>11/10/2025 14:18:54</publishTime>
+    </File>
+    <File Include="Views/LeaveTypes/Details.cshtml">
+      <publishTime>11/10/2025 14:18:55</publishTime>
+    </File>
+    <File Include="Views/LeaveTypes/Edit.cshtml">
+      <publishTime>11/10/2025 14:18:56</publishTime>
+    </File>
+    <File Include="Views/LeaveTypes/Index.cshtml">
+      <publishTime>11/10/2025 14:18:58</publishTime>
+    </File>
+    <File Include="Views/LoanCategories/Create.cshtml">
+      <publishTime>11/10/2025 14:23:51</publishTime>
+    </File>
+    <File Include="Views/LoanCategories/Delete.cshtml">
+      <publishTime>11/10/2025 14:23:52</publishTime>
+    </File>
+    <File Include="Views/LoanCategories/Details.cshtml">
+      <publishTime>11/10/2025 14:23:53</publishTime>
+    </File>
+    <File Include="Views/LoanCategories/Edit.cshtml">
+      <publishTime>11/10/2025 14:23:55</publishTime>
+    </File>
+    <File Include="Views/LoanCategories/Index.cshtml">
+      <publishTime>11/10/2025 14:23:56</publishTime>
+    </File>
+    <File Include="Views/Locations/Create.cshtml">
+      <publishTime>11/14/2025 22:02:39</publishTime>
+    </File>
+    <File Include="Views/Locations/Delete.cshtml">
+      <publishTime>11/14/2025 22:12:19</publishTime>
+    </File>
+    <File Include="Views/Locations/Details.cshtml">
+      <publishTime>11/14/2025 22:11:58</publishTime>
+    </File>
+    <File Include="Views/Locations/Edit.cshtml">
+      <publishTime>11/14/2025 22:04:07</publishTime>
+    </File>
+    <File Include="Views/Locations/Index.cshtml">
+      <publishTime>11/14/2025 22:01:29</publishTime>
+    </File>
+    <File Include="Views/LogDetails/Create.cshtml">
+      <publishTime>11/10/2025 14:29:22</publishTime>
+    </File>
+    <File Include="Views/LogDetails/Delete.cshtml">
+      <publishTime>11/10/2025 14:29:23</publishTime>
+    </File>
+    <File Include="Views/LogDetails/Details.cshtml">
+      <publishTime>11/10/2025 14:29:24</publishTime>
+    </File>
+    <File Include="Views/LogDetails/Edit.cshtml">
+      <publishTime>11/10/2025 14:29:25</publishTime>
+    </File>
+    <File Include="Views/LogDetails/Index.cshtml">
+      <publishTime>11/10/2025 14:29:27</publishTime>
+    </File>
+    <File Include="Views/MenuConfigurations/Create.cshtml">
+      <publishTime>11/10/2025 14:33:47</publishTime>
+    </File>
+    <File Include="Views/MenuConfigurations/Delete.cshtml">
+      <publishTime>11/10/2025 14:33:49</publishTime>
+    </File>
+    <File Include="Views/MenuConfigurations/Details.cshtml">
+      <publishTime>11/10/2025 14:33:50</publishTime>
+    </File>
+    <File Include="Views/MenuConfigurations/Edit.cshtml">
+      <publishTime>11/10/2025 14:33:51</publishTime>
+    </File>
+    <File Include="Views/MenuConfigurations/Index.cshtml">
+      <publishTime>11/10/2025 14:33:52</publishTime>
+    </File>
+    <File Include="Views/Nopays/Create.cshtml">
+      <publishTime>11/15/2025 07:07:33</publishTime>
+    </File>
+    <File Include="Views/Nopays/Delete.cshtml">
+      <publishTime>11/15/2025 07:05:45</publishTime>
+    </File>
+    <File Include="Views/Nopays/Details.cshtml">
+      <publishTime>11/15/2025 07:06:27</publishTime>
+    </File>
+    <File Include="Views/Nopays/Edit.cshtml">
+      <publishTime>11/15/2025 07:07:10</publishTime>
+    </File>
+    <File Include="Views/Nopays/Index.cshtml">
+      <publishTime>11/15/2025 07:08:06</publishTime>
+    </File>
+    <File Include="Views/NurseShifts/Create.cshtml">
+      <publishTime>11/15/2025 06:23:14</publishTime>
+    </File>
+    <File Include="Views/NurseShifts/Delete.cshtml">
+      <publishTime>11/15/2025 06:22:18</publishTime>
+    </File>
+    <File Include="Views/NurseShifts/Details.cshtml">
+      <publishTime>11/15/2025 06:22:31</publishTime>
+    </File>
+    <File Include="Views/NurseShifts/Edit.cshtml">
+      <publishTime>11/15/2025 06:22:53</publishTime>
+    </File>
+    <File Include="Views/NurseShifts/Index.cshtml">
+      <publishTime>11/15/2025 06:23:27</publishTime>
+    </File>
+    <File Include="Views/OPDSquences/Create.cshtml">
+      <publishTime>11/10/2025 14:42:45</publishTime>
+    </File>
+    <File Include="Views/OPDSquences/Delete.cshtml">
+      <publishTime>11/10/2025 14:42:46</publishTime>
+    </File>
+    <File Include="Views/OPDSquences/Details.cshtml">
+      <publishTime>11/10/2025 14:42:47</publishTime>
+    </File>
+    <File Include="Views/OPDSquences/Edit.cshtml">
+      <publishTime>11/10/2025 14:42:49</publishTime>
+    </File>
+    <File Include="Views/OPDSquences/Index.cshtml">
+      <publishTime>11/10/2025 14:42:50</publishTime>
+    </File>
+    <File Include="Views/OPDTimeSlots/Create.cshtml">
+      <publishTime>11/10/2025 14:45:10</publishTime>
+    </File>
+    <File Include="Views/OPDTimeSlots/Delete.cshtml">
+      <publishTime>11/10/2025 14:45:11</publishTime>
+    </File>
+    <File Include="Views/OPDTimeSlots/Details.cshtml">
+      <publishTime>11/10/2025 14:45:13</publishTime>
+    </File>
+    <File Include="Views/OPDTimeSlots/Edit.cshtml">
+      <publishTime>11/10/2025 14:45:14</publishTime>
+    </File>
+    <File Include="Views/OPDTimeSlots/Index.cshtml">
+      <publishTime>11/10/2025 14:45:15</publishTime>
+    </File>
+    <File Include="Views/OrderTypes/Create.cshtml">
+      <publishTime>11/15/2025 00:03:43</publishTime>
+    </File>
+    <File Include="Views/OrderTypes/Delete.cshtml">
+      <publishTime>11/15/2025 00:08:54</publishTime>
+    </File>
+    <File Include="Views/OrderTypes/Details.cshtml">
+      <publishTime>11/15/2025 00:07:05</publishTime>
+    </File>
+    <File Include="Views/OrderTypes/Edit.cshtml">
+      <publishTime>11/15/2025 00:05:28</publishTime>
+    </File>
+    <File Include="Views/OrderTypes/Index.cshtml">
+      <publishTime>11/15/2025 00:03:34</publishTime>
+    </File>
+    <File Include="Views/OTTypes/Create.cshtml">
+      <publishTime>11/10/2025 15:11:22</publishTime>
+    </File>
+    <File Include="Views/OTTypes/Delete.cshtml">
+      <publishTime>11/10/2025 15:11:23</publishTime>
+    </File>
+    <File Include="Views/OTTypes/Details.cshtml">
+      <publishTime>11/10/2025 15:11:25</publishTime>
+    </File>
+    <File Include="Views/OTTypes/Edit.cshtml">
+      <publishTime>11/10/2025 15:11:26</publishTime>
+    </File>
+    <File Include="Views/OTTypes/Index.cshtml">
+      <publishTime>11/10/2025 15:11:27</publishTime>
+    </File>
+    <File Include="Views/PayeeTaxes/Create.cshtml">
+      <publishTime>11/15/2025 16:47:44</publishTime>
+    </File>
+    <File Include="Views/PayeeTaxes/Delete.cshtml">
+      <publishTime>11/15/2025 16:51:36</publishTime>
+    </File>
+    <File Include="Views/PayeeTaxes/Details.cshtml">
+      <publishTime>11/15/2025 16:51:07</publishTime>
+    </File>
+    <File Include="Views/PayeeTaxes/Edit.cshtml">
+      <publishTime>11/15/2025 16:48:04</publishTime>
+    </File>
+    <File Include="Views/PayeeTaxes/Index.cshtml">
+      <publishTime>11/15/2025 16:47:23</publishTime>
+    </File>
+    <File Include="Views/PaymentCategories/Create.cshtml">
+      <publishTime>11/10/2025 15:48:18</publishTime>
+    </File>
+    <File Include="Views/PaymentCategories/Delete.cshtml">
+      <publishTime>11/10/2025 15:48:19</publishTime>
+    </File>
+    <File Include="Views/PaymentCategories/Details.cshtml">
+      <publishTime>11/10/2025 15:48:21</publishTime>
+    </File>
+    <File Include="Views/PaymentCategories/Edit.cshtml">
+      <publishTime>11/10/2025 15:48:23</publishTime>
+    </File>
+    <File Include="Views/PaymentCategories/Index.cshtml">
+      <publishTime>11/10/2025 15:48:24</publishTime>
+    </File>
+    <File Include="Views/PaymentDetails/Create.cshtml">
+      <publishTime>11/10/2025 15:50:34</publishTime>
+    </File>
+    <File Include="Views/PaymentDetails/Delete.cshtml">
+      <publishTime>11/10/2025 15:50:35</publishTime>
+    </File>
+    <File Include="Views/PaymentDetails/Details.cshtml">
+      <publishTime>11/10/2025 15:50:36</publishTime>
+    </File>
+    <File Include="Views/PaymentDetails/Edit.cshtml">
+      <publishTime>11/10/2025 15:50:37</publishTime>
+    </File>
+    <File Include="Views/PaymentDetails/Index.cshtml">
+      <publishTime>11/10/2025 15:50:39</publishTime>
+    </File>
+    <File Include="Views/PaymentSubCategories/Create.cshtml">
+      <publishTime>11/14/2025 13:13:56</publishTime>
+    </File>
+    <File Include="Views/PaymentSubCategories/Delete.cshtml">
+      <publishTime>11/14/2025 13:19:05</publishTime>
+    </File>
+    <File Include="Views/PaymentSubCategories/Details.cshtml">
+      <publishTime>11/14/2025 13:16:48</publishTime>
+    </File>
+    <File Include="Views/PaymentSubCategories/Edit.cshtml">
+      <publishTime>11/14/2025 13:16:24</publishTime>
+    </File>
+    <File Include="Views/PaymentSubCategories/Index.cshtml">
+      <publishTime>11/14/2025 13:13:36</publishTime>
+    </File>
+    <File Include="Views/PaymentTypes/Create.cshtml">
+      <publishTime>11/10/2025 16:07:35</publishTime>
+    </File>
+    <File Include="Views/PaymentTypes/Delete.cshtml">
+      <publishTime>11/10/2025 16:07:37</publishTime>
+    </File>
+    <File Include="Views/PaymentTypes/Details.cshtml">
+      <publishTime>11/10/2025 16:07:38</publishTime>
+    </File>
+    <File Include="Views/PaymentTypes/Edit.cshtml">
+      <publishTime>11/10/2025 16:07:39</publishTime>
+    </File>
+    <File Include="Views/PaymentTypes/Index.cshtml">
+      <publishTime>11/10/2025 16:07:41</publishTime>
+    </File>
+    <File Include="Views/PayMonthMasters/Create.cshtml">
+      <publishTime>11/15/2025 15:51:42</publishTime>
+    </File>
+    <File Include="Views/PayMonthMasters/Delete.cshtml">
+      <publishTime>11/15/2025 15:59:09</publishTime>
+    </File>
+    <File Include="Views/PayMonthMasters/Details.cshtml">
+      <publishTime>11/15/2025 15:58:03</publishTime>
+    </File>
+    <File Include="Views/PayMonthMasters/Edit.cshtml">
+      <publishTime>11/15/2025 16:00:15</publishTime>
+    </File>
+    <File Include="Views/PayMonthMasters/Index.cshtml">
+      <publishTime>11/15/2025 15:51:30</publishTime>
+    </File>
+    <File Include="Views/PayrollRecords/Create.cshtml">
+      <publishTime>11/15/2025 12:06:40</publishTime>
+    </File>
+    <File Include="Views/PayrollRecords/Delete.cshtml">
+      <publishTime>11/15/2025 12:07:32</publishTime>
+    </File>
+    <File Include="Views/PayrollRecords/Details.cshtml">
+      <publishTime>11/15/2025 12:07:15</publishTime>
+    </File>
+    <File Include="Views/PayrollRecords/Edit.cshtml">
+      <publishTime>11/15/2025 12:06:58</publishTime>
+    </File>
+    <File Include="Views/PayrollRecords/Index.cshtml">
+      <publishTime>11/15/2025 12:06:23</publishTime>
+    </File>
+    <File Include="Views/RelatedParties/Create.cshtml">
+      <publishTime>11/14/2025 11:48:56</publishTime>
+    </File>
+    <File Include="Views/RelatedParties/Delete.cshtml">
+      <publishTime>11/14/2025 11:47:23</publishTime>
+    </File>
+    <File Include="Views/RelatedParties/Details.cshtml">
+      <publishTime>11/14/2025 11:48:05</publishTime>
+    </File>
+    <File Include="Views/RelatedParties/Edit.cshtml">
+      <publishTime>11/14/2025 11:48:27</publishTime>
+    </File>
+    <File Include="Views/RelatedParties/Index.cshtml">
+      <publishTime>11/14/2025 11:49:28</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyBankAccounts/Create.cshtml">
+      <publishTime>11/14/2025 13:25:45</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyBankAccounts/Delete.cshtml">
+      <publishTime>11/14/2025 13:30:39</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyBankAccounts/Details.cshtml">
+      <publishTime>11/14/2025 13:29:14</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyBankAccounts/Edit.cshtml">
+      <publishTime>11/14/2025 13:26:38</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyBankAccounts/Index.cshtml">
+      <publishTime>11/14/2025 13:25:19</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyCategories/Create.cshtml">
+      <publishTime>11/14/2025 13:38:05</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyCategories/Delete.cshtml">
+      <publishTime>11/14/2025 13:47:07</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyCategories/Details.cshtml">
+      <publishTime>11/14/2025 13:43:58</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyCategories/Edit.cshtml">
+      <publishTime>11/14/2025 13:41:45</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyCategories/Index.cshtml">
+      <publishTime>11/14/2025 13:35:38</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyDefaultSalaryModifiers/Create.cshtml">
+      <publishTime>11/14/2025 14:00:29</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyDefaultSalaryModifiers/Delete.cshtml">
+      <publishTime>11/14/2025 14:03:10</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyDefaultSalaryModifiers/Details.cshtml">
+      <publishTime>11/14/2025 14:06:16</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyDefaultSalaryModifiers/Edit.cshtml">
+      <publishTime>11/14/2025 14:12:24</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyDefaultSalaryModifiers/Index.cshtml">
+      <publishTime>11/14/2025 14:14:41</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyFixedRosters/Create.cshtml">
+      <publishTime>11/14/2025 14:21:55</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyFixedRosters/Delete.cshtml">
+      <publishTime>11/14/2025 14:23:03</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyFixedRosters/Details.cshtml">
+      <publishTime>11/14/2025 14:22:38</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyFixedRosters/Edit.cshtml">
+      <publishTime>11/14/2025 14:22:14</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyFixedRosters/Index.cshtml">
+      <publishTime>11/14/2025 14:21:37</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLeaveAllocations/Create.cshtml">
+      <publishTime>11/14/2025 14:24:44</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLeaveAllocations/Delete.cshtml">
+      <publishTime>11/14/2025 14:26:35</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLeaveAllocations/Details.cshtml">
+      <publishTime>11/14/2025 14:26:08</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLeaveAllocations/Edit.cshtml">
+      <publishTime>11/14/2025 14:25:47</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLeaveAllocations/Index.cshtml">
+      <publishTime>11/14/2025 14:24:26</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLeaveTypes/Create.cshtml">
+      <publishTime>11/14/2025 14:38:17</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLeaveTypes/Delete.cshtml">
+      <publishTime>11/14/2025 14:49:32</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLeaveTypes/Details.cshtml">
+      <publishTime>11/14/2025 14:46:19</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLeaveTypes/Edit.cshtml">
+      <publishTime>11/14/2025 14:44:17</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLeaveTypes/Index.cshtml">
+      <publishTime>11/14/2025 14:38:00</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLoan1/Create.cshtml">
+      <publishTime>11/14/2025 16:18:27</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLoan1/Delete.cshtml">
+      <publishTime>11/14/2025 16:20:50</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLoan1/Details.cshtml">
+      <publishTime>11/14/2025 16:19:36</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLoan1/Edit.cshtml">
+      <publishTime>11/14/2025 16:18:46</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLoan1/Index.cshtml">
+      <publishTime>11/14/2025 16:18:11</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLoans/Create.cshtml">
+      <publishTime>11/14/2025 16:26:03</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLoans/Delete.cshtml">
+      <publishTime>11/14/2025 16:31:23</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLoans/Details.cshtml">
+      <publishTime>11/14/2025 16:29:07</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLoans/Edit.cshtml">
+      <publishTime>11/14/2025 16:27:39</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyLoans/Index.cshtml">
+      <publishTime>11/14/2025 16:25:53</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyOrderDetails/Create.cshtml">
+      <publishTime>11/14/2025 15:08:07</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyOrderDetails/Delete.cshtml">
+      <publishTime>11/14/2025 15:39:39</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyOrderDetails/Details.cshtml">
+      <publishTime>11/14/2025 15:34:14</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyOrderDetails/Edit.cshtml">
+      <publishTime>11/14/2025 15:32:48</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyOrderDetails/Index.cshtml">
+      <publishTime>11/14/2025 15:06:04</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyOrderPayments/Create.cshtml">
+      <publishTime>11/14/2025 23:29:58</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyOrderPayments/Delete.cshtml">
+      <publishTime>11/14/2025 23:50:40</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyOrderPayments/Details.cshtml">
+      <publishTime>11/14/2025 23:35:26</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyOrderPayments/Edit.cshtml">
+      <publishTime>11/14/2025 23:33:17</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyOrderPayments/Index.cshtml">
+      <publishTime>11/14/2025 23:27:22</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyOrders/Create.cshtml">
+      <publishTime>11/14/2025 23:25:34</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyOrders/Delete.cshtml">
+      <publishTime>11/14/2025 23:25:53</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyOrders/Details.cshtml">
+      <publishTime>11/14/2025 23:26:09</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyOrders/Edit.cshtml">
+      <publishTime>11/14/2025 23:28:18</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyOrders/Index.cshtml">
+      <publishTime>11/14/2025 23:30:14</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyRoleAndSplashScreenItemMappings/Create.cshtml">
+      <publishTime>11/14/2025 23:42:32</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyRoleAndSplashScreenItemMappings/Delete.cshtml">
+      <publishTime>11/14/2025 23:49:39</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyRoleAndSplashScreenItemMappings/Details.cshtml">
+      <publishTime>11/14/2025 23:46:10</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyRoleAndSplashScreenItemMappings/Edit.cshtml">
+      <publishTime>11/14/2025 23:44:34</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyRoleAndSplashScreenItemMappings/Index.cshtml">
+      <publishTime>11/14/2025 23:40:57</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyRoles/Create.cshtml">
+      <publishTime>11/14/2025 21:31:37</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyRoles/Delete.cshtml">
+      <publishTime>11/14/2025 21:33:40</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyRoles/Details.cshtml">
+      <publishTime>11/14/2025 21:32:25</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyRoles/Edit.cshtml">
+      <publishTime>11/14/2025 21:32:06</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyRoles/Index.cshtml">
+      <publishTime>11/14/2025 21:34:19</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySalaries/Create.cshtml">
+      <publishTime>11/15/2025 06:51:50</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySalaries/Delete.cshtml">
+      <publishTime>11/15/2025 07:02:59</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySalaries/Details.cshtml">
+      <publishTime>11/15/2025 06:54:31</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySalaries/Edit.cshtml">
+      <publishTime>11/15/2025 06:52:26</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySalaries/Index.cshtml">
+      <publishTime>11/15/2025 06:51:27</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySalaryModifierMappings/Create.cshtml">
+      <publishTime>11/15/2025 16:46:17</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySalaryModifierMappings/Delete.cshtml">
+      <publishTime>11/15/2025 16:42:02</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySalaryModifierMappings/Details.cshtml">
+      <publishTime>11/15/2025 16:43:37</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySalaryModifierMappings/Edit.cshtml">
+      <publishTime>11/15/2025 16:44:05</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySalaryModifierMappings/Index.cshtml">
+      <publishTime>11/15/2025 16:46:25</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySessions/Create.cshtml">
+      <publishTime>11/14/2025 22:56:15</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySessions/Delete.cshtml">
+      <publishTime>11/14/2025 22:56:03</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySessions/Details.cshtml">
+      <publishTime>11/14/2025 22:56:54</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySessions/Edit.cshtml">
+      <publishTime>11/14/2025 22:55:01</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySessions/Index.cshtml">
+      <publishTime>11/14/2025 22:59:14</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySessionTypes/Create.cshtml">
+      <publishTime>11/14/2025 23:16:35</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySessionTypes/Delete.cshtml">
+      <publishTime>11/14/2025 23:23:38</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySessionTypes/Details.cshtml">
+      <publishTime>11/14/2025 23:22:06</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySessionTypes/Edit.cshtml">
+      <publishTime>11/14/2025 23:22:33</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySessionTypes/Index.cshtml">
+      <publishTime>11/14/2025 23:16:23</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySubCategories/Create.cshtml">
+      <publishTime>11/14/2025 21:44:34</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySubCategories/Delete.cshtml">
+      <publishTime>11/14/2025 21:47:29</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySubCategories/Details.cshtml">
+      <publishTime>11/14/2025 21:47:08</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySubCategories/Edit.cshtml">
+      <publishTime>11/14/2025 21:45:00</publishTime>
+    </File>
+    <File Include="Views/RelatedPartySubCategories/Index.cshtml">
+      <publishTime>11/14/2025 21:44:17</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyTypes/Create.cshtml">
+      <publishTime>11/14/2025 12:14:51</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyTypes/Delete.cshtml">
+      <publishTime>11/14/2025 12:15:38</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyTypes/Details.cshtml">
+      <publishTime>11/14/2025 12:16:11</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyTypes/Edit.cshtml">
+      <publishTime>11/14/2025 12:16:38</publishTime>
+    </File>
+    <File Include="Views/RelatedPartyTypes/Index.cshtml">
+      <publishTime>11/14/2025 12:29:19</publishTime>
+    </File>
+    <File Include="Views/RosterStatus/Create.cshtml">
+      <publishTime>11/15/2025 06:47:10</publishTime>
+    </File>
+    <File Include="Views/RosterStatus/Delete.cshtml">
+      <publishTime>11/15/2025 06:48:45</publishTime>
+    </File>
+    <File Include="Views/RosterStatus/Details.cshtml">
+      <publishTime>11/15/2025 06:48:03</publishTime>
+    </File>
+    <File Include="Views/RosterStatus/Edit.cshtml">
+      <publishTime>11/15/2025 06:47:29</publishTime>
+    </File>
+    <File Include="Views/RosterStatus/Index.cshtml">
+      <publishTime>11/15/2025 06:46:55</publishTime>
+    </File>
+    <File Include="Views/RosterTypes/Create.cshtml">
+      <publishTime>11/15/2025 06:26:52</publishTime>
+    </File>
+    <File Include="Views/RosterTypes/Delete.cshtml">
+      <publishTime>11/15/2025 06:25:52</publishTime>
+    </File>
+    <File Include="Views/RosterTypes/Details.cshtml">
+      <publishTime>11/15/2025 06:26:13</publishTime>
+    </File>
+    <File Include="Views/RosterTypes/Edit.cshtml">
+      <publishTime>11/15/2025 06:26:32</publishTime>
+    </File>
+    <File Include="Views/RosterTypes/Index.cshtml">
+      <publishTime>11/15/2025 06:27:10</publishTime>
+    </File>
+    <File Include="Views/SalaryModifierDefaultValues/Create.cshtml">
+      <publishTime>11/15/2025 16:21:19</publishTime>
+    </File>
+    <File Include="Views/SalaryModifierDefaultValues/Delete.cshtml">
+      <publishTime>11/15/2025 16:31:33</publishTime>
+    </File>
+    <File Include="Views/SalaryModifierDefaultValues/Details.cshtml">
+      <publishTime>11/15/2025 16:22:43</publishTime>
+    </File>
+    <File Include="Views/SalaryModifierDefaultValues/Edit.cshtml">
+      <publishTime>11/15/2025 16:22:16</publishTime>
+    </File>
+    <File Include="Views/SalaryModifierDefaultValues/Index.cshtml">
+      <publishTime>11/15/2025 16:20:52</publishTime>
+    </File>
+    <File Include="Views/SalaryModifiers/Create.cshtml">
+      <publishTime>11/15/2025 16:11:42</publishTime>
+    </File>
+    <File Include="Views/SalaryModifiers/Delete.cshtml">
+      <publishTime>11/15/2025 16:16:17</publishTime>
+    </File>
+    <File Include="Views/SalaryModifiers/Details.cshtml">
+      <publishTime>11/15/2025 16:14:59</publishTime>
+    </File>
+    <File Include="Views/SalaryModifiers/Edit.cshtml">
+      <publishTime>11/15/2025 16:12:18</publishTime>
+    </File>
+    <File Include="Views/SalaryModifiers/Index.cshtml">
+      <publishTime>11/15/2025 16:11:05</publishTime>
+    </File>
+    <File Include="Views/SalaryModifierTypes/Create.cshtml">
+      <publishTime>11/15/2025 16:18:17</publishTime>
+    </File>
+    <File Include="Views/SalaryModifierTypes/Delete.cshtml">
+      <publishTime>11/15/2025 16:19:29</publishTime>
+    </File>
+    <File Include="Views/SalaryModifierTypes/Details.cshtml">
+      <publishTime>11/15/2025 16:18:58</publishTime>
+    </File>
+    <File Include="Views/SalaryModifierTypes/Edit.cshtml">
+      <publishTime>11/15/2025 16:18:35</publishTime>
+    </File>
+    <File Include="Views/SalaryModifierTypes/Index.cshtml">
+      <publishTime>11/15/2025 16:17:53</publishTime>
+    </File>
+    <File Include="Views/SalaryTypes/Create.cshtml">
+      <publishTime>11/15/2025 16:04:52</publishTime>
+    </File>
+    <File Include="Views/SalaryTypes/Delete.cshtml">
+      <publishTime>11/15/2025 16:07:20</publishTime>
+    </File>
+    <File Include="Views/SalaryTypes/Details.cshtml">
+      <publishTime>11/15/2025 16:05:42</publishTime>
+    </File>
+    <File Include="Views/SalaryTypes/Edit.cshtml">
+      <publishTime>11/15/2025 16:05:18</publishTime>
+    </File>
+    <File Include="Views/SalaryTypes/Index.cshtml">
+      <publishTime>11/15/2025 16:04:34</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>11/14/2025 10:43:49</publishTime>
+    </File>
+    <File Include="Views/Shifts/Create.cshtml">
+      <publishTime>11/15/2025 06:08:59</publishTime>
+    </File>
+    <File Include="Views/Shifts/Delete.cshtml">
+      <publishTime>11/15/2025 06:17:21</publishTime>
+    </File>
+    <File Include="Views/Shifts/Details.cshtml">
+      <publishTime>11/15/2025 06:20:25</publishTime>
+    </File>
+    <File Include="Views/Shifts/Edit.cshtml">
+      <publishTime>11/15/2025 06:11:21</publishTime>
+    </File>
+    <File Include="Views/Shifts/Index.cshtml">
+      <publishTime>11/15/2025 06:07:58</publishTime>
+    </File>
+    <File Include="Views/SplashScreenItems/Create.cshtml">
+      <publishTime>11/11/2025 11:27:14</publishTime>
+    </File>
+    <File Include="Views/SplashScreenItems/Delete.cshtml">
+      <publishTime>11/11/2025 11:27:16</publishTime>
+    </File>
+    <File Include="Views/SplashScreenItems/Details.cshtml">
+      <publishTime>11/11/2025 11:27:18</publishTime>
+    </File>
+    <File Include="Views/SplashScreenItems/Edit.cshtml">
+      <publishTime>11/11/2025 11:27:20</publishTime>
+    </File>
+    <File Include="Views/SplashScreenItems/Index.cshtml">
+      <publishTime>11/11/2025 11:27:22</publishTime>
+    </File>
+    <File Include="Views/SystemLogs/Create.cshtml">
+      <publishTime>11/11/2025 11:32:48</publishTime>
+    </File>
+    <File Include="Views/SystemLogs/Delete.cshtml">
+      <publishTime>11/11/2025 11:32:49</publishTime>
+    </File>
+    <File Include="Views/SystemLogs/Details.cshtml">
+      <publishTime>11/11/2025 11:32:51</publishTime>
+    </File>
+    <File Include="Views/SystemLogs/Edit.cshtml">
+      <publishTime>11/11/2025 11:32:53</publishTime>
+    </File>
+    <File Include="Views/SystemLogs/Index.cshtml">
+      <publishTime>11/11/2025 11:32:55</publishTime>
+    </File>
+    <File Include="Views/TaxTypes/Create.cshtml">
+      <publishTime>11/11/2025 11:35:03</publishTime>
+    </File>
+    <File Include="Views/TaxTypes/Delete.cshtml">
+      <publishTime>11/11/2025 11:35:05</publishTime>
+    </File>
+    <File Include="Views/TaxTypes/Details.cshtml">
+      <publishTime>11/11/2025 11:35:06</publishTime>
+    </File>
+    <File Include="Views/TaxTypes/Edit.cshtml">
+      <publishTime>11/11/2025 11:35:08</publishTime>
+    </File>
+    <File Include="Views/TaxTypes/Index.cshtml">
+      <publishTime>11/11/2025 11:35:10</publishTime>
+    </File>
+    <File Include="Views/UnitTypes/Create.cshtml">
+      <publishTime>11/14/2025 23:57:07</publishTime>
+    </File>
+    <File Include="Views/UnitTypes/Delete.cshtml">
+      <publishTime>11/14/2025 23:58:45</publishTime>
+    </File>
+    <File Include="Views/UnitTypes/Details.cshtml">
+      <publishTime>11/14/2025 23:58:20</publishTime>
+    </File>
+    <File Include="Views/UnitTypes/Edit.cshtml">
+      <publishTime>11/14/2025 23:57:40</publishTime>
+    </File>
+    <File Include="Views/UnitTypes/Index.cshtml">
+      <publishTime>11/14/2025 23:56:54</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>11/05/2025 21:05:36</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>11/14/2025 17:00:17</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

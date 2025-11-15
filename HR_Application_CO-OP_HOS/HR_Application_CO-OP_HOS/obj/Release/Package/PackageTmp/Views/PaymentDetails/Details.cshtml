@@ -1,0 +1,170 @@
+﻿@model HR_Application_CO_OP_HOS.Models.PaymentDetail
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>PaymentDetail</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ChargeItemListID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ChargeItemListID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AdmissionType)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AdmissionType)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrderNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Amount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Amount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Drawer)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Drawer)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DoctorID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DoctorID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PatientName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PatientName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BHT)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BHT)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DoctorCharge)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DoctorCharge)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.HospitalCharge)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.HospitalCharge)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Reason)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Reason)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderStatus)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrderStatus)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ReceivedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ReceivedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsPosted)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsPosted)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsCancelPosted)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsCancelPosted)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

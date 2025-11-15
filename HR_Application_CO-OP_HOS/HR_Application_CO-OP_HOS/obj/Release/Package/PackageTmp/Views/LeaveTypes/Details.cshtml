@@ -1,0 +1,42 @@
+﻿@model HR_Application_CO_OP_HOS.Models.LeaveType
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>LeaveType</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TypeName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TypeName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LeaveDuration)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LeaveDuration)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

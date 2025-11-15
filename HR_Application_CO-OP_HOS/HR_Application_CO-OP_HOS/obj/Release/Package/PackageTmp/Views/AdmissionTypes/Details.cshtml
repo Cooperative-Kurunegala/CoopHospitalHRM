@@ -1,0 +1,50 @@
+﻿@model HR_Application_CO_OP_HOS.Models.AdmissionType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AdmissionType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AdmissionTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdmissionTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdmissionTypeDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdmissionTypeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdmissionTypeSequence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdmissionTypeSequence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdmissionTypeCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdmissionTypeCode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
