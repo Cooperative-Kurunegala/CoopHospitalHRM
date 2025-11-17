@@ -1,0 +1,304 @@
+﻿<!-- Index.cshtml -->
+@model IEnumerable<HR_Application_CO_OP_HOS.Models.EmployeeLoan>
+
+@{
+    ViewBag.Title = "Employee Loan Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Employee Loan Management -->
+<div class="fullscreen-container dashboard-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">💰 EMPLOYEE LOANS</h1>
+            <p class="hospital-subtitle">Manage Employee Loans & Installments</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Welcome, System Administrator</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions-panel">
+        <div class="section-header"><h2>🚀 QUICK ACTIONS</h2></div>
+        <div class="quick-actions-grid">
+            <a href="@Url.Action("Create", "EmployeeLoans")" class="quick-action-btn btn-primary">
+                <span>➕ Create New Loan</span>
+            </a>
+            <a href="@Url.Action("Index", "Employees")" class="quick-action-btn btn-success">
+                <span>👥 View Employees</span>
+            </a>
+            <a href="@Url.Action("Index", "LoanCategories")" class="quick-action-btn btn-info">
+                <span>📁 Loan Categories</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Loans Data Section -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>📋 ALL EMPLOYEE LOANS</h2>
+        </div>
+        <div class="section-content">
+            <div class="data-table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Loan Number</th>
+                            <th>Employee ID</th>
+                            <th>Loan Amount</th>
+                            <th>Interest Rate</th>
+                            <th>Total Amount</th>
+                            <th>Monthly Installment</th>
+                            <th>Paid/Total</th>
+                            <th>Remaining Amount</th>
+                            <th>Status</th>
+                            <th>Start Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.LoanNumber)</td>
+                                <td>@Html.DisplayFor(modelItem => item.EmployeeID)</td>
+                                <td>@Html.DisplayFor(modelItem => item.LoanAmount)</td>
+                                <td>@Html.DisplayFor(modelItem => item.InterestRate)%</td>
+                                <td>@Html.DisplayFor(modelItem => item.TotalAmount)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MonthlyInstallment)</td>
+                                <td>@Html.DisplayFor(modelItem => item.PaidInstallments)/@Html.DisplayFor(modelItem => item.TotalInstallments)</td>
+                                <td>@Html.DisplayFor(modelItem => item.RemainingAmount)</td>
+                                <td>
+                                    <span class="status-badge status-@item.Status.ToLower()">
+                                        @Html.DisplayFor(modelItem => item.Status)
+                                    </span>
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => item.StartDate)</td>
+                                <td class="action-buttons">
+                                    <a href="@Url.Action("Edit", new { id = item.LoanID })" class="btn-action btn-edit">✏️ Edit</a>
+                                    <a href="@Url.Action("Details", new { id = item.LoanID })" class="btn-action btn-details">👁️ Details</a>
+                                    <a href="@Url.Action("Delete", new { id = item.LoanID })" class="btn-action btn-delete">🗑️ Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .dashboard-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.8rem;
+        background: rgba(0,0,0,0.2);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .quick-actions-panel {
+        padding: 40px 20px;
+        background: #ffffff;
+        border-bottom: 4px solid #000000;
+    }
+
+    .quick-actions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+    }
+
+    .quick-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 20px;
+        border: none;
+        border-radius: 15px;
+        font-size: 2rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        text-align: center;
+        min-height: 120px;
+    }
+
+    .btn-primary {
+        background: #006400;
+        color: white;
+    }
+
+    .btn-success {
+        background: #28a745;
+        color: white;
+    }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+    .quick-action-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .dashboard-section {
+        padding: 20px;
+    }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .data-table-container {
+        overflow-x: auto;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 1.4rem;
+    }
+
+        .data-table th {
+            background: #006400;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+            border: 2px solid #004d00;
+        }
+
+        .data-table td {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            background: #f8f9fa;
+        }
+
+        .data-table tr:nth-child(even) td {
+            background: #e9ecef;
+        }
+
+        .data-table tr:hover td {
+            background: #d1ecf1;
+        }
+
+    .status-badge {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 15px;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .status-active {
+        background: #d4edda;
+        color: #155724;
+        border: 2px solid #c3e6cb;
+    }
+
+    .status-pending {
+        background: #fff3cd;
+        color: #856404;
+        border: 2px solid #ffeaa7;
+    }
+
+    .status-completed {
+        background: #d1ecf1;
+        color: #0c5460;
+        border: 2px solid #bee5eb;
+    }
+
+    .status-default {
+        background: #e2e3e5;
+        color: #383d41;
+        border: 2px solid #d6d8db;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 8px;
+    }
+
+    .btn-action {
+        padding: 8px 12px;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+    .btn-edit {
+        background: #ffc107;
+        color: #212529;
+        border: 2px solid #e0a800;
+    }
+
+    .btn-details {
+        background: #17a2b8;
+        color: white;
+        border: 2px solid #138496;
+    }
+
+    .btn-delete {
+        background: #dc3545;
+        color: white;
+        border: 2px solid #c82333;
+    }
+
+    .btn-action:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @@media (max-width: 768px) {
+        body {
+            font-size: 24px;
+        }
+
+        .hospital-name {
+            font-size: 2.5rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1.5rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 15px;
+            font-size: 1.4rem;
+        }
+
+        .quick-actions-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+
+        .data-table {
+            font-size: 1.2rem;
+        }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px;
+            }
+    }
+</style>

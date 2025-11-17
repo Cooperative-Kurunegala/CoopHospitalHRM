@@ -1,272 +1,177 @@
-﻿@model HR_Application_CO_OP_HOS.Models.Allowance
+﻿﻿@model HR_Application_CO_OP_HOS.Models.Allowance
 
 @{
     ViewBag.Title = "Edit Allowance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!-- Full Screen Container -->
-<div class="dashboard-container">
-    <!-- Header Section -->
+<div class="fullscreen-container">
     <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-edit"></i> Edit Allowance</h1>
-            <p class="lead">Update allowance information</p>
+        <div class="header-content">
+            <h1 class="hospital-name">EDIT ALLOWANCE</h1>
+            <p class="hospital-subtitle">Update Allowance Information</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Welcome, System Administrator</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
         </div>
     </div>
 
-    <div class="row no-gutters">
-        <!-- Form Section -->
-        <div class="col-md-8">
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-pencil"></i> Edit Allowance Details</h3>
+    <div class="dashboard-grid">
+        <div class="row no-gutters">
+            <div class="col-md-12 dashboard-section">
+                <div class="section-header">
+                    <h2>✏️ EDIT ALLOWANCE DETAILS</h2>
                 </div>
-                <div class="panel-body">
-                    @using (Html.BeginForm("Edit", "Allowances", FormMethod.Post, new { @class = "form-horizontal", id = "editForm" }))
+                <div class="section-content">
+                    @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
-                        @Html.HiddenFor(model => model.Id)
 
-                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                        <div class="form-container" style="background:#f8f9fa;border:3px solid #006400;border-radius:15px;padding:40px;">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.AllowanceID)
 
-                        <div class="form-row">
-                            <div class="col-md-6">
+                            <div class="form-grid">
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.EmployeeId, "Employee *", htmlAttributes: new { @class = "control-label" })
-                                    @Html.DropDownList("EmployeeId", null, htmlAttributes: new { @class = "form-control select2", required = "required" })
-                                    @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "text-danger" })
-                                    <small class="form-text text-muted">Current: @(Model.RelatedParty?.RegistrationNumber ?? "Not assigned")</small>
+                                    @Html.LabelFor(model => model.AllowanceName, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.AllowanceName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter allowance name" } })
+                                    @Html.ValidationMessageFor(model => model.AllowanceName, "", new { @class = "text-danger" })
                                 </div>
-                            </div>
-                            <div class="col-md-6">
+
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.AllowanceType, "Allowance Type *", htmlAttributes: new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.AllowanceType, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter allowance type", required = "required" } })
+                                    @Html.LabelFor(model => model.AllowanceType, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.AllowanceType, new { htmlAttributes = new { @class = "form-control", placeholder = "e.g., Travel, Medical, Housing" } })
                                     @Html.ValidationMessageFor(model => model.AllowanceType, "", new { @class = "text-danger" })
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="form-row">
-                            <div class="col-md-6">
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Amount, "Amount *", htmlAttributes: new { @class = "control-label" })
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">$</span>
-                                        </div>
-                                        @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", placeholder = "0.00", type = "number", step = "0.01", min = "0", required = "required" } })
-                                    </div>
+                                    @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", placeholder = "0.00" } })
                                     @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.EffectiveDate, "Effective Date *", htmlAttributes: new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.EffectiveDate, new { htmlAttributes = new { @class = "form-control", type = "date", required = "required" } })
-                                    @Html.ValidationMessageFor(model => model.EffectiveDate, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="form-row">
-                            <div class="col-md-6">
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.ModifiedDate, "Last Modified", htmlAttributes: new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.ModifiedDate, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
-                                    @Html.ValidationMessageFor(model => model.ModifiedDate, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.IsPercentage, htmlAttributes: new { @class = "form-label" })
+                                    <div class="checkbox-container">
+                                        @Html.EditorFor(model => model.IsPercentage)
+                                        @Html.ValidationMessageFor(model => model.IsPercentage, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.ModifiedBy, "Modified By", htmlAttributes: new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.ModifiedBy, new { htmlAttributes = new { @class = "form-control", type = "number", placeholder = "User ID" } })
-                                    @Html.ValidationMessageFor(model => model.ModifiedBy, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="form-group mt-4">
-                            <button type="submit" class="btn btn-warning btn-lg">
-                                <i class="fa fa-save"></i> Update Allowance
-                            </button>
-                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary btn-lg" })
-                            @Html.ActionLink("View Details", "Details", new { id = Model.Id }, new { @class = "btn btn-info btn-lg" })
-                            <button type="button" id="resetForm" class="btn btn-outline-warning btn-lg">
-                                <i class="fa fa-refresh"></i> Reset Changes
-                            </button>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PercentageOf, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.PercentageOf, new { htmlAttributes = new { @class = "form-control", placeholder = "e.g., Basic Salary" } })
+                                    @Html.ValidationMessageFor(model => model.PercentageOf, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.IsTaxable, htmlAttributes: new { @class = "form-label" })
+                                    <div class="checkbox-container">
+                                        @Html.EditorFor(model => model.IsTaxable)
+                                        @Html.ValidationMessageFor(model => model.IsTaxable, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
+                                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = 4, placeholder = "Enter allowance description..." })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "form-label" })
+                                    <div class="checkbox-container">
+                                        @Html.EditorFor(model => model.IsActive)
+                                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <span>💾 Save Changes</span>
+                                </button>
+                                <a href="@Url.Action("Index", "Allowances")" class="btn btn-secondary btn-lg">
+                                    <span>📋 Back to List</span>
+                                </a>
+                                <a href="@Url.Action("Details", "Allowances", new { id = Model.AllowanceID })" class="btn btn-info btn-lg">
+                                    <span>👁️ View Details</span>
+                                </a>
+                            </div>
                         </div>
                     }
-                </div>
-            </div>
-        </div>
-
-        <!-- Information Panel -->
-        <div class="col-md-4">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-history"></i> Audit Information</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="info-section">
-                        <h5><i class="fa fa-calendar text-primary"></i> Creation Details</h5>
-                        <div class="audit-info">
-                            <strong>Created Date:</strong><br>
-                            <span class="text-muted">@(Model.CreatedDate?.ToString("yyyy-MM-dd HH:mm") ?? "Not recorded")</span>
-                        </div>
-                        <div class="audit-info mt-2">
-                            <strong>Created By:</strong><br>
-                            <span class="text-muted">@(Model.CreatedBy?.ToString() ?? "Not recorded")</span>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="info-section">
-                        <h5><i class="fa fa-pencil text-warning"></i> Modification History</h5>
-                        <div class="audit-info">
-                            <strong>Last Modified:</strong><br>
-                            <span class="text-muted">@(Model.ModifiedDate?.ToString("yyyy-MM-dd HH:mm") ?? "Never modified")</span>
-                        </div>
-                        <div class="audit-info mt-2">
-                            <strong>Last Modified By:</strong><br>
-                            <span class="text-muted">@(Model.ModifiedBy?.ToString() ?? "Not recorded")</span>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="info-section">
-                        <h5><i class="fa fa-exclamation-triangle text-danger"></i> Important</h5>
-                        <div class="alert alert-warning">
-                            <small>
-                                <i class="fa fa-info-circle"></i>
-                                Changing allowance details may affect payroll calculations and historical records.
-                            </small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="panel panel-danger mt-4">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-trash"></i> Danger Zone</h3>
-                </div>
-                <div class="panel-body text-center">
-                    @Html.ActionLink("Delete This Allowance", "Delete", new { id = Model.Id }, new { @class = "btn btn-danger btn-block" })
-                    <small class="text-muted">This action cannot be undone</small>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(document).ready(function () {
-            // Initialize select2
-            $('.select2').select2();
-
-            // Reset form to original values
-            $('#resetForm').click(function () {
-                if (confirm('Are you sure you want to reset all changes?')) {
-                    location.reload();
-                }
-            });
-
-            // Auto-fill current date for ModifiedDate
-            $('#ModifiedDate').val(new Date().toISOString().slice(0, 16));
-
-            // Form validation
-            $('#editForm').submit(function (e) {
-                var amount = $('#Amount').val();
-                if (amount && parseFloat(amount) <= 0) {
-                    e.preventDefault();
-                    alert('Amount must be greater than 0');
-                    return false;
-                }
-
-                // Show loading state
-                $('button[type="submit"]').html('<i class="fa fa-spinner fa-spin"></i> Updating...').prop('disabled', true);
-            });
-
-            // Track form changes
-            var originalForm = $('#editForm').serialize();
-            $('#editForm').on('change input', function () {
-                var currentForm = $(this).serialize();
-                if (originalForm !== currentForm) {
-                    $('button[type="submit"]').removeClass('btn-warning').addClass('btn-success');
-                } else {
-                    $('button[type="submit"]').removeClass('btn-success').addClass('btn-warning');
-                }
-            });
-        });
-    </script>
-}
-
 <style>
-    .dashboard-container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 20px;
-        margin: 0;
+    .form-container {
+        max-width: 100%;
     }
 
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
-        color: white;
-        border-radius: 15px;
-        padding: 30px;
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .full-width {
+        grid-column: 1 / -1;
+    }
+
+    .form-group {
         margin-bottom: 25px;
     }
 
-    .panel {
-        border: none;
-        border-radius: 15px;
-        box-shadow: 0 5px 25px rgba(0,0,0,0.1);
-        margin-bottom: 25px;
-        background: white;
-    }
-
-    .panel-heading {
-        border-radius: 15px 15px 0 0 !important;
-        border: none;
-        padding: 20px;
-        font-weight: 600;
-    }
-
-    .panel-body {
-        padding: 25px;
-    }
-
-    .audit-info {
-        background: #f8f9fa;
-        padding: 10px;
-        border-radius: 8px;
-        border-left: 4px solid #3498db;
+    .form-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 1.8rem;
+        color: #006400;
     }
 
     .form-control {
-        border-radius: 8px;
-        border: 2px solid #e9ecef;
-        padding: 12px 15px;
+        width: 100%;
+        padding: 15px;
+        font-size: 1.6rem;
+        border: 2px solid #006400;
+        border-radius: 10px;
+        background: white;
+    }
+
+    .checkbox-container {
+        margin-top: 10px;
+    }
+
+        .checkbox-container input[type="checkbox"] {
+            transform: scale(1.5);
+            margin-right: 10px;
+        }
+
+    .form-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
     }
 
     .btn-lg {
-        padding: 12px 30px;
-        font-size: 1.1rem;
-        border-radius: 8px;
-        margin-right: 10px;
-        margin-bottom: 10px;
-    }
-
-    .select2-container--default .select2-selection--single {
-        border: 2px solid #e9ecef;
-        border-radius: 8px;
-        height: calc(2.25rem + 14px);
-        padding: 6px;
+        padding: 20px 40px;
+        font-size: 1.8rem;
+        border-radius: 10px;
+        border: none;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
     }
 </style>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

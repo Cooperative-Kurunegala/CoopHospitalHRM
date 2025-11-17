@@ -1,0 +1,1381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HospitalHRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Allowances">
+          <Key>
+            <PropertyRef Name="AllowanceID" />
+          </Key>
+          <Property Name="AllowanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AllowanceName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AllowanceType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IsPercentage" Type="bit" Nullable="false" />
+          <Property Name="PercentageOf" Type="varchar" MaxLength="50" />
+          <Property Name="IsTaxable" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AttendanceRecords">
+          <Key>
+            <PropertyRef Name="AttendanceID" />
+          </Key>
+          <Property Name="AttendanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="AttendanceDate" Type="date" Nullable="false" />
+          <Property Name="ShiftID" Type="int" Nullable="false" />
+          <Property Name="ScheduledIn" Type="datetime" />
+          <Property Name="ScheduledOut" Type="datetime" />
+          <Property Name="ActualIn" Type="datetime" />
+          <Property Name="ActualOut" Type="datetime" />
+          <Property Name="TotalHours" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="OvertimeHours" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="NightHours" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="LateMinutes" Type="int" />
+          <Property Name="EarlyOutMinutes" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="20" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsRegularized" Type="bit" Nullable="false" />
+          <Property Name="RegularizedBy" Type="int" />
+          <Property Name="RegularizedDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="BankBranches">
+          <Key>
+            <PropertyRef Name="BranchID" />
+          </Key>
+          <Property Name="BranchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankID" Type="int" Nullable="false" />
+          <Property Name="BranchName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="BranchCode" Type="varchar" MaxLength="20" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Banks">
+          <Key>
+            <PropertyRef Name="BankID" />
+          </Key>
+          <Property Name="BankID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="BankCode" Type="varchar" MaxLength="20" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DepartmentCode" Type="varchar" MaxLength="20" />
+          <Property Name="ParentDepartmentID" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Designations">
+          <Key>
+            <PropertyRef Name="DesignationID" />
+          </Key>
+          <Property Name="DesignationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DesignationName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Grade" Type="varchar" MaxLength="20" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeAllowances">
+          <Key>
+            <PropertyRef Name="EmployeeAllowanceID" />
+          </Key>
+          <Property Name="EmployeeAllowanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="AllowanceID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EffectiveDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeBankAccounts">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="BankID" Type="int" Nullable="false" />
+          <Property Name="BranchID" Type="int" Nullable="false" />
+          <Property Name="AccountNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountHolderName" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsPrimary" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeCategories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="EmployeeLoans">
+          <Key>
+            <PropertyRef Name="LoanID" />
+          </Key>
+          <Property Name="LoanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="LoanCategoryID" Type="int" Nullable="false" />
+          <Property Name="LoanNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoanAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="InterestRate" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MonthlyInstallment" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalInstallments" Type="int" Nullable="false" />
+          <Property Name="PaidInstallments" Type="int" Nullable="false" />
+          <Property Name="RemainingInstallments" Type="int" Nullable="false" />
+          <Property Name="PaidAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="RemainingAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ApprovedBy" Type="int" />
+          <Property Name="ApprovedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EmployeeQualifications">
+          <Key>
+            <PropertyRef Name="QualificationID" />
+          </Key>
+          <Property Name="QualificationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Institution" Type="nvarchar" MaxLength="200" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Grade" Type="varchar" MaxLength="50" />
+          <Property Name="DocumentPath" Type="varchar" MaxLength="500" />
+          <Property Name="IsVerified" Type="bit" Nullable="false" />
+          <Property Name="VerifiedBy" Type="int" />
+          <Property Name="VerifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EPFNumber" Type="varchar" MaxLength="20" />
+          <Property Name="ETFNumber" Type="varchar" MaxLength="20" />
+          <Property Name="Title" Type="varchar" MaxLength="10" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="NIC" Type="varchar" MaxLength="20" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="15" />
+          <Property Name="EmergencyContactName" Type="nvarchar" MaxLength="200" />
+          <Property Name="EmergencyContactPhone" Type="varchar" MaxLength="15" />
+          <Property Name="EmergencyContactRelation" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="DateOfJoin" Type="date" Nullable="false" />
+          <Property Name="DateOfResignation" Type="date" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="BasicSalary" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DesignationID" Type="int" Nullable="false" />
+          <Property Name="EmployeeTypeID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="DepartmentID" Type="int" />
+          <Property Name="WardID" Type="int" />
+          <Property Name="SpecializationID" Type="int" />
+          <Property Name="MedicalLicenseNo" Type="varchar" MaxLength="100" />
+          <Property Name="LicenseExpiryDate" Type="date" />
+          <Property Name="BloodGroup" Type="varchar" MaxLength="5" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="EmployeeShift">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RelatedPartyID" Type="int" Nullable="false" />
+          <Property Name="ShiftDate" Type="date" Nullable="false" />
+          <Property Name="ShiftID" Type="int" Nullable="false" />
+          <Property Name="StartTime" Type="time" Precision="7" />
+          <Property Name="EndTime" Type="time" Precision="7" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeTrainings">
+          <Key>
+            <PropertyRef Name="TrainingID" />
+          </Key>
+          <Property Name="TrainingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="TrainingName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="TrainingProvider" Type="nvarchar" MaxLength="200" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="Duration" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CertificatePath" Type="varchar" MaxLength="500" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="EmployeeTypes">
+          <Key>
+            <PropertyRef Name="EmployeeTypeID" />
+          </Key>
+          <Property Name="EmployeeTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="LeaveCategories">
+          <Key>
+            <PropertyRef Name="LeaveCategoryID" />
+          </Key>
+          <Property Name="LeaveCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Leaves">
+          <Key>
+            <PropertyRef Name="LeaveID" />
+          </Key>
+          <Property Name="LeaveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="LeaveTypeID" Type="int" Nullable="false" />
+          <Property Name="LeaveCategoryID" Type="int" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="TotalDays" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="1000" />
+          <Property Name="MedicalCertificate" Type="bit" Nullable="false" />
+          <Property Name="CertificatePath" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ApprovedBy" Type="int" />
+          <Property Name="ApprovedDate" Type="datetime" />
+          <Property Name="RejectionReason" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="LeaveTypes">
+          <Key>
+            <PropertyRef Name="LeaveTypeID" />
+          </Key>
+          <Property Name="LeaveTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LeaveTypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LeaveCode" Type="varchar" MaxLength="20" />
+          <Property Name="MaxDaysPerYear" Type="int" Nullable="false" />
+          <Property Name="IsPaid" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoanCategories">
+          <Key>
+            <PropertyRef Name="LoanCategoryID" />
+          </Key>
+          <Property Name="LoanCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MaxAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="InterestRate" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="MaxInstallments" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoanInstallments">
+          <Key>
+            <PropertyRef Name="InstallmentID" />
+          </Key>
+          <Property Name="InstallmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoanID" Type="int" Nullable="false" />
+          <Property Name="InstallmentNumber" Type="int" Nullable="false" />
+          <Property Name="DueDate" Type="date" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PaidDate" Type="date" />
+          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PaidAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Locations">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OnCallSchedules">
+          <Key>
+            <PropertyRef Name="OnCallID" />
+          </Key>
+          <Property Name="OnCallID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="OnCallDate" Type="date" Nullable="false" />
+          <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PayrollRecords">
+          <Key>
+            <PropertyRef Name="PayrollID" />
+          </Key>
+          <Property Name="PayrollID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="PayPeriod" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="PayDate" Type="date" Nullable="false" />
+          <Property Name="BasicSalary" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FixedAllowances" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="VariableAllowances" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="OvertimePay" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ShiftAllowances" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="AttendanceIncentive" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="GrossSalary" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EPFEmployee" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EPFEmployer" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ETFEmployer" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PayeeTax" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LoanDeductions" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="OtherDeductions" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalDeductions" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="NetSalary" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PaymentMethod" Type="varchar" MaxLength="50" />
+          <Property Name="BankAccountID" Type="int" />
+          <Property Name="GeneratedDate" Type="datetime" Nullable="false" />
+          <Property Name="GeneratedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="PerformanceAppraisals">
+          <Key>
+            <PropertyRef Name="AppraisalID" />
+          </Key>
+          <Property Name="AppraisalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="AppraisalDate" Type="date" Nullable="false" />
+          <Property Name="AppraisalPeriod" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OverallRating" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="RatingScale" Type="varchar" MaxLength="50" />
+          <Property Name="Strengths" Type="nvarchar" MaxLength="1000" />
+          <Property Name="AreasForImprovement" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Goals" Type="nvarchar" MaxLength="1000" />
+          <Property Name="AppraisedBy" Type="int" Nullable="false" />
+          <Property Name="NextAppraisalDate" Type="date" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Shifts">
+          <Key>
+            <PropertyRef Name="ShiftID" />
+          </Key>
+          <Property Name="ShiftID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShiftName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShiftCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="IsNightShift" Type="bit" Nullable="false" />
+          <Property Name="IsOvertimeShift" Type="bit" Nullable="false" />
+          <Property Name="ShiftAllowance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specializations">
+          <Key>
+            <PropertyRef Name="SpecializationID" />
+          </Key>
+          <Property Name="SpecializationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpecializationName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemConfigurations">
+          <Key>
+            <PropertyRef Name="ConfigID" />
+          </Key>
+          <Property Name="ConfigID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConfigKey" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ConfigValue" Type="nvarchar(max)" />
+          <Property Name="ConfigType" Type="varchar" MaxLength="50" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wards">
+          <Key>
+            <PropertyRef Name="WardID" />
+          </Key>
+          <Property Name="WardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WardName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="WardCode" Type="varchar" MaxLength="20" />
+          <Property Name="LocationID" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HospitalHRModelStoreContainer">
+          <EntitySet Name="Allowances" EntityType="Self.Allowances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AttendanceRecords" EntityType="Self.AttendanceRecords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BankBranches" EntityType="Self.BankBranches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Designations" EntityType="Self.Designations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeAllowances" EntityType="Self.EmployeeAllowances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeBankAccounts" EntityType="Self.EmployeeBankAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeCategories" EntityType="Self.EmployeeCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeLoans" EntityType="Self.EmployeeLoans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeQualifications" EntityType="Self.EmployeeQualifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeShift" EntityType="Self.EmployeeShift" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeTrainings" EntityType="Self.EmployeeTrainings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeTypes" EntityType="Self.EmployeeTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LeaveCategories" EntityType="Self.LeaveCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leaves" EntityType="Self.Leaves" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LeaveTypes" EntityType="Self.LeaveTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanCategories" EntityType="Self.LoanCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanInstallments" EntityType="Self.LoanInstallments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OnCallSchedules" EntityType="Self.OnCallSchedules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayrollRecords" EntityType="Self.PayrollRecords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PerformanceAppraisals" EntityType="Self.PerformanceAppraisals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shifts" EntityType="Self.Shifts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specializations" EntityType="Self.Specializations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemConfigurations" EntityType="Self.SystemConfigurations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wards" EntityType="Self.Wards" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HospitalHRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Allowance">
+          <Key>
+            <PropertyRef Name="AllowanceID" />
+          </Key>
+          <Property Name="AllowanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AllowanceName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AllowanceType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsPercentage" Type="Boolean" Nullable="false" />
+          <Property Name="PercentageOf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsTaxable" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AttendanceRecord">
+          <Key>
+            <PropertyRef Name="AttendanceID" />
+          </Key>
+          <Property Name="AttendanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="AttendanceDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ShiftID" Type="Int32" Nullable="false" />
+          <Property Name="ScheduledIn" Type="DateTime" Precision="3" />
+          <Property Name="ScheduledOut" Type="DateTime" Precision="3" />
+          <Property Name="ActualIn" Type="DateTime" Precision="3" />
+          <Property Name="ActualOut" Type="DateTime" Precision="3" />
+          <Property Name="TotalHours" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="OvertimeHours" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="NightHours" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="LateMinutes" Type="Int32" />
+          <Property Name="EarlyOutMinutes" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsRegularized" Type="Boolean" Nullable="false" />
+          <Property Name="RegularizedBy" Type="Int32" />
+          <Property Name="RegularizedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BankBranch">
+          <Key>
+            <PropertyRef Name="BranchID" />
+          </Key>
+          <Property Name="BranchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankID" Type="Int32" Nullable="false" />
+          <Property Name="BranchName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BranchCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="BankID" />
+          </Key>
+          <Property Name="BankID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BankCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DepartmentCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ParentDepartmentID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Designation">
+          <Key>
+            <PropertyRef Name="DesignationID" />
+          </Key>
+          <Property Name="DesignationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DesignationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeAllowance">
+          <Key>
+            <PropertyRef Name="EmployeeAllowanceID" />
+          </Key>
+          <Property Name="EmployeeAllowanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="AllowanceID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EffectiveDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeBankAccount">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="BankID" Type="Int32" Nullable="false" />
+          <Property Name="BranchID" Type="Int32" Nullable="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccountHolderName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsPrimary" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeCategory">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmployeeLoan">
+          <Key>
+            <PropertyRef Name="LoanID" />
+          </Key>
+          <Property Name="LoanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="LoanCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="LoanNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LoanAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="InterestRate" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MonthlyInstallment" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalInstallments" Type="Int32" Nullable="false" />
+          <Property Name="PaidInstallments" Type="Int32" Nullable="false" />
+          <Property Name="RemainingInstallments" Type="Int32" Nullable="false" />
+          <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="RemainingAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ApprovedBy" Type="Int32" />
+          <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="EmployeeQualification">
+          <Key>
+            <PropertyRef Name="QualificationID" />
+          </Key>
+          <Property Name="QualificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Qualification" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Institution" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentPath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsVerified" Type="Boolean" Nullable="false" />
+          <Property Name="VerifiedBy" Type="Int32" />
+          <Property Name="VerifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EPFNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ETFNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NIC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EmergencyContactName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EmergencyContactPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EmergencyContactRelation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfJoin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateOfResignation" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="BasicSalary" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DesignationID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeTypeID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentID" Type="Int32" />
+          <Property Name="WardID" Type="Int32" />
+          <Property Name="SpecializationID" Type="Int32" />
+          <Property Name="MedicalLicenseNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseExpiryDate" Type="DateTime" Precision="0" />
+          <Property Name="BloodGroup" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="EmployeeShift">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RelatedPartyID" Type="Int32" Nullable="false" />
+          <Property Name="ShiftDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ShiftID" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="Time" Precision="7" />
+          <Property Name="EndTime" Type="Time" Precision="7" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeTraining">
+          <Key>
+            <PropertyRef Name="TrainingID" />
+          </Key>
+          <Property Name="TrainingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="TrainingName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TrainingProvider" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CertificatePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmployeeType">
+          <Key>
+            <PropertyRef Name="EmployeeTypeID" />
+          </Key>
+          <Property Name="EmployeeTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LeaveCategory">
+          <Key>
+            <PropertyRef Name="LeaveCategoryID" />
+          </Key>
+          <Property Name="LeaveCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Leaf">
+          <Key>
+            <PropertyRef Name="LeaveID" />
+          </Key>
+          <Property Name="LeaveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="LeaveTypeID" Type="Int32" Nullable="false" />
+          <Property Name="LeaveCategoryID" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TotalDays" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Reason" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="MedicalCertificate" Type="Boolean" Nullable="false" />
+          <Property Name="CertificatePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApprovedBy" Type="Int32" />
+          <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
+          <Property Name="RejectionReason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LeaveType">
+          <Key>
+            <PropertyRef Name="LeaveTypeID" />
+          </Key>
+          <Property Name="LeaveTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LeaveTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LeaveCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MaxDaysPerYear" Type="Int32" Nullable="false" />
+          <Property Name="IsPaid" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoanCategory">
+          <Key>
+            <PropertyRef Name="LoanCategoryID" />
+          </Key>
+          <Property Name="LoanCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaxAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="InterestRate" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="MaxInstallments" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoanInstallment">
+          <Key>
+            <PropertyRef Name="InstallmentID" />
+          </Key>
+          <Property Name="InstallmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanID" Type="Int32" Nullable="false" />
+          <Property Name="InstallmentNumber" Type="Int32" Nullable="false" />
+          <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PaidDate" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OnCallSchedule">
+          <Key>
+            <PropertyRef Name="OnCallID" />
+          </Key>
+          <Property Name="OnCallID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="OnCallDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="PayrollRecord">
+          <Key>
+            <PropertyRef Name="PayrollID" />
+          </Key>
+          <Property Name="PayrollID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="PayPeriod" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PayDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BasicSalary" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FixedAllowances" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="VariableAllowances" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="OvertimePay" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ShiftAllowances" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="AttendanceIncentive" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="GrossSalary" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EPFEmployee" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EPFEmployer" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ETFEmployer" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PayeeTax" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LoanDeductions" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="OtherDeductions" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalDeductions" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="NetSalary" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankAccountID" Type="Int32" />
+          <Property Name="GeneratedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GeneratedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PerformanceAppraisal">
+          <Key>
+            <PropertyRef Name="AppraisalID" />
+          </Key>
+          <Property Name="AppraisalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="AppraisalDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AppraisalPeriod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OverallRating" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="RatingScale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Strengths" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="AreasForImprovement" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Goals" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="AppraisedBy" Type="Int32" Nullable="false" />
+          <Property Name="NextAppraisalDate" Type="DateTime" Precision="0" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Shift">
+          <Key>
+            <PropertyRef Name="ShiftID" />
+          </Key>
+          <Property Name="ShiftID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShiftName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShiftCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="IsNightShift" Type="Boolean" Nullable="false" />
+          <Property Name="IsOvertimeShift" Type="Boolean" Nullable="false" />
+          <Property Name="ShiftAllowance" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specialization">
+          <Key>
+            <PropertyRef Name="SpecializationID" />
+          </Key>
+          <Property Name="SpecializationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SpecializationName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemConfiguration">
+          <Key>
+            <PropertyRef Name="ConfigID" />
+          </Key>
+          <Property Name="ConfigID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConfigKey" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ConfigValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConfigType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ward">
+          <Key>
+            <PropertyRef Name="WardID" />
+          </Key>
+          <Property Name="WardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WardName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WardCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LocationID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HospitalHRDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Allowances" EntityType="Self.Allowance" />
+          <EntitySet Name="AttendanceRecords" EntityType="Self.AttendanceRecord" />
+          <EntitySet Name="BankBranches" EntityType="Self.BankBranch" />
+          <EntitySet Name="Banks" EntityType="Self.Bank" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Designations" EntityType="Self.Designation" />
+          <EntitySet Name="EmployeeAllowances" EntityType="Self.EmployeeAllowance" />
+          <EntitySet Name="EmployeeBankAccounts" EntityType="Self.EmployeeBankAccount" />
+          <EntitySet Name="EmployeeCategories" EntityType="Self.EmployeeCategory" />
+          <EntitySet Name="EmployeeLoans" EntityType="Self.EmployeeLoan" />
+          <EntitySet Name="EmployeeQualifications" EntityType="Self.EmployeeQualification" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="EmployeeShifts" EntityType="Self.EmployeeShift" />
+          <EntitySet Name="EmployeeTrainings" EntityType="Self.EmployeeTraining" />
+          <EntitySet Name="EmployeeTypes" EntityType="Self.EmployeeType" />
+          <EntitySet Name="LeaveCategories" EntityType="Self.LeaveCategory" />
+          <EntitySet Name="Leaves" EntityType="Self.Leaf" />
+          <EntitySet Name="LeaveTypes" EntityType="Self.LeaveType" />
+          <EntitySet Name="LoanCategories" EntityType="Self.LoanCategory" />
+          <EntitySet Name="LoanInstallments" EntityType="Self.LoanInstallment" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="OnCallSchedules" EntityType="Self.OnCallSchedule" />
+          <EntitySet Name="PayrollRecords" EntityType="Self.PayrollRecord" />
+          <EntitySet Name="PerformanceAppraisals" EntityType="Self.PerformanceAppraisal" />
+          <EntitySet Name="Shifts" EntityType="Self.Shift" />
+          <EntitySet Name="Specializations" EntityType="Self.Specialization" />
+          <EntitySet Name="SystemConfigurations" EntityType="Self.SystemConfiguration" />
+          <EntitySet Name="Wards" EntityType="Self.Ward" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HospitalHRModelStoreContainer" CdmEntityContainer="HospitalHRDataEntities">
+          <EntitySetMapping Name="Allowances">
+            <EntityTypeMapping TypeName="HospitalHRModel.Allowance">
+              <MappingFragment StoreEntitySet="Allowances">
+                <ScalarProperty Name="AllowanceID" ColumnName="AllowanceID" />
+                <ScalarProperty Name="AllowanceName" ColumnName="AllowanceName" />
+                <ScalarProperty Name="AllowanceType" ColumnName="AllowanceType" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IsPercentage" ColumnName="IsPercentage" />
+                <ScalarProperty Name="PercentageOf" ColumnName="PercentageOf" />
+                <ScalarProperty Name="IsTaxable" ColumnName="IsTaxable" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AttendanceRecords">
+            <EntityTypeMapping TypeName="HospitalHRModel.AttendanceRecord">
+              <MappingFragment StoreEntitySet="AttendanceRecords">
+                <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
+                <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+                <ScalarProperty Name="ScheduledIn" ColumnName="ScheduledIn" />
+                <ScalarProperty Name="ScheduledOut" ColumnName="ScheduledOut" />
+                <ScalarProperty Name="ActualIn" ColumnName="ActualIn" />
+                <ScalarProperty Name="ActualOut" ColumnName="ActualOut" />
+                <ScalarProperty Name="TotalHours" ColumnName="TotalHours" />
+                <ScalarProperty Name="OvertimeHours" ColumnName="OvertimeHours" />
+                <ScalarProperty Name="NightHours" ColumnName="NightHours" />
+                <ScalarProperty Name="LateMinutes" ColumnName="LateMinutes" />
+                <ScalarProperty Name="EarlyOutMinutes" ColumnName="EarlyOutMinutes" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsRegularized" ColumnName="IsRegularized" />
+                <ScalarProperty Name="RegularizedBy" ColumnName="RegularizedBy" />
+                <ScalarProperty Name="RegularizedDate" ColumnName="RegularizedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BankBranches">
+            <EntityTypeMapping TypeName="HospitalHRModel.BankBranch">
+              <MappingFragment StoreEntitySet="BankBranches">
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+                <ScalarProperty Name="BankID" ColumnName="BankID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="HospitalHRModel.Bank">
+              <MappingFragment StoreEntitySet="Banks">
+                <ScalarProperty Name="BankID" ColumnName="BankID" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="HospitalHRModel.Company">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="HospitalHRModel.Department">
+              <MappingFragment StoreEntitySet="Departments">
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+                <ScalarProperty Name="ParentDepartmentID" ColumnName="ParentDepartmentID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Designations">
+            <EntityTypeMapping TypeName="HospitalHRModel.Designation">
+              <MappingFragment StoreEntitySet="Designations">
+                <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+                <ScalarProperty Name="DesignationName" ColumnName="DesignationName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeAllowances">
+            <EntityTypeMapping TypeName="HospitalHRModel.EmployeeAllowance">
+              <MappingFragment StoreEntitySet="EmployeeAllowances">
+                <ScalarProperty Name="EmployeeAllowanceID" ColumnName="EmployeeAllowanceID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="AllowanceID" ColumnName="AllowanceID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeBankAccounts">
+            <EntityTypeMapping TypeName="HospitalHRModel.EmployeeBankAccount">
+              <MappingFragment StoreEntitySet="EmployeeBankAccounts">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="BankID" ColumnName="BankID" />
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="AccountHolderName" ColumnName="AccountHolderName" />
+                <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeCategories">
+            <EntityTypeMapping TypeName="HospitalHRModel.EmployeeCategory">
+              <MappingFragment StoreEntitySet="EmployeeCategories">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeLoans">
+            <EntityTypeMapping TypeName="HospitalHRModel.EmployeeLoan">
+              <MappingFragment StoreEntitySet="EmployeeLoans">
+                <ScalarProperty Name="LoanID" ColumnName="LoanID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="LoanCategoryID" ColumnName="LoanCategoryID" />
+                <ScalarProperty Name="LoanNumber" ColumnName="LoanNumber" />
+                <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+                <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="MonthlyInstallment" ColumnName="MonthlyInstallment" />
+                <ScalarProperty Name="TotalInstallments" ColumnName="TotalInstallments" />
+                <ScalarProperty Name="PaidInstallments" ColumnName="PaidInstallments" />
+                <ScalarProperty Name="RemainingInstallments" ColumnName="RemainingInstallments" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="RemainingAmount" ColumnName="RemainingAmount" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeQualifications">
+            <EntityTypeMapping TypeName="HospitalHRModel.EmployeeQualification">
+              <MappingFragment StoreEntitySet="EmployeeQualifications">
+                <ScalarProperty Name="QualificationID" ColumnName="QualificationID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Institution" ColumnName="Institution" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="DocumentPath" ColumnName="DocumentPath" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="VerifiedBy" ColumnName="VerifiedBy" />
+                <ScalarProperty Name="VerifiedDate" ColumnName="VerifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="HospitalHRModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+                <ScalarProperty Name="EPFNumber" ColumnName="EPFNumber" />
+                <ScalarProperty Name="ETFNumber" ColumnName="ETFNumber" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="NIC" ColumnName="NIC" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="EmergencyContactName" ColumnName="EmergencyContactName" />
+                <ScalarProperty Name="EmergencyContactPhone" ColumnName="EmergencyContactPhone" />
+                <ScalarProperty Name="EmergencyContactRelation" ColumnName="EmergencyContactRelation" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DateOfJoin" ColumnName="DateOfJoin" />
+                <ScalarProperty Name="DateOfResignation" ColumnName="DateOfResignation" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+                <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+                <ScalarProperty Name="EmployeeTypeID" ColumnName="EmployeeTypeID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="WardID" ColumnName="WardID" />
+                <ScalarProperty Name="SpecializationID" ColumnName="SpecializationID" />
+                <ScalarProperty Name="MedicalLicenseNo" ColumnName="MedicalLicenseNo" />
+                <ScalarProperty Name="LicenseExpiryDate" ColumnName="LicenseExpiryDate" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeShifts">
+            <EntityTypeMapping TypeName="HospitalHRModel.EmployeeShift">
+              <MappingFragment StoreEntitySet="EmployeeShift">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RelatedPartyID" ColumnName="RelatedPartyID" />
+                <ScalarProperty Name="ShiftDate" ColumnName="ShiftDate" />
+                <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeTrainings">
+            <EntityTypeMapping TypeName="HospitalHRModel.EmployeeTraining">
+              <MappingFragment StoreEntitySet="EmployeeTrainings">
+                <ScalarProperty Name="TrainingID" ColumnName="TrainingID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="TrainingName" ColumnName="TrainingName" />
+                <ScalarProperty Name="TrainingProvider" ColumnName="TrainingProvider" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CertificatePath" ColumnName="CertificatePath" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeTypes">
+            <EntityTypeMapping TypeName="HospitalHRModel.EmployeeType">
+              <MappingFragment StoreEntitySet="EmployeeTypes">
+                <ScalarProperty Name="EmployeeTypeID" ColumnName="EmployeeTypeID" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeaveCategories">
+            <EntityTypeMapping TypeName="HospitalHRModel.LeaveCategory">
+              <MappingFragment StoreEntitySet="LeaveCategories">
+                <ScalarProperty Name="LeaveCategoryID" ColumnName="LeaveCategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leaves">
+            <EntityTypeMapping TypeName="HospitalHRModel.Leaf">
+              <MappingFragment StoreEntitySet="Leaves">
+                <ScalarProperty Name="LeaveID" ColumnName="LeaveID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="LeaveTypeID" ColumnName="LeaveTypeID" />
+                <ScalarProperty Name="LeaveCategoryID" ColumnName="LeaveCategoryID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="TotalDays" ColumnName="TotalDays" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="MedicalCertificate" ColumnName="MedicalCertificate" />
+                <ScalarProperty Name="CertificatePath" ColumnName="CertificatePath" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
+                <ScalarProperty Name="RejectionReason" ColumnName="RejectionReason" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeaveTypes">
+            <EntityTypeMapping TypeName="HospitalHRModel.LeaveType">
+              <MappingFragment StoreEntitySet="LeaveTypes">
+                <ScalarProperty Name="LeaveTypeID" ColumnName="LeaveTypeID" />
+                <ScalarProperty Name="LeaveTypeName" ColumnName="LeaveTypeName" />
+                <ScalarProperty Name="LeaveCode" ColumnName="LeaveCode" />
+                <ScalarProperty Name="MaxDaysPerYear" ColumnName="MaxDaysPerYear" />
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanCategories">
+            <EntityTypeMapping TypeName="HospitalHRModel.LoanCategory">
+              <MappingFragment StoreEntitySet="LoanCategories">
+                <ScalarProperty Name="LoanCategoryID" ColumnName="LoanCategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="MaxAmount" ColumnName="MaxAmount" />
+                <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+                <ScalarProperty Name="MaxInstallments" ColumnName="MaxInstallments" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanInstallments">
+            <EntityTypeMapping TypeName="HospitalHRModel.LoanInstallment">
+              <MappingFragment StoreEntitySet="LoanInstallments">
+                <ScalarProperty Name="InstallmentID" ColumnName="InstallmentID" />
+                <ScalarProperty Name="LoanID" ColumnName="LoanID" />
+                <ScalarProperty Name="InstallmentNumber" ColumnName="InstallmentNumber" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaidDate" ColumnName="PaidDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="HospitalHRModel.Location">
+              <MappingFragment StoreEntitySet="Locations">
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OnCallSchedules">
+            <EntityTypeMapping TypeName="HospitalHRModel.OnCallSchedule">
+              <MappingFragment StoreEntitySet="OnCallSchedules">
+                <ScalarProperty Name="OnCallID" ColumnName="OnCallID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="OnCallDate" ColumnName="OnCallDate" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayrollRecords">
+            <EntityTypeMapping TypeName="HospitalHRModel.PayrollRecord">
+              <MappingFragment StoreEntitySet="PayrollRecords">
+                <ScalarProperty Name="PayrollID" ColumnName="PayrollID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="PayPeriod" ColumnName="PayPeriod" />
+                <ScalarProperty Name="PayDate" ColumnName="PayDate" />
+                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+                <ScalarProperty Name="FixedAllowances" ColumnName="FixedAllowances" />
+                <ScalarProperty Name="VariableAllowances" ColumnName="VariableAllowances" />
+                <ScalarProperty Name="OvertimePay" ColumnName="OvertimePay" />
+                <ScalarProperty Name="ShiftAllowances" ColumnName="ShiftAllowances" />
+                <ScalarProperty Name="AttendanceIncentive" ColumnName="AttendanceIncentive" />
+                <ScalarProperty Name="GrossSalary" ColumnName="GrossSalary" />
+                <ScalarProperty Name="EPFEmployee" ColumnName="EPFEmployee" />
+                <ScalarProperty Name="EPFEmployer" ColumnName="EPFEmployer" />
+                <ScalarProperty Name="ETFEmployer" ColumnName="ETFEmployer" />
+                <ScalarProperty Name="PayeeTax" ColumnName="PayeeTax" />
+                <ScalarProperty Name="LoanDeductions" ColumnName="LoanDeductions" />
+                <ScalarProperty Name="OtherDeductions" ColumnName="OtherDeductions" />
+                <ScalarProperty Name="TotalDeductions" ColumnName="TotalDeductions" />
+                <ScalarProperty Name="NetSalary" ColumnName="NetSalary" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="BankAccountID" ColumnName="BankAccountID" />
+                <ScalarProperty Name="GeneratedDate" ColumnName="GeneratedDate" />
+                <ScalarProperty Name="GeneratedBy" ColumnName="GeneratedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PerformanceAppraisals">
+            <EntityTypeMapping TypeName="HospitalHRModel.PerformanceAppraisal">
+              <MappingFragment StoreEntitySet="PerformanceAppraisals">
+                <ScalarProperty Name="AppraisalID" ColumnName="AppraisalID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="AppraisalDate" ColumnName="AppraisalDate" />
+                <ScalarProperty Name="AppraisalPeriod" ColumnName="AppraisalPeriod" />
+                <ScalarProperty Name="OverallRating" ColumnName="OverallRating" />
+                <ScalarProperty Name="RatingScale" ColumnName="RatingScale" />
+                <ScalarProperty Name="Strengths" ColumnName="Strengths" />
+                <ScalarProperty Name="AreasForImprovement" ColumnName="AreasForImprovement" />
+                <ScalarProperty Name="Goals" ColumnName="Goals" />
+                <ScalarProperty Name="AppraisedBy" ColumnName="AppraisedBy" />
+                <ScalarProperty Name="NextAppraisalDate" ColumnName="NextAppraisalDate" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shifts">
+            <EntityTypeMapping TypeName="HospitalHRModel.Shift">
+              <MappingFragment StoreEntitySet="Shifts">
+                <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+                <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+                <ScalarProperty Name="ShiftCode" ColumnName="ShiftCode" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="IsNightShift" ColumnName="IsNightShift" />
+                <ScalarProperty Name="IsOvertimeShift" ColumnName="IsOvertimeShift" />
+                <ScalarProperty Name="ShiftAllowance" ColumnName="ShiftAllowance" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specializations">
+            <EntityTypeMapping TypeName="HospitalHRModel.Specialization">
+              <MappingFragment StoreEntitySet="Specializations">
+                <ScalarProperty Name="SpecializationID" ColumnName="SpecializationID" />
+                <ScalarProperty Name="SpecializationName" ColumnName="SpecializationName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemConfigurations">
+            <EntityTypeMapping TypeName="HospitalHRModel.SystemConfiguration">
+              <MappingFragment StoreEntitySet="SystemConfigurations">
+                <ScalarProperty Name="ConfigID" ColumnName="ConfigID" />
+                <ScalarProperty Name="ConfigKey" ColumnName="ConfigKey" />
+                <ScalarProperty Name="ConfigValue" ColumnName="ConfigValue" />
+                <ScalarProperty Name="ConfigType" ColumnName="ConfigType" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wards">
+            <EntityTypeMapping TypeName="HospitalHRModel.Ward">
+              <MappingFragment StoreEntitySet="Wards">
+                <ScalarProperty Name="WardID" ColumnName="WardID" />
+                <ScalarProperty Name="WardName" ColumnName="WardName" />
+                <ScalarProperty Name="WardCode" ColumnName="WardCode" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

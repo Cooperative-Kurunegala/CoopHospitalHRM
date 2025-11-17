@@ -14,16 +14,14 @@ namespace HR_Application_CO_OP_HOS.Models
     
     public partial class Allowance
     {
-        public int Id { get; set; }
-        public int EmployeeId { get; set; }
+        public int AllowanceID { get; set; }
+        public string AllowanceName { get; set; }
         public string AllowanceType { get; set; }
-        public decimal Amount { get; set; }
-        public System.DateTime EffectiveDate { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
-        public Nullable<System.DateTime> ModifiedDate { get; set; }
-        public Nullable<int> ModifiedBy { get; set; }
-    
-        public virtual RelatedParty RelatedParty { get; set; }
+        public Nullable<decimal> Amount { get; set; }
+        public bool IsPercentage { get; set; }
+        public string PercentageOf { get; set; }
+        public bool IsTaxable { get; set; }
+        public string Description { get; set; }
+        public bool IsActive { get; set; }
     }
 }

@@ -1,0 +1,286 @@
+﻿@model HR_Application_CO_OP_HOS.Models.EmployeeTraining
+
+@{
+    ViewBag.Title = "Training Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Details Container -->
+<div class="fullscreen-container details-container">
+    <div class="details-header">
+        <h1 class="page-title">🎓 TRAINING DETAILS</h1>
+        <p class="page-subtitle">Hospital Human Resources Management System</p>
+    </div>
+
+    <div class="details-content">
+        <div class="details-card">
+            <!-- Training Information Section -->
+            <div class="details-section">
+                <h3 class="section-title">📋 TRAINING INFORMATION</h3>
+                <div class="row">
+                    <div class="col-md-6 detail-item">
+                        <label class="detail-label">Employee ID</label>
+                        <div class="detail-value">@Html.DisplayFor(model => model.EmployeeID)</div>
+                    </div>
+                    <div class="col-md-6 detail-item">
+                        <label class="detail-label">Training Name</label>
+                        <div class="detail-value">@Html.DisplayFor(model => model.TrainingName)</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 detail-item">
+                        <label class="detail-label">Training Provider</label>
+                        <div class="detail-value">@Html.DisplayFor(model => model.TrainingProvider)</div>
+                    </div>
+                    <div class="col-md-6 detail-item">
+                        <label class="detail-label">Duration</label>
+                        <div class="detail-value">@Html.DisplayFor(model => model.Duration)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Training Schedule Section -->
+            <div class="details-section">
+                <h3 class="section-title">📅 TRAINING SCHEDULE</h3>
+                <div class="row">
+                    <div class="col-md-6 detail-item">
+                        <label class="detail-label">Start Date</label>
+                        <div class="detail-value">@Html.DisplayFor(model => model.StartDate)</div>
+                    </div>
+                    <div class="col-md-6 detail-item">
+                        <label class="detail-label">End Date</label>
+                        <div class="detail-value">@Html.DisplayFor(model => model.EndDate)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Training Status Section -->
+            <div class="details-section">
+                <h3 class="section-title">📊 TRAINING STATUS</h3>
+                <div class="row">
+                    <div class="col-md-6 detail-item">
+                        <label class="detail-label">Status</label>
+                        <div class="detail-value">
+                            <span class="status-badge @GetStatusClass(Model.Status)">
+                                @Html.DisplayFor(model => model.Status)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 detail-item">
+                        <label class="detail-label">Certificate Path</label>
+                        <div class="detail-value">@Html.DisplayFor(model => model.CertificatePath)</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 detail-item">
+                        <label class="detail-label">Remarks</label>
+                        <div class="detail-value">@Html.DisplayFor(model => model.Remarks)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="details-actions">
+                @Html.ActionLink("✏️ EDIT", "Edit", new { id = Model.TrainingID }, new { @class = "btn btn-warning btn-lg" })
+                @Html.ActionLink("📋 BACK TO LIST", "Index", null, new { @class = "btn btn-secondary btn-lg" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .details-container {
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+    }
+
+    .details-header {
+        text-align: center;
+        padding: 40px 20px;
+        background: rgba(255,255,255,0.95);
+        margin-bottom: 30px;
+        border-radius: 15px;
+        border: 3px solid #006400;
+    }
+
+    .page-title {
+        font-size: 3rem;
+        color: #006400;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .page-subtitle {
+        font-size: 1.5rem;
+        color: #666;
+    }
+
+    .details-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .details-card {
+        background: rgba(255,255,255,0.95);
+        padding: 40px;
+        border-radius: 15px;
+        border: 3px solid #006400;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .details-section {
+        margin-bottom: 40px;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border: 2px solid #006400;
+    }
+
+    .section-title {
+        color: #006400;
+        font-size: 2rem;
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #006400;
+    }
+
+    .detail-item {
+        margin-bottom: 25px;
+    }
+
+    .detail-label {
+        font-weight: bold;
+        color: #333;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .detail-value {
+        font-size: 1.6rem;
+        color: #666;
+        padding: 12px;
+        background: white;
+        border: 2px solid #006400;
+        border-radius: 8px;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+    }
+
+    .status-badge {
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .details-actions {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 2px solid #006400;
+    }
+
+    .btn {
+        padding: 15px 30px;
+        font-size: 1.6rem;
+        border-radius: 10px;
+        margin: 0 10px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-warning {
+        background: #ffc107;
+        color: #212529;
+    }
+
+        .btn-warning:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+
+    @@media (max-width: 768px) {
+        .details-container {
+            padding: 10px;
+        }
+
+        .page-title {
+            font-size: 2rem;
+        }
+
+        .details-card {
+            padding: 20px;
+        }
+
+        .details-section {
+            padding: 20px;
+        }
+
+        .btn {
+            width: 100%;
+            margin: 10px 0;
+            justify-content: center;
+        }
+    }
+</style>
+
+@functions {
+    public string GetStatusClass(string status)
+    {
+        switch (status?.ToLower())
+        {
+            case "completed":
+                return "status-completed";
+            case "in progress":
+                return "status-inprogress";
+            case "pending":
+                return "status-pending";
+            case "cancelled":
+                return "status-cancelled";
+            default:
+                return "status-pending";
+        }
+    }
+}
+
+<style>
+    .status-completed {
+        background: #d4edda;
+        color: #155724;
+        border: 2px solid #155724;
+    }
+
+    .status-inprogress {
+        background: #fff3cd;
+        color: #856404;
+        border: 2px solid #856404;
+    }
+
+    .status-pending {
+        background: #cce7ff;
+        color: #004085;
+        border: 2px solid #004085;
+    }
+
+    .status-cancelled {
+        background: #f8d7da;
+        color: #721c24;
+        border: 2px solid #721c24;
+    }
+</style>

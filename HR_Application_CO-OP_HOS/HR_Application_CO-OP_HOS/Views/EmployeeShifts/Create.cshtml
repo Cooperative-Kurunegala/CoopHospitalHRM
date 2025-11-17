@@ -1,0 +1,363 @@
+﻿﻿@model HR_Application_CO_OP_HOS.Models.EmployeeShift
+@using HR_Application_CO_OP_HOS.Models
+
+@{
+    ViewBag.Title = "Create Employee Shift";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // Get dropdown data from ViewBag or ViewData
+    var employees = ViewBag.Employees as List<Employee>;
+    var shifts = ViewBag.Shifts as List<Shift>;
+    var relatedParties = ViewBag.RelatedParties as List<Employee>;
+}
+
+<!-- Full Screen Container -->
+<div class="fullscreen-container dashboard-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">CREATE EMPLOYEE SHIFT</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Add New Shift Assignment</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>➕ ADD NEW SHIFT ASSIGNMENT</h2>
+        </div>
+        <div class="section-content">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-container">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.RelatedPartyID, "Employee", htmlAttributes: new { @class = "control-label" })
+                            @if (employees != null)
+                            {
+                                @Html.DropDownListFor(model => model.RelatedPartyID,
+                                    new SelectList(employees, "EmployeeID", "FullName"),
+                                    "Select Employee",
+                                    new { @class = "form-control dropdown-select" })
+                            }
+                            else
+                            {
+                                @Html.EditorFor(model => model.RelatedPartyID, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Employee ID" } })
+                            }
+                            @Html.ValidationMessageFor(model => model.RelatedPartyID, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ShiftDate, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.ShiftDate, new { htmlAttributes = new { @class = "form-control date-picker", type = "date" } })
+                            @Html.ValidationMessageFor(model => model.ShiftDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ShiftID, "Shift Type", htmlAttributes: new { @class = "control-label" })
+                            @if (shifts != null)
+                            {
+                                @Html.DropDownListFor(model => model.ShiftID,
+                                    new SelectList(shifts, "ShiftID", "ShiftName"),
+                                    "Select Shift",
+                                    new { @class = "form-control dropdown-select", @onchange = "updateShiftTimes()" })
+                            }
+                            else
+                            {
+                                @Html.EditorFor(model => model.ShiftID, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Shift ID" } })
+                            }
+                            @Html.ValidationMessageFor(model => model.ShiftID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control time-picker", type = "time" } })
+                            @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control time-picker", type = "time" } })
+                            @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group checkbox-group">
+                            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label" })
+                            <div class="checkbox-container">
+                                @Html.EditorFor(model => model.IsActive)
+                                <span class="checkbox-label">Active Shift</span>
+                                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" value="➕ CREATE SHIFT" class="btn btn-primary" />
+                        @Html.ActionLink("⬅️ BACK TO LIST", "Index", null, new { @class = "btn btn-secondary" })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+    .dashboard-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .hospital-name {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hospital-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        opacity: 0.9;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2rem;
+        background: rgba(255,255,255,0.1);
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .dashboard-section {
+        background: white;
+        margin: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .section-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+        padding: 20px 30px;
+    }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .form-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .control-label {
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #006400;
+        font-size: 1.1rem;
+    }
+
+    .form-control {
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+        .form-control:focus {
+            border-color: #006400;
+            box-shadow: 0 0 0 3px rgba(0,100,0,0.1);
+            outline: none;
+        }
+
+    .dropdown-select {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 12px center;
+        background-repeat: no-repeat;
+        background-size: 16px 12px;
+        padding-right: 40px;
+        appearance: none;
+    }
+
+    .date-picker, .time-picker {
+        cursor: pointer;
+    }
+
+    .checkbox-group {
+        justify-content: center;
+        grid-column: 1 / -1;
+    }
+
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 10px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 2px solid #e0e0e0;
+    }
+
+    .checkbox-label {
+        font-weight: bold;
+        color: #006400;
+        font-size: 1.1rem;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 2px solid #f0f0f0;
+    }
+
+    .btn {
+        padding: 15px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        min-width: 200px;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+    }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,100,0,0.3);
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+
+    .text-danger {
+        color: #dc3545;
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+
+    @@media (max-width: 768px) {
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+
+        .btn {
+            min-width: auto;
+            width: 100%;
+        }
+
+        .hospital-name {
+            font-size: 2rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1.2rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+    }
+</style>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        // Function to update shift times based on selected shift
+        function updateShiftTimes() {
+            var shiftId = $('#ShiftID').val();
+            if (shiftId) {
+                // You would typically make an AJAX call to get shift details
+                // For now, we'll use a simple mapping
+                var shiftTimes = {
+                    '1': { start: '08:00', end: '16:00' }, // Morning Shift
+                    '2': { start: '16:00', end: '00:00' }, // Evening Shift
+                    '3': { start: '00:00', end: '08:00' }  // Night Shift
+                };
+
+                var times = shiftTimes[shiftId];
+                if (times) {
+                    $('#StartTime').val(times.start);
+                    $('#EndTime').val(times.end);
+                }
+            }
+        }
+
+        // Initialize date picker with today's date
+        $(document).ready(function () {
+            var today = new Date().toISOString().split('T')[0];
+            $('#ShiftDate').val(today);
+        });
+    </script>
+}

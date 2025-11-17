@@ -14,7 +14,9 @@ namespace HR_Application_CO_OP_HOS.Models
     
     public partial class Company
     {
-        public int ID { get; set; }
-        public string companyName { get; set; }
+        public int CompanyID { get; set; }
+        public string CompanyName { get; set; }
+        public string CompanyCode { get; set; }
+        public bool IsActive { get; set; }
     }
 }

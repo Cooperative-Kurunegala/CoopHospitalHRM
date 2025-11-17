@@ -1,0 +1,590 @@
+﻿@model HR_Application_CO_OP_HOS.Models.Employee
+
+@{
+    ViewBag.Title = "Delete Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Delete Container -->
+<div class="fullscreen-container delete-container">
+    <div class="delete-header">
+        <h1 class="page-title">🗑️ DELETE EMPLOYEE</h1>
+        <p class="page-subtitle">Hospital Human Resources Management System</p>
+    </div>
+
+    <div class="delete-content">
+        <!-- Display messages -->
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        <div class="delete-card">
+            <div class="warning-section">
+                <div class="warning-icon">⚠️</div>
+                <h3 class="warning-title">ARE YOU SURE YOU WANT TO DELETE THIS EMPLOYEE?</h3>
+                <p class="warning-text">This action cannot be undone. All employee records, including personal information, employment details, and medical information will be permanently removed from the system.</p>
+                <div class="warning-details">
+                    <div class="warning-item">
+                        <span class="warning-bullet">❌</span>
+                        Employee profile will be permanently deleted
+                    </div>
+                    <div class="warning-item">
+                        <span class="warning-bullet">📊</span>
+                        All associated records will be removed
+                    </div>
+                    <div class="warning-item">
+                        <span class="warning-bullet">⚕️</span>
+                        Medical license information will be lost
+                    </div>
+                    <div class="warning-item">
+                        <span class="warning-bullet">💰</span>
+                        Salary and employment history will be deleted
+                    </div>
+                </div>
+            </div>
+
+            <div class="employee-details">
+                <div class="detail-summary">
+                    <div class="employee-avatar">
+                        <div class="avatar-icon">👤</div>
+                    </div>
+                    <div class="employee-info">
+                        <h4>@Html.DisplayFor(model => model.FullName)</h4>
+                        <div class="employee-meta">
+                            <p><strong>Employee #:</strong> @Html.DisplayFor(model => model.EmployeeNumber)</p>
+                            <p><strong>NIC:</strong> @Html.DisplayFor(model => model.NIC)</p>
+                            <p><strong>Designation:</strong> @Html.DisplayFor(model => model.DesignationID)</p>
+                            <p><strong>Department:</strong> @Html.DisplayFor(model => model.DepartmentID)</p>
+                            <p><strong>Email:</strong> @Html.DisplayFor(model => model.Email)</p>
+                            <p><strong>Phone:</strong> @Html.DisplayFor(model => model.Phone)</p>
+                            <p>
+                                <strong>Status:</strong>
+                                <span class="status-badge @(Model.IsActive ? "status-active" : "status-inactive")">
+                                    @(Model.IsActive ? "ACTIVE" : "INACTIVE")
+                                </span>
+                            </p>
+                            <p><strong>Date of Join:</strong> @(Model.DateOfJoin == default(System.DateTime) ? "N/A" : Model.DateOfJoin.ToString("yyyy-MM-dd"))</p>
+                            <p><strong>Basic Salary:</strong> @(Model.BasicSalary == default(decimal) ? "N/A" : Model.BasicSalary.ToString("C"))</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="employment-history">
+                    <h5>Employment Duration</h5>
+                    @{
+                        // If DateOfJoin is default (not set) use DateTime.Now as fallback for duration calculation.
+                        var joinDate = Model.DateOfJoin == default(System.DateTime) ? DateTime.Now : Model.DateOfJoin;
+                        var duration = DateTime.Now - joinDate;
+                        var years = duration.Days / 365;
+                        var months = (duration.Days % 365) / 30;
+                        var days = (duration.Days % 365) % 30;
+                    }
+                    <div class="duration-display">
+                        <span class="duration-item">
+                            <span class="duration-number">@years</span>
+                            <span class="duration-label">Years</span>
+                        </span>
+                        <span class="duration-item">
+                            <span class="duration-number">@months</span>
+                            <span class="duration-label">Months</span>
+                        </span>
+                        <span class="duration-item">
+                            <span class="duration-number">@days</span>
+                            <span class="duration-label">Days</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            @using (Html.BeginForm("Delete", "Employees", FormMethod.Post, new { id = "deleteForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.EmployeeID)
+
+                <div class="confirmation-section">
+                    <div class="confirmation-checkbox">
+                        <input type="checkbox" id="confirmDelete" name="confirmDelete" required />
+                        <label for="confirmDelete" class="confirmation-label">
+                            I understand that this action cannot be undone and I have verified that I want to delete this employee record.
+                        </label>
+                    </div>
+
+                    <div class="verification-section">
+                        <label for="employeeNumberVerify" class="verification-label">
+                            Type the employee number "<strong>@Model.EmployeeNumber</strong>" to confirm:
+                        </label>
+                        <input type="text" id="employeeNumberVerify" name="employeeNumberVerify" class="verification-input" placeholder="Enter employee number" required />
+                        <div class="verification-hint">This is case-sensitive</div>
+                    </div>
+                </div>
+
+                <div class="delete-actions">
+                    <button type="submit" class="btn btn-danger btn-lg" id="deleteBtn" disabled>
+                        <span class="btn-icon">🗑️</span> CONFIRM DELETE
+                    </button>
+                    @Html.ActionLink("🚫 CANCEL", "Details", new { id = Model.EmployeeID }, new { @class = "btn btn-secondary btn-lg" })
+                    @Html.ActionLink("📋 BACK TO LIST", "Index", null, new { @class = "btn btn-outline-secondary btn-lg" })
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .delete-container {
+        padding: 20px;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        min-height: 100vh;
+    }
+
+    .delete-header {
+        text-align: center;
+        padding: 40px 20px;
+        background: rgba(255,255,255,0.95);
+        margin-bottom: 30px;
+        border-radius: 15px;
+        border: 3px solid #dc3545;
+    }
+
+    .page-title {
+        font-size: 3rem;
+        color: #dc3545;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .page-subtitle {
+        font-size: 1.5rem;
+        color: #666;
+    }
+
+    .delete-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .delete-card {
+        background: rgba(255,255,255,0.95);
+        padding: 40px;
+        border-radius: 15px;
+        border: 3px solid #dc3545;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .warning-section {
+        text-align: center;
+        padding: 30px;
+        background: #f8d7da;
+        border: 2px solid #dc3545;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+
+    .warning-icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+    }
+
+    .warning-title {
+        color: #721c24;
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    .warning-text {
+        color: #721c24;
+        font-size: 1.6rem;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    .warning-details {
+        text-align: left;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .warning-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+        font-size: 1.4rem;
+        color: #721c24;
+    }
+
+    .warning-bullet {
+        font-size: 1.6rem;
+        flex-shrink: 0;
+    }
+
+    .employee-details {
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border: 2px solid #006400;
+        margin-bottom: 30px;
+    }
+
+    .detail-summary {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+        margin-bottom: 20px;
+    }
+
+    .employee-avatar {
+        flex-shrink: 0;
+    }
+
+    .avatar-icon {
+        font-size: 4rem;
+        background: #006400;
+        color: white;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .employee-info {
+        flex-grow: 1;
+    }
+
+        .employee-info h4 {
+            font-size: 2.4rem;
+            color: #006400;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+    .employee-meta {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 10px;
+    }
+
+        .employee-meta p {
+            font-size: 1.4rem;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+            .employee-meta p strong {
+                color: #333;
+            }
+
+    .employment-history {
+        text-align: center;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+    }
+
+        .employment-history h5 {
+            font-size: 1.6rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+    .duration-display {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .duration-item {
+        text-align: center;
+    }
+
+    .duration-number {
+        display: block;
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #006400;
+    }
+
+    .duration-label {
+        display: block;
+        font-size: 1.2rem;
+        color: #666;
+        margin-top: 5px;
+    }
+
+    .confirmation-section {
+        padding: 30px;
+        background: #fff3cd;
+        border: 2px solid #ffc107;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+
+    .confirmation-checkbox {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+        .confirmation-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+    .confirmation-label {
+        font-size: 1.4rem;
+        color: #856404;
+        line-height: 1.4;
+        cursor: pointer;
+    }
+
+    .verification-section {
+        margin-top: 20px;
+    }
+
+    .verification-label {
+        font-size: 1.4rem;
+        color: #856404;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .verification-input {
+        width: 100%;
+        height: 50px;
+        font-size: 1.4rem;
+        border: 2px solid #dc3545;
+        border-radius: 8px;
+        padding: 10px 15px;
+        margin-bottom: 5px;
+        transition: all 0.3s ease;
+    }
+
+        .verification-input:focus {
+            border-color: #c82333;
+            box-shadow: 0 0 0 0.2rem rgba(220,53,69,0.25);
+        }
+
+        .verification-input.valid {
+            border-color: #28a745;
+            background-color: #f8fff9;
+        }
+
+        .verification-input.invalid {
+            border-color: #dc3545;
+            background-color: #fff8f8;
+        }
+
+    .verification-hint {
+        font-size: 1.2rem;
+        color: #6c757d;
+        margin-top: 5px;
+    }
+
+    .delete-actions {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 2px solid #dc3545;
+    }
+
+    .btn {
+        padding: 15px 30px;
+        font-size: 1.6rem;
+        border-radius: 10px;
+        margin: 0 10px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+        .btn-danger:hover:not(:disabled) {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+
+    .btn-outline-secondary {
+        background: transparent;
+        color: #6c757d;
+        border: 2px solid #6c757d;
+    }
+
+        .btn-outline-secondary:hover {
+            background: #6c757d;
+            color: white;
+        }
+
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        display: inline-block;
+    }
+
+    .status-active {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #155724;
+    }
+
+    .status-inactive {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #721c24;
+    }
+
+    .alert {
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        font-size: 1.4rem;
+    }
+
+    .alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+
+    @@media (max-width: 768px) {
+        .delete-container {
+            padding: 10px;
+        }
+
+        .page-title {
+            font-size: 2rem;
+        }
+
+        .delete-card {
+            padding: 20px;
+        }
+
+        .detail-summary {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .employee-meta {
+            grid-template-columns: 1fr;
+        }
+
+        .duration-display {
+            gap: 15px;
+        }
+
+        .confirmation-checkbox {
+            align-items: flex-start;
+        }
+
+        .btn {
+            width: 100%;
+            margin: 10px 0;
+            justify-content: center;
+        }
+
+        .delete-actions {
+            text-align: center;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteForm = document.getElementById('deleteForm');
+        const confirmCheckbox = document.getElementById('confirmDelete');
+        const employeeNumberVerify = document.getElementById('employeeNumberVerify');
+        const deleteBtn = document.getElementById('deleteBtn');
+        const correctEmployeeNumber = '@Model.EmployeeNumber';
+
+        function validateForm() {
+            const isChecked = confirmCheckbox.checked;
+            const isVerified = employeeNumberVerify.value === correctEmployeeNumber;
+
+            deleteBtn.disabled = !(isChecked && isVerified);
+
+            // Update input styling
+            if (employeeNumberVerify.value === '') {
+                employeeNumberVerify.classList.remove('valid', 'invalid');
+            } else if (isVerified) {
+                employeeNumberVerify.classList.remove('invalid');
+                employeeNumberVerify.classList.add('valid');
+            } else {
+                employeeNumberVerify.classList.remove('valid');
+                employeeNumberVerify.classList.add('invalid');
+            }
+        }
+
+        // Add event listeners
+        confirmCheckbox.addEventListener('change', validateForm);
+        employeeNumberVerify.addEventListener('input', validateForm);
+
+        // Form submission handling
+        deleteForm.addEventListener('submit', function (e) {
+            if (!confirmCheckbox.checked || employeeNumberVerify.value !== correctEmployeeNumber) {
+                e.preventDefault();
+                alert('Please complete all verification steps before deleting.');
+                return;
+            }
+
+            // Final confirmation
+            if (!confirm('FINAL WARNING: This will permanently delete the employee record. This action cannot be undone. Are you absolutely sure?')) {
+                e.preventDefault();
+                return;
+            }
+
+            // Show loading state
+            deleteBtn.disabled = true;
+            deleteBtn.innerHTML = '<span class="btn-icon">⏳</span> DELETING...';
+
+            // Add a small delay to show the loading state
+            setTimeout(() => {
+                deleteBtn.innerHTML = '<span class="btn-icon">🗑️</span> DELETING EMPLOYEE...';
+            }, 1000);
+        });
+
+        // Prevent accidental form submission
+        deleteForm.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+            }
+        });
+
+        // Initialize form validation
+        validateForm();
+    });
+</script>

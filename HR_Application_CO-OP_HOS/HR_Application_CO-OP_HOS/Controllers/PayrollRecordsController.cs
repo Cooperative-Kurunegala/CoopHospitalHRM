@@ -12,13 +12,12 @@ namespace HR_Application_CO_OP_HOS.Controllers
 {
     public class PayrollRecordsController : Controller
     {
-        private HREntities db = new HREntities();
+        private HospitalHRDataEntities db = new HospitalHRDataEntities();
 
         // GET: PayrollRecords
         public ActionResult Index()
         {
-            var payrollRecords = db.PayrollRecords.Include(p => p.RelatedParty);
-            return View(payrollRecords.ToList());
+            return View(db.PayrollRecords.ToList());
         }
 
         // GET: PayrollRecords/Details/5
@@ -39,7 +38,6 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // GET: PayrollRecords/Create
         public ActionResult Create()
         {
-            ViewBag.EmployeeId = new SelectList(db.RelatedParties, "ID", "RegistrationNumber");
             return View();
         }
 
@@ -48,7 +46,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,EmployeeId,Month,Year,BasicSalary,TotalAllowances,TotalDeductions,NetSalary,GeneratedDate,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy")] PayrollRecord payrollRecord)
+        public ActionResult Create([Bind(Include = "PayrollID,EmployeeID,PayPeriod,PayDate,BasicSalary,FixedAllowances,VariableAllowances,OvertimePay,ShiftAllowances,AttendanceIncentive,GrossSalary,EPFEmployee,EPFEmployer,ETFEmployer,PayeeTax,LoanDeductions,OtherDeductions,TotalDeductions,NetSalary,Status,PaymentMethod,BankAccountID,GeneratedDate,GeneratedBy")] PayrollRecord payrollRecord)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +55,6 @@ namespace HR_Application_CO_OP_HOS.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EmployeeId = new SelectList(db.RelatedParties, "ID", "RegistrationNumber", payrollRecord.EmployeeId);
             return View(payrollRecord);
         }
 
@@ -73,7 +70,6 @@ namespace HR_Application_CO_OP_HOS.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.EmployeeId = new SelectList(db.RelatedParties, "ID", "RegistrationNumber", payrollRecord.EmployeeId);
             return View(payrollRecord);
         }
 
@@ -82,7 +78,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,EmployeeId,Month,Year,BasicSalary,TotalAllowances,TotalDeductions,NetSalary,GeneratedDate,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy")] PayrollRecord payrollRecord)
+        public ActionResult Edit([Bind(Include = "PayrollID,EmployeeID,PayPeriod,PayDate,BasicSalary,FixedAllowances,VariableAllowances,OvertimePay,ShiftAllowances,AttendanceIncentive,GrossSalary,EPFEmployee,EPFEmployer,ETFEmployer,PayeeTax,LoanDeductions,OtherDeductions,TotalDeductions,NetSalary,Status,PaymentMethod,BankAccountID,GeneratedDate,GeneratedBy")] PayrollRecord payrollRecord)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +86,6 @@ namespace HR_Application_CO_OP_HOS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.EmployeeId = new SelectList(db.RelatedParties, "ID", "RegistrationNumber", payrollRecord.EmployeeId);
             return View(payrollRecord);
         }
 

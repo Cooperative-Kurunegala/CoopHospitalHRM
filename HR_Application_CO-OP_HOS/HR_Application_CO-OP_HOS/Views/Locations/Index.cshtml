@@ -2,294 +2,443 @@
 
 @{
     ViewBag.Title = "Locations Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="dashboard-container">
+<!-- Full Screen Container -->
+<div class="fullscreen-container">
+    <!-- Header Section -->
     <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-map-marker"></i> Locations Management</h1>
-            <p class="lead">Manage all hospital locations and departments</p>
+        <div class="header-content">
+            <h1 class="hospital-name">LOCATIONS MANAGEMENT</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Manage Hospital Locations</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
         </div>
     </div>
 
-    <div class="row no-gutters">
-        <div class="col-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-list"></i> All Locations</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="action-bar mb-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                @Html.ActionLink("Create New Location", "Create", null, new { @class = "btn btn-success btn-lg" })
-                            </div>
-                            <div class="col-md-6 text-right">
-                                <div class="input-group">
-                                    <input type="text" id="searchInput" class="form-control form-control-lg" placeholder="Search locations...">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="searchButton">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Quick Actions -->
+    <div class="quick-actions-panel">
+        <div class="quick-actions-grid">
+            <a href="@Url.Action("Create")" class="quick-action-btn btn-success">
+                <span class="btn-icon">➕</span>
+                ADD NEW LOCATION
+            </a>
+            <a href="@Url.Action("Index", "Dashboard")" class="quick-action-btn btn-primary">
+                <span class="btn-icon">🏠</span>
+                DASHBOARD
+            </a>
+            <a href="@Url.Action("Index", "Employees")" class="quick-action-btn btn-info">
+                <span class="btn-icon">👥</span>
+                EMPLOYEES
+            </a>
+        </div>
+    </div>
 
-                    <div class="table-responsive">
-                        <table class="table table-striped table-hover" id="locationsTable">
-                            <thead class="thead-dark">
+    <!-- Main Content -->
+    <div class="content-section">
+        <div class="table-container">
+            <div class="table-card">
+                <div class="table-header">
+                    <h2>📍 All Locations</h2>
+                    <div class="table-stats">
+                        <span class="stat-badge">Total: @Model.Count()</span>
+                        <span class="stat-badge active">Active: @Model.Count(m => m.IsActive)</span>
+                        <span class="stat-badge inactive">Inactive: @Model.Count(m => !m.IsActive)</span>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.LocationName)</th>
+                                <th>@Html.DisplayNameFor(model => model.Address)</th>
+                                <th>@Html.DisplayNameFor(model => model.IsActive)</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
                                 <tr>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.LocationName)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.OrderIndex)
-                                    </th>
-                                    <th>Actions</th>
+                                    <td>@Html.DisplayFor(modelItem => item.LocationName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                                    <td>
+                                        @if (item.IsActive)
+                                        {
+                                            <span class="status-badge active">✅ Active</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="status-badge inactive">❌ Inactive</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <a href="@Url.Action("Edit", new { id = item.LocationID })" class="btn-action btn-warning" title="Edit">
+                                                ✏️
+                                            </a>
+                                            <a href="@Url.Action("Details", new { id = item.LocationID })" class="btn-action btn-info" title="Details">
+                                                👁️
+                                            </a>
+                                            <a href="@Url.Action("Delete", new { id = item.LocationID })" class="btn-action btn-danger" title="Delete">
+                                                🗑️
+                                            </a>
+                                        </div>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @if (Model != null && Model.Any())
-                                {
-                                    foreach (var item in Model)
-                                    {
-                                        <tr>
-                                            <td>
-                                                <strong>@Html.DisplayFor(modelItem => item.LocationName)</strong>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-primary">@Html.DisplayFor(modelItem => item.OrderIndex)</span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group" role="group">
-                                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-warning btn-sm" })
-                                                    @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-info btn-sm" })
-                                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger btn-sm" })
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    }
-                                }
-                                else
-                                {
-                                    <tr>
-                                        <td colspan="3" class="text-center text-muted py-4">
-                                            <i class="fa fa-exclamation-circle fa-3x mb-3"></i>
-                                            <h4>No Locations Found</h4>
-                                            <p>No location records available in the system.</p>
-                                            @Html.ActionLink("Create First Location", "Create", null, new { @class = "btn btn-primary" })
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-
-                    @if (Model != null && Model.Any())
-                    {
-                        <div class="row mt-4">
-                            <div class="col-md-6">
-                                <div class="summary-card">
-                                    <h5><i class="fa fa-info-circle"></i> Summary</h5>
-                                    <p>Total Locations: <strong>@Model.Count()</strong></p>
-                                </div>
-                            </div>
-                        </div>
-                    }
+                            }
+                        </tbody>
+                    </table>
                 </div>
+
+                @if (!Model.Any())
+                {
+                    <div class="empty-state">
+                        <div class="empty-icon">📍</div>
+                        <h3>No Locations Found</h3>
+                        <p>Get started by adding your first hospital location.</p>
+                        <a href="@Url.Action("Create")" class="btn btn-success btn-lg">
+                            <span class="btn-icon">➕</span>
+                            ADD FIRST LOCATION
+                        </a>
+                    </div>
+                }
             </div>
         </div>
     </div>
 </div>
 
-@section Scripts {
-    <script>
-        $(document).ready(function () {
-            // Search functionality
-            $('#searchButton').click(function () {
-                filterTable();
-            });
-
-            $('#searchInput').keyup(function () {
-                filterTable();
-            });
-
-            function filterTable() {
-                var searchText = $('#searchInput').val().toLowerCase();
-                $('#locationsTable tbody tr').each(function () {
-                    var rowText = $(this).text().toLowerCase();
-                    if (rowText.indexOf(searchText) === -1) {
-                        $(this).hide();
-                    } else {
-                        $(this).show();
-                    }
-                });
-            }
-
-            // Enhanced row hover effects
-            $('#locationsTable tbody tr').hover(
-                function () {
-                    $(this).addClass('table-active');
-                },
-                function () {
-                    $(this).removeClass('table-active');
-                }
-            );
-        });
-    </script>
-}
-
 <style>
-    .dashboard-container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    .fullscreen-container {
+        margin: 0;
         padding: 0;
-        margin: 0;
-        font-size: 16px;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
 
-    body {
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow-x: hidden;
-    }
-
-    .container.body-content {
-        padding: 0 !important;
-        margin: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    .dashboard-header {
+        background: rgba(0, 0, 0, 0.8);
         color: white;
-        border-radius: 0;
-        padding: 40px 20px;
-        margin: 0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        width: 100%;
+        padding: 30px 0;
+        border-bottom: 4px solid #006400;
     }
 
-    .jumbotron h1 {
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-        font-weight: 700;
+    .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
     }
 
-    .jumbotron .lead {
-        font-size: 1.3rem;
-        opacity: 0.9;
+    .hospital-name {
+        font-size: 3rem;
+        font-weight: bold;
         margin-bottom: 10px;
+        color: #ffffff;
     }
 
-    .panel {
+    .hospital-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: #cccccc;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.4rem;
+        background: rgba(0, 100, 0, 0.3);
+        padding: 15px 20px;
+        border-radius: 10px;
+    }
+
+    .quick-actions-panel {
+        padding: 30px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .quick-actions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .quick-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        padding: 20px;
         border: none;
         border-radius: 10px;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        margin-bottom: 20px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        background: white;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        text-align: center;
     }
 
-        .panel:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
-        }
-
-    .panel-heading {
-        border-radius: 10px 10px 0 0 !important;
-        border: none;
-        padding: 20px;
-        font-weight: 600;
-        background: linear-gradient(135deg, #3498db 0%, #2980b9 100%) !important;
+    .btn-success {
+        background: #28a745;
         color: white;
     }
 
-    .panel-title {
-        font-size: 1.3rem;
-        margin: 0;
+        .btn-success:hover {
+            background: #218838;
+            transform: translateY(-3px);
+        }
+
+    .btn-primary {
+        background: #007bff;
+        color: white;
     }
 
-    .panel-body {
-        padding: 25px;
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-3px);
+        }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
     }
 
-    .action-bar {
+        .btn-info:hover {
+            background: #138496;
+            transform: translateY(-3px);
+        }
+
+    .btn-icon {
+        font-size: 1.8rem;
+    }
+
+    .content-section {
+        padding: 40px 20px;
+    }
+
+    .table-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .table-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border: 3px solid #006400;
+    }
+
+    .table-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 3px solid #006400;
+    }
+
+        .table-header h2 {
+            color: #006400;
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+    .table-stats {
+        display: flex;
+        gap: 15px;
+    }
+
+    .stat-badge {
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 1.2rem;
         background: #f8f9fa;
-        padding: 20px;
+        border: 2px solid #dee2e6;
+    }
+
+        .stat-badge.active {
+            background: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .stat-badge.inactive {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 1.3rem;
+    }
+
+        .data-table th,
+        .data-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .data-table th {
+            background: #006400;
+            color: white;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        .data-table tr:hover {
+            background: #f8f9fa;
+        }
+
+    .status-badge {
+        padding: 8px 16px;
+        border-radius: 15px;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+        .status-badge.active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.inactive {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+    .action-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border: none;
         border-radius: 8px;
+        font-size: 1.6rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-warning {
+        background: #ffc107;
+        color: #212529;
+    }
+
+        .btn-warning:hover {
+            background: #e0a800;
+            transform: scale(1.1);
+        }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+        .btn-info:hover {
+            background: #138496;
+            transform: scale(1.1);
+        }
+
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background: #c82333;
+            transform: scale(1.1);
+        }
+
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .empty-icon {
+        font-size: 8rem;
+        margin-bottom: 30px;
+    }
+
+    .empty-state h3 {
+        color: #6c757d;
+        font-size: 2.5rem;
         margin-bottom: 20px;
     }
 
-    .table th {
-        border-top: none;
-        font-weight: 600;
-        font-size: 1rem;
-        padding: 15px 12px;
+    .empty-state p {
+        color: #6c757d;
+        font-size: 1.6rem;
+        margin-bottom: 40px;
     }
-
-    .table td {
-        padding: 15px 12px;
-        vertical-align: middle;
-    }
-
-    .btn-group .btn {
-        margin: 0 2px;
-        border-radius: 5px;
-    }
-
-    .summary-card {
-        background: #e8f4fd;
-        padding: 15px;
-        border-radius: 8px;
-        border-left: 4px solid #3498db;
-    }
-
-    .badge {
-        font-size: 0.9rem;
-        padding: 6px 12px;
-    }
-
-    .no-gutters {
-        margin-right: 0;
-        margin-left: 0;
-    }
-
-        .no-gutters > .col,
-        .no-gutters > [class*="col-"] {
-            padding-right: 10px;
-            padding-left: 10px;
-        }
 
     @@media (max-width: 768px) {
-        .dashboard-container {
-            padding: 10px;
-        }
-
-        .jumbotron h1 {
+        .hospital-name {
             font-size: 2rem;
         }
 
-        .jumbotron .lead {
+        .hospital-subtitle {
+            font-size: 1.2rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .table-header {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .table-stats {
+            justify-content: center;
+        }
+
+        .quick-actions-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .data-table {
             font-size: 1.1rem;
         }
 
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-            .btn-group .btn {
-                margin: 2px 0;
-                width: 100%;
+            .data-table th,
+            .data-table td {
+                padding: 15px 10px;
             }
 
-        .action-bar .row > div {
-            margin-bottom: 10px;
+        .action-buttons {
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .btn-action {
+            width: 40px;
+            height: 40px;
+            font-size: 1.4rem;
         }
     }
 </style>

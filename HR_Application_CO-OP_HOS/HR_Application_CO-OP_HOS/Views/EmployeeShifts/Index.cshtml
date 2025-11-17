@@ -1,0 +1,349 @@
+﻿﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.EmployeeShift>
+
+@{
+    ViewBag.Title = "Employee Shifts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Container -->
+<div class="fullscreen-container dashboard-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">EMPLOYEE SHIFTS</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Manage Shift Assignments</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions-panel">
+        <div class="quick-actions-grid">
+            <a href="@Url.Action("Create")" class="quick-action-btn btn-primary">
+                <span>➕ ADD NEW SHIFT</span>
+            </a>
+            <a href="@Url.Action("Index", "Dashboard")" class="quick-action-btn btn-secondary">
+                <span>🏠 BACK TO DASHBOARD</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>📋 ALL SHIFT ASSIGNMENTS</h2>
+        </div>
+        <div class="section-content">
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.RelatedPartyID)</th>
+                            <th>@Html.DisplayNameFor(model => model.ShiftDate)</th>
+                            <th>@Html.DisplayNameFor(model => model.ShiftID)</th>
+                            <th>@Html.DisplayNameFor(model => model.StartTime)</th>
+                            <th>@Html.DisplayNameFor(model => model.EndTime)</th>
+                            <th>@Html.DisplayNameFor(model => model.IsActive)</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.RelatedPartyID)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ShiftDate)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ShiftID)</td>
+                                <td>@Html.DisplayFor(modelItem => item.StartTime)</td>
+                                <td>@Html.DisplayFor(modelItem => item.EndTime)</td>
+                                <td>
+                                    <span class="status-badge @(item.IsActive ? "status-active" : "status-inactive")">
+                                        @(item.IsActive ? "Active" : "Inactive")
+                                    </span>
+                                </td>
+                                <td class="action-buttons">
+                                    @Html.ActionLink("👁️", "Details", new { id = item.ID }, new { @class = "btn-action btn-info", title = "View Details" })
+                                    @Html.ActionLink("✏️", "Edit", new { id = item.ID }, new { @class = "btn-action btn-warning", title = "Edit" })
+                                    @Html.ActionLink("🗑️", "Delete", new { id = item.ID }, new { @class = "btn-action btn-danger", title = "Delete" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+    .dashboard-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .hospital-name {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hospital-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        opacity: 0.9;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2rem;
+        background: rgba(255,255,255,0.1);
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .quick-actions-panel {
+        padding: 30px 20px;
+        background: white;
+        margin: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    }
+
+    .quick-actions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .quick-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 25px 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.3rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        text-align: center;
+        min-height: 80px;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+    }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,100,0,0.3);
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-3px);
+        }
+
+    .dashboard-section {
+        background: white;
+        margin: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .section-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+        padding: 20px 30px;
+    }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .table-container {
+        overflow-x: auto;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+    }
+
+        .data-table th {
+            background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+            color: white;
+            padding: 20px 15px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-bottom: 3px solid #004d00;
+        }
+
+        .data-table td {
+            padding: 18px 15px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 1rem;
+        }
+
+        .data-table tbody tr {
+            transition: all 0.3s ease;
+        }
+
+            .data-table tbody tr:hover {
+                background: #f8f9fa;
+                transform: translateY(-1px);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+
+            .data-table tbody tr:nth-child(even) {
+                background: #f8f9fa;
+            }
+
+                .data-table tbody tr:nth-child(even):hover {
+                    background: #e9ecef;
+                }
+
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 15px;
+        font-weight: bold;
+        font-size: 0.85rem;
+        text-align: center;
+        display: inline-block;
+        min-width: 70px;
+    }
+
+    .status-active {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .status-inactive {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .btn-action {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        min-width: 50px;
+        text-align: center;
+    }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+        .btn-info:hover {
+            background: #138496;
+            transform: scale(1.1);
+        }
+
+    .btn-warning {
+        background: #ffc107;
+        color: #212529;
+    }
+
+        .btn-warning:hover {
+            background: #e0a800;
+            transform: scale(1.1);
+        }
+
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background: #c82333;
+            transform: scale(1.1);
+        }
+
+    @@media (max-width: 768px) {
+        .data-table {
+            font-size: 0.9rem;
+        }
+
+            .data-table th,
+            .data-table td {
+                padding: 12px 8px;
+            }
+
+        .action-buttons {
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .btn-action {
+            min-width: 40px;
+            padding: 8px 10px;
+            font-size: 1rem;
+        }
+
+        .quick-actions-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .hospital-name {
+            font-size: 2rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1.2rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+    }
+</style>

@@ -1,0 +1,318 @@
+﻿<!-- Edit.cshtml -->
+@model HR_Application_CO_OP_HOS.Models.EmployeeLoan
+
+@{
+    ViewBag.Title = "Edit Employee Loan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Edit Employee Loan -->
+<div class="fullscreen-container dashboard-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">✏️ EDIT EMPLOYEE LOAN</h1>
+            <p class="hospital-subtitle">Update loan information</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Editing: @Model.LoanNumber</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Form Section -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>📝 UPDATE LOAN INFORMATION</h2>
+        </div>
+        <div class="section-content">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.LoanID)
+
+                <div class="form-container">
+                    @Html.ValidationSummary(true, "", new { @class = "validation-summary" })
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EmployeeID, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.EmployeeID, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LoanCategoryID, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.LoanCategoryID, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LoanCategoryID, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LoanNumber, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.LoanNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LoanNumber, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LoanAmount, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.LoanAmount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LoanAmount, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InterestRate, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.InterestRate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.InterestRate, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TotalAmount, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.TotalAmount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TotalAmount, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MonthlyInstallment, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.MonthlyInstallment, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MonthlyInstallment, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TotalInstallments, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.TotalInstallments, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TotalInstallments, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PaidInstallments, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.PaidInstallments, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PaidInstallments, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.RemainingInstallments, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.RemainingInstallments, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.RemainingInstallments, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PaidAmount, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.PaidAmount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PaidAmount, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.RemainingAmount, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.RemainingAmount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.RemainingAmount, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                            @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group full-width">
+                            @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control textarea-large", rows = 3 })
+                            @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ApprovedBy, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.ApprovedBy, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ApprovedBy, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ApprovedDate, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.ApprovedDate, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
+                            @Html.ValidationMessageFor(model => model.ApprovedDate, "", new { @class = "validation-message" })
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="quick-action-btn btn-primary">
+                            💾 Save Changes
+                        </button>
+                        <a href="@Url.Action("Index")" class="quick-action-btn btn-secondary">
+                            📋 Back to List
+                        </a>
+                        <a href="@Url.Action("Details", new { id = Model.LoanID })" class="quick-action-btn btn-info">
+                            👁️ View Details
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<style>
+    .dashboard-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.8rem;
+        background: rgba(0,0,0,0.2);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .dashboard-section {
+        padding: 20px;
+    }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .form-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .full-width {
+        grid-column: 1 / -1;
+    }
+
+    .form-label {
+        font-size: 1.6rem;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #333;
+    }
+
+    .form-control {
+        padding: 12px;
+        font-size: 1.5rem;
+        border: 2px solid #006400;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    .textarea-large {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .quick-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.6rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-width: 180px;
+    }
+
+    .btn-primary {
+        background: #006400;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+    .quick-action-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .validation-summary {
+        color: #dc3545;
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        border-radius: 5px;
+    }
+
+    .validation-message {
+        color: #dc3545;
+        font-size: 1.4rem;
+        margin-top: 5px;
+    }
+
+    @@media (max-width: 768px) {
+        body {
+            font-size: 24px;
+        }
+
+        .hospital-name {
+            font-size: 2.5rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1.5rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 15px;
+            font-size: 1.4rem;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>

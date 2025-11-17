@@ -1,42 +1,226 @@
-﻿@model HR_Application_CO_OP_HOS.Models.LeaveCategory
+﻿﻿@model HR_Application_CO_OP_HOS.Models.LeaveCategory
 
 @{
-    Layout = null;
+    ViewBag.Title = "Leave Category Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>LeaveCategory</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.CategoryName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.CategoryName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.LeaveCode)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.LeaveCode)
-            </dd>
-    
-        </dl>
+<div class="fullscreen-container dashboard-container">
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">LEAVE CATEGORY DETAILS</h1>
+            <p class="hospital-subtitle">Hospital Human Resources System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">View Leave Category Information</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+
+    <div class="action-panel">
+        <a href="@Url.Action("Edit", new { id = Model.LeaveCategoryID })" class="btn btn-warning">
+            <span>✏️ Edit</span>
+        </a>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">
+            <span>📋 Back to List</span>
+        </a>
+    </div>
+
+    <div class="details-section">
+        <div class="section-header">
+            <h2>👁️ LEAVE CATEGORY INFORMATION</h2>
+        </div>
+
+        <div class="details-container">
+            <div class="detail-card">
+                <div class="detail-header">
+                    <h3>📋 Basic Information</h3>
+                </div>
+                <div class="detail-content">
+                    <div class="detail-row">
+                        <div class="detail-label">Category Name:</div>
+                        <div class="detail-value">@Html.DisplayFor(model => model.CategoryName)</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Description:</div>
+                        <div class="detail-value">@Html.DisplayFor(model => model.Description)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .fullscreen-container {
+        margin: 0;
+        padding: 20px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+    }
+
+    .dashboard-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .hospital-name {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hospital-subtitle {
+        font-size: 1.3rem;
+        opacity: 0.9;
+        margin-bottom: 20px;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.1rem;
+        background: rgba(255,255,255,0.2);
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .action-panel {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-warning {
+        background: #ffc107;
+        color: black;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .details-section {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 25px;
+    }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.6rem;
+        }
+
+    .details-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .detail-card {
+        border: 2px solid #006400;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .detail-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+        padding: 15px 20px;
+    }
+
+        .detail-header h3 {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+
+    .detail-content {
+        padding: 20px;
+    }
+
+    .detail-row {
+        display: flex;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+    .detail-label {
+        font-weight: bold;
+        color: #006400;
+        width: 200px;
+        font-size: 1.1rem;
+    }
+
+    .detail-value {
+        flex: 1;
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    @@media (max-width: 768px) {
+        .hospital-name {
+            font-size: 2rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1.1rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .action-panel {
+            flex-direction: column;
+        }
+
+        .detail-row {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .detail-label {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+    }
+</style>

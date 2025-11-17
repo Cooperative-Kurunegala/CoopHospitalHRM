@@ -12,7 +12,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
 {
     public class BanksController : Controller
     {
-        private HREntities db = new HREntities();
+        private HospitalHRDataEntities db = new HospitalHRDataEntities();
 
         // GET: Banks
         public ActionResult Index()
@@ -46,7 +46,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,BankName,IsEnabled,CreatedDate,CreatedBy")] Bank bank)
+        public ActionResult Create([Bind(Include = "BankID,BankName,BankCode,IsActive")] Bank bank)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,BankName,IsEnabled,CreatedDate,CreatedBy")] Bank bank)
+        public ActionResult Edit([Bind(Include = "BankID,BankName,BankCode,IsActive")] Bank bank)
         {
             if (ModelState.IsValid)
             {

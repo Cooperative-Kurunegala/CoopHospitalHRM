@@ -2,473 +2,256 @@
 
 @{
     ViewBag.Title = "Delete Location";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="dashboard-container">
+<!-- Full Screen Container -->
+<div class="fullscreen-container">
+    <!-- Header Section -->
     <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-trash"></i> Delete Location</h1>
-            <p class="lead">Remove location from the system</p>
+        <div class="header-content">
+            <h1 class="hospital-name">DELETE LOCATION</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Confirm Deletion</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
         </div>
     </div>
 
-    <div class="row no-gutters">
-        <div class="col-md-8">
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-exclamation-triangle"></i> Confirm Deletion</h3>
+    <!-- Main Content -->
+    <div class="content-section">
+        <div class="form-container">
+            <div class="form-card">
+                <div class="form-header">
+                    <h2>🗑️ Delete Confirmation</h2>
+                    <p class="warning-text">Are you sure you want to delete this location?</p>
                 </div>
-                <div class="panel-body">
-                    <div class="alert alert-danger">
-                        <h4><i class="fa fa-warning"></i> Warning!</h4>
-                        <p>You are about to permanently delete this location. This action cannot be undone.</p>
+
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <label class="detail-label">Location Name:</label>
+                        <span class="detail-value">@Html.DisplayFor(model => model.LocationName)</span>
                     </div>
 
-                    <div class="detail-section">
-                        <div class="detail-header">
-                            <h4><i class="fa fa-info-circle"></i> Location to be Deleted</h4>
-                        </div>
-                        <div class="detail-content">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-item">
-                                        <label>Location ID:</label>
-                                        <div class="detail-value">@Model.ID</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="detail-item">
-                                        <label>Location Name:</label>
-                                        <div class="detail-value">@Model.LocationName</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="detail-item">
-                                <label>Order Index:</label>
-                                <div class="detail-value">@Model.OrderIndex</div>
-                            </div>
-                        </div>
+                    <div class="detail-item">
+                        <label class="detail-label">Address:</label>
+                        <span class="detail-value">@Html.DisplayFor(model => model.Address)</span>
                     </div>
 
-                    <div class="impact-assessment mt-4">
-                        <h5><i class="fa fa-line-chart"></i> Potential Impact</h5>
-                        <div class="impact-items">
-                            <div class="impact-item">
-                                <i class="fa fa-users text-warning"></i>
-                                <span>May affect associated employee records</span>
-                            </div>
-                            <div class="impact-item">
-                                <i class="fa fa-calendar text-warning"></i>
-                                <span>Could impact session scheduling</span>
-                            </div>
-                            <div class="impact-item">
-                                <i class="fa fa-bar-chart text-warning"></i>
-                                <span>Will change display ordering</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-
-                        <div class="confirmation-section mt-4">
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" id="confirmDelete" required>
-                                <label class="form-check-label" for="confirmDelete">
-                                    I understand that this action cannot be undone and I accept the consequences
-                                </label>
-                            </div>
-
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-danger btn-lg" id="deleteButton" disabled>
-                                    <i class="fa fa-trash"></i> Confirm Delete
-                                </button>
-                                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary btn-lg" })
-                            </div>
-                        </div>
-                    }
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-lightbulb-o"></i> Alternative Actions</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="alternative-actions">
-                        <div class="alternative-item">
-                            <h5><i class="fa fa-edit"></i> Edit Instead</h5>
-                            <p>Consider updating the location instead of deleting it.</p>
-                            @Html.ActionLink("Edit Location", "Edit", new { id = Model.ID }, new { @class = "btn btn-warning btn-sm btn-block" })
-                        </div>
-
-                        <div class="alternative-item">
-                            <h5><i class="fa fa-archive"></i> Archive</h5>
-                            <p>Mark as inactive instead of permanent deletion.</p>
-                            <button class="btn btn-info btn-sm btn-block" disabled title="Archive functionality not implemented">
-                                <i class="fa fa-archive"></i> Archive Location
-                            </button>
-                        </div>
-
-                        <div class="alternative-item">
-                            <h5><i class="fa fa-info"></i> View Details</h5>
-                            <p>Review complete location information.</p>
-                            @Html.ActionLink("View Details", "Details", new { id = Model.ID }, new { @class = "btn btn-info btn-sm btn-block" })
-                        </div>
+                    <div class="detail-item">
+                        <label class="detail-label">Active Status:</label>
+                        <span class="detail-value">@Html.DisplayFor(model => model.IsActive)</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-history"></i> Deletion History</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="history-info">
-                        <p class="text-center text-muted">
-                            <i class="fa fa-clock-o fa-2x mb-3"></i><br>
-                            No deletion history available
-                        </p>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-danger btn-lg">
+                            <span class="btn-icon">🗑️</span>
+                            CONFIRM DELETE
+                        </button>
+                        <a href="@Url.Action("Index")" class="btn btn-secondary btn-lg">
+                            <span class="btn-icon">←</span>
+                            CANCEL
+                        </a>
                     </div>
-                </div>
+                }
             </div>
         </div>
     </div>
 </div>
 
-@section Scripts {
-    <script>
-        $(document).ready(function () {
-            // Enable/disable delete button based on confirmation
-            $('#confirmDelete').change(function () {
-                $('#deleteButton').prop('disabled', !this.checked);
-            });
-
-            // Confirm deletion on button click
-            $('#deleteButton').click(function (e) {
-                if (!confirm('Are you absolutely sure you want to delete this location? This action cannot be undone.')) {
-                    e.preventDefault();
-                    return false;
-                }
-
-                // Show loading state
-                $(this).html('<i class="fa fa-spinner fa-spin"></i> Deleting...').prop('disabled', true);
-            });
-
-            // Prevent accidental form submission
-            $('form').submit(function (e) {
-                if (!$('#confirmDelete').is(':checked')) {
-                    e.preventDefault();
-                    alert('Please confirm deletion by checking the confirmation box.');
-                    return false;
-                }
-            });
-
-            // Add warning style to the form
-            $('.confirmation-section').addClass('warning-border');
-        });
-    </script>
-}
-
 <style>
-    .dashboard-container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    .fullscreen-container {
+        margin: 0;
         padding: 0;
-        margin: 0;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
 
-    body {
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow-x: hidden;
-    }
-
-    .container.body-content {
-        padding: 0 !important;
-        margin: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    .dashboard-header {
+        background: rgba(0, 0, 0, 0.8);
         color: white;
-        border-radius: 0;
-        padding: 40px 20px;
-        margin: 0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        width: 100%;
+        padding: 30px 0;
+        border-bottom: 4px solid #dc3545;
     }
 
-    .jumbotron h1 {
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-        font-weight: 700;
+    .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
     }
 
-    .jumbotron .lead {
-        font-size: 1.3rem;
-        opacity: 0.9;
+    .hospital-name {
+        font-size: 3rem;
+        font-weight: bold;
         margin-bottom: 10px;
+        color: #ffffff;
     }
 
-    .panel {
-        border: none;
-        border-radius: 10px;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    .hospital-subtitle {
+        font-size: 1.5rem;
         margin-bottom: 20px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        background: white;
+        color: #cccccc;
     }
 
-        .panel:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.4rem;
+        background: rgba(220, 53, 69, 0.3);
+        padding: 15px 20px;
+        border-radius: 10px;
+    }
+
+    .content-section {
+        padding: 40px 20px;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .form-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border: 3px solid #dc3545;
+    }
+
+    .form-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 3px solid #dc3545;
+    }
+
+        .form-header h2 {
+            color: #dc3545;
+            font-size: 2.5rem;
+            margin: 0 0 20px 0;
         }
 
-    .panel-heading {
-        border-radius: 10px 10px 0 0 !important;
-        border: none;
-        padding: 20px;
-        font-weight: 600;
-        color: white;
-    }
-
-    .panel-danger .panel-heading {
-        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
-    }
-
-    .panel-warning .panel-heading {
-        background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%) !important;
-    }
-
-    .panel-info .panel-heading {
-        background: linear-gradient(135deg, #2980b9 0%, #3498db 100%) !important;
-    }
-
-    .panel-title {
-        font-size: 1.3rem;
+    .warning-text {
+        color: #dc3545;
+        font-size: 1.6rem;
+        font-weight: bold;
         margin: 0;
     }
 
-    .panel-body {
-        padding: 25px;
-    }
-
-    .alert-danger {
-        background: #ffe6e6;
-        border: 1px solid #e74c3c;
-        border-left: 4px solid #e74c3c;
-    }
-
-    .detail-section {
-        margin-bottom: 25px;
-        border: 1px solid #ecf0f1;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    .detail-header {
-        background: #f8f9fa;
-        padding: 15px 20px;
-        border-bottom: 1px solid #ecf0f1;
-    }
-
-        .detail-header h4 {
-            margin: 0;
-            color: #2c3e50;
-            font-size: 1.2rem;
-        }
-
-            .detail-header h4 i {
-                margin-right: 10px;
-                color: #e74c3c;
-            }
-
-    .detail-content {
-        padding: 20px;
+    .details-grid {
+        display: grid;
+        gap: 25px;
+        margin-bottom: 40px;
     }
 
     .detail-item {
-        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #dc3545;
     }
 
-        .detail-item label {
-            font-weight: 600;
-            color: #7f8c8d;
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-        }
+    .detail-label {
+        font-weight: bold;
+        color: #333333;
+        font-size: 1.4rem;
+    }
 
     .detail-value {
-        font-size: 1.1rem;
-        color: #2c3e50;
+        color: #666666;
+        font-size: 1.4rem;
         font-weight: 500;
-    }
-
-    .impact-assessment {
-        background: #fffaf0;
-        padding: 20px;
-        border-radius: 8px;
-        border-left: 4px solid #f39c12;
-    }
-
-        .impact-assessment h5 {
-            color: #e67e22;
-            margin-bottom: 15px;
-        }
-
-    .impact-items {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .impact-item {
-        display: flex;
-        align-items: center;
-        padding: 8px 0;
-    }
-
-        .impact-item i {
-            margin-right: 10px;
-            font-size: 1.1rem;
-            width: 20px;
-        }
-
-        .impact-item span {
-            color: #7f8c8d;
-        }
-
-    .confirmation-section {
-        background: #fff5f5;
-        padding: 20px;
-        border-radius: 8px;
-    }
-
-    .warning-border {
-        border: 2px solid #e74c3c;
-    }
-
-    .form-check {
-        padding-left: 2.5em;
-    }
-
-    .form-check-input {
-        width: 1.2em;
-        height: 1.2em;
-        margin-left: -2.5em;
-        margin-top: 0.2em;
-    }
-
-    .form-check-label {
-        font-weight: 500;
-        color: #2c3e50;
-        cursor: pointer;
     }
 
     .form-actions {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .btn-lg {
-        padding: 12px 30px;
-        font-size: 1.1rem;
-        margin: 0 10px 10px 0;
-    }
-
-    .alternative-actions {
         display: flex;
-        flex-direction: column;
         gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
     }
 
-    .alternative-item {
-        background: #f8f9fa;
-        padding: 15px;
+    .btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 30px;
+        border: none;
         border-radius: 8px;
-        text-align: center;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-width: 200px;
+        justify-content: center;
     }
 
-        .alternative-item h5 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .alternative-item p {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
-    .history-info {
-        text-align: center;
-        padding: 20px 0;
+    .btn-danger {
+        background: #dc3545;
+        color: white;
     }
 
-    .no-gutters {
-        margin-right: 0;
-        margin-left: 0;
+        .btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
     }
 
-        .no-gutters > .col,
-        .no-gutters > [class*="col-"] {
-            padding-right: 10px;
-            padding-left: 10px;
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
         }
+
+    .btn-icon {
+        font-size: 1.6rem;
+    }
 
     @@media (max-width: 768px) {
-        .dashboard-container {
-            padding: 10px;
-        }
-
-        .jumbotron h1 {
+        .hospital-name {
             font-size: 2rem;
         }
 
-        .jumbotron .lead {
-            font-size: 1.1rem;
+        .hospital-subtitle {
+            font-size: 1.2rem;
         }
 
-        .form-actions .btn {
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .form-card {
+            padding: 20px;
+        }
+
+        .detail-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+
+        .btn {
+            min-width: auto;
             width: 100%;
-            margin-bottom: 10px;
-        }
-
-        .impact-items {
-            gap: 15px;
-        }
-
-        .detail-content .row > div {
-            margin-bottom: 15px;
-        }
-    }
-
-    /* Disabled button styles */
-    .btn:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
-
-    /* Loading animation */
-    .fa-spin {
-        animation: fa-spin 1s infinite linear;
-    }
-
-    @@keyframes fa-spin {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        100% {
-            transform: rotate(360deg);
         }
     }
 </style>

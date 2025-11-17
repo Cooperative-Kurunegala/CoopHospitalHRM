@@ -1,210 +1,153 @@
-﻿@model HR_Application_CO_OP_HOS.Models.AttendanceRecord
+﻿﻿@model HR_Application_CO_OP_HOS.Models.AttendanceRecord
 
 @{
     ViewBag.Title = "Attendance Record Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="dashboard-container">
+<div class="fullscreen-container">
     <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-eye"></i> Attendance Record Details</h1>
-            <p class="lead">View comprehensive attendance record information</p>
+        <div class="header-content">
+            <h1 class="hospital-name">ATTENDANCE RECORD DETAILS</h1>
+            <p class="hospital-subtitle">View Attendance Information</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Welcome, System Administrator</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
         </div>
     </div>
 
-    <div class="row no-gutters">
-        <!-- Main Details -->
-        <div class="col-md-8">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-info-circle"></i> Record Information</h3>
-                    <div class="panel-tools">
-                        <span class="badge badge-primary">Record ID: @Model.ID</span>
-                    </div>
+    <div class="dashboard-grid">
+        <div class="row no-gutters">
+            <div class="col-md-8 dashboard-section">
+                <div class="section-header">
+                    <h2>📊 ATTENDANCE INFORMATION</h2>
                 </div>
-                <div class="panel-body">
-                    <div class="row no-gutters">
-                        <div class="col-md-6">
-                            <div class="detail-card">
-                                <div class="detail-icon">
-                                    <i class="fa fa-id-card"></i>
+                <div class="section-content">
+                    <div class="detail-card" style="background:#f8f9fa;border:3px solid #006400;border-radius:15px;padding:40px;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="detail-item">
+                                    <strong>Employee ID:</strong>
+                                    <span>@Html.DisplayFor(model => model.EmployeeID)</span>
                                 </div>
-                                <div class="detail-content">
-                                    <label>EPF Number</label>
-                                    <h4>@Html.DisplayFor(model => model.EPFNo)</h4>
+                                <div class="detail-item">
+                                    <strong>Attendance Date:</strong>
+                                    <span>@Html.DisplayFor(model => model.AttendanceDate)</span>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="detail-card">
-                                <div class="detail-icon">
-                                    <i class="fa fa-building"></i>
+                                <div class="detail-item">
+                                    <strong>Shift ID:</strong>
+                                    <span>@Html.DisplayFor(model => model.ShiftID)</span>
                                 </div>
-                                <div class="detail-content">
-                                    <label>Company ID</label>
-                                    <h4>@Html.DisplayFor(model => model.CompanyID)</h4>
+                                <div class="detail-item">
+                                    <strong>Scheduled In:</strong>
+                                    <span>@Html.DisplayFor(model => model.ScheduledIn)</span>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row no-gutters mt-4">
-                        <div class="col-md-6">
-                            <div class="detail-card">
-                                <div class="detail-icon">
-                                    <i class="fa fa-calendar"></i>
+                                <div class="detail-item">
+                                    <strong>Scheduled Out:</strong>
+                                    <span>@Html.DisplayFor(model => model.ScheduledOut)</span>
                                 </div>
-                                <div class="detail-content">
-                                    <label>Attendance Date & Time</label>
-                                    <h4>@(Model.AttendanceDateTime?.ToString("dddd, MMMM dd, yyyy") ?? "N/A")</h4>
-                                    <p class="text-muted">@(Model.AttendanceDateTime?.ToString("hh:mm tt") ?? "")</p>
+                                <div class="detail-item">
+                                    <strong>Actual In:</strong>
+                                    <span>@Html.DisplayFor(model => model.ActualIn)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Actual Out:</strong>
+                                    <span>@Html.DisplayFor(model => model.ActualOut)</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="detail-card">
-                                <div class="detail-icon">
-                                    <i class="fa fa-cog"></i>
+                            <div class="col-md-6">
+                                <div class="detail-item">
+                                    <strong>Total Hours:</strong>
+                                    <span class="badge @(Model.TotalHours >= 8 ? "badge-success" : "badge-warning")">
+                                        @Html.DisplayFor(model => model.TotalHours) hrs
+                                    </span>
                                 </div>
-                                <div class="detail-content">
-                                    <label>Processing Status</label>
-                                    <h4 class="@(Model.IsProcessed == true ? "text-success" : "text-warning")">
-                                        @(Model.IsProcessed == true ? "Processed" : "Not Processed")
-                                    </h4>
-                                    <p class="text-muted">
-                                        @if (Model.IsProcessed == true)
+                                <div class="detail-item">
+                                    <strong>Overtime Hours:</strong>
+                                    <span>
+                                        @if (Model.OvertimeHours > 0)
                                         {
-                                            <span>Included in payroll</span>
+                                            <span class="badge badge-info">@Model.OvertimeHours hrs</span>
                                         }
                                         else
                                         {
-                                            <span>Pending payroll processing</span>
+                                            <span class="badge badge-secondary">0 hrs</span>
                                         }
-                                    </p>
+                                    </span>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Night Hours:</strong>
+                                    <span>@Html.DisplayFor(model => model.NightHours) hrs</span>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Late Minutes:</strong>
+                                    <span>@Html.DisplayFor(model => model.LateMinutes) mins</span>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Early Out Minutes:</strong>
+                                    <span>@Html.DisplayFor(model => model.EarlyOutMinutes) mins</span>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Status:</strong>
+                                    <span>
+                                        @{
+                                            var statusClass = Model.Status == "Present" ? "badge-success" :
+                                                            Model.Status == "Absent" ? "badge-danger" :
+                                                            Model.Status == "Late" ? "badge-warning" : "badge-secondary";
+                                        }
+                                        <span class="badge @statusClass">@Model.Status</span>
+                                    </span>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Regularized:</strong>
+                                    <span>
+                                        @if (Model.IsRegularized)
+                                        {
+                                            <span class="badge badge-success">Yes</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-warning">No</span>
+                                        }
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Record Analysis -->
-                    <div class="row no-gutters mt-4">
-                        <div class="col-12">
-                            <div class="panel panel-success">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-line-chart"></i> Record Analysis</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="row no-gutters text-center">
-                                        <div class="col-md-4">
-                                            <div class="stat-box">
-                                                <div class="stat-value @GetRecordTypeClass()">
-                                                    @GetRecordType()
-                                                </div>
-                                                <div class="stat-label">Record Type</div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="stat-box">
-                                                <div class="stat-value text-info">
-                                                    @GetDayOfWeek()
-                                                </div>
-                                                <div class="stat-label">Day of Week</div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="stat-box">
-                                                <div class="stat-value @GetTimeCategoryClass()">
-                                                    @GetTimeCategory()
-                                                </div>
-                                                <div class="stat-label">Time Category</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        @if (!string.IsNullOrEmpty(Model.Remarks))
+                        {
+                            <div class="detail-item full-width">
+                                <strong>Remarks:</strong>
+                                <p style="background:white;padding:20px;border-radius:10px;margin-top:10px;">@Model.Remarks</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Side Panel -->
-        <div class="col-md-4">
-            <!-- Employee Information -->
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-user"></i> Employee Information</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="employee-profile">
-                        <div class="text-center mb-3">
-                            <div class="avatar">
-                                <i class="fa fa-user-circle fa-4x"></i>
-                            </div>
-                            <h5 id="employeeName">Loading...</h5>
-                            <p class="text-muted" id="employeeEPF">EPF: @Model.EPFNo</p>
-                        </div>
-                        <div class="employee-details">
-                            <div class="detail-row">
-                                <span class="label">Designation:</span>
-                                <span class="value" id="employeeDesignation">Loading...</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="label">Department:</span>
-                                <span class="value" id="employeeDepartment">Loading...</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="label">Status:</span>
-                                <span class="value"><span class="badge badge-success" id="employeeStatus">Active</span></span>
-                            </div>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
 
-            <!-- Quick Actions -->
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-bolt"></i> Quick Actions</h3>
+            <div class="col-md-4 dashboard-section">
+                <div class="section-header">
+                    <h2>⚡ QUICK ACTIONS</h2>
                 </div>
-                <div class="panel-body">
-                    <div class="action-buttons">
-                        @Html.ActionLink("Edit Record", "Edit", new { id = Model.ID }, new { @class = "btn btn-warning btn-block mb-2" })
-                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary btn-block mb-2" })
-                        <button class="btn btn-info btn-block mb-2" onclick="printDetails()">
-                            <i class="fa fa-print"></i> Print Details
-                        </button>
-                        <button class="btn btn-success btn-block" onclick="toggleProcessing()">
-                            <i class="fa fa-cog"></i>
-                            @(Model.IsProcessed == true ? "Mark as Pending" : "Mark as Processed")
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Record Metadata -->
-            <div class="panel panel-dark">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-database"></i> Record Metadata</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="metadata">
-                        <div class="meta-item">
-                            <span class="meta-label">Record ID:</span>
-                            <span class="meta-value">@Model.ID</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Created:</span>
-                            <span class="meta-value">@DateTime.Now.AddDays(-30).ToString("MMM dd, yyyy HH:mm")</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Last Modified:</span>
-                            <span class="meta-value">@DateTime.Now.ToString("MMM dd, yyyy HH:mm")</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Data Source:</span>
-                            <span class="meta-value">Attendance System</span>
-                        </div>
+                <div class="section-content">
+                    <div class="action-grid">
+                        <a href="@Url.Action("Edit", "AttendanceRecords", new { id = Model.AttendanceID })" class="action-card">
+                            <div class="action-icon">✏️</div>
+                            <span>Edit Record</span>
+                        </a>
+                        <a href="@Url.Action("Index", "AttendanceRecords")" class="action-card">
+                            <div class="action-icon">📋</div>
+                            <span>Back to List</span>
+                        </a>
+                        <a href="@Url.Action("Create", "AttendanceRecords")" class="action-card">
+                            <div class="action-icon">➕</div>
+                            <span>Create New</span>
+                        </a>
+                        <a href="@Url.Action("Index", "Employees")" class="action-card">
+                            <div class="action-icon">👥</div>
+                            <span>View Employees</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -212,267 +155,23 @@
     </div>
 </div>
 
-@section Scripts {
-    <script>
-        // Load employee information
-        function loadEmployeeInfo() {
-            const epf = @Model.EPFNo;
-
-            // Simulate API call to get employee data
-            setTimeout(() => {
-                document.getElementById('employeeName').textContent = 'John Doe';
-                document.getElementById('employeeDesignation').textContent = 'Software Engineer';
-                document.getElementById('employeeDepartment').textContent = 'IT Department';
-                document.getElementById('employeeStatus').textContent = 'Active';
-                document.getElementById('employeeStatus').className = 'badge badge-success';
-            }, 1000);
-        }
-
-        function printDetails() {
-            window.print();
-        }
-
-        function toggleProcessing() {
-            const isCurrentlyProcessed = @Model.IsProcessed.ToString().ToLower();
-            const newStatus = !isCurrentlyProcessed;
-            const action = newStatus ? 'mark as processed' : 'mark as pending';
-
-            if (confirm(`Are you sure you want to ${action} this record?`)) {
-                // Simulate status change - in real app, this would be an AJAX call
-                showAlert(`Record ${action} successfully.`, 'success');
-
-                // Reload page to show updated status
-                setTimeout(() => {
-                    location.reload();
-                }, 2000);
-            }
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            loadEmployeeInfo();
-        });
-    </script>
-}
-
-@functions {
-    public string GetRecordType()
-    {
-        if (!Model.AttendanceDateTime.HasValue) return "Unknown";
-
-        var hour = Model.AttendanceDateTime.Value.Hour;
-        if (hour < 12) return "Morning";
-        if (hour < 17) return "Afternoon";
-        return "Evening";
-    }
-
-    public string GetRecordTypeClass()
-    {
-        var type = GetRecordType();
-        switch (type)
-        {
-            case "Morning": return "text-primary";
-            case "Afternoon": return "text-warning";
-            case "Evening": return "text-dark";
-            default: return "text-secondary";
-        }
-    }
-
-    public string GetDayOfWeek()
-    {
-        return Model.AttendanceDateTime?.ToString("dddd") ?? "Unknown";
-    }
-
-    public string GetTimeCategory()
-    {
-        if (!Model.AttendanceDateTime.HasValue) return "Unknown";
-
-        var hour = Model.AttendanceDateTime.Value.Hour;
-        if (hour < 6) return "Early Morning";
-        if (hour < 9) return "Morning In";
-        if (hour < 12) return "Late Morning";
-        if (hour < 14) return "Lunch Time";
-        if (hour < 17) return "Afternoon";
-        if (hour < 19) return "Evening Out";
-        return "Night";
-    }
-
-    public string GetTimeCategoryClass()
-    {
-        var category = GetTimeCategory();
-        switch (category)
-        {
-            case "Morning In": return "text-success";
-            case "Evening Out": return "text-info";
-            case "Lunch Time": return "text-warning";
-            default: return "text-secondary";
-        }
-    }
-}
-
 <style>
-    .dashboard-container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 20px;
-        margin: 0;
-    }
-
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-        color: white;
-        border-radius: 15px;
-        padding: 40px 30px;
-        margin-bottom: 30px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    .panel {
-        border: none;
-        border-radius: 12px;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        margin-bottom: 20px;
-        background: white;
-    }
-
-    .panel-heading {
-        border-radius: 12px 12px 0 0 !important;
-        border: none;
-        padding: 20px 25px;
-        font-weight: 600;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .panel-tools {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .detail-card {
-        display: flex;
-        align-items: center;
-        padding: 20px;
-        background: #f8f9fa;
-        border-radius: 10px;
-        margin-bottom: 15px;
-    }
-
-    .detail-icon {
-        font-size: 2rem;
-        color: #3498db;
-        margin-right: 20px;
-        width: 60px;
-        text-align: center;
-    }
-
-    .detail-content label {
-        font-weight: 600;
-        color: #7f8c8d;
-        margin-bottom: 5px;
-        display: block;
-    }
-
-    .detail-content h4 {
-        margin: 0;
-        color: #2c3e50;
-    }
-
-    .stat-box {
-        padding: 15px;
-    }
-
-    .stat-value {
+    .detail-item {
+        padding: 15px 0;
+        border-bottom: 1px solid #dee2e6;
         font-size: 1.8rem;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-
-    .stat-label {
-        color: #7f8c8d;
-        font-size: 0.9rem;
-    }
-
-    .employee-profile {
-        text-align: center;
-    }
-
-    .avatar {
-        margin-bottom: 15px;
-    }
-
-    .employee-details {
-        text-align: left;
-    }
-
-    .detail-row {
         display: flex;
         justify-content: space-between;
-        padding: 8px 0;
-        border-bottom: 1px solid #eee;
+        align-items: center;
     }
 
-        .detail-row:last-child {
-            border-bottom: none;
-        }
-
-        .detail-row .label {
-            font-weight: 600;
-            color: #7f8c8d;
-        }
-
-        .detail-row .value {
-            color: #2c3e50;
-        }
-
-    .metadata .meta-item {
-        display: flex;
-        justify-content: space-between;
-        padding: 8px 0;
-        border-bottom: 1px solid #eee;
-    }
-
-        .metadata .meta-item:last-child {
-            border-bottom: none;
-        }
-
-    .meta-label {
-        font-weight: 600;
-        color: #7f8c8d;
-    }
-
-    .meta-value {
-        color: #2c3e50;
-    }
-
-    .action-buttons .btn {
-        margin-bottom: 10px;
-        border-radius: 8px;
-        padding: 12px;
+    .full-width {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .badge {
-        font-size: 0.8em;
-    }
-
-    @@media print {
-        .dashboard-header,
-        .panel-heading,
-        .action-buttons {
-            display: none !important;
-        }
-
-        .dashboard-container {
-            background: white !important;
-            padding: 0 !important;
-        }
-
-        .panel {
-            box-shadow: none !important;
-            border: 1px solid #ddd !important;
-        }
+        font-size: 1.4rem;
+        padding: 8px 12px;
     }
 </style>

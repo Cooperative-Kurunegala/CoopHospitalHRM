@@ -1,178 +1,125 @@
-﻿@model HR_Application_CO_OP_HOS.Models.Allowance
+﻿﻿@model HR_Application_CO_OP_HOS.Models.Allowance
 
 @{
     ViewBag.Title = "Allowance Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!-- Full Screen Container -->
-<div class="dashboard-container">
-    <!-- Header Section -->
+<div class="fullscreen-container">
     <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-eye"></i> Allowance Details</h1>
-            <p class="lead">View comprehensive allowance information</p>
+        <div class="header-content">
+            <h1 class="hospital-name">ALLOWANCE DETAILS</h1>
+            <p class="hospital-subtitle">View Allowance Information</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Welcome, System Administrator</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
         </div>
     </div>
 
-    <div class="row no-gutters">
-        <!-- Main Details -->
-        <div class="col-md-8">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-info-circle"></i> Allowance Information</h3>
+    <div class="dashboard-grid">
+        <div class="row no-gutters">
+            <div class="col-md-8 dashboard-section">
+                <div class="section-header">
+                    <h2>📊 ALLOWANCE INFORMATION</h2>
                 </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="detail-card">
-                                <h5><i class="fa fa-user text-primary"></i> Employee Information</h5>
-                                <div class="detail-content">
-                                    <strong>Employee ID:</strong> @Html.DisplayFor(model => model.EmployeeId)<br>
-                                    <strong>Registration No:</strong> @(Model.RelatedParty?.RegistrationNumber ?? "N/A")<br>
-                                    <strong>Employee Name:</strong> @(Model.RelatedParty?.RelatedPartyName ?? "N/A")
+                <div class="section-content">
+                    <div class="detail-card" style="background:#f8f9fa;border:3px solid #006400;border-radius:15px;padding:40px;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="detail-item">
+                                    <strong>Allowance Name:</strong>
+                                    <span>@Html.DisplayFor(model => model.AllowanceName)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Allowance Type:</strong>
+                                    <span>@Html.DisplayFor(model => model.AllowanceType)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Amount:</strong>
+                                    <span>@Html.DisplayFor(model => model.Amount)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Is Percentage:</strong>
+                                    <span>
+                                        @if (Model.IsPercentage)
+                                        {
+                                            <span class="badge badge-success">Yes</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-secondary">No</span>
+                                        }
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="detail-item">
+                                    <strong>Percentage Of:</strong>
+                                    <span>@(string.IsNullOrEmpty(Model.PercentageOf) ? "N/A" : Model.PercentageOf)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Is Taxable:</strong>
+                                    <span>
+                                        @if (Model.IsTaxable)
+                                        {
+                                            <span class="badge badge-warning">Taxable</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-info">Non-Taxable</span>
+                                        }
+                                    </span>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Status:</strong>
+                                    <span>
+                                        @if (Model.IsActive)
+                                        {
+                                            <span class="badge badge-success">Active</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-danger">Inactive</span>
+                                        }
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="detail-card">
-                                <h5><i class="fa fa-money text-success"></i> Allowance Details</h5>
-                                <div class="detail-content">
-                                    <strong>Type:</strong> <span class="badge badge-primary">@Html.DisplayFor(model => model.AllowanceType)</span><br>
-                                    <strong>Amount:</strong> <span class="text-success font-weight-bold">@Html.DisplayFor(model => model.Amount)</span><br>
-                                    <strong>Effective:</strong> @Html.DisplayFor(model => model.EffectiveDate)
-                                </div>
+
+                        @if (!string.IsNullOrEmpty(Model.Description))
+                        {
+                            <div class="detail-item full-width">
+                                <strong>Description:</strong>
+                                <p style="background:white;padding:20px;border-radius:10px;margin-top:10px;">@Model.Description</p>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="row mt-4">
-                        <div class="col-12">
-                            <div class="detail-card">
-                                <h5><i class="fa fa-history text-warning"></i> System Information</h5>
-                                <div class="detail-content">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <strong>Created Date:</strong> @Html.DisplayFor(model => model.CreatedDate)<br>
-                                            <strong>Created By:</strong> @Html.DisplayFor(model => model.CreatedBy)
-                                        </div>
-                                        <div class="col-md-6">
-                                            <strong>Modified Date:</strong> @Html.DisplayFor(model => model.ModifiedDate)<br>
-                                            <strong>Modified By:</strong> @Html.DisplayFor(model => model.ModifiedBy)
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Related Information -->
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-link"></i> Related Information</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="alert alert-info">
-                        <i class="fa fa-info-circle"></i>
-                        <strong>Note:</strong> This allowance is linked to employee records and payroll calculations.
-                    </div>
-
-                    <!-- Simulated related data -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6>Recent Similar Allowances</h6>
-                            <div class="list-group">
-                                <div class="list-group-item">
-                                    <small>Travel Allowance - $500.00</small>
-                                </div>
-                                <div class="list-group-item">
-                                    <small>Housing Allowance - $1,200.00</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h6>Employee Statistics</h6>
-                            <div class="list-group">
-                                <div class="list-group-item">
-                                    <small>Total Allowances: 3</small>
-                                </div>
-                                <div class="list-group-item">
-                                    <small>Average Amount: $867.00</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Action Panel -->
-        <div class="col-md-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-cogs"></i> Actions</h3>
-                </div>
-                <div class="panel-body text-center">
-                    <div class="action-buttons">
-                        @Html.ActionLink("Edit This Allowance", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning btn-block btn-lg mb-3" })
-                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary btn-block btn-lg mb-3" })
-
-                        <hr>
-
-                        <div class="quick-actions">
-                            <button class="btn btn-outline-info btn-block mb-2" onclick="printDetails()">
-                                <i class="fa fa-print"></i> Print Details
-                            </button>
-                            <button class="btn btn-outline-success btn-block mb-2" onclick="exportDetails()">
-                                <i class="fa fa-download"></i> Export as PDF
-                            </button>
-                            <button class="btn btn-outline-primary btn-block mb-2" onclick="shareDetails()">
-                                <i class="fa fa-share"></i> Share Details
-                            </button>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
 
-            <!-- Summary Panel -->
-            <div class="panel panel-success mt-4">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-line-chart"></i> Summary</h3>
+            <div class="col-md-4 dashboard-section">
+                <div class="section-header">
+                    <h2>⚡ QUICK ACTIONS</h2>
                 </div>
-                <div class="panel-body">
-                    <div class="summary-item">
-                        <i class="fa fa-calendar text-primary"></i>
-                        <div>
-                            <strong>Effective Since</strong>
-                            <div class="text-muted">
-                                @{
-                                    var effectiveDate = Model.EffectiveDate;
-                                    var daysActive = (DateTime.Now - effectiveDate).Days;
-                                }
-                                @daysActive days ago
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="summary-item mt-3">
-                        <i class="fa fa-money text-success"></i>
-                        <div>
-                            <strong>Annual Value</strong>
-                            <div class="text-muted">
-                                @((Model.Amount * 12).ToString("C"))
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="summary-item mt-3">
-                        <i class="fa fa-percent text-info"></i>
-                        <div>
-                            <strong>Status</strong>
-                            <div class="text-success">
-                                <span class="badge badge-success">Active</span>
-                            </div>
-                        </div>
+                <div class="section-content">
+                    <div class="action-grid">
+                        <a href="@Url.Action("Edit", "Allowances", new { id = Model.AllowanceID })" class="action-card">
+                            <div class="action-icon">✏️</div>
+                            <span>Edit Allowance</span>
+                        </a>
+                        <a href="@Url.Action("Index", "Allowances")" class="action-card">
+                            <div class="action-icon">📋</div>
+                            <span>Back to List</span>
+                        </a>
+                        <a href="@Url.Action("Create", "Allowances")" class="action-card">
+                            <div class="action-icon">➕</div>
+                            <span>Create New</span>
+                        </a>
+                        <a href="@Url.Action("Index", "EmployeeAllowances")" class="action-card">
+                            <div class="action-icon">💼</div>
+                            <span>Assign to Employees</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -180,127 +127,23 @@
     </div>
 </div>
 
-@section Scripts {
-    <script>
-        function printDetails() {
-            window.print();
-        }
-
-        function exportDetails() {
-            alert('Export feature would be implemented here');
-            // In real implementation, this would generate a PDF
-        }
-
-        function shareDetails() {
-            alert('Share feature would be implemented here');
-            // In real implementation, this would open share dialog
-        }
-
-        // Add some interactivity
-        $(document).ready(function () {
-            $('.detail-card').hover(function () {
-                $(this).css('transform', 'translateY(-2px)');
-            }, function () {
-                $(this).css('transform', 'translateY(0)');
-            });
-        });
-    </script>
-}
-
 <style>
-    .dashboard-container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 20px;
-        margin: 0;
-    }
-
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
-        color: white;
-        border-radius: 15px;
-        padding: 30px;
-        margin-bottom: 25px;
-    }
-
-    .panel {
-        border: none;
-        border-radius: 15px;
-        box-shadow: 0 5px 25px rgba(0,0,0,0.1);
-        margin-bottom: 25px;
-        background: white;
-    }
-
-    .panel-heading {
-        border-radius: 15px 15px 0 0 !important;
-        border: none;
-        padding: 20px;
-        font-weight: 600;
-    }
-
-    .panel-body {
-        padding: 25px;
-    }
-
-    .detail-card {
-        background: #f8f9fa;
-        padding: 20px;
-        border-radius: 10px;
-        border-left: 4px solid #3498db;
-        margin-bottom: 15px;
-        transition: all 0.3s ease;
-    }
-
-    .detail-content {
-        margin-top: 10px;
-    }
-
-    .action-buttons .btn-lg {
-        padding: 15px;
-        font-size: 1.1rem;
-        border-radius: 10px;
-    }
-
-    .summary-item {
+    .detail-item {
+        padding: 15px 0;
+        border-bottom: 1px solid #dee2e6;
+        font-size: 1.8rem;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        padding: 10px;
     }
 
-        .summary-item i {
-            font-size: 1.5rem;
-            margin-right: 15px;
-            width: 30px;
-        }
+    .full-width {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
     .badge {
-        font-size: 0.8em;
-        padding: 5px 10px;
-    }
-
-    .list-group-item {
-        border: none;
-        border-left: 3px solid #e9ecef;
-        margin-bottom: 5px;
-        border-radius: 5px;
-    }
-
-    @@media print {
-        .dashboard-header,
-        .panel-heading,
-        .action-buttons {
-            display: none;
-        }
-
-        .dashboard-container {
-            background: white;
-            padding: 0;
-        }
-
-        .panel {
-            box-shadow: none;
-            border: 1px solid #ddd;
-        }
+        font-size: 1.4rem;
+        padding: 8px 12px;
     }
 </style>

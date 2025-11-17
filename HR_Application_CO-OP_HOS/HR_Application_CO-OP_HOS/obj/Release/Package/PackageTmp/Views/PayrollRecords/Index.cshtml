@@ -1,326 +1,194 @@
 ﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.PayrollRecord>
-
-@{
-    ViewBag.Title = "Payroll Records";
-}
-
-<div class="dashboard-container">
-    <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-money"></i> Payroll Records Management</h1>
-            <p class="lead">Manage and view all payroll records</p>
-        </div>
-    </div>
-
-    <!-- Quick Actions -->
-    <div class="row no-gutters">
-        <div class="col-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-cogs"></i> Quick Actions</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            @Html.ActionLink("Create New Payroll Record", "Create", null, new { @class = "btn btn-success btn-block" })
-                        </div>
-                        <div class="col-md-4">
-                            <button class="btn btn-info btn-block" onclick="toggleFilters()">
-                                <i class="fa fa-filter"></i> Toggle Filters
-                            </button>
-                        </div>
-                        <div class="col-md-4">
-                            <button class="btn btn-warning btn-block" onclick="exportToExcel()">
-                                <i class="fa fa-download"></i> Export to Excel
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Filters Section -->
-    <div class="row no-gutters" id="filtersSection" style="display: none;">
-        <div class="col-12">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-filter"></i> Filter Records</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row no-gutters">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Employee</label>
-                                @Html.DropDownList("EmployeeFilter", null, "All Employees", new { @class = "form-control", @onchange = "filterTable()" })
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Month</label>
-                                <select class="form-control" id="MonthFilter" onchange="filterTable()">
-                                    <option value="">All Months</option>
-                                    @for (int i = 1; i <= 12; i++)
-                                    {
-                                        <option value="@i">@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i)</option>
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Year</label>
-                                <select class="form-control" id="YearFilter" onchange="filterTable()">
-                                    <option value="">All Years</option>
-                                    @for (int year = DateTime.Now.Year; year >= DateTime.Now.Year - 5; year--)
-                                    {
-                                        <option value="@year">@year</option>
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Net Salary Range</label>
-                                <select class="form-control" id="SalaryFilter" onchange="filterTable()">
-                                    <option value="">All Salaries</option>
-                                    <option value="0-50000">Below 50,000</option>
-                                    <option value="50000-100000">50,000 - 100,000</option>
-                                    <option value="100000-200000">100,000 - 200,000</option>
-                                    <option value="200000-9999999">Above 200,000</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>&nbsp;</label>
-                                <button class="btn btn-secondary btn-block" onclick="clearFilters()">Clear Filters</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Records Table -->
-    <div class="row no-gutters">
-        <div class="col-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-list"></i> Payroll Records</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-hover" id="payrollTable">
-                            <thead>
-                                <tr>
-                                    <th>Employee</th>
-                                    <th>Month</th>
-                                    <th>Year</th>
-                                    <th>Basic Salary</th>
-                                    <th>Allowances</th>
-                                    <th>Deductions</th>
-                                    <th>Net Salary</th>
-                                    <th>Generated Date</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (Model != null && Model.Any())
-                                {
-                                    foreach (var item in Model)
-                                    {
-                                        <tr data-employee="@item.EmployeeId" data-month="@item.Month" data-year="@item.Year" data-salary="@item.NetSalary">
-                                            <td>
-                                                @if (item.RelatedParty != null)
-                                                {
-                                                    @item.RelatedParty.RegistrationNumber
-                                                }
-                                                else
-                                                {
-                                                    <span class="text-muted">Employee @item.EmployeeId</span>
-                                                }
-                                            </td>
-                                            <td>@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.Month)</td>
-                                            <td>@item.Year</td>
-                                            <td class="text-right">@item.BasicSalary.ToString("C")</td>
-                                            <td class="text-right">@item.TotalAllowances.ToString("C")</td>
-                                            <td class="text-right">@item.TotalDeductions.ToString("C")</td>
-                                            <td class="text-right"><strong>@item.NetSalary.ToString("C")</strong></td>
-                                            <td>@item.GeneratedDate.ToString("MMM dd, yyyy")</td>
-                                            <td>
-                                                <div class="btn-group" role="group">
-                                                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
-                                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
-                                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    }
-                                }
-                                else
-                                {
-                                    <tr>
-                                        <td colspan="9" class="text-center text-muted">
-                                            <i class="fa fa-info-circle fa-2x"></i><br />
-                                            No payroll records found
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                            <tfoot>
-                                @if (Model != null && Model.Any())
-                                {
-                                    <tr class="bg-light">
-                                        <td colspan="3"><strong>Totals:</strong></td>
-                                        <td class="text-right"><strong>@Model.Sum(x => x.BasicSalary).ToString("C")</strong></td>
-                                        <td class="text-right"><strong>@Model.Sum(x => x.TotalAllowances).ToString("C")</strong></td>
-                                        <td class="text-right"><strong>@Model.Sum(x => x.TotalDeductions).ToString("C")</strong></td>
-                                        <td class="text-right"><strong>@Model.Sum(x => x.NetSalary).ToString("C")</strong></td>
-                                        <td colspan="2"></td>
-                                    </tr>
-                                }
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-@section Scripts {
-    <script>
-        function toggleFilters() {
-            var filtersSection = document.getElementById('filtersSection');
-            filtersSection.style.display = filtersSection.style.display === 'none' ? 'block' : 'none';
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Payroll Records</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
         }
 
-        function filterTable() {
-            var employeeFilter = document.getElementById('EmployeeFilter').value;
-            var monthFilter = document.getElementById('MonthFilter').value;
-            var yearFilter = document.getElementById('YearFilter').value;
-            var salaryFilter = document.getElementById('SalaryFilter').value;
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
 
-            var rows = document.querySelectorAll('#payrollTable tbody tr');
-            var visibleCount = 0;
+        .header {
+            background: #006400;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
-            rows.forEach(function (row) {
-                var showRow = true;
-
-                if (employeeFilter && row.getAttribute('data-employee') !== employeeFilter) {
-                    showRow = false;
-                }
-
-                if (monthFilter && row.getAttribute('data-month') !== monthFilter) {
-                    showRow = false;
-                }
-
-                if (yearFilter && row.getAttribute('data-year') !== yearFilter) {
-                    showRow = false;
-                }
-
-                if (salaryFilter) {
-                    var salaryRange = salaryFilter.split('-');
-                    var minSalary = parseFloat(salaryRange[0]);
-                    var maxSalary = parseFloat(salaryRange[1]);
-                    var salary = parseFloat(row.getAttribute('data-salary'));
-
-                    if (salary < minSalary || salary > maxSalary) {
-                        showRow = false;
-                    }
-                }
-
-                row.style.display = showRow ? '' : 'none';
-                if (showRow) visibleCount++;
-            });
-
-            // Show no records message if no rows visible
-            var noRecordsRow = document.querySelector('#payrollTable tbody tr td[colspan]');
-            if (noRecordsRow) {
-                noRecordsRow.parentElement.style.display = visibleCount === 0 ? '' : 'none';
+            .header h1 {
+                margin: 0;
+                font-size: 2.5rem;
             }
+
+        .action-bar {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
         }
 
-        function clearFilters() {
-            document.getElementById('EmployeeFilter').value = '';
-            document.getElementById('MonthFilter').value = '';
-            document.getElementById('YearFilter').value = '';
-            document.getElementById('SalaryFilter').value = '';
-            filterTable();
+        .btn-create {
+            background: #006400;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
         }
 
-        function exportToExcel() {
-            try {
-                // Simple CSV export implementation
-                var csv = [];
-                var headers = [];
-                document.querySelectorAll('#payrollTable thead th').forEach(function (th) {
-                    if (th.textContent !== 'Actions') {
-                        headers.push(th.textContent);
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 2000px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+            white-space: nowrap;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #006400;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .action-links a {
+            margin-right: 8px;
+            text-decoration: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+
+        .btn-edit {
+            background: #ffc107;
+            color: black;
+        }
+
+        .btn-details {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+        }
+
+        .financial-positive {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .financial-negative {
+            color: #dc3545;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Payroll Records</h1>
+        </div>
+
+        <div class="action-bar">
+            @Html.ActionLink("Create New Payroll Record", "Create", null, new { @class = "btn-create" })
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Pay Period</th>
+                        <th>Pay Date</th>
+                        <th>Basic Salary</th>
+                        <th>Fixed Allowances</th>
+                        <th>Variable Allowances</th>
+                        <th>Overtime Pay</th>
+                        <th>Shift Allowances</th>
+                        <th>Attendance Incentive</th>
+                        <th>Gross Salary</th>
+                        <th>EPF Employee</th>
+                        <th>EPF Employer</th>
+                        <th>ETF Employer</th>
+                        <th>Payee Tax</th>
+                        <th>Loan Deductions</th>
+                        <th>Other Deductions</th>
+                        <th>Total Deductions</th>
+                        <th>Net Salary</th>
+                        <th>Status</th>
+                        <th>Payment Method</th>
+                        <th>Bank Account ID</th>
+                        <th>Generated Date</th>
+                        <th>Generated By</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.EmployeeID)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PayPeriod)</td>
+                            <td>@(item.PayDate.ToString("yyyy-MM-dd"))</td>
+                            <td class="financial-positive">@item.BasicSalary.ToString("C")</td>
+                            <td class="financial-positive">@item.FixedAllowances.ToString("C")</td>
+                            <td class="financial-positive">@item.VariableAllowances.ToString("C")</td>
+                            <td class="financial-positive">@item.OvertimePay.ToString("C")</td>
+                            <td class="financial-positive">@item.ShiftAllowances.ToString("C")</td>
+                            <td class="financial-positive">@item.AttendanceIncentive.ToString("C")</td>
+                            <td class="financial-positive">@item.GrossSalary.ToString("C")</td>
+                            <td class="financial-negative">@item.EPFEmployee.ToString("C")</td>
+                            <td class="financial-negative">@item.EPFEmployer.ToString("C")</td>
+                            <td class="financial-negative">@item.ETFEmployer.ToString("C")</td>
+                            <td class="financial-negative">@item.PayeeTax.ToString("C")</td>
+                            <td class="financial-negative">@item.LoanDeductions.ToString("C")</td>
+                            <td class="financial-negative">@item.OtherDeductions.ToString("C")</td>
+                            <td class="financial-negative">@item.TotalDeductions.ToString("C")</td>
+                            <td class="financial-positive">@item.NetSalary.ToString("C")</td>
+                            <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PaymentMethod)</td>
+                            <td>@Html.DisplayFor(modelItem => item.BankAccountID)</td>
+                            <td>@(item.GeneratedDate.ToString("yyyy-MM-dd"))</td>
+                            <td>@Html.DisplayFor(modelItem => item.GeneratedBy)</td>
+                            <td class="action-links">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.PayrollID }, new { @class = "btn-edit" })
+                                @Html.ActionLink("Details", "Details", new { id = item.PayrollID }, new { @class = "btn-details" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.PayrollID }, new { @class = "btn-delete" })
+                            </td>
+                        </tr>
                     }
-                });
-                csv.push(headers.join(','));
-
-                document.querySelectorAll('#payrollTable tbody tr:not([style*="none"])').forEach(function (tr) {
-                    var row = [];
-                    tr.querySelectorAll('td').forEach(function (td, index) {
-                        if (index < 8) { // Exclude actions column
-                            var text = td.textContent.trim();
-                            // Remove currency symbols and format for CSV
-                            text = text.replace(/[$,]/g, '');
-                            row.push('"' + text + '"');
-                        }
-                    });
-                    csv.push(row.join(','));
-                });
-
-                var csvContent = "data:text/csv;charset=utf-8," + csv.join('\n');
-                var encodedUri = encodeURI(csvContent);
-                var link = document.createElement("a");
-                link.setAttribute("href", encodedUri);
-                link.setAttribute("download", "payroll_records.csv");
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            } catch (error) {
-                alert('Error exporting to Excel: ' + error.message);
-            }
-        }
-
-        // Initialize filters on page load
-        document.addEventListener('DOMContentLoaded', function () {
-            filterTable();
-        });
-    </script>
-}
-
-<style>
-    .dashboard-container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 20px;
-        margin: 0;
-    }
-
-    .table th {
-        background-color: #2c3e50;
-        color: white;
-        font-weight: 600;
-    }
-
-    .btn-group .btn {
-        margin: 2px;
-    }
-
-    .text-right {
-        text-align: right;
-    }
-
-    .table-responsive {
-        border-radius: 8px;
-        overflow: hidden;
-    }
-</style>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

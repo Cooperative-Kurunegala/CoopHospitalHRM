@@ -1,432 +1,215 @@
-﻿@model HR_Application_CO_OP_HOS.Models.AttendanceRecord
+﻿﻿@model HR_Application_CO_OP_HOS.Models.AttendanceRecord
 
 @{
     ViewBag.Title = "Edit Attendance Record";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="dashboard-container">
+<div class="fullscreen-container">
     <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-edit"></i> Edit Attendance Record</h1>
-            <p class="lead">Update attendance record information</p>
+        <div class="header-content">
+            <h1 class="hospital-name">EDIT ATTENDANCE RECORD</h1>
+            <p class="hospital-subtitle">Update Attendance Information</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Welcome, System Administrator</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
         </div>
     </div>
 
-    <div class="row no-gutters">
-        <!-- Main Form -->
-        <div class="col-md-8">
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-pencil"></i> Edit Record Details</h3>
+    <div class="dashboard-grid">
+        <div class="row no-gutters">
+            <div class="col-md-12 dashboard-section">
+                <div class="section-header">
+                    <h2>✏️ EDIT ATTENDANCE DETAILS</h2>
                 </div>
-                <div class="panel-body">
+                <div class="section-content">
                     @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
-                        @Html.HiddenFor(model => model.ID)
 
-                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                        <div class="form-container" style="background:#f8f9fa;border:3px solid #006400;border-radius:15px;padding:40px;">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.AttendanceID)
 
-                        <div class="row no-gutters">
-                            <div class="col-md-6">
+                            <div class="form-grid">
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.EPFNo, htmlAttributes: new { @class = "control-label" })
-                                    <div class="input-group">
-                                        @Html.EditorFor(model => model.EPFNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter EPF Number" } })
-                                        <div class="input-group-append">
-                                            <button type="button" class="btn btn-outline-info" onclick="searchEmployee()">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    @Html.ValidationMessageFor(model => model.EPFNo, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.EmployeeID, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.EmployeeID, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Employee ID" } })
+                                    @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "text-danger" })
                                 </div>
-                            </div>
 
-                            <div class="col-md-6">
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.CompanyID, htmlAttributes: new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.CompanyID, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Company ID" } })
-                                    @Html.ValidationMessageFor(model => model.CompanyID, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.AttendanceDate, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.AttendanceDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                                    @Html.ValidationMessageFor(model => model.AttendanceDate, "", new { @class = "text-danger" })
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="row no-gutters">
-                            <div class="col-md-6">
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.AttendanceDateTime, htmlAttributes: new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.AttendanceDateTime, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
-                                    @Html.ValidationMessageFor(model => model.AttendanceDateTime, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.ShiftID, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.ShiftID, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Shift ID" } })
+                                    @Html.ValidationMessageFor(model => model.ShiftID, "", new { @class = "text-danger" })
                                 </div>
-                            </div>
 
-                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">Quick Time Options</label>
-                                    <div class="btn-group btn-block" role="group">
-                                        <button type="button" class="btn btn-outline-primary" onclick="setCurrentTime()">
-                                            <i class="fa fa-clock-o"></i> Now
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary" onclick="setMorningTime()">
-                                            <i class="fa fa-sun-o"></i> Morning
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary" onclick="setEveningTime()">
-                                            <i class="fa fa-moon-o"></i> Evening
-                                        </button>
-                                    </div>
+                                    @Html.LabelFor(model => model.ScheduledIn, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.ScheduledIn, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
+                                    @Html.ValidationMessageFor(model => model.ScheduledIn, "", new { @class = "text-danger" })
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="row no-gutters">
-                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <div class="form-check">
-                                        @Html.EditorFor(model => model.IsProcessed, new { htmlAttributes = new { @class = "form-check-input" } })
-                                        @Html.LabelFor(model => model.IsProcessed, htmlAttributes: new { @class = "form-check-label" })
-                                        @Html.ValidationMessageFor(model => model.IsProcessed, "", new { @class = "text-danger" })
-                                    </div>
-                                    <small class="form-text text-muted">Check this if the record has been processed in payroll</small>
+                                    @Html.LabelFor(model => model.ScheduledOut, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.ScheduledOut, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
+                                    @Html.ValidationMessageFor(model => model.ScheduledOut, "", new { @class = "text-danger" })
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- Original Values -->
-                        <div class="row no-gutters mt-4">
-                            <div class="col-12">
-                                <div class="panel panel-info">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-history"></i> Original Values</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row no-gutters text-center">
-                                            <div class="col-md-3">
-                                                <small class="text-muted">EPF</small>
-                                                <div class="font-weight-bold">@Model.EPFNo</div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <small class="text-muted">Company ID</small>
-                                                <div class="font-weight-bold">@Model.CompanyID</div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <small class="text-muted">Date & Time</small>
-                                                <div class="font-weight-bold">@(Model.AttendanceDateTime?.ToString("MMM dd, yyyy HH:mm") ?? "N/A")</div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <small class="text-muted">Processed</small>
-                                                <div class="font-weight-bold">
-                                                    @if (Model.IsProcessed == true)
-                                                    {
-                                                        <span class="badge badge-success">Yes</span>
-                                                    }
-                                                    else
-                                                    {
-                                                        <span class="badge badge-warning">No</span>
-                                                    }
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ActualIn, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.ActualIn, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
+                                    @Html.ValidationMessageFor(model => model.ActualIn, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ActualOut, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.ActualOut, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
+                                    @Html.ValidationMessageFor(model => model.ActualOut, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.TotalHours, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.TotalHours, new { htmlAttributes = new { @class = "form-control", placeholder = "0.00" } })
+                                    @Html.ValidationMessageFor(model => model.TotalHours, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.OvertimeHours, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.OvertimeHours, new { htmlAttributes = new { @class = "form-control", placeholder = "0.00" } })
+                                    @Html.ValidationMessageFor(model => model.OvertimeHours, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.NightHours, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.NightHours, new { htmlAttributes = new { @class = "form-control", placeholder = "0.00" } })
+                                    @Html.ValidationMessageFor(model => model.NightHours, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LateMinutes, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.LateMinutes, new { htmlAttributes = new { @class = "form-control", placeholder = "0" } })
+                                    @Html.ValidationMessageFor(model => model.LateMinutes, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.EarlyOutMinutes, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.EarlyOutMinutes, new { htmlAttributes = new { @class = "form-control", placeholder = "0" } })
+                                    @Html.ValidationMessageFor(model => model.EarlyOutMinutes, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", placeholder = "e.g., Present, Absent, Late" } })
+                                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group full-width">
+                                    @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "form-label" })
+                                    @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control", rows = 3, placeholder = "Enter any remarks..." })
+                                    @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.IsRegularized, htmlAttributes: new { @class = "form-label" })
+                                    <div class="checkbox-container">
+                                        @Html.EditorFor(model => model.IsRegularized)
+                                        @Html.ValidationMessageFor(model => model.IsRegularized, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row no-gutters mt-4">
-                            <div class="col-12">
-                                <div class="form-group text-center">
-                                    <button type="submit" class="btn btn-warning btn-lg">
-                                        <i class="fa fa-save"></i> Update Record
-                                    </button>
-                                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary btn-lg" })
-                                    @Html.ActionLink("View Details", "Details", new { id = Model.ID }, new { @class = "btn btn-info btn-lg" })
-                                    <button type="button" class="btn btn-danger btn-lg" onclick="showDeleteConfirmation()">
-                                        <i class="fa fa-trash"></i> Delete
-                                    </button>
-                                </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <span>💾 Save Changes</span>
+                                </button>
+                                <a href="@Url.Action("Index", "AttendanceRecords")" class="btn btn-secondary btn-lg">
+                                    <span>📋 Back to List</span>
+                                </a>
+                                <a href="@Url.Action("Details", "AttendanceRecords", new { id = Model.AttendanceID })" class="btn btn-info btn-lg">
+                                    <span>👁️ View Details</span>
+                                </a>
                             </div>
                         </div>
                     }
                 </div>
             </div>
         </div>
-
-        <!-- Side Panel -->
-        <div class="col-md-4">
-            <!-- Employee Information -->
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-user"></i> Employee Information</h3>
-                </div>
-                <div class="panel-body">
-                    <div id="employeeInfo" class="text-center">
-                        <div class="employee-details">
-                            <div class="spinner-border text-primary" role="status">
-                                <span class="sr-only">Loading...</span>
-                            </div>
-                            <p>Loading employee data...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Processing Status -->
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-cog"></i> Processing Status</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="text-center">
-                        <div class="status-indicator @(Model.IsProcessed == true? "status-processed" : "status-pending")">
-                            <i class="fa @(Model.IsProcessed == true? "fa-check-circle" : "fa-clock-o") fa-3x"></i>
-                            <h4>@(Model.IsProcessed == true ? "Processed" : "Pending")</h4>
-                        </div>
-                        <p class="text-muted">
-                            @if (Model.IsProcessed == true)
-                            {
-                                <span>This record has been included in payroll processing</span>
-                            }
-                            else
-                            {
-                                <span>This record is waiting for payroll processing</span>
-                            }
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Change History -->
-            <div class="panel panel-dark">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-history"></i> Change History</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="change-history">
-                        <div class="change-item">
-                            <small class="text-muted">Last Modified:</small>
-                            <div>@DateTime.Now.ToString("MMM dd, yyyy HH:mm")</div>
-                        </div>
-                        <div class="change-item">
-                            <small class="text-muted">Record Created:</small>
-                            <div>@DateTime.Now.AddDays(-30).ToString("MMM dd, yyyy HH:mm")</div>
-                        </div>
-                        <div class="change-item">
-                            <small class="text-muted">Modified By:</small>
-                            <div>System Administrator</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
-
-<!-- Delete Confirmation Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Confirm Delete</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to delete this attendance record?</p>
-                <div class="alert alert-warning">
-                    <strong>Warning:</strong> This action cannot be undone.
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                @using (Html.BeginForm("Delete", "AttendanceRecords", new { id = Model.ID }, FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-                    <button type="submit" class="btn btn-danger">Delete Record</button>
-                }
-            </div>
-        </div>
-    </div>
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        function searchEmployee() {
-            const epf = document.getElementById('EPFNo').value;
-            if (!epf) {
-                showAlert('Please enter an EPF number', 'warning');
-                return;
-            }
-
-            const employeeInfo = document.getElementById('employeeInfo');
-            employeeInfo.innerHTML = `
-                <div class="text-center">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                    <p>Searching for employee EPF: ${epf}</p>
-                </div>
-            `;
-
-            setTimeout(() => {
-                employeeInfo.innerHTML = `
-                    <div class="employee-details">
-                        <h5>John Doe</h5>
-                        <p class="text-muted">EPF: ${epf}</p>
-                        <p><strong>Designation:</strong> Software Engineer</p>
-                        <p><strong>Department:</strong> IT Department</p>
-                        <p><strong>Current Status:</strong> <span class="badge badge-success">Active</span></p>
-                        <div class="alert alert-info mt-2">
-                            <small><i class="fa fa-info-circle"></i> Employee record is active and valid</small>
-                        </div>
-                    </div>
-                `;
-            }, 1000);
-        }
-
-        function setCurrentTime() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-
-            document.getElementById('AttendanceDateTime').value = `${year}-${month}-${day}T${hours}:${minutes}`;
-        }
-
-        function setMorningTime() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-
-            document.getElementById('AttendanceDateTime').value = `${year}-${month}-${day}T08:00`;
-        }
-
-        function setEveningTime() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-
-            document.getElementById('AttendanceDateTime').value = `${year}-${month}-${day}T17:00`;
-        }
-
-        function showDeleteConfirmation() {
-            $('#deleteModal').modal('show');
-        }
-
-        function showAlert(message, type) {
-            const alertDiv = document.createElement('div');
-            alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
-            alertDiv.innerHTML = `
-                ${message}
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-            `;
-            document.querySelector('.panel-body').prepend(alertDiv);
-
-            setTimeout(() => {
-                alertDiv.remove();
-            }, 5000);
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            searchEmployee();
-        });
-    </script>
-}
 
 <style>
-    .dashboard-container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 20px;
-        margin: 0;
+    .form-container {
+        max-width: 100%;
     }
 
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-        color: white;
-        border-radius: 15px;
-        padding: 40px 30px;
-        margin-bottom: 30px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-bottom: 40px;
     }
 
-    .panel {
-        border: none;
-        border-radius: 12px;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        margin-bottom: 20px;
-        background: white;
-    }
-
-    .panel-heading {
-        border-radius: 12px 12px 0 0 !important;
-        border: none;
-        padding: 20px 25px;
-        font-weight: 600;
+    .full-width {
+        grid-column: 1 / -1;
     }
 
     .form-group {
         margin-bottom: 25px;
     }
 
-    .control-label {
-        font-weight: 600;
-        margin-bottom: 8px;
-        color: #2c3e50;
+    .form-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 1.8rem;
+        color: #006400;
     }
 
     .form-control {
-        border-radius: 8px;
-        border: 2px solid #e9ecef;
-        padding: 12px 15px;
-        font-size: 16px;
-        transition: all 0.3s ease;
+        width: 100%;
+        padding: 15px;
+        font-size: 1.6rem;
+        border: 2px solid #006400;
+        border-radius: 10px;
+        background: white;
+    }
+
+    .checkbox-container {
+        margin-top: 10px;
+    }
+
+        .checkbox-container input[type="checkbox"] {
+            transform: scale(1.5);
+            margin-right: 10px;
+        }
+
+    .form-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
     }
 
     .btn-lg {
-        padding: 12px 30px;
-        font-size: 16px;
-        border-radius: 8px;
-        margin: 0 5px;
-    }
-
-    .status-indicator {
-        padding: 20px;
+        padding: 20px 40px;
+        font-size: 1.8rem;
         border-radius: 10px;
-        margin-bottom: 15px;
-    }
-
-    .status-processed {
-        background-color: #d4edda;
-        color: #155724;
-    }
-
-    .status-pending {
-        background-color: #fff3cd;
-        color: #856404;
-    }
-
-    .change-history .change-item {
-        margin-bottom: 15px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #eee;
-    }
-
-        .change-history .change-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-
-    .modal-content {
-        border-radius: 12px;
-    }
-
-    .badge {
-        font-size: 0.8em;
+        border: none;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
     }
 </style>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

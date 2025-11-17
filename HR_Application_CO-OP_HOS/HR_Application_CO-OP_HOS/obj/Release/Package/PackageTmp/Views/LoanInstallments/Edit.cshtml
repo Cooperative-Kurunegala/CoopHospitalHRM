@@ -1,0 +1,187 @@
+﻿@model HR_Application_CO_OP_HOS.Models.LoanInstallment
+
+@{
+    ViewBag.Title = "Edit Loan Installment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="fullscreen-container dashboard-container">
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">EDIT LOAN INSTALLMENT</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+        </div>
+    </div>
+
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>✏️ EDIT LOAN INSTALLMENT</h2>
+        </div>
+
+        <div class="section-content">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-container">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.InstallmentID)
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LoanID, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.LoanID, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LoanID, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InstallmentNumber, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.InstallmentNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.InstallmentNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DueDate, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PaidDate, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.PaidDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PaidDate, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PaidAmount, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.PaidAmount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PaidAmount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" value="💾 SAVE CHANGES" class="btn btn-success" />
+                        @Html.ActionLink("🔙 BACK TO LIST", "Index", null, new { @class = "btn btn-secondary" })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        border: 3px solid #006400;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    .form-group.full-width {
+        grid-column: 1 / -1;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .control-label {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #006400;
+        font-size: 1.6rem;
+    }
+
+    .form-control {
+        padding: 15px;
+        border: 2px solid #006400;
+        border-radius: 10px;
+        font-size: 1.6rem;
+        background: #ffffff;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .btn {
+        padding: 15px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.6rem;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 200px;
+        text-align: center;
+    }
+
+    .btn-success {
+        background: #28a745;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @@media (max-width: 768px) {
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+
+        .btn {
+            min-width: 100%;
+        }
+    }
+</style>

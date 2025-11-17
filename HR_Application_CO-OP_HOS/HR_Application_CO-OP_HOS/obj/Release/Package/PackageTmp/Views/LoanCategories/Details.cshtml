@@ -1,50 +1,164 @@
 ﻿@model HR_Application_CO_OP_HOS.Models.LoanCategory
 
 @{
-    Layout = null;
+    ViewBag.Title = "Loan Category Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>LoanCategory</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.DefaultAllocation)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.DefaultAllocation)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.LoanCategoryName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.LoanCategoryName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.IsFixedLoanInstallments)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.IsFixedLoanInstallments)
-            </dd>
-    
-        </dl>
+<div class="fullscreen-container dashboard-container">
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">LOAN CATEGORY DETAILS</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>👁️ LOAN CATEGORY INFORMATION</h2>
+        </div>
+
+        <div class="section-content">
+            <div class="details-container">
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <label>Category Name:</label>
+                        <span>@Html.DisplayFor(model => model.CategoryName)</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Maximum Amount:</label>
+                        <span>@Html.DisplayFor(model => model.MaxAmount)</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Interest Rate:</label>
+                        <span>@Html.DisplayFor(model => model.InterestRate)%</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Maximum Installments:</label>
+                        <span>@Html.DisplayFor(model => model.MaxInstallments)</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Status:</label>
+                        <span class="status-badge @(Model.IsActive ? "active" : "inactive")">
+                            @(Model.IsActive ? "ACTIVE" : "INACTIVE")
+                        </span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    @Html.ActionLink("✏️ EDIT", "Edit", new { id = Model.LoanCategoryID }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("🔙 BACK TO LIST", "Index", null, new { @class = "btn btn-secondary" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .details-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        border: 3px solid #006400;
+    }
+
+    .details-grid {
+        display: grid;
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+
+    .detail-item {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: center;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        border: 2px solid #e9ecef;
+    }
+
+        .detail-item label {
+            font-weight: bold;
+            color: #006400;
+            font-size: 1.6rem;
+        }
+
+        .detail-item span {
+            font-size: 1.6rem;
+            color: #333;
+        }
+
+    .status-badge {
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 1.4rem;
+        display: inline-block;
+    }
+
+        .status-badge.active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.inactive {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+    .action-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .btn {
+        padding: 15px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.6rem;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 200px;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background: #007bff;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @@media (max-width: 768px) {
+        .detail-item {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+
+        .btn {
+            min-width: 100%;
+        }
+    }
+</style>

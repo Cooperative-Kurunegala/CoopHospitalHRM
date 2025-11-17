@@ -1,94 +1,72 @@
-﻿@model HR_Application_CO_OP_HOS.Models.Company
+﻿﻿@model HR_Application_CO_OP_HOS.Models.Company
 
 @{
     ViewBag.Title = "Create Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="dashboard-container">
+<!-- Full Screen Container -->
+<div class="fullscreen-container">
+    <!-- Header Section -->
     <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-plus-circle"></i> Create New Company</h1>
-            <p class="lead">Add a new company to the system</p>
+        <div class="header-content">
+            <h1 class="hospital-name">CREATE COMPANY</h1>
+            <p class="hospital-subtitle">Add New Company Information</p>
+            <div class="admin-info">
+                <span class="admin-welcome">New Company Registration</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-8">
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-building"></i> Company Information</h3>
-                </div>
-                <div class="panel-body">
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-
-                        <div class="form-horizontal">
-                            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
-
-                            <div class="form-group row">
-                                @Html.LabelFor(model => model.companyName, htmlAttributes: new { @class = "control-label col-md-3" })
-                                <div class="col-md-9">
-                                    @Html.EditorFor(model => model.companyName, new { htmlAttributes = new { @class = "form-control form-control-lg", placeholder = "Enter company name" } })
-                                    @Html.ValidationMessageFor(model => model.companyName, "", new { @class = "text-danger" })
-                                    <small class="form-text text-muted">Enter the full legal name of the company</small>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-md-offset-3 col-md-9">
-                                    <button type="submit" class="btn btn-success btn-lg">
-                                        <i class="fa fa-save"></i> Create Company
-                                    </button>
-                                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary btn-lg" })
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
+    <!-- Main Content -->
+    <div class="dashboard-grid">
+        <div class="dashboard-section">
+            <div class="section-header">
+                <h2>🏢 COMPANY INFORMATION</h2>
             </div>
-        </div>
+            <div class="section-content">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-        <div class="col-md-4">
-            <!-- Foreign Key Reference Panel -->
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-info-circle"></i> Reference Information</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="reference-section">
-                        <h5><i class="fa fa-link"></i> Related Entities</h5>
-                        <p class="text-muted">This company can be linked to:</p>
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <i class="fa fa-users text-primary"></i>
-                                <strong>Related Parties</strong>
-                                <span class="badge badge-primary float-right" id="relatedPartiesCount">--</span>
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fa fa-money text-success"></i>
-                                <strong>Payroll Records</strong>
-                                <span class="badge badge-success float-right" id="payrollRecordsCount">--</span>
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fa fa-clock-o text-warning"></i>
-                                <strong>Attendance Records</strong>
-                                <span class="badge badge-warning float-right" id="attendanceRecordsCount">--</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="form-container">
+                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
 
-                    <div class="quick-tips mt-4">
-                        <h5><i class="fa fa-lightbulb-o"></i> Quick Tips</h5>
-                        <div class="alert alert-info">
-                            <ul class="mb-0">
-                                <li>Use descriptive company names</li>
-                                <li>Ensure the name matches legal documents</li>
-                                <li>Consider naming conventions for consistency</li>
-                            </ul>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "form-label" })
+                                @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter company name" } })
+                                @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.CompanyCode, htmlAttributes: new { @class = "form-label" })
+                                @Html.EditorFor(model => model.CompanyCode, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter company code" } })
+                                @Html.ValidationMessageFor(model => model.CompanyCode, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "form-label" })
+                            <div class="checkbox-container">
+                                <label class="checkbox-label">
+                                    @Html.EditorFor(model => model.IsActive)
+                                    <span class="checkbox-custom"></span>
+                                    Active Company
+                                </label>
+                                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-save"></i> Create Company
+                            </button>
+                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary btn-lg" })
                         </div>
                     </div>
-                </div>
+                }
             </div>
         </div>
     </div>
@@ -96,140 +74,237 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(document).ready(function () {
-            // Form validation enhancement
-            $('form').submit(function (e) {
-                var companyName = $('#companyName').val().trim();
-                if (companyName === '') {
-                    e.preventDefault();
-                    showError('Company name is required');
-                    return false;
-                }
-
-                // Additional validation can be added here
-                showLoading('Creating company...');
-            });
-
-            // Real-time validation
-            $('#companyName').on('input', function () {
-                var value = $(this).val();
-                if (value.length > 0) {
-                    $(this).removeClass('is-invalid').addClass('is-valid');
-                } else {
-                    $(this).removeClass('is-valid').addClass('is-invalid');
-                }
-            });
-
-            // Load reference data (simulated - in real scenario, you'd fetch from API)
-            loadReferenceData();
-
-            function loadReferenceData() {
-                // Simulate loading reference data
-                setTimeout(function () {
-                    $('#relatedPartiesCount').text('0');
-                    $('#payrollRecordsCount').text('0');
-                    $('#attendanceRecordsCount').text('0');
-                }, 500);
-            }
-
-            function showError(message) {
-                var alertHtml = '<div class="alert alert-danger alert-dismissible fade show" role="alert">' +
-                    '<i class="fa fa-exclamation-triangle"></i> ' + message +
-                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-                    '<span aria-hidden="true">&times;</span>' +
-                    '</button>' +
-                    '</div>';
-                $('.form-horizontal').prepend(alertHtml);
-            }
-
-            function showLoading(message) {
-                // You can implement a loading indicator here
-                console.log(message);
-            }
-        });
-    </script>
 }
 
 <style>
-    .dashboard-container {
-        width: 100%;
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
         min-height: 100vh;
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 0;
-        margin: 0;
     }
 
-    body {
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow-x: hidden;
-    }
-
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #2c3e50 0%, #27ae60 100%);
+    .dashboard-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
         color: white;
-        border-radius: 0;
         padding: 40px 20px;
-        margin: 0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    .panel {
-        border: none;
-        border-radius: 10px;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        margin: 20px 0;
-        background: white;
+    .hospital-name {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
-    .panel-heading {
-        border-radius: 10px 10px 0 0 !important;
-        border: none;
+    .hospital-subtitle {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        opacity: 0.9;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.6rem;
+        background: rgba(0,0,0,0.2);
         padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .dashboard-grid {
+        padding: 40px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .dashboard-section {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .section-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+        padding: 25px 30px;
+        border-bottom: 3px solid #004d00;
+    }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+    }
+
+    .form-group {
+        padding: 0 15px;
+        margin-bottom: 25px;
+        width: 100%;
+    }
+
+        .form-group.col-md-6 {
+            width: 50%;
+        }
+
+    .form-label {
         font-weight: 600;
+        color: #343a40;
+        margin-bottom: 10px;
+        font-size: 1.6rem;
+        display: block;
     }
 
-    .panel-body {
-        padding: 25px;
+    .form-control {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 1.6rem;
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        background: #f8f9fa;
     }
 
-    .form-control-lg {
-        font-size: 1.1rem;
-        padding: 12px 15px;
+        .form-control:focus {
+            border-color: #006400;
+            box-shadow: 0 0 0 0.2rem rgba(0, 100, 0, 0.25);
+            background: white;
+        }
+
+    .checkbox-container {
+        margin-top: 15px;
     }
 
-    .reference-section .list-group-item {
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        font-size: 1.6rem;
+        cursor: pointer;
+        gap: 10px;
+    }
+
+    .checkbox-custom {
+        width: 25px;
+        height: 25px;
+        border: 2px solid #006400;
+        border-radius: 5px;
+        display: inline-block;
+        position: relative;
+    }
+
+    input[type="checkbox"]:checked + .checkbox-custom::after {
+        content: '✓';
+        position: absolute;
+        color: #006400;
+        font-size: 1.8rem;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 2px solid #e9ecef;
+    }
+
+    .btn {
+        padding: 15px 30px;
+        font-size: 1.6rem;
+        border-radius: 10px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
         border: none;
-        border-left: 3px solid transparent;
-        margin-bottom: 5px;
         transition: all 0.3s ease;
     }
 
-        .reference-section .list-group-item:hover {
-            border-left-color: #3498db;
-            background-color: #f8f9fa;
-        }
+    .btn-success {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+    }
 
-    .btn-lg {
-        padding: 12px 30px;
-        font-size: 1.1rem;
-        margin-right: 10px;
+    .btn-secondary {
+        background: linear-gradient(135deg, #6c757d 0%, #868e96 100%);
+        color: white;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        text-decoration: none;
+        color: white;
+    }
+
+    .alert {
+        font-size: 1.5rem;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .text-danger {
+        font-size: 1.4rem;
+        margin-top: 8px;
+        display: block;
     }
 
     @@media (max-width: 768px) {
-        .dashboard-header .jumbotron {
-            padding: 30px 15px;
+        .hospital-name {
+            font-size: 2.5rem;
         }
 
-        .form-group.row .col-md-9 {
-            margin-top: 10px;
+        .hospital-subtitle {
+            font-size: 1.5rem;
         }
 
-        .btn-lg {
+        .admin-info {
+            flex-direction: column;
+            gap: 15px;
+            font-size: 1.4rem;
+        }
+
+        .section-content {
+            padding: 20px;
+        }
+
+        .form-row {
+            flex-direction: column;
+        }
+
+        .form-group.col-md-6 {
             width: 100%;
-            margin-bottom: 10px;
-            margin-right: 0;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+
+        .btn {
+            width: 100%;
+            justify-content: center;
         }
     }
 </style>

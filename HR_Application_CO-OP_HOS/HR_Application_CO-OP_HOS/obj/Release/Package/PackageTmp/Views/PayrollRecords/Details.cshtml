@@ -1,372 +1,182 @@
 ﻿@model HR_Application_CO_OP_HOS.Models.PayrollRecord
-
-@{
-    ViewBag.Title = "Payroll Record Details";
-}
-
-<div class="dashboard-container">
-    <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-file-text"></i> Payroll Record Details</h1>
-            <p class="lead">Detailed view of payroll record information</p>
-        </div>
-    </div>
-
-    <div class="row no-gutters">
-        <!-- Main Details -->
-        <div class="col-md-8">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-info-circle"></i> Payroll Information</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="detail-group">
-                                <label class="detail-label">Record ID:</label>
-                                <div class="detail-value">@Model.Id</div>
-                            </div>
-                            <div class="detail-group">
-                                <label class="detail-label">Employee:</label>
-                                <div class="detail-value">
-                                    @if (Model.RelatedParty != null)
-                                    {
-                                        @Model.RelatedParty.RegistrationNumber
-                                    }
-                                    else
-                                    {
-                                        <span class="text-muted">Employee @Model.EmployeeId</span>
-                                    }
-                                </div>
-                            </div>
-                            <div class="detail-group">
-                                <label class="detail-label">Pay Period:</label>
-                                <div class="detail-value">
-                                    @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.Month), @Model.Year
-                                </div>
-                            </div>
-                            <div class="detail-group">
-                                <label class="detail-label">Generated Date:</label>
-                                <div class="detail-value">@Model.GeneratedDate.ToString("MMM dd, yyyy")</div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="detail-group">
-                                <label class="detail-label">Basic Salary:</label>
-                                <div class="detail-value salary-amount">@Model.BasicSalary.ToString("C")</div>
-                            </div>
-                            <div class="detail-group">
-                                <label class="detail-label">Total Allowances:</label>
-                                <div class="detail-value salary-amount allowance">@Model.TotalAllowances.ToString("C")</div>
-                            </div>
-                            <div class="detail-group">
-                                <label class="detail-label">Total Deductions:</label>
-                                <div class="detail-value salary-amount deduction">@Model.TotalDeductions.ToString("C")</div>
-                            </div>
-                            <div class="detail-group">
-                                <label class="detail-label">Net Salary:</label>
-                                <div class="detail-value salary-amount net-salary">@Model.NetSalary.ToString("C")</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Salary Breakdown Chart -->
-                    <div class="row" style="margin-top: 30px;">
-                        <div class="col-12">
-                            <h4><i class="fa fa-pie-chart"></i> Salary Breakdown</h4>
-                            <div id="salaryChart" style="height: 200px; background: #f8f9fa; border-radius: 8px; padding: 20px;">
-                                <canvas id="breakdownChart" width="400" height="200"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Audit Information -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-history"></i> Audit Information</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="detail-group">
-                                <label class="detail-label">Created Date:</label>
-                                <div class="detail-value">@(Model.CreatedDate?.ToString("MMM dd, yyyy HH:mm") ?? "N/A")</div>
-                            </div>
-                            <div class="detail-group">
-                                <label class="detail-label">Created By:</label>
-                                <div class="detail-value">@(Model.CreatedBy?.ToString() ?? "N/A")</div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="detail-group">
-                                <label class="detail-label">Modified Date:</label>
-                                <div class="detail-value">@(Model.ModifiedDate?.ToString("MMM dd, yyyy HH:mm") ?? "N/A")</div>
-                            </div>
-                            <div class="detail-group">
-                                <label class="detail-label">Modified By:</label>
-                                <div class="detail-value">@(Model.ModifiedBy?.ToString() ?? "N/A")</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sidebar Information -->
-        <div class="col-md-4">
-            <!-- Employee Information -->
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-user"></i> Employee Information</h3>
-                </div>
-                <div class="panel-body">
-                    @if (Model.RelatedParty != null)
-                    {
-                        <div class="employee-details">
-                            <h4>@Model.RelatedParty.RegistrationNumber</h4>
-                            <p><strong>Employee ID:</strong> @Model.EmployeeId</p>
-                            <p><strong>Related Party ID:</strong> @Model.RelatedParty.ID</p>
-                            <hr>
-                            <p class="text-muted">
-                                <small>
-                                    For complete employee details, visit the
-                                    @Html.ActionLink("Employee Management", "Index", "RelatedParties") section.
-                                </small>
-                            </p>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="alert alert-warning">
-                            <i class="fa fa-exclamation-triangle"></i>
-                            Employee details not available. Employee ID: @Model.EmployeeId
-                        </div>
-                    }
-                </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-rocket"></i> Quick Actions</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="action-buttons">
-                        @Html.ActionLink("Edit Record", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning btn-block btn-lg" })
-                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default btn-block btn-lg" })
-                        @Html.ActionLink("Print Details", "javascript:void(0)", null, new { @class = "btn btn-info btn-block btn-lg", @onclick = "printDetails()" })
-                    </div>
-                </div>
-            </div>
-
-            <!-- Salary Summary -->
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-calculator"></i> Salary Summary</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="salary-summary">
-                        <div class="summary-item">
-                            <span class="summary-label">Gross Salary:</span>
-                            <span class="summary-value">@((Model.BasicSalary + Model.TotalAllowances).ToString("C"))</span>
-                        </div>
-                        <div class="summary-item">
-                            <span class="summary-label">Deductions:</span>
-                            <span class="summary-value text-danger">@Model.TotalDeductions.ToString("C")</span>
-                        </div>
-                        <div class="summary-item total">
-                            <span class="summary-label">Net Pay:</span>
-                            <span class="summary-value text-success">@Model.NetSalary.ToString("C")</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-@section Scripts {
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        function printDetails() {
-            try {
-                window.print();
-            } catch (error) {
-                alert('Error printing details: ' + error.message);
-            }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Payroll Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
         }
 
-        function initializeChart() {
-            try {
-                var ctx = document.getElementById('breakdownChart').getContext('2d');
-                var chart = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Basic Salary', 'Allowances', 'Deductions'],
-                        datasets: [{
-                            data: [
-                                @Model.BasicSalary,
-                                @Model.TotalAllowances,
-                                @Model.TotalDeductions
-                            ],
-                            backgroundColor: [
-                                '#3498db',
-                                '#2ecc71',
-                                '#e74c3c'
-                            ],
-                            borderWidth: 2,
-                            borderColor: '#fff'
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                padding: 20,
-                                usePointStyle: true
-                            }
-                        },
-                        tooltips: {
-                            callbacks: {
-                                label: function(tooltipItem, data) {
-                                    var dataset = data.datasets[tooltipItem.datasetIndex];
-                                    var total = dataset.data.reduce(function(previousValue, currentValue) {
-                                        return previousValue + currentValue;
-                                    });
-                                    var currentValue = dataset.data[tooltipItem.index];
-                                    var percentage = Math.floor((currentValue / total) * 100 + 0.5);
-                                    return data.labels[tooltipItem.index] + ': ' + currentValue.toLocaleString('en-US', {
-                                        style: 'currency',
-                                        currency: 'USD'
-                                    }) + ' (' + percentage + '%)';
-                                }
-                            }
-                        }
-                    }
-                });
-            } catch (error) {
-                console.error('Error initializing chart:', error);
-                document.getElementById('salaryChart').innerHTML =
-                    '<div class="alert alert-warning text-center">Chart could not be loaded</div>';
-            }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
 
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeChart();
-        });
-    </script>
-}
+        .header {
+            background: #006400;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
-<style>
-    .dashboard-container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 20px;
-        margin: 0;
-    }
+            .header h1 {
+                margin: 0;
+                font-size: 2rem;
+            }
 
-    .detail-group {
-        margin-bottom: 20px;
-        padding: 15px;
-        background: #f8f9fa;
-        border-radius: 8px;
-        border-left: 4px solid #3498db;
-    }
+        .content {
+            padding: 30px;
+        }
 
-    .detail-label {
-        font-weight: 600;
-        color: #2c3e50;
-        display: block;
-        margin-bottom: 5px;
-        font-size: 0.9em;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
+        .dl-horizontal {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
 
-    .detail-value {
-        font-size: 1.2em;
-        color: #34495e;
-        font-weight: 500;
-    }
-
-    .salary-amount {
-        font-size: 1.3em;
-        font-weight: 600;
-    }
-
-    .net-salary {
-        color: #27ae60;
-        font-size: 1.5em;
-    }
-
-    .allowance {
-        color: #2ecc71;
-    }
-
-    .deduction {
-        color: #e74c3c;
-    }
-
-    .action-buttons .btn {
-        margin-bottom: 10px;
-        padding: 12px;
-        font-size: 1.1em;
-    }
-
-    .salary-summary {
-        font-size: 1.1em;
-    }
-
-    .summary-item {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 0;
-        border-bottom: 1px solid #ecf0f1;
-    }
-
-        .summary-item.total {
-            border-top: 2px solid #bdc3c7;
-            border-bottom: none;
+        dt {
             font-weight: bold;
-            font-size: 1.2em;
-            margin-top: 10px;
-            padding-top: 15px;
+            color: #006400;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
         }
 
-    .summary-label {
-        color: #7f8c8d;
-    }
-
-    .summary-value {
-        font-weight: 600;
-    }
-
-    .employee-details h4 {
-        color: #2c3e50;
-        margin-bottom: 15px;
-    }
-
-    @@media print {
-        .dashboard-header,
-        .panel-heading,
-        .action-buttons {
-            display: none !important;
+        dd {
+            margin: 0;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
         }
 
-        .dashboard-container {
-            background: white !important;
-            padding: 0 !important;
+        .financial-positive {
+            color: #28a745;
+            font-weight: bold;
         }
 
-        .panel {
-            border: 1px solid #ddd !important;
-            box-shadow: none !important;
+        .financial-negative {
+            color: #dc3545;
+            font-weight: bold;
         }
-    }
-</style>
+
+        .action-links {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #dee2e6;
+        }
+
+            .action-links a {
+                margin: 0 10px;
+                padding: 10px 20px;
+                text-decoration: none;
+                border-radius: 5px;
+                font-weight: bold;
+            }
+
+        .btn-edit {
+            background: #ffc107;
+            color: black;
+        }
+
+        .btn-back {
+            background: #6c757d;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Payroll Record Details</h1>
+        </div>
+
+        <div class="content">
+            <dl class="dl-horizontal">
+                <dt>Employee ID</dt>
+                <dd>@Model.EmployeeID</dd>
+
+                <dt>Pay Period</dt>
+                <dd>@(Model.PayPeriod ?? "")</dd>
+
+                <dt>Pay Date</dt>
+                <dd>@Model.PayDate.ToString("yyyy-MM-dd")</dd>
+
+                <dt>Basic Salary</dt>
+                <dd class="financial-positive">@Model.BasicSalary.ToString("C")</dd>
+
+                <dt>Fixed Allowances</dt>
+                <dd class="financial-positive">@Model.FixedAllowances.ToString("C")</dd>
+
+                <dt>Variable Allowances</dt>
+                <dd class="financial-positive">@Model.VariableAllowances.ToString("C")</dd>
+
+                <dt>Overtime Pay</dt>
+                <dd class="financial-positive">@Model.OvertimePay.ToString("C")</dd>
+
+                <dt>Shift Allowances</dt>
+                <dd class="financial-positive">@Model.ShiftAllowances.ToString("C")</dd>
+
+                <dt>Attendance Incentive</dt>
+                <dd class="financial-positive">@Model.AttendanceIncentive.ToString("C")</dd>
+
+                <dt>Gross Salary</dt>
+                <dd class="financial-positive">@Model.GrossSalary.ToString("C")</dd>
+
+                <dt>EPF Employee</dt>
+                <dd class="financial-negative">@Model.EPFEmployee.ToString("C")</dd>
+
+                <dt>EPF Employer</dt>
+                <dd class="financial-negative">@Model.EPFEmployer.ToString("C")</dd>
+
+                <dt>ETF Employer</dt>
+                <dd class="financial-negative">@Model.ETFEmployer.ToString("C")</dd>
+
+                <dt>Payee Tax</dt>
+                <dd class="financial-negative">@Model.PayeeTax.ToString("C")</dd>
+
+                <dt>Loan Deductions</dt>
+                <dd class="financial-negative">@Model.LoanDeductions.ToString("C")</dd>
+
+                <dt>Other Deductions</dt>
+                <dd class="financial-negative">@Model.OtherDeductions.ToString("C")</dd>
+
+                <dt>Total Deductions</dt>
+                <dd class="financial-negative">@Model.TotalDeductions.ToString("C")</dd>
+
+                <dt>Net Salary</dt>
+                <dd class="financial-positive">@Model.NetSalary.ToString("C")</dd>
+
+                <dt>Status</dt>
+                <dd>@(Model.Status ?? "")</dd>
+
+                <dt>Payment Method</dt>
+                <dd>@(Model.PaymentMethod ?? "")</dd>
+
+                <dt>Bank Account ID</dt>
+                <dd>@(Model.BankAccountID.HasValue ? Model.BankAccountID.Value.ToString() : "N/A")</dd>
+
+                <dt>Generated Date</dt>
+                <dd>@Model.GeneratedDate.ToString("yyyy-MM-dd")</dd>
+
+                <dt>Generated By</dt>
+                <dd>@(Model.GeneratedBy.HasValue ? Model.GeneratedBy.Value.ToString() : "N/A")</dd>
+            </dl>
+
+            <div class="action-links">
+                <a href="@Url.Action("Edit", new { id = Model.PayrollID })" class="btn-edit">Edit</a>
+                <a href="@Url.Action("Index")" class="btn-back">Back to List</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

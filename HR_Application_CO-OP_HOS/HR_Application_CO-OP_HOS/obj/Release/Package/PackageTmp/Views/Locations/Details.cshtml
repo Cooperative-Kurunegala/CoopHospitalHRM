@@ -2,144 +2,66 @@
 
 @{
     ViewBag.Title = "Location Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="dashboard-container">
+<!-- Full Screen Container -->
+<div class="fullscreen-container">
+    <!-- Header Section -->
     <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-info-circle"></i> Location Details</h1>
-            <p class="lead">Complete information about the location</p>
+        <div class="header-content">
+            <h1 class="hospital-name">LOCATION DETAILS</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Location Information</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
         </div>
     </div>
 
-    <div class="row no-gutters">
-        <div class="col-md-8">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-map-marker"></i> Location Information</h3>
+    <!-- Main Content -->
+    <div class="content-section">
+        <div class="form-container">
+            <div class="form-card">
+                <div class="form-header">
+                    <h2>📍 Location Details</h2>
                 </div>
-                <div class="panel-body">
-                    <div class="detail-section">
-                        <div class="detail-header">
-                            <h4><i class="fa fa-id-card"></i> Basic Information</h4>
-                        </div>
-                        <div class="detail-content">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-item">
-                                        <label>Location ID:</label>
-                                        <div class="detail-value">@Model.ID</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="detail-item">
-                                        <label>Status:</label>
-                                        <div class="detail-value">
-                                            <span class="badge badge-success">Active</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <label class="detail-label">Location Name:</label>
+                        <span class="detail-value">@Html.DisplayFor(model => model.LocationName)</span>
                     </div>
 
-                    <div class="detail-section">
-                        <div class="detail-header">
-                            <h4><i class="fa fa-info"></i> Location Details</h4>
-                        </div>
-                        <div class="detail-content">
-                            <div class="detail-item">
-                                <label>Location Name:</label>
-                                <div class="detail-value">@Model.LocationName</div>
-                            </div>
-                            <div class="detail-item">
-                                <label>Order Index:</label>
-                                <div class="detail-value">
-                                    <span class="order-index">@Model.OrderIndex</span>
-                                    <small class="text-muted">(Determines display order)</small>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="detail-item">
+                        <label class="detail-label">Address:</label>
+                        <span class="detail-value">@Html.DisplayFor(model => model.Address)</span>
                     </div>
 
-                    <div class="detail-actions mt-4">
-                        <div class="btn-group" role="group">
-                            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-warning btn-lg" })
-                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary btn-lg" })
-                            <button type="button" class="btn btn-info btn-lg" onclick="window.print()">
-                                <i class="fa fa-print"></i> Print
-                            </button>
-                        </div>
+                    <div class="detail-item">
+                        <label class="detail-label">Active Status:</label>
+                        <span class="detail-value">
+                            @if (Model.IsActive)
+                            {
+                                <span class="status-active">✅ Active</span>
+                            }
+                            else
+                            {
+                                <span class="status-inactive">❌ Inactive</span>
+                            }
+                        </span>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-line-chart"></i> Quick Statistics</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fa fa-users"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h5>Associated Employees</h5>
-                            <p class="stat-number">--</p>
-                            <small class="text-muted">Employees assigned to this location</small>
-                        </div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h5>Active Sessions</h5>
-                            <p class="stat-number">--</p>
-                            <small class="text-muted">Current active sessions</small>
-                        </div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fa fa-bar-chart"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h5>Usage Rank</h5>
-                            <p class="stat-number">#@Model.OrderIndex</p>
-                            <small class="text-muted">Based on order index</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-clock-o"></i> Recent Activity</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <i class="fa fa-circle text-success"></i>
-                            <div class="activity-content">
-                                <strong>Record Created</strong>
-                                <small class="text-muted">System generated</small>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <i class="fa fa-circle text-info"></i>
-                            <div class="activity-content">
-                                <strong>Last Viewed</strong>
-                                <small class="text-muted">Just now</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center mt-3">
-                        <small class="text-muted">No recent modifications</small>
-                    </div>
+                <div class="form-actions">
+                    <a href="@Url.Action("Edit", new { id = Model.LocationID })" class="btn btn-warning btn-lg">
+                        <span class="btn-icon">✏️</span>
+                        EDIT
+                    </a>
+                    <a href="@Url.Action("Index")" class="btn btn-secondary btn-lg">
+                        <span class="btn-icon">←</span>
+                        BACK TO LIST
+                    </a>
                 </div>
             </div>
         </div>
@@ -147,309 +69,195 @@
 </div>
 
 <style>
-    .dashboard-container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    .fullscreen-container {
+        margin: 0;
         padding: 0;
-        margin: 0;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
 
-    body {
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow-x: hidden;
-    }
-
-    .container.body-content {
-        padding: 0 !important;
-        margin: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
+    .dashboard-header {
+        background: rgba(0, 0, 0, 0.8);
         color: white;
-        border-radius: 0;
-        padding: 40px 20px;
-        margin: 0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        width: 100%;
+        padding: 30px 0;
+        border-bottom: 4px solid #006400;
     }
 
-    .jumbotron h1 {
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-        font-weight: 700;
+    .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
     }
 
-    .jumbotron .lead {
-        font-size: 1.3rem;
-        opacity: 0.9;
+    .hospital-name {
+        font-size: 3rem;
+        font-weight: bold;
         margin-bottom: 10px;
+        color: #ffffff;
     }
 
-    .panel {
-        border: none;
-        border-radius: 10px;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    .hospital-subtitle {
+        font-size: 1.5rem;
         margin-bottom: 20px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        background: white;
+        color: #cccccc;
     }
 
-        .panel:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
-        }
-
-    .panel-heading {
-        border-radius: 10px 10px 0 0 !important;
-        border: none;
-        padding: 20px;
-        font-weight: 600;
-        color: white;
-    }
-
-    .panel-info .panel-heading {
-        background: linear-gradient(135deg, #2980b9 0%, #3498db 100%) !important;
-    }
-
-    .panel-success .panel-heading {
-        background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%) !important;
-    }
-
-    .panel-warning .panel-heading {
-        background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%) !important;
-    }
-
-    .panel-title {
-        font-size: 1.3rem;
-        margin: 0;
-    }
-
-    .panel-body {
-        padding: 25px;
-    }
-
-    .detail-section {
-        margin-bottom: 30px;
-        border: 1px solid #ecf0f1;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    .detail-header {
-        background: #f8f9fa;
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.4rem;
+        background: rgba(0, 100, 0, 0.3);
         padding: 15px 20px;
-        border-bottom: 1px solid #ecf0f1;
+        border-radius: 10px;
     }
 
-        .detail-header h4 {
+    .content-section {
+        padding: 40px 20px;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .form-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border: 3px solid #006400;
+    }
+
+    .form-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 3px solid #006400;
+    }
+
+        .form-header h2 {
+            color: #006400;
+            font-size: 2.5rem;
             margin: 0;
-            color: #2c3e50;
-            font-size: 1.2rem;
         }
 
-            .detail-header h4 i {
-                margin-right: 10px;
-                color: #3498db;
-            }
-
-    .detail-content {
-        padding: 20px;
+    .details-grid {
+        display: grid;
+        gap: 25px;
+        margin-bottom: 40px;
     }
 
     .detail-item {
-        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #006400;
     }
 
-        .detail-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .detail-item label {
-            font-weight: 600;
-            color: #7f8c8d;
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-        }
+    .detail-label {
+        font-weight: bold;
+        color: #333333;
+        font-size: 1.4rem;
+    }
 
     .detail-value {
-        font-size: 1.1rem;
-        color: #2c3e50;
+        color: #666666;
+        font-size: 1.4rem;
         font-weight: 500;
     }
 
-    .order-index {
-        background: #3498db;
-        color: white;
-        padding: 4px 12px;
-        border-radius: 20px;
+    .status-active {
+        color: #28a745;
         font-weight: bold;
     }
 
-    .detail-actions {
-        text-align: center;
-        padding-top: 20px;
-        border-top: 1px solid #ecf0f1;
+    .status-inactive {
+        color: #dc3545;
+        font-weight: bold;
     }
 
-    .btn-group .btn {
-        margin: 0 5px;
+    .form-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
     }
 
-    .btn-lg {
-        padding: 12px 25px;
-        font-size: 1.1rem;
-    }
-
-    .stat-card {
+    .btn {
         display: flex;
         align-items: center;
-        padding: 15px;
-        background: #f8f9fa;
+        gap: 10px;
+        padding: 15px 30px;
+        border: none;
         border-radius: 8px;
-        margin-bottom: 15px;
-        transition: transform 0.2s ease;
-    }
-
-        .stat-card:hover {
-            transform: translateX(5px);
-            background: #e8f4fd;
-        }
-
-        .stat-card:last-child {
-            margin-bottom: 0;
-        }
-
-    .stat-icon {
-        font-size: 2rem;
-        color: #27ae60;
-        margin-right: 15px;
-        width: 50px;
-        text-align: center;
-    }
-
-    .stat-content h5 {
-        margin: 0 0 5px 0;
-        color: #2c3e50;
-        font-size: 1rem;
-    }
-
-    .stat-number {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-weight: bold;
-        color: #2c3e50;
-        margin: 0;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-width: 200px;
+        justify-content: center;
     }
 
-    .activity-list {
-        max-height: 200px;
-        overflow-y: auto;
+    .btn-warning {
+        background: #ffc107;
+        color: #212529;
     }
 
-    .activity-item {
-        display: flex;
-        align-items: center;
-        padding: 10px 0;
-        border-bottom: 1px solid #ecf0f1;
-    }
-
-        .activity-item:last-child {
-            border-bottom: none;
+        .btn-warning:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
         }
 
-        .activity-item i {
-            margin-right: 10px;
-            font-size: 0.7rem;
-        }
-
-    .activity-content {
-        flex: 1;
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
     }
 
-        .activity-content strong {
-            display: block;
-            font-size: 0.9rem;
-            color: #2c3e50;
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
         }
 
-        .activity-content small {
-            font-size: 0.8rem;
-        }
-
-    .badge {
-        font-size: 0.8rem;
-        padding: 6px 12px;
+    .btn-icon {
+        font-size: 1.6rem;
     }
-
-    .no-gutters {
-        margin-right: 0;
-        margin-left: 0;
-    }
-
-        .no-gutters > .col,
-        .no-gutters > [class*="col-"] {
-            padding-right: 10px;
-            padding-left: 10px;
-        }
 
     @@media (max-width: 768px) {
-        .dashboard-container {
-            padding: 10px;
-        }
-
-        .jumbotron h1 {
+        .hospital-name {
             font-size: 2rem;
         }
 
-        .jumbotron .lead {
-            font-size: 1.1rem;
+        .hospital-subtitle {
+            font-size: 1.2rem;
         }
 
-        .btn-group {
-            display: flex;
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .form-card {
+            padding: 20px;
+        }
+
+        .detail-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .form-actions {
             flex-direction: column;
         }
 
-            .btn-group .btn {
-                margin: 5px 0;
-                width: 100%;
-            }
-
-        .stat-card {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .stat-icon {
-            margin-right: 0;
-            margin-bottom: 10px;
-        }
-
-        .detail-content .row > div {
-            margin-bottom: 15px;
-        }
-    }
-
-    @@media print {
-        .dashboard-header,
-        .detail-actions,
-        .panel-success,
-        .panel-warning {
-            display: none !important;
-        }
-
-        .panel {
-            box-shadow: none !important;
-            border: 1px solid #ddd !important;
-        }
-
-        .dashboard-container {
-            background: white !important;
+        .btn {
+            min-width: auto;
+            width: 100%;
         }
     }
 </style>

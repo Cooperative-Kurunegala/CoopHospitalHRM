@@ -14,8 +14,11 @@ namespace HR_Application_CO_OP_HOS.Models
     
     public partial class LeaveType
     {
-        public int ID { get; set; }
-        public string TypeName { get; set; }
-        public Nullable<int> LeaveDuration { get; set; }
+        public int LeaveTypeID { get; set; }
+        public string LeaveTypeName { get; set; }
+        public string LeaveCode { get; set; }
+        public int MaxDaysPerYear { get; set; }
+        public bool IsPaid { get; set; }
+        public bool IsActive { get; set; }
     }
 }

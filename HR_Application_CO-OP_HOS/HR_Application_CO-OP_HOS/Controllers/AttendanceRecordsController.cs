@@ -12,7 +12,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
 {
     public class AttendanceRecordsController : Controller
     {
-        private HREntities db = new HREntities();
+        private HospitalHRDataEntities db = new HospitalHRDataEntities();
 
         // GET: AttendanceRecords
         public ActionResult Index()
@@ -46,7 +46,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,EPFNo,AttendanceDateTime,IsProcessed,CompanyID")] AttendanceRecord attendanceRecord)
+        public ActionResult Create([Bind(Include = "AttendanceID,EmployeeID,AttendanceDate,ShiftID,ScheduledIn,ScheduledOut,ActualIn,ActualOut,TotalHours,OvertimeHours,NightHours,LateMinutes,EarlyOutMinutes,Status,Remarks,IsRegularized,RegularizedBy,RegularizedDate,CreatedDate,CreatedBy")] AttendanceRecord attendanceRecord)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,EPFNo,AttendanceDateTime,IsProcessed,CompanyID")] AttendanceRecord attendanceRecord)
+        public ActionResult Edit([Bind(Include = "AttendanceID,EmployeeID,AttendanceDate,ShiftID,ScheduledIn,ScheduledOut,ActualIn,ActualOut,TotalHours,OvertimeHours,NightHours,LateMinutes,EarlyOutMinutes,Status,Remarks,IsRegularized,RegularizedBy,RegularizedDate,CreatedDate,CreatedBy")] AttendanceRecord attendanceRecord)
         {
             if (ModelState.IsValid)
             {

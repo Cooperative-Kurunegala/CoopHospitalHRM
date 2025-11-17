@@ -248,593 +248,206 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdmissionCategoriesController.cs" />
-    <Compile Include="Controllers\AdmissionTypesController.cs" />
     <Compile Include="Controllers\AllowancesController.cs" />
-    <Compile Include="Controllers\AppSettingsController.cs" />
-    <Compile Include="Controllers\AppSettingsDetailsController.cs" />
-    <Compile Include="Controllers\AttendanceDatasController.cs" />
-    <Compile Include="Controllers\AttendanceDetailsController.cs" />
-    <Compile Include="Controllers\AttendanceLastRecordDetailsController.cs" />
     <Compile Include="Controllers\AttendanceRecordsController.cs" />
-    <Compile Include="Controllers\AttendanceTimesController.cs" />
     <Compile Include="Controllers\BankBranchesController.cs" />
-    <Compile Include="Controllers\BankDepositsController.cs" />
     <Compile Include="Controllers\BanksController.cs" />
-    <Compile Include="Controllers\BillFinalizationsController.cs" />
-    <Compile Include="Controllers\BillFinalization_LastController.cs" />
-    <Compile Include="Controllers\ChannelingSquencesController.cs" />
-    <Compile Include="Controllers\ChannelingTimeSlotsController.cs" />
-    <Compile Include="Controllers\ChargeCategoriesController.cs" />
-    <Compile Include="Controllers\ChargeDiscountsController.cs" />
-    <Compile Include="Controllers\ChargeItemListsController.cs" />
-    <Compile Include="Controllers\ChargeMasterPricesController.cs" />
-    <Compile Include="Controllers\ChargeMastersController.cs" />
-    <Compile Include="Controllers\ChargeTypesController.cs" />
-    <Compile Include="Controllers\CheckManagmentsController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
-    <Compile Include="Controllers\CreditCardTypesController.cs" />
-    <Compile Include="Controllers\CurrentPayrollMonthsController.cs" />
-    <Compile Include="Controllers\DayTypesController.cs" />
+    <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\DesignationsController.cs" />
-    <Compile Include="Controllers\DivisionChargesController.cs" />
-    <Compile Include="Controllers\DivisionMasterOrderTypeMappingsController.cs" />
-    <Compile Include="Controllers\DivisionMastersController.cs" />
-    <Compile Include="Controllers\DivisionMasterTypesController.cs" />
-    <Compile Include="Controllers\DoctorDivisionChargeMappingsController.cs" />
-    <Compile Include="Controllers\DoctorWiseTimeSlotsController.cs" />
+    <Compile Include="Controllers\EmployeeAllowancesController.cs" />
+    <Compile Include="Controllers\EmployeeBankAccountsController.cs" />
+    <Compile Include="Controllers\EmployeeCategoriesController.cs" />
+    <Compile Include="Controllers\EmployeeLoansController.cs" />
+    <Compile Include="Controllers\EmployeeQualificationsController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\EmployeeShiftsController.cs" />
+    <Compile Include="Controllers\EmployeeTrainingsController.cs" />
+    <Compile Include="Controllers\EmployeeTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\InPatientInsuranceClaimsController.cs" />
     <Compile Include="Controllers\LeaveCategoriesController.cs" />
-    <Compile Include="Controllers\LeaveMastersController.cs" />
     <Compile Include="Controllers\LeavesController.cs" />
-    <Compile Include="Controllers\LeaveStatusController.cs" />
     <Compile Include="Controllers\LeaveTypesController.cs" />
     <Compile Include="Controllers\LoanCategoriesController.cs" />
-    <Compile Include="Controllers\LogDetailsController.cs" />
-    <Compile Include="Controllers\MenuConfigurationsController.cs" />
-    <Compile Include="Controllers\NopaysController.cs" />
-    <Compile Include="Controllers\NurseShiftsController.cs" />
-    <Compile Include="Controllers\OPDSquencesController.cs" />
-    <Compile Include="Controllers\OPDTimeSlotsController.cs" />
-    <Compile Include="Controllers\OrderTypesController.cs" />
-    <Compile Include="Controllers\OTTypesController.cs" />
-    <Compile Include="Controllers\PayeeTaxesController.cs" />
-    <Compile Include="Controllers\PaymentCategoriesController.cs" />
-    <Compile Include="Controllers\PaymentDetailsController.cs" />
-    <Compile Include="Controllers\PaymentSubCategoriesController.cs" />
-    <Compile Include="Controllers\PaymentTypesController.cs" />
-    <Compile Include="Controllers\PayMonthMastersController.cs" />
+    <Compile Include="Controllers\LoanInstallmentsController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\OnCallSchedulesController.cs" />
     <Compile Include="Controllers\PayrollRecordsController.cs" />
-    <Compile Include="Controllers\RelatedPartiesController.cs" />
-    <Compile Include="Controllers\RelatedPartyBankAccountsController.cs" />
-    <Compile Include="Controllers\RelatedPartyCategoriesController.cs" />
-    <Compile Include="Controllers\RelatedPartyDefaultSalaryModifiersController.cs" />
-    <Compile Include="Controllers\RelatedPartyFixedRostersController.cs" />
-    <Compile Include="Controllers\RelatedPartyLeaveAllocationsController.cs" />
-    <Compile Include="Controllers\RelatedPartyLeaveTypesController.cs" />
-    <Compile Include="Controllers\RelatedPartyLoan1Controller.cs" />
-    <Compile Include="Controllers\RelatedPartyLoansController.cs" />
-    <Compile Include="Controllers\RelatedPartyOrderDetailsController.cs" />
-    <Compile Include="Controllers\RelatedPartyOrderPaymentsController.cs" />
-    <Compile Include="Controllers\RelatedPartyOrdersController.cs" />
-    <Compile Include="Controllers\RelatedPartyRoleAndSplashScreenItemMappingsController.cs" />
-    <Compile Include="Controllers\RelatedPartyRolesController.cs" />
-    <Compile Include="Controllers\RelatedPartySalariesController.cs" />
-    <Compile Include="Controllers\RelatedPartySalaryModifierMappingsController.cs" />
-    <Compile Include="Controllers\RelatedPartySessionsController.cs" />
-    <Compile Include="Controllers\RelatedPartySessionTypesController.cs" />
-    <Compile Include="Controllers\RelatedPartySubCategoriesController.cs" />
-    <Compile Include="Controllers\RelatedPartyTypesController.cs" />
-    <Compile Include="Controllers\RosterStatusController.cs" />
-    <Compile Include="Controllers\RosterTypesController.cs" />
-    <Compile Include="Controllers\SalaryModifierDefaultValuesController.cs" />
-    <Compile Include="Controllers\SalaryModifiersController.cs" />
-    <Compile Include="Controllers\SalaryModifierTypesController.cs" />
-    <Compile Include="Controllers\SalaryTypesController.cs" />
+    <Compile Include="Controllers\PerformanceAppraisalsController.cs" />
     <Compile Include="Controllers\ShiftsController.cs" />
-    <Compile Include="Controllers\SplashScreenItemsController.cs" />
-    <Compile Include="Controllers\SystemLogsController.cs" />
-    <Compile Include="Controllers\TaxTypesController.cs" />
-    <Compile Include="Controllers\UnitTypesController.cs" />
+    <Compile Include="Controllers\SpecializationsController.cs" />
+    <Compile Include="Controllers\SystemConfigurationsController.cs" />
+    <Compile Include="Controllers\WardsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AdmissionCategory.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AdmissionType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Allowance.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AppSetting.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AppSettings.cs" />
-    <Compile Include="Models\AppSettingsDetail.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AttendanceData.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AttendanceDetail.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AttendanceDetails.cs" />
-    <Compile Include="Models\AttendanceLastRecordDetail.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AttendanceRecord.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AttendanceRecords.cs" />
-    <Compile Include="Models\AttendanceTime.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Bank.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BankBranch.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BankDeposit.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BillFinalization.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BillFinalization_Last.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CalanderForPayout.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChannelingSquence.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChannelingTimeSlot.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChargeCategoriesController.cs" />
-    <Compile Include="Models\ChargeCategory.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChargeDiscount.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChargeItemList.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChargeMaster.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChargeMasterPrice.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChargeType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CheckManagment.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Company.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CreditCardType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\DataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CurrentPayrollMonth.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\DataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\C__MigrationHistory.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\DataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\DayType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\Department.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Designation.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Division.cs" />
-    <Compile Include="Models\DivisionCharge.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DivisionMaster.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\EmployeeAllowance.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DivisionMasterOrderTypeMapping.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\EmployeeBankAccount.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DivisionMasterType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\EmployeeCategory.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DoctorDivisionChargeMapping.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\EmployeeLoan.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DoctorWiseTimeSlot.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\EmployeeQualification.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EmployeeModel.cs" />
-    <Compile Include="Models\HRMSContext.cs" />
-    <Compile Include="Models\HRMSEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HRMSEntities.Context.tt</DependentUpon>
+    <Compile Include="Models\EmployeeShift.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HRMSEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\EmployeeTraining.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HRMSEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HRMSEntities.edmx</DependentUpon>
+    <Compile Include="Models\EmployeeType.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\InPatientInsuranceClaim.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Leave.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\Leaf.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LeaveCategory.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LeaveMaster.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LeaveStatu.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LeaveStatus.cs" />
     <Compile Include="Models\LeaveType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoanCategory.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoanInstallment.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Location.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LocationsController.cs" />
-    <Compile Include="Models\LogDetail.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LogDetails.cs" />
-    <Compile Include="Models\MenuConfiguration.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Nopay.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NurseShift.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OPDSquence.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OPDTimeSlot.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OrderType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OTType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PayeeTax.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PaymentCategory.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PaymentDetail.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PaymentDetails.cs" />
-    <Compile Include="Models\PaymentSubCategory.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PaymentType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PayMonth.cs" />
-    <Compile Include="Models\PayMonthMaster.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\OnCallSchedule.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PayrollRecord.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RelatedParty.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartyBankAccount.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartyCategory.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartyDefaultSalaryModifier.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartyFixedRoster.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartyLeaveAllocation.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartyLeaveType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartyLoan.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartyLoan1.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartyOrder.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartyOrderDetail.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartyOrderPayment.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartyOrderPayments.cs" />
-    <Compile Include="Models\RelatedPartyRole.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartyRoleAndSplashScreenItemMapping.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartySalary.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartySalaryBankAccountsMapping.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartySalaryModifierMapping.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartySession.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartySessionType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartySubCategory.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RelatedPartyType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RosterStatu.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RosterStatus.cs" />
-    <Compile Include="Models\RosterType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SalaryModel.cs" />
-    <Compile Include="Models\SalaryModifier.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SalaryModifierDefaultValue.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SalaryModifierMapping.cs" />
-    <Compile Include="Models\SalaryModifierType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SalaryType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\PerformanceAppraisal.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Shift.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SplashScreenItem.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\Specialization.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SystemLog.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\SystemConfiguration.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TaxType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UnitType.cs">
-      <DependentUpon>HRMSEntities.tt</DependentUpon>
+    <Compile Include="Models\ViewModels\LeaveDetailsViewModel.cs" />
+    <Compile Include="Models\ViewModels\LeaveIndexViewModel.cs" />
+    <Compile Include="Models\Ward.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DapperRepository.cs" />
     <Compile Include="Repositories\EfRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Services\AdmissionCategoryService.cs" />
-    <Compile Include="Services\AdmissionTypeService.cs" />
-    <Compile Include="Services\AllowanceService.cs" />
-    <Compile Include="Services\AppSettingDetailService.cs" />
-    <Compile Include="Services\AppSettingService.cs" />
-    <Compile Include="Services\AttendanceDataService.cs" />
-    <Compile Include="Services\AttendanceDetailService.cs" />
-    <Compile Include="Services\AttendanceLastRecordDetail.cs" />
-    <Compile Include="Services\AttendanceRecordService.cs" />
-    <Compile Include="Services\AttendanceTimeService.cs" />
-    <Compile Include="Services\BankBranchService.cs" />
-    <Compile Include="Services\BankDepositService.cs" />
-    <Compile Include="Services\BankService.cs" />
-    <Compile Include="Services\BillFinalizationService.cs" />
-    <Compile Include="Services\BillFinalization_LastService.cs" />
-    <Compile Include="Services\CalendarForPayoutService.cs" />
-    <Compile Include="Services\ChannelingSquenceService.cs" />
-    <Compile Include="Services\ChannelingTimeSlotService.cs" />
-    <Compile Include="Services\ChargeCategoryService.cs" />
-    <Compile Include="Services\ChargeDiscountService.cs" />
-    <Compile Include="Services\ChargeItemListService.cs" />
-    <Compile Include="Services\ChargeMasterPriceService.cs" />
-    <Compile Include="Services\ChargeMasterService.cs" />
-    <Compile Include="Services\ChargeTypeService.cs" />
-    <Compile Include="Services\CheckManagmentService.cs" />
-    <Compile Include="Services\CompanyService.cs" />
-    <Compile Include="Services\CreditCardTypeService.cs" />
-    <Compile Include="Services\CurrentPayrollMonthService.cs" />
-    <Compile Include="Services\DayTypeService.cs" />
-    <Compile Include="Services\DesignationService.cs" />
-    <Compile Include="Services\DivisionChargeService.cs" />
-    <Compile Include="Services\DivisionMasterOrderTypeMappingService.cs" />
-    <Compile Include="Services\DivisionMasterService.cs" />
-    <Compile Include="Services\DivisionMasterTypeService.cs" />
-    <Compile Include="Services\DoctorDivisionChargeMappingService.cs" />
-    <Compile Include="Services\DoctorWiseTimeSlotService.cs" />
-    <Compile Include="Services\IAdmissionCategoryService.cs" />
-    <Compile Include="Services\IAdmissionType.cs" />
-    <Compile Include="Services\IAllowanceService.cs" />
-    <Compile Include="Services\IAppSettingDetailService.cs" />
-    <Compile Include="Services\IAppSettingService.cs" />
-    <Compile Include="Services\IAttendanceDataService.cs" />
-    <Compile Include="Services\IAttendanceDetailService.cs" />
-    <Compile Include="Services\IAttendanceLastRecordDetail.cs" />
-    <Compile Include="Services\IAttendanceRecordService.cs" />
-    <Compile Include="Services\IAttendanceTimeService.cs" />
-    <Compile Include="Services\IBankBranchService.cs" />
-    <Compile Include="Services\IBankDepositService.cs" />
-    <Compile Include="Services\IBankService.cs" />
-    <Compile Include="Services\IBillFinalizationService.cs" />
-    <Compile Include="Services\IBillFinalization_LastService.cs" />
-    <Compile Include="Services\ICalendarForPayoutService.cs" />
-    <Compile Include="Services\IChannelingSquenceService.cs" />
-    <Compile Include="Services\IChannelingTimeSlotService.cs" />
-    <Compile Include="Services\IChargeCategoryService.cs" />
-    <Compile Include="Services\IChargeDiscountService.cs" />
-    <Compile Include="Services\IChargeItemListService.cs" />
-    <Compile Include="Services\IChargeMasterPriceService.cs" />
-    <Compile Include="Services\IChargeMasterService.cs" />
-    <Compile Include="Services\IChargeTypeService.cs" />
-    <Compile Include="Services\ICheckManagmentService.cs" />
-    <Compile Include="Services\ICompanyService.cs" />
-    <Compile Include="Services\ICreditCardTypeService.cs" />
-    <Compile Include="Services\ICurrentPayrollMonthService.cs" />
-    <Compile Include="Services\IDayTypeService.cs" />
-    <Compile Include="Services\IDesignationService.cs" />
-    <Compile Include="Services\IDivisionChargeService.cs" />
-    <Compile Include="Services\IDivisionMasterOrderTypeMappingService.cs" />
-    <Compile Include="Services\IDivisionMasterService.cs" />
-    <Compile Include="Services\IDivisionMasterTypeService.cs" />
-    <Compile Include="Services\IDoctorDivisionChargeMappingService.cs" />
-    <Compile Include="Services\IDoctorWiseTimeSlotService.cs" />
-    <Compile Include="Services\IInPatientInsuaranceClaimService.cs" />
-    <Compile Include="Services\ILeaveCategoryService.cs" />
-    <Compile Include="Services\ILeaveMasterService.cs" />
-    <Compile Include="Services\ILeaveService.cs" />
-    <Compile Include="Services\ILeaveStatuService.cs" />
-    <Compile Include="Services\ILeaveTypeService.cs" />
-    <Compile Include="Services\ILoanCategoryService.cs" />
+    <Compile Include="Services\AllowancesService.cs" />
+    <Compile Include="Services\AttendanceRecordsService.cs" />
+    <Compile Include="Services\BankBranchesService.cs" />
+    <Compile Include="Services\BanksService.cs" />
+    <Compile Include="Services\CompaniesService.cs" />
+    <Compile Include="Services\DepartmentsService.cs" />
+    <Compile Include="Services\DesignationsService.cs" />
+    <Compile Include="Services\EmployeeAllowancesService.cs" />
+    <Compile Include="Services\EmployeeBankAccountsService.cs" />
+    <Compile Include="Services\EmployeeCategoriesService.cs" />
+    <Compile Include="Services\EmployeeLoansService.cs" />
+    <Compile Include="Services\EmployeeQualificationsService.cs" />
+    <Compile Include="Services\EmployeeShiftService.cs" />
+    <Compile Include="Services\EmployeesService.cs" />
+    <Compile Include="Services\EmployeeTrainingsService.cs" />
+    <Compile Include="Services\EmployeeTypesService.cs" />
+    <Compile Include="Services\IAllowancesService.cs" />
+    <Compile Include="Services\IAttendanceRecordsService.cs" />
+    <Compile Include="Services\IBankBranchesService.cs" />
+    <Compile Include="Services\IBanksService.cs" />
+    <Compile Include="Services\ICompaniesService.cs" />
+    <Compile Include="Services\IDepartmentsService.cs" />
+    <Compile Include="Services\IDesignationsService.cs" />
+    <Compile Include="Services\IEmployeeAllowancesService.cs" />
+    <Compile Include="Services\IEmployeeBankAccountsService.cs" />
+    <Compile Include="Services\IEmployeeCategoriesService.cs" />
+    <Compile Include="Services\IEmployeeLoansService.cs" />
+    <Compile Include="Services\IEmployeeQualificationsService.cs" />
+    <Compile Include="Services\IEmployeeShiftService.cs" />
+    <Compile Include="Services\IEmployeesService.cs" />
+    <Compile Include="Services\IEmployeeTrainingsService.cs" />
+    <Compile Include="Services\IEmployeeTypesService.cs" />
+    <Compile Include="Services\ILeaveCategoriesService.cs" />
+    <Compile Include="Services\ILeavesService.cs" />
+    <Compile Include="Services\ILeaveTypesService.cs" />
+    <Compile Include="Services\ILoanCategoriesService.cs" />
+    <Compile Include="Services\ILoanInstallmentsService.cs" />
     <Compile Include="Services\ILocationService.cs" />
-    <Compile Include="Services\ILogDetailService.cs" />
-    <Compile Include="Services\IMenuConfigurationService.cs" />
-    <Compile Include="Services\INoPayService.cs" />
-    <Compile Include="Services\InPatientInsuaranceClaimService.cs" />
-    <Compile Include="Services\INurseShiftService.cs" />
-    <Compile Include="Services\IOPDSquenceService.cs" />
-    <Compile Include="Services\IOPDTimeSlotService.cs" />
-    <Compile Include="Services\IOrderTypeService.cs" />
-    <Compile Include="Services\IOTTypeService.cs" />
-    <Compile Include="Services\IPayeeTaxService.cs" />
-    <Compile Include="Services\IPaymentCategoryService.cs" />
-    <Compile Include="Services\IPaymentDetailService.cs" />
-    <Compile Include="Services\IPaymentSubCategoryService.cs" />
-    <Compile Include="Services\IPaymentTypeService.cs" />
-    <Compile Include="Services\IPayMonthMasterService.cs" />
-    <Compile Include="Services\IPayrollRecordService.cs" />
-    <Compile Include="Services\IRelatedPartyBankAccountService.cs" />
-    <Compile Include="Services\IRelatedPartyCategoryService.cs" />
-    <Compile Include="Services\IRelatedPartyDefaultSalaryModifierService.cs" />
-    <Compile Include="Services\IRelatedPartyFixedRosterService.cs" />
-    <Compile Include="Services\IRelatedPartyLeaveAllocationService.cs" />
-    <Compile Include="Services\IRelatedPartyLeaveTypeService.cs" />
-    <Compile Include="Services\IRelatedPartyLoan1Service.cs" />
-    <Compile Include="Services\IRelatedPartyLoanService.cs" />
-    <Compile Include="Services\IRelatedPartyOrderDetailService.cs" />
-    <Compile Include="Services\IRelatedPartyOrderPaymentsService.cs" />
-    <Compile Include="Services\IRelatedPartyOrderService.cs" />
-    <Compile Include="Services\IRelatedPartyRoleAndSplashScreenItemMappingService.cs" />
-    <Compile Include="Services\IRelatedPartyRoleService.cs" />
-    <Compile Include="Services\IRelatedPartySalaryBankAccountsMappingService.cs" />
-    <Compile Include="Services\IRelatedPartySalaryModifierMappingService.cs" />
-    <Compile Include="Services\IRelatedPartySalaryService.cs" />
-    <Compile Include="Services\IRelatedPartyService.cs" />
-    <Compile Include="Services\IRelatedPartySessionService.cs" />
-    <Compile Include="Services\IRelatedPartySessionTypeService.cs" />
-    <Compile Include="Services\IRelatedPartySubCategoryService.cs" />
-    <Compile Include="Services\IRelatedPartyTypeService.cs" />
-    <Compile Include="Services\IRosterStatuService.cs" />
-    <Compile Include="Services\IRosterTypeService.cs" />
-    <Compile Include="Services\ISalaryModifierDefaultValueService.cs" />
-    <Compile Include="Services\ISalaryModifierService.cs" />
-    <Compile Include="Services\ISalaryModifierTypeService.cs" />
-    <Compile Include="Services\ISalaryTypeService.cs" />
-    <Compile Include="Services\IShiftService.cs" />
-    <Compile Include="Services\ISplashScreenItemService.cs" />
-    <Compile Include="Services\ISystemLogsService.cs" />
-    <Compile Include="Services\ITaxTypeService.cs" />
-    <Compile Include="Services\IUnitTypeService.cs" />
-    <Compile Include="Services\LeaveCategoryService.cs" />
-    <Compile Include="Services\LeaveMasterService.cs" />
-    <Compile Include="Services\LeaveService.cs" />
-    <Compile Include="Services\LeaveStatuService.cs" />
-    <Compile Include="Services\LeaveTypeService.cs" />
-    <Compile Include="Services\LoanCategoryService.cs" />
-    <Compile Include="Services\LocationService.cs" />
-    <Compile Include="Services\LogDetailService.cs" />
-    <Compile Include="Services\MenuConfigurationService.cs" />
-    <Compile Include="Services\NoPayService.cs" />
-    <Compile Include="Services\NurseShiftService.cs" />
-    <Compile Include="Services\OPDSquenceService.cs" />
-    <Compile Include="Services\OPDTimeSlotService.cs" />
-    <Compile Include="Services\OrderTypeService.cs" />
-    <Compile Include="Services\OTTypeService.cs" />
-    <Compile Include="Services\PayeeTaxService.cs" />
-    <Compile Include="Services\PaymentCategoryService.cs" />
-    <Compile Include="Services\PaymentDetailService.cs" />
-    <Compile Include="Services\PaymentSubCategoryService.cs" />
-    <Compile Include="Services\PaymentTypeService.cs" />
-    <Compile Include="Services\PayMonthMasterService.cs" />
-    <Compile Include="Services\PayrollRecordService.cs" />
-    <Compile Include="Services\PayrollService.cs" />
-    <Compile Include="Services\RelatedPartyBankAccountService.cs" />
-    <Compile Include="Services\RelatedPartyCategoryService.cs" />
-    <Compile Include="Services\RelatedPartyDefaultSalaryModifierService.cs" />
-    <Compile Include="Services\RelatedPartyFixedRosterService.cs" />
-    <Compile Include="Services\RelatedPartyLeaveAllocationService.cs" />
-    <Compile Include="Services\RelatedPartyLeaveTypeService.cs" />
-    <Compile Include="Services\RelatedPartyLoan1Service.cs" />
-    <Compile Include="Services\RelatedPartyLoanService.cs" />
-    <Compile Include="Services\RelatedPartyOrderDetailService.cs" />
-    <Compile Include="Services\RelatedPartyOrderPaymentsService.cs" />
-    <Compile Include="Services\RelatedPartyOrderService.cs" />
-    <Compile Include="Services\RelatedPartyRoleAndSplashScreenItemMappingService.cs" />
-    <Compile Include="Services\RelatedPartyRoleService.cs" />
-    <Compile Include="Services\RelatedPartySalaryBankAccountsMappingService.cs" />
-    <Compile Include="Services\RelatedPartySalaryModifierMappingService.cs" />
-    <Compile Include="Services\RelatedPartySalaryService.cs" />
-    <Compile Include="Services\RelatedPartyService.cs" />
-    <Compile Include="Services\RelatedPartySessionService.cs" />
-    <Compile Include="Services\RelatedPartySessionTypeService.cs" />
-    <Compile Include="Services\RelatedPartySubCategoryService.cs" />
-    <Compile Include="Services\RelatedPartyTypeService.cs" />
-    <Compile Include="Services\RosterStatuService.cs" />
-    <Compile Include="Services\RosterTypeService.cs" />
-    <Compile Include="Services\SalaryModifierDefaultValueService.cs" />
-    <Compile Include="Services\SalaryModifierService.cs" />
-    <Compile Include="Services\SalaryModifierTypeService.cs" />
-    <Compile Include="Services\SalaryTypeService.cs" />
-    <Compile Include="Services\ShiftService.cs" />
-    <Compile Include="Services\SplashScreenItemService.cs" />
-    <Compile Include="Services\SystemLogsService.cs" />
-    <Compile Include="Services\TaxTypeService.cs" />
-    <Compile Include="Services\UnitTypeService.cs" />
+    <Compile Include="Services\IOnCallSchedulesService.cs" />
+    <Compile Include="Services\IPayrollRecordsService.cs" />
+    <Compile Include="Services\IPerformanceAppraisalsService.cs" />
+    <Compile Include="Services\IShiftsService.cs" />
+    <Compile Include="Services\ISpecializationsService.cs" />
+    <Compile Include="Services\ISystemConfigurationsService.cs" />
+    <Compile Include="Services\IWardsService.cs" />
+    <Compile Include="Services\LeaveCategoriesService.cs" />
+    <Compile Include="Services\LeavesService.cs" />
+    <Compile Include="Services\LeaveTypesService.cs" />
+    <Compile Include="Services\LoanCategoriesService.cs" />
+    <Compile Include="Services\LoanInstallmentsService.cs" />
+    <Compile Include="Services\LocationsService.cs" />
+    <Compile Include="Services\OnCallSchedulesService.cs" />
+    <Compile Include="Services\PayrollRecordsService.cs" />
+    <Compile Include="Services\PerformanceAppraisalsService.cs" />
+    <Compile Include="Services\ShiftsService.cs" />
+    <Compile Include="Services\SpecializationsService.cs" />
+    <Compile Include="Services\SystemConfigurationsService.cs" />
+    <Compile Include="Services\WardsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -845,24 +458,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\HRMSEntities.Context.tt">
+    <Content Include="Models\DataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HRMSEntities.edmx</DependentUpon>
-      <LastGenOutput>HRMSEntities.Context.cs</LastGenOutput>
+      <DependentUpon>DataModel.edmx</DependentUpon>
+      <LastGenOutput>DataModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\HRMSEntities.tt">
+    <Content Include="Models\DataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HRMSEntities.edmx</DependentUpon>
-      <LastGenOutput>HRMSEntities.cs</LastGenOutput>
+      <DependentUpon>DataModel.edmx</DependentUpon>
+      <LastGenOutput>DataModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\HRMSEntities.edmx">
+    <EntityDeploy Include="Models\DataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HRMSEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\HRMSEntities.edmx.diagram">
-      <DependentUpon>HRMSEntities.edmx</DependentUpon>
+    <Content Include="Models\DataModel.edmx.diagram">
+      <DependentUpon>DataModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -889,211 +502,96 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\RelatedParties\Create.cshtml" />
-    <Content Include="Views\RelatedParties\Delete.cshtml" />
-    <Content Include="Views\RelatedParties\Details.cshtml" />
-    <Content Include="Views\RelatedParties\Edit.cshtml" />
-    <Content Include="Views\RelatedParties\Index.cshtml" />
-    <Content Include="Views\AdmissionCategories\Create.cshtml" />
-    <Content Include="Views\AdmissionCategories\Delete.cshtml" />
-    <Content Include="Views\AdmissionCategories\Details.cshtml" />
-    <Content Include="Views\AdmissionCategories\Edit.cshtml" />
-    <Content Include="Views\AdmissionCategories\Index.cshtml" />
-    <Content Include="Views\AdmissionTypes\Create.cshtml" />
-    <Content Include="Views\AdmissionTypes\Delete.cshtml" />
-    <Content Include="Views\AdmissionTypes\Details.cshtml" />
-    <Content Include="Views\AdmissionTypes\Edit.cshtml" />
-    <Content Include="Views\AdmissionTypes\Index.cshtml" />
     <Content Include="Views\Allowances\Create.cshtml" />
     <Content Include="Views\Allowances\Delete.cshtml" />
     <Content Include="Views\Allowances\Details.cshtml" />
     <Content Include="Views\Allowances\Edit.cshtml" />
     <Content Include="Views\Allowances\Index.cshtml" />
-    <Content Include="Views\AppSettings\Create.cshtml" />
-    <Content Include="Views\AppSettings\Delete.cshtml" />
-    <Content Include="Views\AppSettings\Details.cshtml" />
-    <Content Include="Views\AppSettings\Edit.cshtml" />
-    <Content Include="Views\AppSettings\Index.cshtml" />
-    <Content Include="Views\AppSettingsDetails\Create.cshtml" />
-    <Content Include="Views\AppSettingsDetails\Delete.cshtml" />
-    <Content Include="Views\AppSettingsDetails\Details.cshtml" />
-    <Content Include="Views\AppSettingsDetails\Edit.cshtml" />
-    <Content Include="Views\AppSettingsDetails\Index.cshtml" />
-    <Content Include="Views\AttendanceDatas\Create.cshtml" />
-    <Content Include="Views\AttendanceDatas\Delete.cshtml" />
-    <Content Include="Views\AttendanceDatas\Details.cshtml" />
-    <Content Include="Views\AttendanceDatas\Edit.cshtml" />
-    <Content Include="Views\AttendanceDatas\Index.cshtml" />
-    <Content Include="Views\AttendanceDetails\Create.cshtml" />
-    <Content Include="Views\AttendanceDetails\Delete.cshtml" />
-    <Content Include="Views\AttendanceDetails\Details.cshtml" />
-    <Content Include="Views\AttendanceDetails\Edit.cshtml" />
-    <Content Include="Views\AttendanceDetails\Index.cshtml" />
-    <Content Include="Views\AttendanceLastRecordDetails\Create.cshtml" />
-    <Content Include="Views\AttendanceLastRecordDetails\Delete.cshtml" />
-    <Content Include="Views\AttendanceLastRecordDetails\Details.cshtml" />
-    <Content Include="Views\AttendanceLastRecordDetails\Edit.cshtml" />
-    <Content Include="Views\AttendanceLastRecordDetails\Index.cshtml" />
     <Content Include="Views\AttendanceRecords\Create.cshtml" />
     <Content Include="Views\AttendanceRecords\Delete.cshtml" />
     <Content Include="Views\AttendanceRecords\Details.cshtml" />
     <Content Include="Views\AttendanceRecords\Edit.cshtml" />
     <Content Include="Views\AttendanceRecords\Index.cshtml" />
-    <Content Include="Views\AttendanceTimes\Create.cshtml" />
-    <Content Include="Views\AttendanceTimes\Delete.cshtml" />
-    <Content Include="Views\AttendanceTimes\Details.cshtml" />
-    <Content Include="Views\AttendanceTimes\Edit.cshtml" />
-    <Content Include="Views\AttendanceTimes\Index.cshtml" />
-    <Content Include="Views\Banks\Create.cshtml" />
-    <Content Include="Views\Banks\Delete.cshtml" />
-    <Content Include="Views\Banks\Details.cshtml" />
-    <Content Include="Views\Banks\Edit.cshtml" />
-    <Content Include="Views\Banks\Index.cshtml" />
     <Content Include="Views\BankBranches\Create.cshtml" />
     <Content Include="Views\BankBranches\Delete.cshtml" />
     <Content Include="Views\BankBranches\Details.cshtml" />
     <Content Include="Views\BankBranches\Edit.cshtml" />
     <Content Include="Views\BankBranches\Index.cshtml" />
-    <Content Include="Views\BankDeposits\Create.cshtml" />
-    <Content Include="Views\BankDeposits\Delete.cshtml" />
-    <Content Include="Views\BankDeposits\Details.cshtml" />
-    <Content Include="Views\BankDeposits\Edit.cshtml" />
-    <Content Include="Views\BankDeposits\Index.cshtml" />
-    <Content Include="Views\BillFinalizations\Create.cshtml" />
-    <Content Include="Views\BillFinalizations\Delete.cshtml" />
-    <Content Include="Views\BillFinalizations\Details.cshtml" />
-    <Content Include="Views\BillFinalizations\Edit.cshtml" />
-    <Content Include="Views\BillFinalizations\Index.cshtml" />
-    <Content Include="Views\BillFinalization_Last\Create.cshtml" />
-    <Content Include="Views\BillFinalization_Last\Delete.cshtml" />
-    <Content Include="Views\BillFinalization_Last\Details.cshtml" />
-    <Content Include="Views\BillFinalization_Last\Edit.cshtml" />
-    <Content Include="Views\BillFinalization_Last\Index.cshtml" />
-    <Content Include="Views\ChannelingSquences\Create.cshtml" />
-    <Content Include="Views\ChannelingSquences\Delete.cshtml" />
-    <Content Include="Views\ChannelingSquences\Details.cshtml" />
-    <Content Include="Views\ChannelingSquences\Edit.cshtml" />
-    <Content Include="Views\ChannelingSquences\Index.cshtml" />
-    <Content Include="Views\ChannelingTimeSlots\Create.cshtml" />
-    <Content Include="Views\ChannelingTimeSlots\Delete.cshtml" />
-    <Content Include="Views\ChannelingTimeSlots\Details.cshtml" />
-    <Content Include="Views\ChannelingTimeSlots\Edit.cshtml" />
-    <Content Include="Views\ChannelingTimeSlots\Index.cshtml" />
-    <Content Include="Views\ChargeCategories\Create.cshtml" />
-    <Content Include="Views\ChargeCategories\Delete.cshtml" />
-    <Content Include="Views\ChargeCategories\Details.cshtml" />
-    <Content Include="Views\ChargeCategories\Edit.cshtml" />
-    <Content Include="Views\ChargeCategories\Index.cshtml" />
-    <Content Include="Views\ChargeDiscounts\Create.cshtml" />
-    <Content Include="Views\ChargeDiscounts\Delete.cshtml" />
-    <Content Include="Views\ChargeDiscounts\Details.cshtml" />
-    <Content Include="Views\ChargeDiscounts\Edit.cshtml" />
-    <Content Include="Views\ChargeDiscounts\Index.cshtml" />
-    <Content Include="Views\ChargeItemLists\Create.cshtml" />
-    <Content Include="Views\ChargeItemLists\Delete.cshtml" />
-    <Content Include="Views\ChargeItemLists\Details.cshtml" />
-    <Content Include="Views\ChargeItemLists\Edit.cshtml" />
-    <Content Include="Views\ChargeItemLists\Index.cshtml" />
-    <Content Include="Views\ChargeMasters\Create.cshtml" />
-    <Content Include="Views\ChargeMasters\Delete.cshtml" />
-    <Content Include="Views\ChargeMasters\Details.cshtml" />
-    <Content Include="Views\ChargeMasters\Edit.cshtml" />
-    <Content Include="Views\ChargeMasters\Index.cshtml" />
-    <Content Include="Views\ChargeMasterPrices\Create.cshtml" />
-    <Content Include="Views\ChargeMasterPrices\Delete.cshtml" />
-    <Content Include="Views\ChargeMasterPrices\Details.cshtml" />
-    <Content Include="Views\ChargeMasterPrices\Edit.cshtml" />
-    <Content Include="Views\ChargeMasterPrices\Index.cshtml" />
-    <Content Include="Views\ChargeTypes\Create.cshtml" />
-    <Content Include="Views\ChargeTypes\Delete.cshtml" />
-    <Content Include="Views\ChargeTypes\Details.cshtml" />
-    <Content Include="Views\ChargeTypes\Edit.cshtml" />
-    <Content Include="Views\ChargeTypes\Index.cshtml" />
-    <Content Include="Views\CheckManagments\Create.cshtml" />
-    <Content Include="Views\CheckManagments\Delete.cshtml" />
-    <Content Include="Views\CheckManagments\Details.cshtml" />
-    <Content Include="Views\CheckManagments\Edit.cshtml" />
-    <Content Include="Views\CheckManagments\Index.cshtml" />
+    <Content Include="Views\Banks\Create.cshtml" />
+    <Content Include="Views\Banks\Delete.cshtml" />
+    <Content Include="Views\Banks\Details.cshtml" />
+    <Content Include="Views\Banks\Edit.cshtml" />
+    <Content Include="Views\Banks\Index.cshtml" />
     <Content Include="Views\Companies\Create.cshtml" />
     <Content Include="Views\Companies\Delete.cshtml" />
     <Content Include="Views\Companies\Details.cshtml" />
     <Content Include="Views\Companies\Edit.cshtml" />
     <Content Include="Views\Companies\Index.cshtml" />
-    <Content Include="Views\CreditCardTypes\Create.cshtml" />
-    <Content Include="Views\CreditCardTypes\Delete.cshtml" />
-    <Content Include="Views\CreditCardTypes\Details.cshtml" />
-    <Content Include="Views\CreditCardTypes\Edit.cshtml" />
-    <Content Include="Views\CreditCardTypes\Index.cshtml" />
-    <Content Include="Views\CurrentPayrollMonths\Create.cshtml" />
-    <Content Include="Views\CurrentPayrollMonths\Delete.cshtml" />
-    <Content Include="Views\CurrentPayrollMonths\Details.cshtml" />
-    <Content Include="Views\CurrentPayrollMonths\Edit.cshtml" />
-    <Content Include="Views\CurrentPayrollMonths\Index.cshtml" />
-    <Content Include="Views\DayTypes\Create.cshtml" />
-    <Content Include="Views\DayTypes\Delete.cshtml" />
-    <Content Include="Views\DayTypes\Details.cshtml" />
-    <Content Include="Views\DayTypes\Edit.cshtml" />
-    <Content Include="Views\DayTypes\Index.cshtml" />
+    <Content Include="Views\Departments\Create.cshtml" />
+    <Content Include="Views\Departments\Delete.cshtml" />
+    <Content Include="Views\Departments\Details.cshtml" />
+    <Content Include="Views\Departments\Edit.cshtml" />
+    <Content Include="Views\Departments\Index.cshtml" />
     <Content Include="Views\Designations\Create.cshtml" />
     <Content Include="Views\Designations\Delete.cshtml" />
     <Content Include="Views\Designations\Details.cshtml" />
     <Content Include="Views\Designations\Edit.cshtml" />
     <Content Include="Views\Designations\Index.cshtml" />
-    <Content Include="Views\DivisionCharges\Create.cshtml" />
-    <Content Include="Views\DivisionCharges\Delete.cshtml" />
-    <Content Include="Views\DivisionCharges\Details.cshtml" />
-    <Content Include="Views\DivisionCharges\Edit.cshtml" />
-    <Content Include="Views\DivisionCharges\Index.cshtml" />
-    <Content Include="Views\DivisionMasters\Create.cshtml" />
-    <Content Include="Views\DivisionMasters\Delete.cshtml" />
-    <Content Include="Views\DivisionMasters\Details.cshtml" />
-    <Content Include="Views\DivisionMasters\Edit.cshtml" />
-    <Content Include="Views\DivisionMasters\Index.cshtml" />
-    <Content Include="Views\DivisionMasterOrderTypeMappings\Create.cshtml" />
-    <Content Include="Views\DivisionMasterOrderTypeMappings\Delete.cshtml" />
-    <Content Include="Views\DivisionMasterOrderTypeMappings\Details.cshtml" />
-    <Content Include="Views\DivisionMasterOrderTypeMappings\Edit.cshtml" />
-    <Content Include="Views\DivisionMasterOrderTypeMappings\Index.cshtml" />
-    <Content Include="Views\DivisionMasterTypes\Create.cshtml" />
-    <Content Include="Views\DivisionMasterTypes\Delete.cshtml" />
-    <Content Include="Views\DivisionMasterTypes\Details.cshtml" />
-    <Content Include="Views\DivisionMasterTypes\Edit.cshtml" />
-    <Content Include="Views\DivisionMasterTypes\Index.cshtml" />
-    <Content Include="Views\DoctorDivisionChargeMappings\Create.cshtml" />
-    <Content Include="Views\DoctorDivisionChargeMappings\Delete.cshtml" />
-    <Content Include="Views\DoctorDivisionChargeMappings\Details.cshtml" />
-    <Content Include="Views\DoctorDivisionChargeMappings\Edit.cshtml" />
-    <Content Include="Views\DoctorDivisionChargeMappings\Index.cshtml" />
-    <Content Include="Views\DoctorWiseTimeSlots\Create.cshtml" />
-    <Content Include="Views\DoctorWiseTimeSlots\Delete.cshtml" />
-    <Content Include="Views\DoctorWiseTimeSlots\Details.cshtml" />
-    <Content Include="Views\DoctorWiseTimeSlots\Edit.cshtml" />
-    <Content Include="Views\DoctorWiseTimeSlots\Index.cshtml" />
-    <Content Include="Views\InPatientInsuranceClaims\Create.cshtml" />
-    <Content Include="Views\InPatientInsuranceClaims\Delete.cshtml" />
-    <Content Include="Views\InPatientInsuranceClaims\Details.cshtml" />
-    <Content Include="Views\InPatientInsuranceClaims\Edit.cshtml" />
-    <Content Include="Views\InPatientInsuranceClaims\Index.cshtml" />
-    <Content Include="Views\Leaves\Create.cshtml" />
-    <Content Include="Views\Leaves\Delete.cshtml" />
-    <Content Include="Views\Leaves\Details.cshtml" />
-    <Content Include="Views\Leaves\Edit.cshtml" />
-    <Content Include="Views\Leaves\Index.cshtml" />
+    <Content Include="Views\EmployeeAllowances\Create.cshtml" />
+    <Content Include="Views\EmployeeAllowances\Delete.cshtml" />
+    <Content Include="Views\EmployeeAllowances\Details.cshtml" />
+    <Content Include="Views\EmployeeAllowances\Edit.cshtml" />
+    <Content Include="Views\EmployeeAllowances\Index.cshtml" />
+    <Content Include="Views\EmployeeBankAccounts\Create.cshtml" />
+    <Content Include="Views\EmployeeBankAccounts\Delete.cshtml" />
+    <Content Include="Views\EmployeeBankAccounts\Details.cshtml" />
+    <Content Include="Views\EmployeeBankAccounts\Edit.cshtml" />
+    <Content Include="Views\EmployeeBankAccounts\Index.cshtml" />
+    <Content Include="Views\EmployeeCategories\Create.cshtml" />
+    <Content Include="Views\EmployeeCategories\Delete.cshtml" />
+    <Content Include="Views\EmployeeCategories\Details.cshtml" />
+    <Content Include="Views\EmployeeCategories\Edit.cshtml" />
+    <Content Include="Views\EmployeeCategories\Index.cshtml" />
+    <Content Include="Views\EmployeeLoans\Create.cshtml" />
+    <Content Include="Views\EmployeeLoans\Delete.cshtml" />
+    <Content Include="Views\EmployeeLoans\Details.cshtml" />
+    <Content Include="Views\EmployeeLoans\Edit.cshtml" />
+    <Content Include="Views\EmployeeLoans\Index.cshtml" />
+    <Content Include="Views\EmployeeQualifications\Create.cshtml" />
+    <Content Include="Views\EmployeeQualifications\Delete.cshtml" />
+    <Content Include="Views\EmployeeQualifications\Details.cshtml" />
+    <Content Include="Views\EmployeeQualifications\Edit.cshtml" />
+    <Content Include="Views\EmployeeQualifications\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\EmployeeShifts\Create.cshtml" />
+    <Content Include="Views\EmployeeShifts\Delete.cshtml" />
+    <Content Include="Views\EmployeeShifts\Details.cshtml" />
+    <Content Include="Views\EmployeeShifts\Edit.cshtml" />
+    <Content Include="Views\EmployeeShifts\Index.cshtml" />
+    <Content Include="Views\EmployeeTypes\Create.cshtml" />
+    <Content Include="Views\EmployeeTypes\Delete.cshtml" />
+    <Content Include="Views\EmployeeTypes\Details.cshtml" />
+    <Content Include="Views\EmployeeTypes\Edit.cshtml" />
+    <Content Include="Views\EmployeeTypes\Index.cshtml" />
+    <Content Include="Views\EmployeeTrainings\Create.cshtml" />
+    <Content Include="Views\EmployeeTrainings\Delete.cshtml" />
+    <Content Include="Views\EmployeeTrainings\Details.cshtml" />
+    <Content Include="Views\EmployeeTrainings\Edit.cshtml" />
+    <Content Include="Views\EmployeeTrainings\Index.cshtml" />
     <Content Include="Views\LeaveCategories\Create.cshtml" />
     <Content Include="Views\LeaveCategories\Delete.cshtml" />
     <Content Include="Views\LeaveCategories\Details.cshtml" />
     <Content Include="Views\LeaveCategories\Edit.cshtml" />
     <Content Include="Views\LeaveCategories\Index.cshtml" />
-    <Content Include="Views\LeaveMasters\Create.cshtml" />
-    <Content Include="Views\LeaveMasters\Delete.cshtml" />
-    <Content Include="Views\LeaveMasters\Details.cshtml" />
-    <Content Include="Views\LeaveMasters\Edit.cshtml" />
-    <Content Include="Views\LeaveMasters\Index.cshtml" />
-    <Content Include="Views\LeaveStatus\Create.cshtml" />
-    <Content Include="Views\LeaveStatus\Delete.cshtml" />
-    <Content Include="Views\LeaveStatus\Details.cshtml" />
-    <Content Include="Views\LeaveStatus\Edit.cshtml" />
-    <Content Include="Views\LeaveStatus\Index.cshtml" />
+    <Content Include="Views\Leaves\Create.cshtml" />
+    <Content Include="Views\Leaves\Delete.cshtml" />
+    <Content Include="Views\Leaves\Details.cshtml" />
+    <Content Include="Views\Leaves\Edit.cshtml" />
+    <Content Include="Views\Leaves\Index.cshtml" />
     <Content Include="Views\LeaveTypes\Create.cshtml" />
     <Content Include="Views\LeaveTypes\Delete.cshtml" />
     <Content Include="Views\LeaveTypes\Details.cshtml" />
@@ -1104,236 +602,51 @@
     <Content Include="Views\LoanCategories\Details.cshtml" />
     <Content Include="Views\LoanCategories\Edit.cshtml" />
     <Content Include="Views\LoanCategories\Index.cshtml" />
+    <Content Include="Views\LoanInstallments\Create.cshtml" />
+    <Content Include="Views\LoanInstallments\Delete.cshtml" />
+    <Content Include="Views\LoanInstallments\Details.cshtml" />
+    <Content Include="Views\LoanInstallments\Edit.cshtml" />
+    <Content Include="Views\LoanInstallments\Index.cshtml" />
     <Content Include="Views\Locations\Create.cshtml" />
     <Content Include="Views\Locations\Delete.cshtml" />
     <Content Include="Views\Locations\Details.cshtml" />
     <Content Include="Views\Locations\Edit.cshtml" />
     <Content Include="Views\Locations\Index.cshtml" />
-    <Content Include="Views\LogDetails\Create.cshtml" />
-    <Content Include="Views\LogDetails\Delete.cshtml" />
-    <Content Include="Views\LogDetails\Details.cshtml" />
-    <Content Include="Views\LogDetails\Edit.cshtml" />
-    <Content Include="Views\LogDetails\Index.cshtml" />
-    <Content Include="Views\MenuConfigurations\Create.cshtml" />
-    <Content Include="Views\MenuConfigurations\Delete.cshtml" />
-    <Content Include="Views\MenuConfigurations\Details.cshtml" />
-    <Content Include="Views\MenuConfigurations\Edit.cshtml" />
-    <Content Include="Views\MenuConfigurations\Index.cshtml" />
-    <Content Include="Views\Nopays\Create.cshtml" />
-    <Content Include="Views\Nopays\Delete.cshtml" />
-    <Content Include="Views\Nopays\Details.cshtml" />
-    <Content Include="Views\Nopays\Edit.cshtml" />
-    <Content Include="Views\Nopays\Index.cshtml" />
-    <Content Include="Views\NurseShifts\Create.cshtml" />
-    <Content Include="Views\NurseShifts\Delete.cshtml" />
-    <Content Include="Views\NurseShifts\Details.cshtml" />
-    <Content Include="Views\NurseShifts\Edit.cshtml" />
-    <Content Include="Views\NurseShifts\Index.cshtml" />
-    <Content Include="Views\OPDSquences\Create.cshtml" />
-    <Content Include="Views\OPDSquences\Delete.cshtml" />
-    <Content Include="Views\OPDSquences\Details.cshtml" />
-    <Content Include="Views\OPDSquences\Edit.cshtml" />
-    <Content Include="Views\OPDSquences\Index.cshtml" />
-    <Content Include="Views\OPDTimeSlots\Create.cshtml" />
-    <Content Include="Views\OPDTimeSlots\Delete.cshtml" />
-    <Content Include="Views\OPDTimeSlots\Details.cshtml" />
-    <Content Include="Views\OPDTimeSlots\Edit.cshtml" />
-    <Content Include="Views\OPDTimeSlots\Index.cshtml" />
-    <Content Include="Views\OTTypes\Create.cshtml" />
-    <Content Include="Views\OTTypes\Delete.cshtml" />
-    <Content Include="Views\OTTypes\Details.cshtml" />
-    <Content Include="Views\OTTypes\Edit.cshtml" />
-    <Content Include="Views\OTTypes\Index.cshtml" />
-    <Content Include="Views\PayeeTaxes\Create.cshtml" />
-    <Content Include="Views\PayeeTaxes\Delete.cshtml" />
-    <Content Include="Views\PayeeTaxes\Details.cshtml" />
-    <Content Include="Views\PayeeTaxes\Edit.cshtml" />
-    <Content Include="Views\PayeeTaxes\Index.cshtml" />
-    <Content Include="Views\PaymentCategories\Create.cshtml" />
-    <Content Include="Views\PaymentCategories\Delete.cshtml" />
-    <Content Include="Views\PaymentCategories\Details.cshtml" />
-    <Content Include="Views\PaymentCategories\Edit.cshtml" />
-    <Content Include="Views\PaymentCategories\Index.cshtml" />
-    <Content Include="Views\PaymentDetails\Create.cshtml" />
-    <Content Include="Views\PaymentDetails\Delete.cshtml" />
-    <Content Include="Views\PaymentDetails\Details.cshtml" />
-    <Content Include="Views\PaymentDetails\Edit.cshtml" />
-    <Content Include="Views\PaymentDetails\Index.cshtml" />
-    <Content Include="Views\PaymentSubCategories\Create.cshtml" />
-    <Content Include="Views\PaymentSubCategories\Delete.cshtml" />
-    <Content Include="Views\PaymentSubCategories\Details.cshtml" />
-    <Content Include="Views\PaymentSubCategories\Edit.cshtml" />
-    <Content Include="Views\PaymentSubCategories\Index.cshtml" />
-    <Content Include="Views\PaymentTypes\Create.cshtml" />
-    <Content Include="Views\PaymentTypes\Delete.cshtml" />
-    <Content Include="Views\PaymentTypes\Details.cshtml" />
-    <Content Include="Views\PaymentTypes\Edit.cshtml" />
-    <Content Include="Views\PaymentTypes\Index.cshtml" />
-    <Content Include="Views\PayMonthMasters\Create.cshtml" />
-    <Content Include="Views\PayMonthMasters\Delete.cshtml" />
-    <Content Include="Views\PayMonthMasters\Details.cshtml" />
-    <Content Include="Views\PayMonthMasters\Edit.cshtml" />
-    <Content Include="Views\PayMonthMasters\Index.cshtml" />
+    <Content Include="Views\OnCallSchedules\Create.cshtml" />
+    <Content Include="Views\OnCallSchedules\Delete.cshtml" />
+    <Content Include="Views\OnCallSchedules\Details.cshtml" />
+    <Content Include="Views\OnCallSchedules\Edit.cshtml" />
+    <Content Include="Views\OnCallSchedules\Index.cshtml" />
     <Content Include="Views\PayrollRecords\Create.cshtml" />
     <Content Include="Views\PayrollRecords\Delete.cshtml" />
     <Content Include="Views\PayrollRecords\Details.cshtml" />
     <Content Include="Views\PayrollRecords\Edit.cshtml" />
     <Content Include="Views\PayrollRecords\Index.cshtml" />
-    <Content Include="Views\RelatedPartyBankAccounts\Create.cshtml" />
-    <Content Include="Views\RelatedPartyBankAccounts\Delete.cshtml" />
-    <Content Include="Views\RelatedPartyBankAccounts\Details.cshtml" />
-    <Content Include="Views\RelatedPartyBankAccounts\Edit.cshtml" />
-    <Content Include="Views\RelatedPartyBankAccounts\Index.cshtml" />
-    <Content Include="Views\RelatedPartyCategories\Create.cshtml" />
-    <Content Include="Views\RelatedPartyCategories\Delete.cshtml" />
-    <Content Include="Views\RelatedPartyCategories\Details.cshtml" />
-    <Content Include="Views\RelatedPartyCategories\Edit.cshtml" />
-    <Content Include="Views\RelatedPartyCategories\Index.cshtml" />
-    <Content Include="Views\RelatedPartyDefaultSalaryModifiers\Create.cshtml" />
-    <Content Include="Views\RelatedPartyDefaultSalaryModifiers\Delete.cshtml" />
-    <Content Include="Views\RelatedPartyDefaultSalaryModifiers\Details.cshtml" />
-    <Content Include="Views\RelatedPartyDefaultSalaryModifiers\Edit.cshtml" />
-    <Content Include="Views\RelatedPartyDefaultSalaryModifiers\Index.cshtml" />
-    <Content Include="Views\RelatedPartyFixedRosters\Create.cshtml" />
-    <Content Include="Views\RelatedPartyFixedRosters\Delete.cshtml" />
-    <Content Include="Views\RelatedPartyFixedRosters\Details.cshtml" />
-    <Content Include="Views\RelatedPartyFixedRosters\Edit.cshtml" />
-    <Content Include="Views\RelatedPartyFixedRosters\Index.cshtml" />
-    <Content Include="Views\RelatedPartyLeaveAllocations\Create.cshtml" />
-    <Content Include="Views\RelatedPartyLeaveAllocations\Delete.cshtml" />
-    <Content Include="Views\RelatedPartyLeaveAllocations\Details.cshtml" />
-    <Content Include="Views\RelatedPartyLeaveAllocations\Edit.cshtml" />
-    <Content Include="Views\RelatedPartyLeaveAllocations\Index.cshtml" />
-    <Content Include="Views\RelatedPartyLeaveTypes\Create.cshtml" />
-    <Content Include="Views\RelatedPartyLeaveTypes\Delete.cshtml" />
-    <Content Include="Views\RelatedPartyLeaveTypes\Details.cshtml" />
-    <Content Include="Views\RelatedPartyLeaveTypes\Edit.cshtml" />
-    <Content Include="Views\RelatedPartyLeaveTypes\Index.cshtml" />
-    <Content Include="Views\RelatedPartyLoans\Create.cshtml" />
-    <Content Include="Views\RelatedPartyLoans\Delete.cshtml" />
-    <Content Include="Views\RelatedPartyLoans\Details.cshtml" />
-    <Content Include="Views\RelatedPartyLoans\Edit.cshtml" />
-    <Content Include="Views\RelatedPartyLoans\Index.cshtml" />
-    <Content Include="Views\RelatedPartyLoan1\Create.cshtml" />
-    <Content Include="Views\RelatedPartyLoan1\Delete.cshtml" />
-    <Content Include="Views\RelatedPartyLoan1\Details.cshtml" />
-    <Content Include="Views\RelatedPartyLoan1\Edit.cshtml" />
-    <Content Include="Views\RelatedPartyLoan1\Index.cshtml" />
-    <Content Include="Views\RelatedPartyOrders\Create.cshtml" />
-    <Content Include="Views\RelatedPartyOrders\Delete.cshtml" />
-    <Content Include="Views\RelatedPartyOrders\Details.cshtml" />
-    <Content Include="Views\RelatedPartyOrders\Edit.cshtml" />
-    <Content Include="Views\RelatedPartyOrders\Index.cshtml" />
-    <Content Include="Views\RelatedPartyOrderDetails\Create.cshtml" />
-    <Content Include="Views\RelatedPartyOrderDetails\Delete.cshtml" />
-    <Content Include="Views\RelatedPartyOrderDetails\Details.cshtml" />
-    <Content Include="Views\RelatedPartyOrderDetails\Edit.cshtml" />
-    <Content Include="Views\RelatedPartyOrderDetails\Index.cshtml" />
-    <Content Include="Views\RelatedPartyOrderPayments\Create.cshtml" />
-    <Content Include="Views\RelatedPartyOrderPayments\Delete.cshtml" />
-    <Content Include="Views\RelatedPartyOrderPayments\Details.cshtml" />
-    <Content Include="Views\RelatedPartyOrderPayments\Edit.cshtml" />
-    <Content Include="Views\RelatedPartyOrderPayments\Index.cshtml" />
-    <Content Include="Views\RelatedPartyRoles\Create.cshtml" />
-    <Content Include="Views\RelatedPartyRoles\Delete.cshtml" />
-    <Content Include="Views\RelatedPartyRoles\Details.cshtml" />
-    <Content Include="Views\RelatedPartyRoles\Edit.cshtml" />
-    <Content Include="Views\RelatedPartyRoles\Index.cshtml" />
-    <Content Include="Views\RelatedPartyRoleAndSplashScreenItemMappings\Create.cshtml" />
-    <Content Include="Views\RelatedPartyRoleAndSplashScreenItemMappings\Delete.cshtml" />
-    <Content Include="Views\RelatedPartyRoleAndSplashScreenItemMappings\Details.cshtml" />
-    <Content Include="Views\RelatedPartyRoleAndSplashScreenItemMappings\Edit.cshtml" />
-    <Content Include="Views\RelatedPartyRoleAndSplashScreenItemMappings\Index.cshtml" />
-    <Content Include="Views\RelatedPartySalaries\Create.cshtml" />
-    <Content Include="Views\RelatedPartySalaries\Delete.cshtml" />
-    <Content Include="Views\RelatedPartySalaries\Details.cshtml" />
-    <Content Include="Views\RelatedPartySalaries\Edit.cshtml" />
-    <Content Include="Views\RelatedPartySalaries\Index.cshtml" />
-    <Content Include="Views\RelatedPartySalaryModifierMappings\Create.cshtml" />
-    <Content Include="Views\RelatedPartySalaryModifierMappings\Delete.cshtml" />
-    <Content Include="Views\RelatedPartySalaryModifierMappings\Details.cshtml" />
-    <Content Include="Views\RelatedPartySalaryModifierMappings\Edit.cshtml" />
-    <Content Include="Views\RelatedPartySalaryModifierMappings\Index.cshtml" />
-    <Content Include="Views\RelatedPartySessions\Create.cshtml" />
-    <Content Include="Views\RelatedPartySessions\Delete.cshtml" />
-    <Content Include="Views\RelatedPartySessions\Details.cshtml" />
-    <Content Include="Views\RelatedPartySessions\Edit.cshtml" />
-    <Content Include="Views\RelatedPartySessions\Index.cshtml" />
-    <Content Include="Views\RelatedPartySessionTypes\Create.cshtml" />
-    <Content Include="Views\RelatedPartySessionTypes\Delete.cshtml" />
-    <Content Include="Views\RelatedPartySessionTypes\Details.cshtml" />
-    <Content Include="Views\RelatedPartySessionTypes\Edit.cshtml" />
-    <Content Include="Views\RelatedPartySessionTypes\Index.cshtml" />
-    <Content Include="Views\RelatedPartySubCategories\Create.cshtml" />
-    <Content Include="Views\RelatedPartySubCategories\Delete.cshtml" />
-    <Content Include="Views\RelatedPartySubCategories\Details.cshtml" />
-    <Content Include="Views\RelatedPartySubCategories\Edit.cshtml" />
-    <Content Include="Views\RelatedPartySubCategories\Index.cshtml" />
-    <Content Include="Views\RelatedPartyTypes\Create.cshtml" />
-    <Content Include="Views\RelatedPartyTypes\Delete.cshtml" />
-    <Content Include="Views\RelatedPartyTypes\Details.cshtml" />
-    <Content Include="Views\RelatedPartyTypes\Edit.cshtml" />
-    <Content Include="Views\RelatedPartyTypes\Index.cshtml" />
-    <Content Include="Views\RosterStatus\Create.cshtml" />
-    <Content Include="Views\RosterStatus\Delete.cshtml" />
-    <Content Include="Views\RosterStatus\Details.cshtml" />
-    <Content Include="Views\RosterStatus\Edit.cshtml" />
-    <Content Include="Views\RosterStatus\Index.cshtml" />
-    <Content Include="Views\RosterTypes\Create.cshtml" />
-    <Content Include="Views\RosterTypes\Delete.cshtml" />
-    <Content Include="Views\RosterTypes\Details.cshtml" />
-    <Content Include="Views\RosterTypes\Edit.cshtml" />
-    <Content Include="Views\RosterTypes\Index.cshtml" />
-    <Content Include="Views\SalaryModifiers\Create.cshtml" />
-    <Content Include="Views\SalaryModifiers\Delete.cshtml" />
-    <Content Include="Views\SalaryModifiers\Details.cshtml" />
-    <Content Include="Views\SalaryModifiers\Edit.cshtml" />
-    <Content Include="Views\SalaryModifiers\Index.cshtml" />
-    <Content Include="Views\SalaryModifierDefaultValues\Create.cshtml" />
-    <Content Include="Views\SalaryModifierDefaultValues\Delete.cshtml" />
-    <Content Include="Views\SalaryModifierDefaultValues\Details.cshtml" />
-    <Content Include="Views\SalaryModifierDefaultValues\Edit.cshtml" />
-    <Content Include="Views\SalaryModifierDefaultValues\Index.cshtml" />
-    <Content Include="Views\SalaryModifierTypes\Create.cshtml" />
-    <Content Include="Views\SalaryModifierTypes\Delete.cshtml" />
-    <Content Include="Views\SalaryModifierTypes\Details.cshtml" />
-    <Content Include="Views\SalaryModifierTypes\Edit.cshtml" />
-    <Content Include="Views\SalaryModifierTypes\Index.cshtml" />
-    <Content Include="Views\SalaryTypes\Create.cshtml" />
-    <Content Include="Views\SalaryTypes\Delete.cshtml" />
-    <Content Include="Views\SalaryTypes\Details.cshtml" />
-    <Content Include="Views\SalaryTypes\Edit.cshtml" />
-    <Content Include="Views\SalaryTypes\Index.cshtml" />
+    <Content Include="Views\PerformanceAppraisals\Create.cshtml" />
+    <Content Include="Views\PerformanceAppraisals\Delete.cshtml" />
+    <Content Include="Views\PerformanceAppraisals\Details.cshtml" />
+    <Content Include="Views\PerformanceAppraisals\Edit.cshtml" />
+    <Content Include="Views\PerformanceAppraisals\Index.cshtml" />
     <Content Include="Views\Shifts\Create.cshtml" />
     <Content Include="Views\Shifts\Delete.cshtml" />
     <Content Include="Views\Shifts\Details.cshtml" />
     <Content Include="Views\Shifts\Edit.cshtml" />
     <Content Include="Views\Shifts\Index.cshtml" />
-    <Content Include="Views\SplashScreenItems\Create.cshtml" />
-    <Content Include="Views\SplashScreenItems\Delete.cshtml" />
-    <Content Include="Views\SplashScreenItems\Details.cshtml" />
-    <Content Include="Views\SplashScreenItems\Edit.cshtml" />
-    <Content Include="Views\SplashScreenItems\Index.cshtml" />
-    <Content Include="Views\SystemLogs\Create.cshtml" />
-    <Content Include="Views\SystemLogs\Delete.cshtml" />
-    <Content Include="Views\SystemLogs\Details.cshtml" />
-    <Content Include="Views\SystemLogs\Edit.cshtml" />
-    <Content Include="Views\SystemLogs\Index.cshtml" />
-    <Content Include="Views\TaxTypes\Create.cshtml" />
-    <Content Include="Views\TaxTypes\Delete.cshtml" />
-    <Content Include="Views\TaxTypes\Details.cshtml" />
-    <Content Include="Views\TaxTypes\Edit.cshtml" />
-    <Content Include="Views\TaxTypes\Index.cshtml" />
-    <Content Include="Views\UnitTypes\Create.cshtml" />
-    <Content Include="Views\UnitTypes\Delete.cshtml" />
-    <Content Include="Views\UnitTypes\Details.cshtml" />
-    <Content Include="Views\UnitTypes\Edit.cshtml" />
-    <Content Include="Views\UnitTypes\Index.cshtml" />
-    <Content Include="Views\OrderTypes\Create.cshtml" />
-    <Content Include="Views\OrderTypes\Delete.cshtml" />
-    <Content Include="Views\OrderTypes\Details.cshtml" />
-    <Content Include="Views\OrderTypes\Edit.cshtml" />
-    <Content Include="Views\OrderTypes\Index.cshtml" />
+    <Content Include="Views\Specializations\Create.cshtml" />
+    <Content Include="Views\Specializations\Delete.cshtml" />
+    <Content Include="Views\Specializations\Details.cshtml" />
+    <Content Include="Views\Specializations\Edit.cshtml" />
+    <Content Include="Views\Specializations\Index.cshtml" />
+    <Content Include="Views\SystemConfigurations\Create.cshtml" />
+    <Content Include="Views\SystemConfigurations\Delete.cshtml" />
+    <Content Include="Views\SystemConfigurations\Details.cshtml" />
+    <Content Include="Views\SystemConfigurations\Edit.cshtml" />
+    <Content Include="Views\SystemConfigurations\Index.cshtml" />
+    <Content Include="Views\Wards\Create.cshtml" />
+    <Content Include="Views\Wards\Delete.cshtml" />
+    <Content Include="Views\Wards\Details.cshtml" />
+    <Content Include="Views\Wards\Edit.cshtml" />
+    <Content Include="Views\Wards\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

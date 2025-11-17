@@ -14,9 +14,11 @@ namespace HR_Application_CO_OP_HOS.Models
     
     public partial class LoanCategory
     {
-        public int ID { get; set; }
-        public Nullable<decimal> DefaultAllocation { get; set; }
-        public string LoanCategoryName { get; set; }
-        public Nullable<bool> IsFixedLoanInstallments { get; set; }
+        public int LoanCategoryID { get; set; }
+        public string CategoryName { get; set; }
+        public Nullable<decimal> MaxAmount { get; set; }
+        public decimal InterestRate { get; set; }
+        public Nullable<int> MaxInstallments { get; set; }
+        public bool IsActive { get; set; }
     }
 }

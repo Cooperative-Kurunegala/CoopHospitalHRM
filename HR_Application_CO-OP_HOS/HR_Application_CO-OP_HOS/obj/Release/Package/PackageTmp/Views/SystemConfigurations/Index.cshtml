@@ -1,0 +1,134 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.SystemConfiguration>
+
+@{
+    ViewBag.Title = "System Configuration Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>System Configurations</title>
+    <style>
+        .index-container {
+            padding: 40px;
+            background: #ffffff;
+            border-radius: 15px;
+            border: 3px solid #006400;
+            margin: 20px;
+        }
+
+        .index-header {
+            background: #006400;
+            color: white;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            margin: -40px -40px 30px -40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1.4rem;
+        }
+
+            .table th {
+                background: #006400;
+                color: white;
+                padding: 15px;
+                text-align: left;
+            }
+
+            .table td {
+                padding: 15px;
+                border-bottom: 2px solid #dee2e6;
+            }
+
+            .table tr:hover {
+                background: #f8f9fa;
+            }
+
+        .btn-create {
+            background: #28a745;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.6rem;
+            border: none;
+        }
+
+        .action-links a {
+            margin-right: 10px;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 1.3rem;
+        }
+
+        .btn-edit {
+            background: #ffc107;
+            color: black;
+        }
+
+        .btn-details {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            font-size: 1.4rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="index-container">
+        <div class="index-header">
+            <h2>System Configurations</h2>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn-create" })
+        </div>
+
+        <table class="table">
+            <tr>
+                <th>Config Key</th>
+                <th>Config Value</th>
+                <th>Config Type</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.ConfigKey)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ConfigValue)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ConfigType)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Category)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+                    <td class="action-links">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ConfigID }, new { @class = "btn-edit" })
+                        @Html.ActionLink("Details", "Details", new { id = item.ConfigID }, new { @class = "btn-details" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ConfigID }, new { @class = "btn-delete" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

@@ -1,303 +1,282 @@
 ﻿@model HR_Application_CO_OP_HOS.Models.PayrollRecord
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit Payroll Record</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
 
-@{
-    ViewBag.Title = "Edit Payroll Record";
-}
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
 
-<div class="dashboard-container">
-    <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-edit"></i> Edit Payroll Record</h1>
-            <p class="lead">Update payroll record information</p>
+        .header {
+            background: #006400;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+            .header h1 {
+                margin: 0;
+                font-size: 2rem;
+            }
+
+        .form-container {
+            padding: 30px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .control-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #006400;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .text-danger {
+            color: #dc3545;
+            font-size: 0.9rem;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #006400;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Edit Payroll Record</h1>
+        </div>
+
+        <div class="form-container">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.PayrollID)
+
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EmployeeID, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.EmployeeID, new { @class = "form-control", type = "number", min = "0" })
+                        @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PayPeriod, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.PayPeriod, new { @class = "form-control", placeholder = "e.g. Jan 2025" })
+                        @Html.ValidationMessageFor(model => model.PayPeriod, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PayDate, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.PayDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                        @Html.ValidationMessageFor(model => model.PayDate, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BasicSalary, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.BasicSalary, "{0:N2}", new { @class = "form-control", type = "number", step = "0.01", min = "0" })
+                        @Html.ValidationMessageFor(model => model.BasicSalary, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FixedAllowances, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.FixedAllowances, "{0:N2}", new { @class = "form-control", type = "number", step = "0.01" })
+                        @Html.ValidationMessageFor(model => model.FixedAllowances, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.VariableAllowances, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.VariableAllowances, "{0:N2}", new { @class = "form-control", type = "number", step = "0.01" })
+                        @Html.ValidationMessageFor(model => model.VariableAllowances, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OvertimePay, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.OvertimePay, "{0:N2}", new { @class = "form-control", type = "number", step = "0.01" })
+                        @Html.ValidationMessageFor(model => model.OvertimePay, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShiftAllowances, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.ShiftAllowances, "{0:N2}", new { @class = "form-control", type = "number", step = "0.01" })
+                        @Html.ValidationMessageFor(model => model.ShiftAllowances, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AttendanceIncentive, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.AttendanceIncentive, "{0:N2}", new { @class = "form-control", type = "number", step = "0.01" })
+                        @Html.ValidationMessageFor(model => model.AttendanceIncentive, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GrossSalary, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.GrossSalary, "{0:N2}", new { @class = "form-control", type = "number", step = "0.01" })
+                        @Html.ValidationMessageFor(model => model.GrossSalary, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EPFEmployee, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.EPFEmployee, "{0:N2}", new { @class = "form-control", type = "number", step = "0.01" })
+                        @Html.ValidationMessageFor(model => model.EPFEmployee, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EPFEmployer, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.EPFEmployer, "{0:N2}", new { @class = "form-control", type = "number", step = "0.01" })
+                        @Html.ValidationMessageFor(model => model.EPFEmployer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ETFEmployer, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.ETFEmployer, "{0:N2}", new { @class = "form-control", type = "number", step = "0.01" })
+                        @Html.ValidationMessageFor(model => model.ETFEmployer, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PayeeTax, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.PayeeTax, "{0:N2}", new { @class = "form-control", type = "number", step = "0.01" })
+                        @Html.ValidationMessageFor(model => model.PayeeTax, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LoanDeductions, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.LoanDeductions, "{0:N2}", new { @class = "form-control", type = "number", step = "0.01" })
+                        @Html.ValidationMessageFor(model => model.LoanDeductions, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OtherDeductions, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.OtherDeductions, "{0:N2}", new { @class = "form-control", type = "number", step = "0.01" })
+                        @Html.ValidationMessageFor(model => model.OtherDeductions, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TotalDeductions, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.TotalDeductions, "{0:N2}", new { @class = "form-control", type = "number", step = "0.01"})
+                        @Html.ValidationMessageFor(model => model.TotalDeductions, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NetSalary, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.NetSalary, "{0:N2}", new { @class = "form-control", type = "number", step = "0.01" })
+                        @Html.ValidationMessageFor(model => model.NetSalary, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Status, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PaymentMethod, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.PaymentMethod, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PaymentMethod, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BankAccountID, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.BankAccountID, new { @class = "form-control", type = "number" })
+                        @Html.ValidationMessageFor(model => model.BankAccountID, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GeneratedDate, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.GeneratedDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                        @Html.ValidationMessageFor(model => model.GeneratedDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GeneratedBy, htmlAttributes: new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.GeneratedBy, new { @class = "form-control", type = "number" })
+                    @Html.ValidationMessageFor(model => model.GeneratedBy, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-actions">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+                </div>
+                            }
         </div>
     </div>
-
-    <div class="row no-gutters">
-        <!-- Form Section -->
-        <div class="col-md-8">
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-pencil"></i> Edit Payroll Information</h3>
-                </div>
-                <div class="panel-body">
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.HiddenFor(model => model.Id)
-
-                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.EmployeeId, "Employee", new { @class = "control-label" })
-                                    @Html.DropDownList("EmployeeId", null, "Select Employee", new { @class = "form-control", @onchange = "loadEmployeeDetails(this.value)" })
-                                    @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Month, new { @class = "control-label" })
-                                    @Html.DropDownListFor(model => model.Month, Enumerable.Range(1, 12).Select(m => new SelectListItem
-                               {
-                                   Text = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(m),
-                                   Value = m.ToString(),
-                                   Selected = m == Model.Month
-                               }), "Select Month", new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Month, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Year, new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "2000", @max = "2100" } })
-                                    @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.BasicSalary, new { @class = "control-label" })
-                                    <div class="input-group">
-                                        <span class="input-group-addon">$</span>
-                                        @Html.EditorFor(model => model.BasicSalary, new { htmlAttributes = new { @class = "form-control", @onchange = "calculateNetSalary()" } })
-                                    </div>
-                                    @Html.ValidationMessageFor(model => model.BasicSalary, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.TotalAllowances, new { @class = "control-label" })
-                                    <div class="input-group">
-                                        <span class="input-group-addon">$</span>
-                                        @Html.EditorFor(model => model.TotalAllowances, new { htmlAttributes = new { @class = "form-control", @onchange = "calculateNetSalary()" } })
-                                    </div>
-                                    @Html.ValidationMessageFor(model => model.TotalAllowances, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.TotalDeductions, new { @class = "control-label" })
-                                    <div class="input-group">
-                                        <span class="input-group-addon">$</span>
-                                        @Html.EditorFor(model => model.TotalDeductions, new { htmlAttributes = new { @class = "form-control", @onchange = "calculateNetSalary()" } })
-                                    </div>
-                                    @Html.ValidationMessageFor(model => model.TotalDeductions, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.NetSalary, new { @class = "control-label" })
-                                    <div class="input-group">
-                                        <span class="input-group-addon">$</span>
-                                        @Html.EditorFor(model => model.NetSalary, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                                    </div>
-                                    @Html.ValidationMessageFor(model => model.NetSalary, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.GeneratedDate, new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.GeneratedDate, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-                                    @Html.ValidationMessageFor(model => model.GeneratedDate, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Audit Fields -->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.CreatedDate, new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.ModifiedDate, new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.ModifiedDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = DateTime.Now.ToString("yyyy-MM-ddTHH:mm") } })
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-warning btn-lg">
-                                <i class="fa fa-save"></i> Update Payroll Record
-                            </button>
-                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default btn-lg" })
-                            @Html.ActionLink("View Details", "Details", new { id = Model.Id }, new { @class = "btn btn-info btn-lg" })
-                        </div>
-                    }
-                </div>
-            </div>
-        </div>
-
-        <!-- Employee Details & Calculator Section -->
-        <div class="col-md-4">
-            <div class="panel panel-info" id="employeeDetailsPanel">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-user"></i> Employee Details</h3>
-                </div>
-                <div class="panel-body" id="employeeDetails">
-                    <div class="text-center">
-                        <i class="fa fa-spinner fa-spin"></i> Loading employee details...
-                    </div>
-                </div>
-            </div>
-
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-calculator"></i> Salary Calculator</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="form-group">
-                        <label>Basic Salary:</label>
-                        <input type="number" class="form-control" id="calcBasic" onchange="updateCalculator()" value="@Model.BasicSalary">
-                    </div>
-                    <div class="form-group">
-                        <label>Allowances:</label>
-                        <input type="number" class="form-control" id="calcAllowances" onchange="updateCalculator()" value="@Model.TotalAllowances">
-                    </div>
-                    <div class="form-group">
-                        <label>Deductions:</label>
-                        <input type="number" class="form-control" id="calcDeductions" onchange="updateCalculator()" value="@Model.TotalDeductions">
-                    </div>
-                    <div class="form-group">
-                        <label>Net Salary:</label>
-                        <input type="number" class="form-control" id="calcNet" readonly style="font-weight: bold; background-color: #e8f5e8;" value="@Model.NetSalary">
-                    </div>
-                    <button type="button" class="btn btn-success btn-block" onclick="applyCalculatorValues()">
-                        Apply to Form
-                    </button>
-                </div>
-            </div>
-
-            <!-- Change History -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-history"></i> Record History</h3>
-                </div>
-                <div class="panel-body">
-                    <p><strong>Created:</strong> @(Model.CreatedDate?.ToString("MMM dd, yyyy HH:mm") ?? "N/A")</p>
-                    <p><strong>Last Modified:</strong> @(Model.ModifiedDate?.ToString("MMM dd, yyyy HH:mm") ?? "N/A")</p>
-                    <p><strong>Record ID:</strong> @Model.Id</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        function calculateNetSalary() {
-            try {
-                var basic = parseFloat($('#BasicSalary').val()) || 0;
-                var allowances = parseFloat($('#TotalAllowances').val()) || 0;
-                var deductions = parseFloat($('#TotalDeductions').val()) || 0;
-                var netSalary = basic + allowances - deductions;
-                $('#NetSalary').val(netSalary.toFixed(2));
-            } catch (error) {
-                console.error('Error calculating net salary:', error);
-            }
-        }
-
-        function updateCalculator() {
-            try {
-                var basic = parseFloat($('#calcBasic').val()) || 0;
-                var allowances = parseFloat($('#calcAllowances').val()) || 0;
-                var deductions = parseFloat($('#calcDeductions').val()) || 0;
-                var net = basic + allowances - deductions;
-                $('#calcNet').val(net.toFixed(2));
-            } catch (error) {
-                console.error('Error updating calculator:', error);
-            }
-        }
-
-        function applyCalculatorValues() {
-            try {
-                $('#BasicSalary').val($('#calcBasic').val());
-                $('#TotalAllowances').val($('#calcAllowances').val());
-                $('#TotalDeductions').val($('#calcDeductions').val());
-                calculateNetSalary();
-            } catch (error) {
-                alert('Error applying calculator values: ' + error.message);
-            }
-        }
-
-        function loadEmployeeDetails(employeeId) {
-            if (!employeeId) {
-                $('#employeeDetailsPanel').hide();
-                return;
-            }
-
-            try {
-                // Simulate loading employee details
-                setTimeout(function () {
-                    var employeeData = {
-                        name: "Employee " + employeeId,
-                        designation: "Designation " + employeeId,
-                        department: "Department " + employeeId,
-                        basicSalary: (50000 + (employeeId * 1000)).toFixed(2)
-                    };
-
-                    var html = `
-                        <div class="employee-info">
-                            <h4>${employeeData.name}</h4>
-                            <p><strong>Designation:</strong> ${employeeData.designation}</p>
-                            <p><strong>Department:</strong> ${employeeData.department}</p>
-                            <p><strong>Current Basic Salary:</strong> $${employeeData.basicSalary}</p>
-                            <hr>
-                            <p class="text-muted"><small>Employee ID: ${employeeId}</small></p>
-                        </div>
-                    `;
-                    $('#employeeDetails').html(html);
-                }, 500);
-            } catch (error) {
-                $('#employeeDetails').html('<div class="alert alert-danger">Error loading employee details</div>');
-            }
-        }
-
-        // Initialize on page load
-        $(document).ready(function () {
-            calculateNetSalary();
-            updateCalculator();
-            loadEmployeeDetails($('#EmployeeId').val());
-        });
-    </script>
-}
-
-<style>
-    .dashboard-container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 20px;
-        margin: 0;
-    }
-
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    .control-label {
-        font-weight: 600;
-        margin-bottom: 8px;
-        display: block;
-    }
-
-    .input-group-addon {
-        background-color: #ecf0f1;
-        border: 1px solid #bdc3c7;
-    }
-
-    .employee-info h4 {
-        color: #2c3e50;
-        margin-bottom: 15px;
-    }
-</style>
+</body>
+</html>

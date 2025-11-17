@@ -1,106 +1,356 @@
-﻿@model HR_Application_CO_OP_HOS.Models.Leave
+﻿@model HR_Application_CO_OP_HOS.Models.ViewModels.LeaveDetailsViewModel
 
 @{
-    Layout = null;
+    ViewBag.Title = "Leave Application Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Leave</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.RelatedPartyID)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.RelatedPartyID)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.LeaveCategoryID)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.LeaveCategoryID)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.LeaveTypeID)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.LeaveTypeID)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.LeaveDate)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.LeaveDate)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.CreatedDate)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.CreatedBy)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.CreatedBy)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.LeaveAmount)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.LeaveAmount)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.LeaveMasterID)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.LeaveMasterID)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.LeaveFrom)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.LeaveFrom)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.LeaveTo)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.LeaveTo)
-            </dd>
-    
-        </dl>
+<!-- Full Screen Container -->
+<div class="fullscreen-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">LEAVE APPLICATION DETAILS</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">View Leave Record Details</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+
+    <!-- Main Content -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>👁️ LEAVE APPLICATION INFORMATION</h2>
+        </div>
+
+        <div class="section-content">
+            <div class="details-container">
+                <div class="details-grid">
+                    <div class="detail-group">
+                        <label class="detail-label">Employee:</label>
+                        <div class="detail-value">@Model.EmployeeFullName</div>
+                    </div>
+
+                    <div class="detail-group">
+                        <label class="detail-label">Leave Type:</label>
+                        <div class="detail-value">@Model.LeaveTypeName</div>
+                    </div>
+
+                    <div class="detail-group">
+                        <label class="detail-label">Leave Category:</label>
+                        <div class="detail-value">@Model.LeaveCategoryName</div>
+                    </div>
+
+                    <div class="detail-group">
+                        <label class="detail-label">Status:</label>
+                        <div class="detail-value">
+                            <span class="status-badge status-@( (Model.Status ?? "").ToLower() )">
+                                @Model.Status
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="detail-group">
+                        <label class="detail-label">Start Date:</label>
+                        <div class="detail-value">@Model.StartDate.ToString("MMM dd, yyyy")</div>
+                    </div>
+
+                    <div class="detail-group">
+                        <label class="detail-label">End Date:</label>
+                        <div class="detail-value">@Model.EndDate.ToString("MMM dd, yyyy")</div>
+                    </div>
+
+                    <div class="detail-group">
+                        <label class="detail-label">Total Days:</label>
+                        <div class="detail-value">@Model.TotalDays</div>
+                    </div>
+
+                    <div class="detail-group">
+                        <label class="detail-label">Medical Certificate Required:</label>
+                        <div class="detail-value">
+                            <span class="status-badge @(Model.MedicalCertificate ? "status-active" : "status-inactive")">
+                                @(Model.MedicalCertificate ? "Yes" : "No")
+                            </span>
+                        </div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.CertificatePath))
+                    {
+                        <div class="detail-group">
+                            <label class="detail-label">Certificate Path:</label>
+                            <div class="detail-value">@Model.CertificatePath</div>
+                        </div>
+                    }
+
+                    <div class="detail-group full-width">
+                        <label class="detail-label">Reason:</label>
+                        <div class="detail-value reason-text">@Model.Reason</div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.RejectionReason))
+                    {
+                        <div class="detail-group full-width">
+                            <label class="detail-label">Rejection Reason:</label>
+                            <div class="detail-value rejection-text">@Model.RejectionReason</div>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.ApprovedByFullName))
+                    {
+                        <div class="detail-group">
+                            <label class="detail-label">Approved By:</label>
+                            <div class="detail-value">@Model.ApprovedByFullName</div>
+                        </div>
+                    }
+
+                    @if (Model.ApprovedDate.HasValue)
+                    {
+                        <div class="detail-group">
+                            <label class="detail-label">Approved Date:</label>
+                            <div class="detail-value">@Model.ApprovedDate.Value.ToString("MMM dd, yyyy hh:mm tt")</div>
+                        </div>
+                    }
+
+                    <div class="detail-group">
+                        <label class="detail-label">Created Date:</label>
+                        <div class="detail-value">@Model.CreatedDate.ToString("MMM dd, yyyy hh:mm tt")</div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.CreatedByFullName))
+                    {
+                        <div class="detail-group">
+                            <label class="detail-label">Created By:</label>
+                            <div class="detail-value">@Model.CreatedByFullName</div>
+                        </div>
+                    }
+                </div>
+
+                <div class="action-buttons">
+                    <a href="@Url.Action("Edit", new { id = Model.LeaveID })" class="btn btn-primary">
+                        <span class="btn-icon">✏️</span>
+                        EDIT
+                    </a>
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">
+                        <span class="btn-icon">←</span>
+                        BACK TO LIST
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* (existing styles unchanged) */
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: #f8f9fa;
+    }
+
+    .dashboard-header {
+        background: linear-gradient(135deg, #006400, #004d00);
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .hospital-name {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .hospital-subtitle {
+        font-size: 1.5rem;
+        opacity: 0.9;
+        margin-bottom: 20px;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.4rem;
+        background: rgba(255,255,255,0.1);
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .dashboard-section {
+        background: white;
+        margin: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+        background: #006400;
+        color: white;
+        padding: 20px;
+        border-radius: 15px 15px 0 0;
+    }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .details-container {
+        max-width: 100%;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+
+    .detail-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .full-width {
+        grid-column: 1 / -1;
+    }
+
+    .detail-label {
+        font-weight: bold;
+        font-size: 1.4rem;
+        color: #333;
+    }
+
+    .detail-value {
+        font-size: 1.4rem;
+        color: #666;
+        padding: 12px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #006400;
+    }
+
+    .reason-text, .rejection-text {
+        white-space: pre-wrap;
+        line-height: 1.6;
+    }
+
+    .rejection-text {
+        border-left-color: #dc3545;
+        background: #f8d7da;
+    }
+
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        display: inline-block;
+    }
+
+    .status-pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .status-approved {
+        background: #d1edff;
+        color: #004085;
+    }
+
+    .status-rejected {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .status-active {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .status-inactive {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 20px;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 2px solid #eee;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 30px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+        background: #006400;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background: #004d00;
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: white;
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: white;
+        }
+
+    .btn-icon {
+        font-size: 1.6rem;
+    }
+
+    @@media (max-width: 768px) {
+        .details-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+
+        .hospital-name {
+            font-size: 2rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+    }
+</style>

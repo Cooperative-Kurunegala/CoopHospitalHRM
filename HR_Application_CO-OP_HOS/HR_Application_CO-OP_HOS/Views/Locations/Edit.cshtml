@@ -2,352 +2,283 @@
 
 @{
     ViewBag.Title = "Edit Location";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="dashboard-container">
+<!-- Full Screen Container -->
+<div class="fullscreen-container">
+    <!-- Header Section -->
     <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-edit"></i> Edit Location</h1>
-            <p class="lead">Update location information</p>
+        <div class="header-content">
+            <h1 class="hospital-name">EDIT LOCATION</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Update Location Information</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
         </div>
     </div>
 
-    <div class="row no-gutters">
-        <div class="col-md-8">
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-pencil"></i> Edit Location Details</h3>
-                </div>
-                <div class="panel-body">
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
+    <!-- Main Content -->
+    <div class="content-section">
+        <div class="form-container">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-                        <div class="form-container">
-                            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
-                            @Html.HiddenFor(model => model.ID)
+                <div class="form-card">
+                    <div class="form-header">
+                        <h2>✏️ Edit Location</h2>
+                    </div>
 
-                            <div class="current-info mb-4">
-                                <h5><i class="fa fa-info-circle"></i> Current Information</h5>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <strong>Location ID:</strong> @Model.ID
-                                    </div>
-                                    <div class="col-md-6">
-                                        <strong>Current Name:</strong> @Model.LocationName
-                                    </div>
-                                </div>
-                            </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.LocationID)
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.LocationName, htmlAttributes: new { @class = "control-label" })
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
-                                    </div>
-                                    @Html.EditorFor(model => model.LocationName, new { htmlAttributes = new { @class = "form-control form-control-lg", placeholder = "Enter location name" } })
-                                </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LocationName, htmlAttributes: new { @class = "control-label" })
+                            <div class="form-input">
+                                @Html.EditorFor(model => model.LocationName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter location name" } })
                                 @Html.ValidationMessageFor(model => model.LocationName, "", new { @class = "text-danger" })
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.OrderIndex, htmlAttributes: new { @class = "control-label" })
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-sort-numeric-asc"></i></span>
-                                    </div>
-                                    @Html.EditorFor(model => model.OrderIndex, new { htmlAttributes = new { @class = "form-control form-control-lg", placeholder = "Enter order index", type = "number" } })
-                                </div>
-                                @Html.ValidationMessageFor(model => model.OrderIndex, "", new { @class = "text-danger" })
-                                <small class="form-text text-muted">Lower numbers appear first in lists</small>
-                            </div>
-
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-warning btn-lg">
-                                    <i class="fa fa-save"></i> Update Location
-                                </button>
-                                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary btn-lg" })
-                                @Html.ActionLink("View Details", "Details", new { id = Model.ID }, new { @class = "btn btn-info btn-lg" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
+                            <div class="form-input">
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter full address" } })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                    }
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-history"></i> Update History</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="reference-info">
-                        <h5><i class="fa fa-clock-o"></i> Last Modified:</h5>
-                        <p class="text-muted">No modification history available</p>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label" })
+                            <div class="form-input">
+                                <div class="checkbox-container">
+                                    @Html.EditorFor(model => model.IsActive)
+                                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="reference-info mt-4">
-                        <h5><i class="fa fa-lightbulb-o"></i> Editing Tips:</h5>
-                        <ul>
-                            <li>Update location name carefully</li>
-                            <li>Changing order index affects sorting</li>
-                            <li>Consider impact on existing records</li>
-                            <li>Review changes before saving</li>
-                        </ul>
-                    </div>
-
-                    <div class="alert alert-warning mt-4">
-                        <i class="fa fa-exclamation-triangle"></i>
-                        <strong>Note:</strong> Changes will affect all related records immediately.
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            <span class="btn-icon">💾</span>
+                            SAVE CHANGES
+                        </button>
+                        <a href="@Url.Action("Index")" class="btn btn-secondary btn-lg">
+                            <span class="btn-icon">←</span>
+                            BACK TO LIST
+                        </a>
                     </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(document).ready(function () {
-            // Auto-focus on first input
-            $('#LocationName').focus().select();
-
-            // Form validation enhancement
-            $('form').submit(function (e) {
-                var locationName = $('#LocationName').val().trim();
-                if (locationName === '') {
-                    e.preventDefault();
-                    $('#LocationName').addClass('is-invalid');
-                    return false;
-                }
-            });
-
-            // Real-time validation
-            $('#LocationName').on('input', function () {
-                var currentValue = '@Model.LocationName';
-                var newValue = $(this).val().trim();
-
-                if (newValue === '') {
-                    $(this).removeClass('is-valid').addClass('is-invalid');
-                } else if (newValue !== currentValue) {
-                    $(this).removeClass('is-invalid').addClass('is-valid is-changed');
-                } else {
-                    $(this).removeClass('is-invalid is-valid is-changed');
-                }
-            });
-
-            $('#OrderIndex').on('input', function () {
-                var currentValue = '@Model.OrderIndex';
-                var newValue = $(this).val();
-
-                if (newValue !== '' && !isNaN(newValue) && newValue >= 0) {
-                    if (newValue != currentValue) {
-                        $(this).removeClass('is-invalid').addClass('is-valid is-changed');
-                    } else {
-                        $(this).removeClass('is-invalid is-valid is-changed');
-                    }
-                } else {
-                    $(this).removeClass('is-valid').addClass('is-invalid');
-                }
-            });
-
-            // Show confirmation if changes were made
-            window.addEventListener('beforeunload', function (e) {
-                var changedFields = $('.is-changed').length;
-                if (changedFields > 0) {
-                    e.preventDefault();
-                    e.returnValue = 'You have unsaved changes. Are you sure you want to leave?';
-                }
-            });
-        });
-    </script>
 }
 
 <style>
-    .dashboard-container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    .fullscreen-container {
+        margin: 0;
         padding: 0;
-        margin: 0;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
 
-    body {
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow-x: hidden;
-    }
-
-    .container.body-content {
-        padding: 0 !important;
-        margin: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%);
+    .dashboard-header {
+        background: rgba(0, 0, 0, 0.8);
         color: white;
-        border-radius: 0;
-        padding: 40px 20px;
-        margin: 0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        width: 100%;
+        padding: 30px 0;
+        border-bottom: 4px solid #ffc107;
     }
 
-    .jumbotron h1 {
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-        font-weight: 700;
+    .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
     }
 
-    .jumbotron .lead {
-        font-size: 1.3rem;
-        opacity: 0.9;
+    .hospital-name {
+        font-size: 3rem;
+        font-weight: bold;
         margin-bottom: 10px;
+        color: #ffffff;
     }
 
-    .panel {
-        border: none;
-        border-radius: 10px;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    .hospital-subtitle {
+        font-size: 1.5rem;
         margin-bottom: 20px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        background: white;
+        color: #cccccc;
     }
 
-        .panel:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
-        }
-
-    .panel-heading {
-        border-radius: 10px 10px 0 0 !important;
-        border: none;
-        padding: 20px;
-        font-weight: 600;
-        color: white;
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.4rem;
+        background: rgba(255, 193, 7, 0.3);
+        padding: 15px 20px;
+        border-radius: 10px;
     }
 
-    .panel-warning .panel-heading {
-        background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%) !important;
-    }
-
-    .panel-info .panel-heading {
-        background: linear-gradient(135deg, #2980b9 0%, #3498db 100%) !important;
-    }
-
-    .panel-title {
-        font-size: 1.3rem;
-        margin: 0;
-    }
-
-    .panel-body {
-        padding: 25px;
-    }
-
-    .current-info {
-        background: #fffbf0;
-        padding: 15px;
-        border-radius: 8px;
-        border-left: 4px solid #f39c12;
+    .content-section {
+        padding: 40px 20px;
     }
 
     .form-container {
-        max-width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .form-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border: 3px solid #ffc107;
+    }
+
+    .form-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 3px solid #ffc107;
+    }
+
+        .form-header h2 {
+            color: #ffc107;
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+    .form-grid {
+        display: grid;
+        gap: 30px;
+        margin-bottom: 40px;
     }
 
     .form-group {
-        margin-bottom: 25px;
+        display: flex;
+        flex-direction: column;
     }
 
     .control-label {
-        font-weight: 600;
-        margin-bottom: 8px;
-        display: block;
-        color: #2c3e50;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333333;
+        font-size: 1.4rem;
     }
 
-    .input-group {
-        margin-bottom: 5px;
+    .form-input input,
+    .form-input textarea {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 1.3rem;
+        transition: border-color 0.3s ease;
     }
 
-    .input-group-text {
-        background-color: #ecf0f1;
-        border: 1px solid #bdc3c7;
+        .form-input input:focus,
+        .form-input textarea:focus {
+            border-color: #ffc107;
+            outline: none;
+        }
+
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
-    .form-control-lg {
-        padding: 12px 16px;
-        font-size: 1.1rem;
-        border-radius: 0 5px 5px 0;
-    }
+        .checkbox-container input[type="checkbox"] {
+            width: 25px;
+            height: 25px;
+        }
 
     .form-actions {
-        margin-top: 30px;
-        padding-top: 20px;
-        border-top: 1px solid #ecf0f1;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
     }
 
-    .btn-lg {
-        padding: 12px 30px;
-        font-size: 1.1rem;
-        margin-right: 10px;
-        margin-bottom: 10px;
-    }
-
-    .reference-info {
-        background: #f8f9fa;
-        padding: 15px;
+    .btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 30px;
+        border: none;
         border-radius: 8px;
-        margin-bottom: 15px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-width: 200px;
+        justify-content: center;
     }
 
-    .is-valid {
-        border-color: #27ae60 !important;
-        background-color: #f8fff8;
+    .btn-success {
+        background: #28a745;
+        color: white;
     }
 
-    .is-invalid {
-        border-color: #e74c3c !important;
-    }
-
-    .is-changed {
-        border-left: 4px solid #f39c12 !important;
-    }
-
-    .no-gutters {
-        margin-right: 0;
-        margin-left: 0;
-    }
-
-        .no-gutters > .col,
-        .no-gutters > [class*="col-"] {
-            padding-right: 10px;
-            padding-left: 10px;
+        .btn-success:hover {
+            background: #218838;
+            transform: translateY(-2px);
         }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+
+    .btn-icon {
+        font-size: 1.6rem;
+    }
+
+    .text-danger {
+        color: #dc3545;
+        font-size: 1.2rem;
+        margin-top: 5px;
+    }
 
     @@media (max-width: 768px) {
-        .dashboard-container {
-            padding: 10px;
-        }
-
-        .jumbotron h1 {
+        .hospital-name {
             font-size: 2rem;
         }
 
-        .jumbotron .lead {
-            font-size: 1.1rem;
+        .hospital-subtitle {
+            font-size: 1.2rem;
         }
 
-        .form-actions .btn {
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .form-card {
+            padding: 20px;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+
+        .btn {
+            min-width: auto;
             width: 100%;
-            margin-bottom: 10px;
-        }
-
-        .current-info .row > div {
-            margin-bottom: 10px;
         }
     }
 </style>

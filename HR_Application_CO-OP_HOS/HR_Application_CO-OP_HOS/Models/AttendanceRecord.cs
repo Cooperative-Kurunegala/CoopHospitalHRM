@@ -14,10 +14,25 @@ namespace HR_Application_CO_OP_HOS.Models
     
     public partial class AttendanceRecord
     {
-        public int ID { get; set; }
-        public Nullable<int> EPFNo { get; set; }
-        public Nullable<System.DateTime> AttendanceDateTime { get; set; }
-        public Nullable<bool> IsProcessed { get; set; }
-        public Nullable<int> CompanyID { get; set; }
+        public int AttendanceID { get; set; }
+        public int EmployeeID { get; set; }
+        public System.DateTime AttendanceDate { get; set; }
+        public int ShiftID { get; set; }
+        public Nullable<System.DateTime> ScheduledIn { get; set; }
+        public Nullable<System.DateTime> ScheduledOut { get; set; }
+        public Nullable<System.DateTime> ActualIn { get; set; }
+        public Nullable<System.DateTime> ActualOut { get; set; }
+        public Nullable<decimal> TotalHours { get; set; }
+        public Nullable<decimal> OvertimeHours { get; set; }
+        public Nullable<decimal> NightHours { get; set; }
+        public Nullable<int> LateMinutes { get; set; }
+        public Nullable<int> EarlyOutMinutes { get; set; }
+        public string Status { get; set; }
+        public string Remarks { get; set; }
+        public bool IsRegularized { get; set; }
+        public Nullable<int> RegularizedBy { get; set; }
+        public Nullable<System.DateTime> RegularizedDate { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
     }
 }

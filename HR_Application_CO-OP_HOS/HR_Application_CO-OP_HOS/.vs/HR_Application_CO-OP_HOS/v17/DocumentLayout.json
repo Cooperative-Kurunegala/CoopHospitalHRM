@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|g:\\coop\\coophospitalhrm\\hr_application_co-op_hos\\hr_application_co-op_hos\\views\\employees\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|solutionrelative:views\\employees\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\Employees\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Employees\\Index.cshtml",
+              "ToolTip": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\Employees\\Index.cshtml",
+              "RelativeToolTip": "Views\\Employees\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-17T04:48:58.042Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

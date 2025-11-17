@@ -1,423 +1,270 @@
-﻿@model HR_Application_CO_OP_HOS.Models.Designation
+﻿<!-- Delete.cshtml -->
+@model HR_Application_CO_OP_HOS.Models.Designation
 
 @{
-    Layout = null;
+    ViewBag.Title = "Delete Designation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Delete Designation - HRM System</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Full Screen Layout */
-        body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .container-full {
-            width: 100%;
-            padding: 20px;
-            margin: 0;
-        }
-
-        /* Header Styles */
-        .page-header {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .page-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Warning Container */
-        .warning-container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-            margin-bottom: 30px;
-            border-left: 6px solid #e74c3c;
-        }
-
-        .warning-header {
-            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
-            color: white;
-            padding: 25px;
-        }
-
-        .warning-body {
-            padding: 40px;
-        }
-
-        /* Warning Styles */
-        .warning-alert {
-            background: #ffeaa7;
-            border: 2px solid #fdcb6e;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-
-        .warning-icon {
-            font-size: 3rem;
-            color: #e74c3c;
-            margin-bottom: 15px;
-        }
-
-        .warning-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #e74c3c;
-            margin-bottom: 10px;
-        }
-
-        .warning-message {
-            color: #2d3436;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        /* Details Styles */
-        .details-group {
-            margin-bottom: 30px;
-        }
-
-        .details-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 10px;
-        }
-
-        .detail-item {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-left: 4px solid #3498db;
-        }
-
-        .detail-label {
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
-
-        .detail-value {
-            color: #7f8c8d;
-            font-size: 1.2rem;
-        }
-
-        .detail-value-time {
-            color: #27ae60;
-            font-weight: 600;
-        }
-
-        .detail-value-notset {
-            color: #e74c3c;
-            font-style: italic;
-        }
-
-        /* Impact Assessment */
-        .impact-assessment {
-            background: #fff3cd;
-            border: 2px solid #ffeaa7;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 25px;
-        }
-
-        .impact-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #856404;
-            margin-bottom: 15px;
-        }
-
-        .impact-item {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-            .impact-item:before {
-                content: '⚠️';
-                position: absolute;
-                left: 0;
-                top: 2px;
-            }
-
-        /* Button Styles */
-        .btn-modern {
-            border: none;
-            border-radius: 10px;
-            padding: 15px 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            font-size: 1.1rem;
-            margin: 5px;
-        }
-
-        .btn-delete {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: white;
-        }
-
-        .btn-cancel {
-            background: linear-gradient(135deg, #95a5a6 0%, #bdc3c7 100%);
-            color: white;
-        }
-
-        .btn-back {
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-            color: white;
-        }
-
-        .btn-modern:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Confirmation Section */
-        .confirmation-section {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 25px;
-            margin-top: 30px;
-            border: 2px dashed #e74c3c;
-        }
-
-        .confirmation-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #e74c3c;
-            margin-bottom: 15px;
-        }
-
-        /* Responsive */
-        @@media (max-width: 768px) {
-            .container-full {
-                padding: 10px;
-            }
-
-            .page-title {
-                font-size: 2rem;
-            }
-
-            .warning-body {
-                padding: 20px;
-            }
-
-            .btn-modern {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container-full">
-        <!-- Page Header -->
-        <div class="page-header">
-            <div class="row align-items-center">
-                <div class="col-md-8">
-                    <h1 class="page-title">
-                        <i class="fa fa-exclamation-triangle"></i> Delete Designation
-                    </h1>
-                    <p class="page-subtitle">Permanently remove designation from the system</p>
-                </div>
-                <div class="col-md-4 text-right">
-                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-modern btn-back" })
-                </div>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="warning-container">
-                    <div class="warning-header">
-                        <h3 class="mb-0">
-                            <i class="fa fa-trash"></i> Confirm Deletion: @Model.designationName
-                        </h3>
-                    </div>
-                    <div class="warning-body">
-                        <!-- Warning Alert -->
-                        <div class="warning-alert text-center">
-                            <div class="warning-icon">
-                                <i class="fa fa-exclamation-circle"></i>
-                            </div>
-                            <h3 class="warning-title">Critical Action Required</h3>
-                            <p class="warning-message">
-                                You are about to permanently delete the designation <strong>"@Model.designationName"</strong>.
-                                This action cannot be undone and may affect system operations.
-                            </p>
-                        </div>
-
-                        <!-- Impact Assessment -->
-                        <div class="impact-assessment">
-                            <h4 class="impact-title">Potential Impact Assessment</h4>
-                            <div class="impact-item">
-                                Employees assigned to this designation may lose their designation reference
-                            </div>
-                            <div class="impact-item">
-                                Attendance rules configured for this designation will be removed
-                            </div>
-                            <div class="impact-item">
-                                Historical data referencing this designation may be affected
-                            </div>
-                            <div class="impact-item">
-                                System reports and analytics may need updates
-                            </div>
-                        </div>
-
-                        <!-- Designation Details -->
-                        <div class="details-group">
-                            <h4 class="details-title"><i class="fa fa-info-circle"></i> Designation Details</h4>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-item">
-                                        <div class="detail-label">Designation Name</div>
-                                        <div class="detail-value">@Model.designationName</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="detail-item">
-                                        <div class="detail-label">Designation ID</div>
-                                        <div class="detail-value">#@Model.ID</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Time Configuration -->
-                        <div class="details-group">
-                            <h4 class="details-title"><i class="fa fa-clock-o"></i> Time Configuration</h4>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-item">
-                                        <div class="detail-label">Expected In Time</div>
-                                        <div class="@(Model.ExpectedIn.HasValue ? "detail-value-time" : "detail-value-notset")">
-                                            @if (Model.ExpectedIn.HasValue)
-                                            {
-                                                @Model.ExpectedIn.Value.ToString("hh:mm tt")
-                                            }
-                                            else
-                                            {
-                                                <text>Not configured</text>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="detail-item">
-                                        <div class="detail-label">Expected Out Time</div>
-                                        <div class="@(Model.ExpectedOut.HasValue ? "detail-value-time" : "detail-value-notset")">
-                                            @if (Model.ExpectedOut.HasValue)
-                                            {
-                                                @Model.ExpectedOut.Value.ToString("hh:mm tt")
-                                            }
-                                            else
-                                            {
-                                                <text>Not configured</text>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Confirmation Section -->
-                        <div class="confirmation-section">
-                            <h4 class="confirmation-title">
-                                <i class="fa fa-shield"></i> Final Confirmation Required
-                            </h4>
-                            <p class="text-muted mb-4">
-                                To confirm deletion, please review the information above and click the "Delete" button below.
-                                This action is irreversible.
-                            </p>
-
-                            @using (Html.BeginForm())
-                            {
-                                @Html.AntiForgeryToken()
-
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-modern btn-delete" onclick="return confirmFinalDeletion()">
-                                        <i class="fa fa-trash"></i> Confirm & Delete Designation
-                                    </button>
-                                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-modern btn-cancel" })
-                                    @Html.ActionLink("Edit Instead", "Edit", new { id = Model.ID }, new { @class = "btn btn-modern btn-back" })
-                                </div>
-                            }
-                        </div>
-
-                        <!-- Additional Safety Note -->
-                        <div class="text-center mt-4">
-                            <small class="text-muted">
-                                <i class="fa fa-info-circle"></i>
-                                For safety, consider deactivating instead of deleting. Contact system administrator for assistance.
-                            </small>
-                        </div>
-                    </div>
-                </div>
+<!-- Full Screen Delete Designation -->
+<div class="fullscreen-container dashboard-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">🗑️ DELETE DESIGNATION</h1>
+            <p class="hospital-subtitle">Remove designation from the system</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Delete Confirmation</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
             </div>
         </div>
     </div>
 
-    <script>
-        function confirmFinalDeletion() {
-            const designationName = '@Model.designationName';
-            const confirmationMessage = `FINAL WARNING: You are about to PERMANENTLY DELETE the designation "${designationName}".\n\nThis action cannot be undone and may cause system issues.\n\nType "DELETE ${designationName.toUpperCase()}" to confirm:`;
+    <!-- Delete Confirmation Section -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>⚠️ DELETE CONFIRMATION</h2>
+        </div>
+        <div class="section-content">
+            <div class="alert alert-warning">
+                <div class="alert-icon">⚠️</div>
+                <div class="alert-content">
+                    <h3>Are you sure you want to delete this designation?</h3>
+                    <p>This action cannot be undone. All employees associated with this designation will need to be reassigned.</p>
+                </div>
+            </div>
 
-            const userInput = prompt(confirmationMessage);
-            const expectedInput = `DELETE ${designationName.toUpperCase()}`;
+            <div class="details-container">
+                <div class="details-grid">
+                    <div class="detail-card">
+                        <div class="detail-icon">🎯</div>
+                        <div class="detail-content">
+                            <label>Designation Name</label>
+                            <h3>@Model.DesignationName</h3>
+                        </div>
+                    </div>
 
-            if (userInput === expectedInput) {
-                return true;
-            } else {
-                alert('Deletion cancelled. The input did not match exactly.');
-                return false;
-            }
+                    <div class="detail-card">
+                        <div class="detail-icon">📊</div>
+                        <div class="detail-content">
+                            <label>Grade</label>
+                            <h3>@(string.IsNullOrEmpty(Model.Grade) ? "N/A" : Model.Grade)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">✅</div>
+                        <div class="detail-content">
+                            <label>Current Status</label>
+                            <div class="status-badge @(Model.IsActive ? "status-active" : "status-inactive")">
+                                @(Model.IsActive ? "Active" : "Inactive")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions">
+                        <button type="submit" class="quick-action-btn btn-danger">
+                            🗑️ Confirm Delete
+                        </button>
+                        <a href="@Url.Action("Index")" class="quick-action-btn btn-secondary">
+                            📋 Back to List
+                        </a>
+                        <a href="@Url.Action("Details", new { id = Model.DesignationID })" class="quick-action-btn btn-info">
+                            👁️ View Details
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .dashboard-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.8rem;
+        background: rgba(0,0,0,0.2);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .dashboard-section {
+        padding: 20px;
+    }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .alert {
+        display: flex;
+        padding: 30px;
+        background: #fff3cd;
+        border: 3px solid #ffc107;
+        border-radius: 15px;
+        margin-bottom: 40px;
+    }
+
+    .alert-icon {
+        font-size: 4rem;
+        margin-right: 20px;
+    }
+
+    .alert-content h3 {
+        color: #856404;
+        margin-bottom: 10px;
+        font-size: 2.2rem;
+    }
+
+    .alert-content p {
+        color: #856404;
+        font-size: 1.6rem;
+        margin: 0;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .detail-card {
+        display: flex;
+        padding: 30px;
+        background: #f8f9fa;
+        border: 3px solid #006400;
+        border-radius: 15px;
+        align-items: center;
+    }
+
+    .detail-icon {
+        font-size: 4rem;
+        margin-right: 20px;
+    }
+
+    .detail-content label {
+        display: block;
+        font-size: 1.6rem;
+        color: #666;
+        margin-bottom: 5px;
+    }
+
+    .detail-content h3 {
+        font-size: 2rem;
+        margin: 0;
+        color: #333;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    .status-active {
+        background: #d4edda;
+        color: #155724;
+        border: 2px solid #c3e6cb;
+    }
+
+    .status-inactive {
+        background: #f8d7da;
+        color: #721c24;
+        border: 2px solid #f5c6cb;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .quick-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-width: 200px;
+    }
+
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+    .quick-action-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @@media (max-width: 768px) {
+        body {
+            font-size: 24px;
         }
 
-        // Add some visual feedback
-        $(document).ready(function () {
-            $('.btn-delete').hover(
-                function() {
-                    $(this).css('transform', 'scale(1.05)');
-                },
-                function() {
-                    $(this).css('transform', 'scale(1)');
-                }
-            );
+        .hospital-name {
+            font-size: 2.5rem;
+        }
 
-            // Prevent accidental form submission
-            $('form').on('submit', function(e) {
-                $('.btn-delete').prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Deleting...');
-            });
-        });
-    </script>
-</body>
-</html>
+        .hospital-subtitle {
+            font-size: 1.5rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 15px;
+            font-size: 1.4rem;
+        }
+
+        .alert {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .alert-icon {
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+
+        .details-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>

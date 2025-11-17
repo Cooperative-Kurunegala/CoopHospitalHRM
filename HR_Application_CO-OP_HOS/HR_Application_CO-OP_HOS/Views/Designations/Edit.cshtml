@@ -1,480 +1,274 @@
-﻿@model HR_Application_CO_OP_HOS.Models.Designation
+﻿<!-- Edit.cshtml -->
+@model HR_Application_CO_OP_HOS.Models.Designation
 
 @{
-    Layout = null;
+    ViewBag.Title = "Edit Designation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit Designation - HRM System</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Full Screen Layout */
-        body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .container-full {
-            width: 100%;
-            padding: 20px;
-            margin: 0;
-        }
-
-        /* Header Styles */
-        .page-header {
-            background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .page-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Form Container */
-        .form-container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-            margin-bottom: 30px;
-        }
-
-        .form-header {
-            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
-            color: white;
-            padding: 25px;
-        }
-
-        .form-body {
-            padding: 40px;
-        }
-
-        /* Form Styles */
-        .form-group-modern {
-            margin-bottom: 25px;
-        }
-
-        .control-label {
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .form-control-modern {
-            border: 2px solid #ecf0f1;
-            border-radius: 10px;
-            padding: 15px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            height: auto;
-        }
-
-            .form-control-modern:focus {
-                border-color: #3498db;
-                box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
-            }
-
-        .text-danger {
-            color: #e74c3c !important;
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-
-        /* Button Styles */
-        .btn-modern {
-            border: none;
-            border-radius: 10px;
-            padding: 15px 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            font-size: 1.1rem;
-        }
-
-        .btn-save {
-            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
-            color: white;
-        }
-
-        .btn-back {
-            background: linear-gradient(135deg, #95a5a6 0%, #bdc3c7 100%);
-            color: white;
-        }
-
-        .btn-cancel {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: white;
-        }
-
-        .btn-modern:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Time Input Groups */
-        .time-input-group {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 4px solid #3498db;
-        }
-
-        .time-group-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 10px;
-        }
-
-        /* Current Configuration Panel */
-        .current-config-panel {
-            background: #e8f6f3;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-left: 4px solid #27ae60;
-        }
-
-        .config-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 20px;
-        }
-
-        .config-item {
-            background: white;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-left: 3px solid #3498db;
-        }
-
-        .config-label {
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-
-        .config-value {
-            color: #7f8c8d;
-            font-size: 1.1rem;
-        }
-
-        /* Reference Panel */
-        .reference-panel {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 25px;
-            margin-top: 30px;
-            border-left: 4px solid #9b59b6;
-        }
-
-        .reference-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 20px;
-        }
-
-        .reference-item {
-            background: white;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-left: 3px solid #3498db;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-            .reference-item:hover {
-                transform: translateX(5px);
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-                background: #e3f2fd;
-            }
-
-        .reference-name {
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-
-        .reference-times {
-            font-size: 0.9rem;
-            color: #7f8c8d;
-        }
-
-        /* Responsive */
-        @@media (max-width: 768px) {
-            .container-full {
-                padding: 10px;
-            }
-
-            .page-title {
-                font-size: 2rem;
-            }
-
-            .form-body {
-                padding: 20px;
-            }
-
-            .btn-modern {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container-full">
-        <!-- Page Header -->
-        <div class="page-header">
-            <div class="row align-items-center">
-                <div class="col-md-8">
-                    <h1 class="page-title">
-                        <i class="fa fa-edit"></i> Edit Designation
-                    </h1>
-                    <p class="page-subtitle">Update designation details and time configurations</p>
-                </div>
-                <div class="col-md-4 text-right">
-                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-modern btn-back" })
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <!-- Main Form -->
-            <div class="col-lg-8">
-                <div class="form-container">
-                    <div class="form-header">
-                        <h3 class="mb-0"><i class="fa fa-id-card-o"></i> Edit Designation Information</h3>
-                    </div>
-                    <div class="form-body">
-                        @using (Html.BeginForm())
-                        {
-                            @Html.AntiForgeryToken()
-                            @Html.HiddenFor(model => model.ID)
-
-                            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
-
-                            <!-- Current Configuration -->
-                            <div class="current-config-panel">
-                                <h4 class="config-title"><i class="fa fa-info-circle"></i> Current Configuration</h4>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="config-item">
-                                            <div class="config-label">Designation Name</div>
-                                            <div class="config-value">@Model.designationName</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="config-item">
-                                            <div class="config-label">Designation ID</div>
-                                            <div class="config-value">#@Model.ID</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Basic Information -->
-                            <div class="form-group-modern">
-                                @Html.LabelFor(model => model.designationName, htmlAttributes: new { @class = "control-label" })
-                                <div>
-                                    @Html.EditorFor(model => model.designationName, new { htmlAttributes = new { @class = "form-control form-control-modern", placeholder = "Enter designation name" } })
-                                    @Html.ValidationMessageFor(model => model.designationName, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <!-- Expected Times -->
-                            <div class="time-input-group">
-                                <h4 class="time-group-title"><i class="fa fa-clock-o"></i> Expected Working Hours</h4>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group-modern">
-                                            @Html.LabelFor(model => model.ExpectedIn, htmlAttributes: new { @class = "control-label" })
-                                            @Html.EditorFor(model => model.ExpectedIn, new { htmlAttributes = new { @class = "form-control form-control-modern", type = "time" } })
-                                            @Html.ValidationMessageFor(model => model.ExpectedIn, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group-modern">
-                                            @Html.LabelFor(model => model.ExpectedOut, htmlAttributes: new { @class = "control-label" })
-                                            @Html.EditorFor(model => model.ExpectedOut, new { htmlAttributes = new { @class = "form-control form-control-modern", type = "time" } })
-                                            @Html.ValidationMessageFor(model => model.ExpectedOut, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Attendance In Capture Times -->
-                            <div class="time-input-group">
-                                <h4 class="time-group-title"><i class="fa fa-sign-in"></i> Attendance In Capture Window</h4>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group-modern">
-                                            @Html.LabelFor(model => model.AttendanceInCaptureStart, htmlAttributes: new { @class = "control-label" })
-                                            @Html.EditorFor(model => model.AttendanceInCaptureStart, new { htmlAttributes = new { @class = "form-control form-control-modern", type = "time" } })
-                                            @Html.ValidationMessageFor(model => model.AttendanceInCaptureStart, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group-modern">
-                                            @Html.LabelFor(model => model.AttendanceInCaptureEnd, htmlAttributes: new { @class = "control-label" })
-                                            @Html.EditorFor(model => model.AttendanceInCaptureEnd, new { htmlAttributes = new { @class = "form-control form-control-modern", type = "time" } })
-                                            @Html.ValidationMessageFor(model => model.AttendanceInCaptureEnd, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Attendance Out Capture Times -->
-                            <div class="time-input-group">
-                                <h4 class="time-group-title"><i class="fa fa-sign-out"></i> Attendance Out Capture Window</h4>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group-modern">
-                                            @Html.LabelFor(model => model.AttendanceOutCaptureStart, htmlAttributes: new { @class = "control-label" })
-                                            @Html.EditorFor(model => model.AttendanceOutCaptureStart, new { htmlAttributes = new { @class = "form-control form-control-modern", type = "time" } })
-                                            @Html.ValidationMessageFor(model => model.AttendanceOutCaptureStart, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group-modern">
-                                            @Html.LabelFor(model => model.AttendanceOutCaptureEnd, htmlAttributes: new { @class = "control-label" })
-                                            @Html.EditorFor(model => model.AttendanceOutCaptureEnd, new { htmlAttributes = new { @class = "form-control form-control-modern", type = "time" } })
-                                            @Html.ValidationMessageFor(model => model.AttendanceOutCaptureEnd, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Form Actions -->
-                            <div class="form-group-modern text-right">
-                                <button type="submit" class="btn btn-modern btn-save">
-                                    <i class="fa fa-check"></i> Save Changes
-                                </button>
-                                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-modern btn-back" })
-                                @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "btn btn-modern btn-cancel" })
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
-
-            <!-- Reference Panel -->
-            <div class="col-lg-4">
-                <div class="reference-panel">
-                    <h4 class="reference-title">
-                        <i class="fa fa-list-alt"></i> Other Designations
-                    </h4>
-                    <p class="text-muted mb-3">Reference other designations for time configurations:</p>
-
-                    <div id="otherDesignations">
-                        <div class="text-center text-muted">
-                            <i class="fa fa-spinner fa-spin fa-2x"></i>
-                            <p>Loading other designations...</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quick Actions -->
-                <div class="reference-panel mt-4">
-                    <h4 class="reference-title">
-                        <i class="fa fa-rocket"></i> Quick Actions
-                    </h4>
-                    <div class="d-grid gap-2">
-                        @Html.ActionLink("View Details", "Details", new { id = Model.ID }, new { @class = "btn btn-modern btn-back" })
-                        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-modern btn-save" })
-                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-modern", style = "background: #95a5a6; color: white;" })
-                    </div>
-                </div>
+<!-- Full Screen Edit Designation -->
+<div class="fullscreen-container dashboard-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">✏️ EDIT DESIGNATION</h1>
+            <p class="hospital-subtitle">Update designation information</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Editing: @Model.DesignationName</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
             </div>
         </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
+    <!-- Edit Form Section -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>📝 UPDATE DESIGNATION INFORMATION</h2>
+        </div>
+        <div class="section-content">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.DesignationID)
 
-    <script>
-        $(document).ready(function () {
-            // Load other designations
-            setTimeout(function () {
-                $('#otherDesignations').html(`
-                    <div class="reference-item" onclick="applyTimeConfig('08:00', '17:00', '07:00', '09:00', '16:00', '18:00')">
-                        <div class="reference-name">Manager</div>
-                        <div class="reference-times">08:00 AM - 05:00 PM</div>
+                <div class="form-container">
+                    @Html.ValidationSummary(true, "", new { @class = "validation-summary" })
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DesignationName, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.DesignationName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DesignationName, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Grade, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.Grade, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Grade, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group full-width">
+                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control textarea-large", rows = 4 })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                @Html.EditorFor(model => model.IsActive)
+                                <span class="checkbox-custom"></span>
+                                Active Designation
+                            </label>
+                            @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "validation-message" })
+                        </div>
                     </div>
-                    <div class="reference-item" onclick="applyTimeConfig('09:00', '18:00', '08:00', '10:00', '17:00', '19:00')">
-                        <div class="reference-name">Executive</div>
-                        <div class="reference-times">09:00 AM - 06:00 PM</div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="quick-action-btn btn-primary">
+                            💾 Save Changes
+                        </button>
+                        <a href="@Url.Action("Index")" class="quick-action-btn btn-secondary">
+                            📋 Back to List
+                        </a>
+                        <a href="@Url.Action("Details", new { id = Model.DesignationID })" class="quick-action-btn btn-info">
+                            👁️ View Details
+                        </a>
                     </div>
-                    <div class="reference-item" onclick="applyTimeConfig('07:00', '15:00', '06:00', '08:00', '14:00', '16:00')">
-                        <div class="reference-name">Staff Nurse</div>
-                        <div class="reference-times">07:00 AM - 03:00 PM</div>
-                    </div>
-                    <div class="text-center mt-3">
-                        <small class="text-muted">Click to apply time configuration</small>
-                    </div>
-                `);
-            }, 1000);
-
-            // Format existing time values for time inputs
-            formatTimeValues();
-        });
-
-        function applyTimeConfig(expectedIn, expectedOut, inStart, inEnd, outStart, outEnd) {
-            $('#ExpectedIn').val(expectedIn);
-            $('#ExpectedOut').val(expectedOut);
-            $('#AttendanceInCaptureStart').val(inStart);
-            $('#AttendanceInCaptureEnd').val(inEnd);
-            $('#AttendanceOutCaptureStart').val(outStart);
-            $('#AttendanceOutCaptureEnd').val(outEnd);
-
-            // Show confirmation
-            showNotification('Time configuration applied successfully!', 'success');
-        }
-
-        function formatTimeValues() {
-            // This function would format existing datetime values to time format
-            // In a real implementation, you might need to convert from DateTime to time string
-        }
-
-        function showNotification(message, type) {
-            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
-            const notification = $(`
-                <div class="alert ${alertClass} alert-dismissible fade show" role="alert"
-                     style="position: fixed; top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
-                    ${message}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
-            `);
-            $('body').append(notification);
-            setTimeout(() => notification.alert('close'), 3000);
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<style>
+    .dashboard-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.8rem;
+        background: rgba(0,0,0,0.2);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .dashboard-section {
+        padding: 20px;
+    }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .full-width {
+        grid-column: 1 / -1;
+    }
+
+    .form-label {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .form-control {
+        padding: 15px;
+        font-size: 1.6rem;
+        border: 2px solid #006400;
+        border-radius: 10px;
+        background: #f8f9fa;
+    }
+
+    .textarea-large {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    .checkbox-group {
+        flex-direction: row;
+        align-items: center;
+        grid-column: 1 / -1;
+    }
+
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        font-size: 1.6rem;
+        cursor: pointer;
+    }
+
+    .checkbox-custom {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border: 2px solid #006400;
+        border-radius: 5px;
+        margin-right: 10px;
+        position: relative;
+    }
+
+    input[type="checkbox"]:checked + .checkbox-custom::after {
+        content: "✓";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #006400;
+        font-weight: bold;
+    }
+
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .quick-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-width: 200px;
+    }
+
+    .btn-primary {
+        background: #006400;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+    .quick-action-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .validation-summary {
+        color: #dc3545;
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        border-radius: 5px;
+    }
+
+    .validation-message {
+        color: #dc3545;
+        font-size: 1.4rem;
+        margin-top: 5px;
+    }
+
+    @@media (max-width: 768px) {
+        body {
+            font-size: 24px;
         }
-    </script>
-</body>
-</html>
+
+        .hospital-name {
+            font-size: 2.5rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1.5rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 15px;
+            font-size: 1.4rem;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>

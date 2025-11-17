@@ -14,10 +14,9 @@ namespace HR_Application_CO_OP_HOS.Models
     
     public partial class Bank
     {
-        public int ID { get; set; }
+        public int BankID { get; set; }
         public string BankName { get; set; }
-        public Nullable<bool> IsEnabled { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
+        public string BankCode { get; set; }
+        public bool IsActive { get; set; }
     }
 }

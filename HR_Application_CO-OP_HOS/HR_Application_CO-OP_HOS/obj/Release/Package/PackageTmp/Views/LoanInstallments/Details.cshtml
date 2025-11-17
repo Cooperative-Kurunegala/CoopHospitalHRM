@@ -1,0 +1,200 @@
+﻿@model HR_Application_CO_OP_HOS.Models.LoanInstallment
+
+@{
+    ViewBag.Title = "Loan Installment Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="fullscreen-container dashboard-container">
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">LOAN INSTALLMENT DETAILS</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+        </div>
+    </div>
+
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>👁️ LOAN INSTALLMENT INFORMATION</h2>
+        </div>
+
+        <div class="section-content">
+            <div class="details-container">
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <label>Installment ID:</label>
+                        <span>@Html.DisplayFor(model => model.InstallmentID)</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Loan ID:</label>
+                        <span>@Html.DisplayFor(model => model.LoanID)</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Installment Number:</label>
+                        <span>@Html.DisplayFor(model => model.InstallmentNumber)</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Due Date:</label>
+                        <span>@Html.DisplayFor(model => model.DueDate)</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Amount:</label>
+                        <span>@Html.DisplayFor(model => model.Amount)</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Paid Date:</label>
+                        <span>@Html.DisplayFor(model => model.PaidDate)</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Status:</label>
+                        <span class="status-badge @(Model.Status?.ToLower())">
+                            @Html.DisplayFor(model => model.Status)
+                        </span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Paid Amount:</label>
+                        <span>@Html.DisplayFor(model => model.PaidAmount)</span>
+                    </div>
+
+                    <div class="detail-item full-width">
+                        <label>Remarks:</label>
+                        <span>@Html.DisplayFor(model => model.Remarks)</span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    @Html.ActionLink("✏️ EDIT", "Edit", new { id = Model.InstallmentID }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("🔙 BACK TO LIST", "Index", null, new { @class = "btn btn-secondary" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .details-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        border: 3px solid #006400;
+    }
+
+    .details-grid {
+        display: grid;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .detail-item {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: center;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        border: 2px solid #e9ecef;
+    }
+
+        .detail-item.full-width {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .detail-item label {
+            font-weight: bold;
+            color: #006400;
+            font-size: 1.6rem;
+        }
+
+        .detail-item span {
+            font-size: 1.6rem;
+            color: #333;
+        }
+
+    .status-badge {
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 1.4rem;
+        display: inline-block;
+        text-transform: uppercase;
+    }
+
+        .status-badge.paid {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-badge.overdue {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-badge.partial {
+            background: #cce7ff;
+            color: #004085;
+        }
+
+    .action-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .btn {
+        padding: 15px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.6rem;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 200px;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background: #007bff;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @@media (max-width: 768px) {
+        .detail-item {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+
+        .btn {
+            min-width: 100%;
+        }
+    }
+</style>

@@ -9,10 +9,10 @@ namespace HR_Application_CO_OP_HOS.Repositories
 {
     public class GenericRepository<T> where T : class
     {
-        internal HRMSContext context;
+        internal HospitalHRDataEntities context;
         internal DbSet<T> dbSet;
 
-        public GenericRepository(HRMSContext context)
+        public GenericRepository(HospitalHRDataEntities context)
         {
             this.context = context;
             this.dbSet = context.Set<T>();

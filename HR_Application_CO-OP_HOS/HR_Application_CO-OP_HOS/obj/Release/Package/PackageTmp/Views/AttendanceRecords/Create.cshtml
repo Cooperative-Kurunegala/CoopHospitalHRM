@@ -1,382 +1,211 @@
-﻿@model HR_Application_CO_OP_HOS.Models.AttendanceRecord
+﻿﻿@model HR_Application_CO_OP_HOS.Models.AttendanceRecord
 
 @{
     ViewBag.Title = "Create Attendance Record";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="dashboard-container">
+<div class="fullscreen-container">
     <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-plus-circle"></i> Create Attendance Record</h1>
-            <p class="lead">Add new raw attendance data entry</p>
+        <div class="header-content">
+            <h1 class="hospital-name">CREATE ATTENDANCE RECORD</h1>
+            <p class="hospital-subtitle">Add New Attendance Entry</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Welcome, System Administrator</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
         </div>
     </div>
 
-    <div class="row no-gutters">
-        <!-- Main Form -->
-        <div class="col-md-8">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-edit"></i> Record Details</h3>
+    <div class="dashboard-grid">
+        <div class="row no-gutters">
+            <div class="col-md-12 dashboard-section">
+                <div class="section-header">
+                    <h2>📝 ATTENDANCE DETAILS</h2>
                 </div>
-                <div class="panel-body">
+                <div class="section-content">
                     @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
 
-                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                        <div class="form-container" style="background:#f8f9fa;border:3px solid #006400;border-radius:15px;padding:40px;">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                        <div class="row no-gutters">
-                            <div class="col-md-6">
+                            <div class="form-grid">
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.EPFNo, htmlAttributes: new { @class = "control-label" })
-                                    <div class="input-group">
-                                        @Html.EditorFor(model => model.EPFNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter EPF Number" } })
-                                        <div class="input-group-append">
-                                            <button type="button" class="btn btn-outline-info" onclick="searchEmployee()">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </div>
+                                    @Html.LabelFor(model => model.EmployeeID, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.EmployeeID, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Employee ID" } })
+                                    @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.AttendanceDate, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.AttendanceDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                                    @Html.ValidationMessageFor(model => model.AttendanceDate, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ShiftID, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.ShiftID, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Shift ID" } })
+                                    @Html.ValidationMessageFor(model => model.ShiftID, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ScheduledIn, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.ScheduledIn, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
+                                    @Html.ValidationMessageFor(model => model.ScheduledIn, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ScheduledOut, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.ScheduledOut, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
+                                    @Html.ValidationMessageFor(model => model.ScheduledOut, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ActualIn, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.ActualIn, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
+                                    @Html.ValidationMessageFor(model => model.ActualIn, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ActualOut, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.ActualOut, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
+                                    @Html.ValidationMessageFor(model => model.ActualOut, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.TotalHours, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.TotalHours, new { htmlAttributes = new { @class = "form-control", placeholder = "0.00" } })
+                                    @Html.ValidationMessageFor(model => model.TotalHours, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.OvertimeHours, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.OvertimeHours, new { htmlAttributes = new { @class = "form-control", placeholder = "0.00" } })
+                                    @Html.ValidationMessageFor(model => model.OvertimeHours, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.NightHours, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.NightHours, new { htmlAttributes = new { @class = "form-control", placeholder = "0.00" } })
+                                    @Html.ValidationMessageFor(model => model.NightHours, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LateMinutes, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.LateMinutes, new { htmlAttributes = new { @class = "form-control", placeholder = "0" } })
+                                    @Html.ValidationMessageFor(model => model.LateMinutes, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.EarlyOutMinutes, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.EarlyOutMinutes, new { htmlAttributes = new { @class = "form-control", placeholder = "0" } })
+                                    @Html.ValidationMessageFor(model => model.EarlyOutMinutes, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "form-label" })
+                                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", placeholder = "e.g., Present, Absent, Late" } })
+                                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group full-width">
+                                    @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "form-label" })
+                                    @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control", rows = 3, placeholder = "Enter any remarks..." })
+                                    @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.IsRegularized, htmlAttributes: new { @class = "form-label" })
+                                    <div class="checkbox-container">
+                                        @Html.EditorFor(model => model.IsRegularized)
+                                        @Html.ValidationMessageFor(model => model.IsRegularized, "", new { @class = "text-danger" })
                                     </div>
-                                    @Html.ValidationMessageFor(model => model.EPFNo, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.CompanyID, htmlAttributes: new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.CompanyID, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Company ID" } })
-                                    @Html.ValidationMessageFor(model => model.CompanyID, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row no-gutters">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.AttendanceDateTime, htmlAttributes: new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.AttendanceDateTime, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
-                                    @Html.ValidationMessageFor(model => model.AttendanceDateTime, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">Quick Time Options</label>
-                                    <div class="btn-group btn-block" role="group">
-                                        <button type="button" class="btn btn-outline-primary" onclick="setCurrentTime()">
-                                            <i class="fa fa-clock-o"></i> Now
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary" onclick="setMorningTime()">
-                                            <i class="fa fa-sun-o"></i> Morning
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary" onclick="setEveningTime()">
-                                            <i class="fa fa-moon-o"></i> Evening
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row no-gutters">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        @Html.EditorFor(model => model.IsProcessed, new { htmlAttributes = new { @class = "form-check-input" } })
-                                        @Html.LabelFor(model => model.IsProcessed, htmlAttributes: new { @class = "form-check-label" })
-                                        @Html.ValidationMessageFor(model => model.IsProcessed, "", new { @class = "text-danger" })
-                                    </div>
-                                    <small class="form-text text-muted">Check this if the record has been processed in payroll</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row no-gutters mt-4">
-                            <div class="col-12">
-                                <div class="form-group text-center">
-                                    <button type="submit" class="btn btn-success btn-lg">
-                                        <i class="fa fa-save"></i> Create Record
-                                    </button>
-                                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary btn-lg" })
-                                    <button type="button" class="btn btn-info btn-lg" onclick="fillSampleData()">
-                                        <i class="fa fa-magic"></i> Sample Data
-                                    </button>
-                                </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-success btn-lg">
+                                    <span>💾 Create Record</span>
+                                </button>
+                                <a href="@Url.Action("Index", "AttendanceRecords")" class="btn btn-secondary btn-lg">
+                                    <span>📋 Back to List</span>
+                                </a>
                             </div>
                         </div>
                     }
                 </div>
             </div>
         </div>
-
-        <!-- Side Panel -->
-        <div class="col-md-4">
-            <!-- Employee Information -->
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-user"></i> Employee Information</h3>
-                </div>
-                <div class="panel-body">
-                    <div id="employeeInfo" class="text-center text-muted">
-                        <i class="fa fa-user fa-3x"></i>
-                        <p>Enter EPF number to view employee details</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Company Information -->
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-building"></i> Company Information</h3>
-                </div>
-                <div class="panel-body">
-                    <div id="companyInfo" class="text-center text-muted">
-                        <i class="fa fa-building fa-3x"></i>
-                        <p>Enter Company ID to view company details</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-bolt"></i> Quick Actions</h3>
-                </div>
-                <div class="panel-body">
-                    <button class="btn btn-outline-primary btn-block mb-2" onclick="setCurrentTime()">
-                        <i class="fa fa-clock-o"></i> Set Current Time
-                    </button>
-                    <button class="btn btn-outline-secondary btn-block mb-2" onclick="clearForm()">
-                        <i class="fa fa-eraser"></i> Clear Form
-                    </button>
-                    <button class="btn btn-outline-info btn-block" onclick="validateForm()">
-                        <i class="fa fa-check"></i> Validate Form
-                    </button>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        function searchEmployee() {
-            const epf = document.getElementById('EPFNo').value;
-            if (!epf) {
-                showAlert('Please enter an EPF number', 'warning');
-                return;
-            }
-
-            const employeeInfo = document.getElementById('employeeInfo');
-            employeeInfo.innerHTML = `
-                <div class="text-center">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                    <p>Searching for employee EPF: ${epf}</p>
-                </div>
-            `;
-
-            setTimeout(() => {
-                employeeInfo.innerHTML = `
-                    <div class="employee-details">
-                        <h5>John Doe</h5>
-                        <p class="text-muted">EPF: ${epf}</p>
-                        <p><strong>Designation:</strong> Software Engineer</p>
-                        <p><strong>Department:</strong> IT Department</p>
-                        <p><strong>Status:</strong> <span class="badge badge-success">Active</span></p>
-                        <div class="alert alert-success mt-2">
-                            <small>Employee found and active</small>
-                        </div>
-                    </div>
-                `;
-            }, 1000);
-        }
-
-        function setCurrentTime() {
-            const now = new Date();
-            // Format for datetime-local input
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-
-            document.getElementById('AttendanceDateTime').value = `${year}-${month}-${day}T${hours}:${minutes}`;
-        }
-
-        function setMorningTime() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-
-            document.getElementById('AttendanceDateTime').value = `${year}-${month}-${day}T08:00`;
-        }
-
-        function setEveningTime() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-
-            document.getElementById('AttendanceDateTime').value = `${year}-${month}-${day}T17:00`;
-        }
-
-        function fillSampleData() {
-            document.getElementById('EPFNo').value = '1001';
-            document.getElementById('CompanyID').value = '1';
-            setCurrentTime();
-            document.getElementById('IsProcessed').checked = false;
-
-            showAlert('Sample data filled. Please review before submitting.', 'info');
-        }
-
-        function clearForm() {
-            if (confirm('Are you sure you want to clear all form data?')) {
-                document.querySelector('form').reset();
-                document.getElementById('employeeInfo').innerHTML = `
-                    <div class="text-center text-muted">
-                        <i class="fa fa-user fa-3x"></i>
-                        <p>Enter EPF number to view employee details</p>
-                    </div>
-                `;
-            }
-        }
-
-        function validateForm() {
-            const epf = document.getElementById('EPFNo').value;
-            const dateTime = document.getElementById('AttendanceDateTime').value;
-            const companyId = document.getElementById('CompanyID').value;
-
-            let isValid = true;
-            let message = '';
-
-            if (!epf) {
-                isValid = false;
-                message += 'EPF Number is required.\n';
-            }
-
-            if (!dateTime) {
-                isValid = false;
-                message += 'Attendance Date & Time is required.\n';
-            }
-
-            if (!companyId) {
-                isValid = false;
-                message += 'Company ID is required.\n';
-            }
-
-            if (isValid) {
-                showAlert('Form validation passed! You can now submit the form.', 'success');
-            } else {
-                showAlert('Please fix the following errors:\n' + message, 'danger');
-            }
-
-            return isValid;
-        }
-
-        function showAlert(message, type) {
-            const alertDiv = document.createElement('div');
-            alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
-            alertDiv.innerHTML = `
-                ${message}
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-            `;
-            document.querySelector('.panel-body').prepend(alertDiv);
-
-            setTimeout(() => {
-                alertDiv.remove();
-            }, 5000);
-        }
-
-        // Auto-validate when leaving EPF field
-        document.getElementById('EPFNo').addEventListener('blur', searchEmployee);
-    </script>
-}
-
 <style>
-    .dashboard-container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 20px;
-        margin: 0;
+    .form-container {
+        max-width: 100%;
     }
 
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-        color: white;
-        border-radius: 15px;
-        padding: 40px 30px;
-        margin-bottom: 30px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-bottom: 40px;
     }
 
-    .panel {
-        border: none;
-        border-radius: 12px;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        margin-bottom: 20px;
-        background: white;
-    }
-
-    .panel-heading {
-        border-radius: 12px 12px 0 0 !important;
-        border: none;
-        padding: 20px 25px;
-        font-weight: 600;
+    .full-width {
+        grid-column: 1 / -1;
     }
 
     .form-group {
         margin-bottom: 25px;
     }
 
-    .control-label {
-        font-weight: 600;
-        margin-bottom: 8px;
-        color: #2c3e50;
+    .form-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 1.8rem;
+        color: #006400;
     }
 
     .form-control {
-        border-radius: 8px;
-        border: 2px solid #e9ecef;
-        padding: 12px 15px;
-        font-size: 16px;
-        transition: all 0.3s ease;
+        width: 100%;
+        padding: 15px;
+        font-size: 1.6rem;
+        border: 2px solid #006400;
+        border-radius: 10px;
+        background: white;
     }
 
-        .form-control:focus {
-            border-color: #3498db;
-            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+    .checkbox-container {
+        margin-top: 10px;
+    }
+
+        .checkbox-container input[type="checkbox"] {
+            transform: scale(1.5);
+            margin-right: 10px;
         }
 
+    .form-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
     .btn-lg {
-        padding: 12px 30px;
-        font-size: 16px;
-        border-radius: 8px;
-        margin: 0 5px;
-    }
-
-    .employee-details {
-        text-align: left;
-    }
-
-    .alert {
-        border-radius: 8px;
+        padding: 20px 40px;
+        font-size: 1.8rem;
+        border-radius: 10px;
         border: none;
-    }
-
-    .form-check {
-        padding-left: 2.5rem;
-    }
-
-    .form-check-input {
-        margin-left: -2.5rem;
-    }
-
-    .btn-group .btn {
-        flex: 1;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
     }
 </style>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

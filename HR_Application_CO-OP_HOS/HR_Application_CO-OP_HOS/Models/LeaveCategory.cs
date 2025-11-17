@@ -14,8 +14,8 @@ namespace HR_Application_CO_OP_HOS.Models
     
     public partial class LeaveCategory
     {
-        public int ID { get; set; }
+        public int LeaveCategoryID { get; set; }
         public string CategoryName { get; set; }
-        public string LeaveCode { get; set; }
+        public string Description { get; set; }
     }
 }

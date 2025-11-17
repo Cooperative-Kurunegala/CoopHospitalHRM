@@ -12,7 +12,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
 {
     public class LoanCategoriesController : Controller
     {
-        private HREntities db = new HREntities();
+        private HospitalHRDataEntities db = new HospitalHRDataEntities();
 
         // GET: LoanCategories
         public ActionResult Index()
@@ -46,7 +46,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,DefaultAllocation,LoanCategoryName,IsFixedLoanInstallments")] LoanCategory loanCategory)
+        public ActionResult Create([Bind(Include = "LoanCategoryID,CategoryName,MaxAmount,InterestRate,MaxInstallments,IsActive")] LoanCategory loanCategory)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,DefaultAllocation,LoanCategoryName,IsFixedLoanInstallments")] LoanCategory loanCategory)
+        public ActionResult Edit([Bind(Include = "LoanCategoryID,CategoryName,MaxAmount,InterestRate,MaxInstallments,IsActive")] LoanCategory loanCategory)
         {
             if (ModelState.IsValid)
             {

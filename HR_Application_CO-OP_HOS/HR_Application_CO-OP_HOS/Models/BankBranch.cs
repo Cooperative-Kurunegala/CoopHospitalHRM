@@ -14,12 +14,11 @@ namespace HR_Application_CO_OP_HOS.Models
     
     public partial class BankBranch
     {
-        public int ID { get; set; }
+        public int BranchID { get; set; }
+        public int BankID { get; set; }
         public string BranchName { get; set; }
-        public Nullable<int> BankID { get; set; }
         public string BranchCode { get; set; }
-        public Nullable<bool> IsEnabled { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
+        public string Address { get; set; }
+        public bool IsActive { get; set; }
     }
 }

@@ -1,0 +1,283 @@
+﻿@model HR_Application_CO_OP_HOS.Models.OnCallSchedule
+
+@{
+    ViewBag.Title = "On-Call Schedule Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Container -->
+<div class="fullscreen-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">ON-CALL SCHEDULE DETAILS</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Schedule Information</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-section">
+        <div class="form-container">
+            <div class="form-card">
+                <div class="form-header">
+                    <h2>📅 Schedule Details</h2>
+                </div>
+
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <label class="detail-label">Employee ID:</label>
+                        <span class="detail-value">@Html.DisplayFor(model => model.EmployeeID)</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label class="detail-label">On-Call Date:</label>
+                        <span class="detail-value">@Html.DisplayFor(model => model.OnCallDate)</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label class="detail-label">Start Time:</label>
+                        <span class="detail-value">@Html.DisplayFor(model => model.StartTime)</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label class="detail-label">End Time:</label>
+                        <span class="detail-value">@Html.DisplayFor(model => model.EndTime)</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label class="detail-label">Active Status:</label>
+                        <span class="detail-value">
+                            @if (Model.IsActive)
+                            {
+                                <span class="status-active">✅ Active</span>
+                            }
+                            else
+                            {
+                                <span class="status-inactive">❌ Inactive</span>
+                            }
+                        </span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label class="detail-label">Remarks:</label>
+                        <span class="detail-value">@Html.DisplayFor(model => model.Remarks)</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label class="detail-label">Created Date:</label>
+                        <span class="detail-value">@Html.DisplayFor(model => model.CreatedDate)</span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="@Url.Action("Edit", new { id = Model.OnCallID })" class="btn btn-warning btn-lg">
+                        <span class="btn-icon">✏️</span>
+                        EDIT
+                    </a>
+                    <a href="@Url.Action("Index")" class="btn btn-secondary btn-lg">
+                        <span class="btn-icon">←</span>
+                        BACK TO LIST
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .dashboard-header {
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 30px 0;
+        border-bottom: 4px solid #006400;
+    }
+
+    .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .hospital-name {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #ffffff;
+    }
+
+    .hospital-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: #cccccc;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.4rem;
+        background: rgba(0, 100, 0, 0.3);
+        padding: 15px 20px;
+        border-radius: 10px;
+    }
+
+    .content-section {
+        padding: 40px 20px;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .form-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border: 3px solid #006400;
+    }
+
+    .form-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 3px solid #006400;
+    }
+
+        .form-header h2 {
+            color: #006400;
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+    .details-grid {
+        display: grid;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .detail-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #006400;
+    }
+
+    .detail-label {
+        font-weight: bold;
+        color: #333333;
+        font-size: 1.4rem;
+    }
+
+    .detail-value {
+        color: #666666;
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+
+    .status-active {
+        color: #28a745;
+        font-weight: bold;
+    }
+
+    .status-inactive {
+        color: #dc3545;
+        font-weight: bold;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-width: 200px;
+        justify-content: center;
+    }
+
+    .btn-warning {
+        background: #ffc107;
+        color: #212529;
+    }
+
+        .btn-warning:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+
+    .btn-icon {
+        font-size: 1.6rem;
+    }
+
+    @@media (max-width: 768px) {
+        .hospital-name {
+            font-size: 2rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1.2rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .form-card {
+            padding: 20px;
+        }
+
+        .detail-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+
+        .btn {
+            min-width: auto;
+            width: 100%;
+        }
+    }
+</style>

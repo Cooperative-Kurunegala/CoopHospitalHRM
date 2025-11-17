@@ -14,13 +14,10 @@ namespace HR_Application_CO_OP_HOS.Models
     
     public partial class Designation
     {
-        public int ID { get; set; }
-        public string designationName { get; set; }
-        public Nullable<System.DateTime> AttendanceInCaptureStart { get; set; }
-        public Nullable<System.DateTime> AttendanceInCaptureEnd { get; set; }
-        public Nullable<System.DateTime> AttendanceOutCaptureStart { get; set; }
-        public Nullable<System.DateTime> AttendanceOutCaptureEnd { get; set; }
-        public Nullable<System.DateTime> ExpectedIn { get; set; }
-        public Nullable<System.DateTime> ExpectedOut { get; set; }
+        public int DesignationID { get; set; }
+        public string DesignationName { get; set; }
+        public string Description { get; set; }
+        public string Grade { get; set; }
+        public bool IsActive { get; set; }
     }
 }

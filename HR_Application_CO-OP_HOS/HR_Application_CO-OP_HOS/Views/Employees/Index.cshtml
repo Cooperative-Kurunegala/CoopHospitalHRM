@@ -1,0 +1,687 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.Employee>
+
+@{
+    ViewBag.Title = "Employee Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Employee Management -->
+<div class="fullscreen-container employee-management">
+    <div class="management-header">
+        <h1 class="page-title">👥 EMPLOYEE MANAGEMENT</h1>
+        <p class="page-subtitle">Hospital Human Resources Management System</p>
+        <div class="header-actions">
+            @Html.ActionLink("➕ ADD NEW EMPLOYEE", "Create", null, new { @class = "btn btn-success btn-lg" })
+        </div>
+    </div>
+
+    <div class="management-content">
+        <!-- Display success/error messages -->
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        <div class="stats-overview">
+            <div class="row no-gutters">
+                <div class="col-md-3 stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon">👥</div>
+                        <h3>Total Employees</h3>
+                        <p class="stat-number">@Model.Count()</p>
+                    </div>
+                </div>
+                <div class="col-md-3 stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon">✅</div>
+                        <h3>Active Employees</h3>
+                        <p class="stat-number">@Model.Count(e => e.IsActive)</p>
+                    </div>
+                </div>
+                <div class="col-md-3 stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon">💰</div>
+                        <h3>Average Salary</h3>
+                        <p class="stat-number">@(Model.Any() ? Model.Average(e => e.BasicSalary).ToString("C") : "$0.00")</p>
+                    </div>
+                </div>
+                <div class="col-md-3 stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon">📊</div>
+                        <h3>Departments</h3>
+                        <p class="stat-number">@Model.Select(e => e.DepartmentID).Distinct().Count()</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="employee-table-container">
+            <div class="table-header">
+                <h3>📋 EMPLOYEE LIST</h3>
+                <div class="table-actions">
+                    <input type="text" class="form-control search-box" placeholder="🔍 Search employees..." id="searchBox" />
+                    <button class="btn btn-info btn-sm" id="clearSearch">Clear</button>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table employee-table" id="employeeTable">
+                    <thead>
+                        <tr>
+                            <th data-sort="employeenumber">Employee # ⬍</th>
+                            <th data-sort="name">Name ⬍</th>
+                            <th data-sort="nic">NIC ⬍</th>
+                            <th data-sort="designation">Designation ⬍</th>
+                            <th data-sort="department">Department ⬍</th>
+                            <th data-sort="salary">Salary ⬍</th>
+                            <th data-sort="status">Status ⬍</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="employee-row" data-employee-id="@item.EmployeeID">
+                                <td>@Html.DisplayFor(modelItem => item.EmployeeNumber)</td>
+                                <td>
+                                    <div class="employee-name">
+                                        <strong>@Html.DisplayFor(modelItem => item.FullName)</strong>
+                                        <small>@Html.DisplayFor(modelItem => item.Email)</small>
+                                    </div>
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => item.NIC)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DesignationID)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DepartmentID)</td>
+                                <td class="salary">@item.BasicSalary.ToString("C")</td>
+                                <td>
+                                    <span class="status-badge @(item.IsActive ? "status-active" : "status-inactive")">
+                                        @(item.IsActive ? "ACTIVE" : "INACTIVE")
+                                    </span>
+                                </td>
+                                <td class="action-buttons">
+                                    @Html.ActionLink("👁️", "Details", new { id = item.EmployeeID }, new { @class = "btn btn-info btn-sm", title = "View Details" })
+                                    @Html.ActionLink("✏️", "Edit", new { id = item.EmployeeID }, new { @class = "btn btn-warning btn-sm", title = "Edit" })
+                                    @Html.ActionLink("🗑️", "Delete", new { id = item.EmployeeID }, new { @class = "btn btn-danger btn-sm", title = "Delete" })
+                                </td>
+                            </tr>
+                        }
+                        @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="8" class="text-center no-data">No employees found. @Html.ActionLink("Add your first employee", "Create")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="table-info">
+                            Showing <span id="visibleCount">@Model.Count()</span> of @Model.Count() employees
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-outline-secondary btn-sm" id="exportBtn">📥 Export to CSV</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .employee-management {
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+    }
+
+    .management-header {
+        text-align: center;
+        padding: 40px 20px;
+        background: rgba(255,255,255,0.95);
+        margin-bottom: 30px;
+        border-radius: 15px;
+        border: 3px solid #006400;
+        position: relative;
+    }
+
+    .page-title {
+        font-size: 3rem;
+        color: #006400;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .page-subtitle {
+        font-size: 1.5rem;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .header-actions {
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .management-content {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .stats-overview {
+        margin-bottom: 40px;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-content {
+        padding: 30px 20px;
+        background: rgba(255,255,255,0.95);
+        border-radius: 15px;
+        border: 3px solid #006400;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+        .stat-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,100,0,0.2);
+        }
+
+    .stat-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #006400;
+        margin: 0;
+    }
+
+    .employee-table-container {
+        background: rgba(255,255,255,0.95);
+        padding: 30px;
+        border-radius: 15px;
+        border: 3px solid #006400;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .table-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #006400;
+    }
+
+        .table-header h3 {
+            color: #006400;
+            font-size: 2.2rem;
+            margin: 0;
+        }
+
+    .table-actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .search-box {
+        width: 300px;
+        height: 50px;
+        font-size: 1.4rem;
+        border: 2px solid #006400;
+        border-radius: 25px;
+        padding: 0 20px;
+    }
+
+    .employee-table {
+        width: 100%;
+        font-size: 1.4rem;
+    }
+
+        .employee-table th {
+            background: #006400;
+            color: white;
+            padding: 20px;
+            font-weight: bold;
+            text-align: left;
+            border: none;
+            cursor: pointer;
+            user-select: none;
+        }
+
+            .employee-table th:hover {
+                background: #004d00;
+            }
+
+        .employee-table td {
+            padding: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            vertical-align: middle;
+        }
+
+    .employee-row:hover {
+        background: #f8f9fa;
+        transform: scale(1.01);
+        transition: all 0.3s ease;
+    }
+
+    .employee-name strong {
+        display: block;
+        font-size: 1.6rem;
+        color: #333;
+    }
+
+    .employee-name small {
+        color: #666;
+        font-size: 1.2rem;
+    }
+
+    .salary {
+        font-weight: bold;
+        color: #006400;
+        font-size: 1.5rem;
+    }
+
+    .status-badge {
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        display: inline-block;
+    }
+
+    .status-active {
+        background: #d4edda;
+        color: #155724;
+        border: 2px solid #155724;
+    }
+
+    .status-inactive {
+        background: #f8d7da;
+        color: #721c24;
+        border: 2px solid #721c24;
+    }
+
+    .action-buttons {
+        white-space: nowrap;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 1.4rem;
+        border-radius: 8px;
+        margin: 0 5px;
+        text-decoration: none;
+        border: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+    }
+
+    .btn-sm {
+        padding: 8px 12px;
+        font-size: 1.2rem;
+    }
+
+    .btn-success {
+        background: #006400;
+        color: white;
+    }
+
+        .btn-success:hover {
+            background: #004d00;
+            transform: translateY(-2px);
+        }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+        .btn-info:hover {
+            background: #138496;
+            transform: translateY(-2px);
+        }
+
+    .btn-warning {
+        background: #ffc107;
+        color: #212529;
+    }
+
+        .btn-warning:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+        }
+
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+    .btn-outline-secondary {
+        background: transparent;
+        color: #6c757d;
+        border: 2px solid #6c757d;
+    }
+
+        .btn-outline-secondary:hover {
+            background: #6c757d;
+            color: white;
+        }
+
+    .no-gutters {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+        .no-gutters > .col,
+        .no-gutters > [class*="col-"] {
+            padding-right: 0;
+            padding-left: 0;
+        }
+
+    .alert {
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        font-size: 1.4rem;
+    }
+
+    .alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    .alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+
+    .table-footer {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 2px solid #f0f0f0;
+    }
+
+    .table-info {
+        font-size: 1.4rem;
+        color: #666;
+    }
+
+    .no-data {
+        padding: 40px;
+        font-size: 1.6rem;
+        color: #666;
+        font-style: italic;
+    }
+
+        .no-data a {
+            color: #006400;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            .no-data a:hover {
+                text-decoration: underline;
+            }
+
+    .sort-asc::after {
+        content: " ↑";
+    }
+
+    .sort-desc::after {
+        content: " ↓";
+    }
+
+    @@media (max-width: 768px) {
+        .employee-management {
+            padding: 10px;
+        }
+
+        .management-header {
+            padding: 20px;
+        }
+
+        .page-title {
+            font-size: 2rem;
+        }
+
+        .header-actions {
+            position: static;
+            transform: none;
+            margin-top: 20px;
+        }
+
+        .employee-table-container {
+            padding: 15px;
+        }
+
+        .table-header {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .table-actions {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .search-box {
+            width: 100%;
+        }
+
+        .employee-table {
+            font-size: 1.2rem;
+        }
+
+            .employee-table th,
+            .employee-table td {
+                padding: 10px;
+            }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .btn {
+            width: 100%;
+            justify-content: center;
+            margin: 2px 0;
+        }
+
+        .table-footer {
+            text-align: center;
+        }
+    }
+</style>
+
+<script>
+    // Search functionality
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchBox = document.getElementById('searchBox');
+        const clearSearch = document.getElementById('clearSearch');
+        const employeeRows = document.querySelectorAll('.employee-row');
+        const visibleCount = document.getElementById('visibleCount');
+        const exportBtn = document.getElementById('exportBtn');
+        const tableHeaders = document.querySelectorAll('th[data-sort]');
+
+        function performSearch() {
+            const searchTerm = searchBox.value.toLowerCase().trim();
+            let visibleRows = 0;
+
+            employeeRows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    row.style.display = '';
+                    visibleRows++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            visibleCount.textContent = visibleRows;
+        }
+
+        // Search event listener
+        searchBox.addEventListener('input', performSearch);
+
+        // Clear search
+        clearSearch.addEventListener('click', function () {
+            searchBox.value = '';
+            performSearch();
+        });
+
+        // Table sorting
+        let currentSort = {
+            column: null,
+            direction: 'asc'
+        };
+
+        tableHeaders.forEach(header => {
+            header.addEventListener('click', function () {
+                const column = this.getAttribute('data-sort');
+                const tbody = document.querySelector('tbody');
+                const rows = Array.from(tbody.querySelectorAll('tr:not(.no-data)'));
+
+                // Remove existing sort indicators
+                tableHeaders.forEach(h => {
+                    h.classList.remove('sort-asc', 'sort-desc');
+                });
+
+                // Determine sort direction
+                if (currentSort.column === column) {
+                    currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+                } else {
+                    currentSort.column = column;
+                    currentSort.direction = 'asc';
+                }
+
+                // Add sort indicator
+                this.classList.add(currentSort.direction === 'asc' ? 'sort-asc' : 'sort-desc');
+
+                // Sort rows
+                rows.sort((a, b) => {
+                    let aValue, bValue;
+
+                    switch (column) {
+                        case 'employeenumber':
+                            aValue = a.cells[0].textContent;
+                            bValue = b.cells[0].textContent;
+                            break;
+                        case 'name':
+                            aValue = a.cells[1].querySelector('strong').textContent;
+                            bValue = b.cells[1].querySelector('strong').textContent;
+                            break;
+                        case 'nic':
+                            aValue = a.cells[2].textContent;
+                            bValue = b.cells[2].textContent;
+                            break;
+                        case 'designation':
+                            aValue = a.cells[3].textContent;
+                            bValue = b.cells[3].textContent;
+                            break;
+                        case 'department':
+                            aValue = a.cells[4].textContent;
+                            bValue = b.cells[4].textContent;
+                            break;
+                        case 'salary':
+                            aValue = parseFloat(a.cells[5].textContent.replace(/[^0-9.-]+/g, ""));
+                            bValue = parseFloat(b.cells[5].textContent.replace(/[^0-9.-]+/g, ""));
+                            break;
+                        case 'status':
+                            aValue = a.cells[6].textContent;
+                            bValue = b.cells[6].textContent;
+                            break;
+                        default:
+                            aValue = a.textContent;
+                            bValue = b.textContent;
+                    }
+
+                    if (currentSort.direction === 'asc') {
+                        return aValue > bValue ? 1 : -1;
+                    } else {
+                        return aValue < bValue ? 1 : -1;
+                    }
+                });
+
+                // Reappend sorted rows
+                rows.forEach(row => tbody.appendChild(row));
+                performSearch(); // Update visible count after sorting
+            });
+        });
+
+        // Export to CSV
+        exportBtn.addEventListener('click', function () {
+            const rows = [];
+            const headers = [];
+
+            // Get headers
+            document.querySelectorAll('thead th').forEach(th => {
+                if (th.getAttribute('data-sort')) {
+                    headers.push(th.textContent.replace(' ⬍', '').trim());
+                }
+            });
+
+            rows.push(headers.join(','));
+
+            // Get data
+            document.querySelectorAll('.employee-row').forEach(row => {
+                if (row.style.display !== 'none') {
+                    const cells = [];
+                    for (let i = 0; i < 7; i++) {
+                        let cellText = row.cells[i].textContent.trim();
+                        if (i === 1) {
+                            cellText = row.cells[i].querySelector('strong').textContent.trim();
+                        }
+                        cells.push(`"${cellText}"`);
+                    }
+                    rows.push(cells.join(','));
+                }
+            });
+
+            const csvContent = rows.join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'employees.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        });
+
+        // Auto-focus search box
+        searchBox.focus();
+    });
+</script>

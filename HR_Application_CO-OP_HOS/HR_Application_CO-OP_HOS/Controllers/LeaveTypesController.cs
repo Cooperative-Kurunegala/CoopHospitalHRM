@@ -12,7 +12,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
 {
     public class LeaveTypesController : Controller
     {
-        private HREntities db = new HREntities();
+        private HospitalHRDataEntities db = new HospitalHRDataEntities();
 
         // GET: LeaveTypes
         public ActionResult Index()
@@ -46,7 +46,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,TypeName,LeaveDuration")] LeaveType leaveType)
+        public ActionResult Create([Bind(Include = "LeaveTypeID,LeaveTypeName,LeaveCode,MaxDaysPerYear,IsPaid,IsActive")] LeaveType leaveType)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,TypeName,LeaveDuration")] LeaveType leaveType)
+        public ActionResult Edit([Bind(Include = "LeaveTypeID,LeaveTypeName,LeaveCode,MaxDaysPerYear,IsPaid,IsActive")] LeaveType leaveType)
         {
             if (ModelState.IsValid)
             {

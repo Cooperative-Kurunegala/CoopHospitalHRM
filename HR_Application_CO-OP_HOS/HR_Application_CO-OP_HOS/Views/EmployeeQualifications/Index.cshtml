@@ -1,0 +1,286 @@
+﻿﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.EmployeeQualification>
+
+@{
+    ViewBag.Title = "Employee Qualifications";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Container -->
+<div class="fullscreen-container dashboard-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">EMPLOYEE QUALIFICATIONS MANAGEMENT</h1>
+            <p class="hospital-subtitle">Hospital Human Resources System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Employee Qualification Records</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions-panel">
+        <div class="quick-actions-grid">
+            <a href="@Url.Action("Create")" class="quick-action-btn btn-primary">
+                <span>➕ Add New Qualification</span>
+            </a>
+            <a href="@Url.Action("Index", "Employees")" class="quick-action-btn btn-secondary">
+                <span>👥 Employee Records</span>
+            </a>
+            <a href="@Url.Action("Index", "EmployeeTrainings")" class="quick-action-btn btn-info">
+                <span>🎓 Employee Trainings</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>📚 EMPLOYEE QUALIFICATIONS</h2>
+        </div>
+        <div class="section-content">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Qualification</th>
+                            <th>Institution</th>
+                            <th>Year</th>
+                            <th>Grade</th>
+                            <th>Verified</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.EmployeeID)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Qualification)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Institution)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Year)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Grade)</td>
+                                <td>
+                                    <span class="badge @(item.IsVerified ? "badge-success" : "badge-warning")">
+                                        @(item.IsVerified ? "Verified" : "Pending")
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        @Html.ActionLink("Details", "Details", new { id = item.QualificationID }, new { @class = "btn btn-info btn-sm" })
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.QualificationID }, new { @class = "btn btn-warning btn-sm" })
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.QualificationID }, new { @class = "btn btn-danger btn-sm" })
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+    .dashboard-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .hospital-name {
+        font-size: 2.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hospital-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        opacity: 0.9;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.1rem;
+        background: rgba(255,255,255,0.1);
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .dashboard-section {
+        background: white;
+        margin: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .section-header {
+        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        color: white;
+        padding: 20px;
+        border-bottom: 3px solid #006400;
+    }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+    .section-content {
+        padding: 25px;
+    }
+
+    .quick-actions-panel {
+        padding: 20px;
+        background: white;
+        margin: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .quick-actions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .quick-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        text-align: center;
+        min-height: 70px;
+    }
+
+    .btn-primary {
+        background: #007bff;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+    .quick-action-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        text-decoration: none;
+        color: white;
+    }
+
+    .table {
+        font-size: 0.95rem;
+        width: 100%;
+    }
+
+    .thead-dark {
+        background: #2c3e50;
+        color: white;
+    }
+
+    .btn-group .btn {
+        margin: 2px;
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    .btn-info {
+        background: #17a2b8;
+    }
+
+    .btn-warning {
+        background: #ffc107;
+        color: black;
+    }
+
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+
+    .badge {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+        border-radius: 12px;
+    }
+
+    .badge-success {
+        background: #28a745;
+    }
+
+    .badge-warning {
+        background: #ffc107;
+        color: black;
+    }
+
+    @@media (max-width: 768px) {
+        .hospital-name {
+            font-size: 1.8rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .quick-actions-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .table-responsive {
+            font-size: 0.85rem;
+            overflow-x: auto;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .btn-group .btn {
+                margin: 2px 0;
+                width: 100%;
+            }
+    }
+</style>

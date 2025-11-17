@@ -1,283 +1,278 @@
 ﻿@model HR_Application_CO_OP_HOS.Models.Shift
 
 @{
-    ViewBag.Title = "Create New Shift";
+    ViewBag.Title = "Create Shift";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="dashboard-container">
-    <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-plus-circle"></i> Create New Shift</h1>
-            <p class="lead">Add a new shift to the system</p>
-        </div>
+<!-- Full Screen Create Form -->
+<div class="fullscreen-container form-container">
+    <div class="form-header">
+        <h1 class="form-title">CREATE NEW SHIFT</h1>
+        <p class="form-subtitle">Hospital Human Resources Management System</p>
     </div>
 
-    <div class="row no-gutters">
-        <div class="col-md-8">
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-edit"></i> Shift Details</h3>
-                </div>
-                <div class="panel-body">
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
+    <div class="form-content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-                        <div class="form-horizontal">
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+            <div class="form-card">
+                <div class="form-section">
+                    <h3 class="section-title">Shift Information</h3>
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                @Html.LabelFor(model => model.ShiftCode, htmlAttributes: new { @class = "control-label col-md-4" })
-                                <div class="col-md-8">
-                                    @Html.EditorFor(model => model.ShiftCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter shift code" } })
-                                    @Html.ValidationMessageFor(model => model.ShiftCode, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.ShiftDescription, htmlAttributes: new { @class = "control-label col-md-4" })
-                                <div class="col-md-8">
-                                    @Html.EditorFor(model => model.ShiftDescription, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter shift description" } })
-                                    @Html.ValidationMessageFor(model => model.ShiftDescription, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.StartDateTime, htmlAttributes: new { @class = "control-label col-md-4" })
-                                <div class="col-md-8">
-                                    @Html.EditorFor(model => model.StartDateTime, new { htmlAttributes = new { @class = "form-control datetime-picker", @type = "datetime-local" } })
-                                    @Html.ValidationMessageFor(model => model.StartDateTime, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.EndDateTime, htmlAttributes: new { @class = "control-label col-md-4" })
-                                <div class="col-md-8">
-                                    @Html.EditorFor(model => model.EndDateTime, new { htmlAttributes = new { @class = "form-control datetime-picker", @type = "datetime-local" } })
-                                    @Html.ValidationMessageFor(model => model.EndDateTime, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-offset-4 col-md-8">
-                                    <button type="submit" class="btn btn-success btn-lg">
-                                        <i class="fa fa-save"></i> Create Shift
-                                    </button>
-                                    <a href="@Url.Action("Index")" class="btn btn-secondary btn-lg">
-                                        <i class="fa fa-arrow-left"></i> Back to List
-                                    </a>
-                                </div>
+                                @Html.LabelFor(model => model.ShiftName, htmlAttributes: new { @class = "form-label" })
+                                @Html.EditorFor(model => model.ShiftName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ShiftName, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                    }
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-info-circle"></i> Shift Information</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="info-section">
-                        <h4><i class="fa fa-lightbulb-o"></i> Tips</h4>
-                        <ul>
-                            <li>Shift codes should be unique identifiers</li>
-                            <li>Provide clear descriptions for better understanding</li>
-                            <li>Ensure start time is before end time</li>
-                            <li>Consider overlapping shifts when creating new ones</li>
-                        </ul>
-                    </div>
-
-                    <div class="info-section">
-                        <h4><i class="fa fa-calculator"></i> Duration Calculator</h4>
-                        <div class="form-group">
-                            <label>Start Time:</label>
-                            <input type="datetime-local" class="form-control" id="calcStart">
-                        </div>
-                        <div class="form-group">
-                            <label>End Time:</label>
-                            <input type="datetime-local" class="form-control" id="calcEnd">
-                        </div>
-                        <button class="btn btn-primary btn-sm" onclick="calculateDuration()">
-                            Calculate Duration
-                        </button>
-                        <div id="durationResult" class="mt-2" style="display: none;">
-                            <strong>Duration: <span id="durationValue"></span></strong>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ShiftCode, htmlAttributes: new { @class = "form-label" })
+                                @Html.EditorFor(model => model.ShiftCode, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ShiftCode, "", new { @class = "text-danger" })
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Timing Details</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "form-label" })
+                                @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control", type = "time" } })
+                                @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "form-label" })
+                                @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control", type = "time" } })
+                                @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Shift Properties</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-check-group">
+                                @Html.EditorFor(model => model.IsNightShift, new { htmlAttributes = new { @class = "form-check-input" } })
+                                @Html.LabelFor(model => model.IsNightShift, htmlAttributes: new { @class = "form-check-label" })
+                                @Html.ValidationMessageFor(model => model.IsNightShift, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check-group">
+                                @Html.EditorFor(model => model.IsOvertimeShift, new { htmlAttributes = new { @class = "form-check-input" } })
+                                @Html.LabelFor(model => model.IsOvertimeShift, htmlAttributes: new { @class = "form-check-label" })
+                                @Html.ValidationMessageFor(model => model.IsOvertimeShift, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check-group">
+                                @Html.EditorFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-check-input" } })
+                                @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "form-check-label" })
+                                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ShiftAllowance, htmlAttributes: new { @class = "form-label" })
+                                @Html.EditorFor(model => model.ShiftAllowance, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ShiftAllowance, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
+                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <span class="btn-icon">➕</span>
+                        CREATE SHIFT
+                    </button>
+                    @Html.ActionLink("BACK TO LIST", "Index", null, new { @class = "btn btn-secondary btn-lg" })
+                </div>
             </div>
-        </div>
+        }
     </div>
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        function calculateDuration() {
-            var start = document.getElementById('calcStart').value;
-            var end = document.getElementById('calcEnd').value;
-
-            if (start && end) {
-                var startDate = new Date(start);
-                var endDate = new Date(end);
-
-                if (startDate >= endDate) {
-                    alert('End time must be after start time');
-                    return;
-                }
-
-                var diff = endDate - startDate;
-                var hours = Math.floor(diff / (1000 * 60 * 60));
-                var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-                var durationText = hours + ' hours ' + minutes + ' minutes';
-                document.getElementById('durationValue').textContent = durationText;
-                document.getElementById('durationResult').style.display = 'block';
-            } else {
-                alert('Please select both start and end times');
-            }
-        }
-
-        // Auto-fill calculation fields when form fields change
-        document.addEventListener('DOMContentLoaded', function () {
-            var startField = document.querySelector('input[name="StartDateTime"]');
-            var endField = document.querySelector('input[name="EndDateTime"]');
-            var calcStart = document.getElementById('calcStart');
-            var calcEnd = document.getElementById('calcEnd');
-
-            if (startField && calcStart) {
-                startField.addEventListener('change', function () {
-                    calcStart.value = this.value;
-                });
-            }
-
-            if (endField && calcEnd) {
-                endField.addEventListener('change', function () {
-                    calcEnd.value = this.value;
-                });
-            }
-        });
-    </script>
-}
-
 <style>
-    .dashboard-container {
-        width: 100%;
+    .fullscreen-container {
         min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 0;
-        margin: 0;
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        padding: 20px;
     }
 
-    body {
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    .container.body-content {
-        padding: 0 !important;
-        margin: 0 !important;
-        width: 100% !important;
-    }
-
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    .form-header {
+        text-align: center;
         color: white;
-        border-radius: 0;
-        padding: 30px 20px;
-        margin: 0;
+        margin-bottom: 40px;
+        padding: 40px 20px;
     }
 
-    .jumbotron h1 {
+    .form-title {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .form-subtitle {
+        font-size: 1.8rem;
+        opacity: 0.9;
+    }
+
+    .form-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .form-card {
+        background: white;
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        border: 4px solid #006400;
+    }
+
+    .form-section {
+        margin-bottom: 40px;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        border-left: 5px solid #006400;
+    }
+
+    .section-title {
+        color: #006400;
         font-size: 2.2rem;
-        margin-bottom: 15px;
-    }
-
-    .panel {
-        border: none;
-        border-radius: 10px;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        margin-bottom: 15px;
-    }
-
-    .panel-heading {
-        border-radius: 10px 10px 0 0;
-        border: none;
-        padding: 15px 20px;
-    }
-
-    .panel-success .panel-heading {
-        background-color: #27ae60 !important;
-        color: white;
-    }
-
-    .panel-info .panel-heading {
-        background-color: #3498db !important;
-        color: white;
+        margin-bottom: 25px;
+        font-weight: bold;
+        border-bottom: 3px solid #006400;
+        padding-bottom: 10px;
     }
 
     .form-group {
-        margin-bottom: 20px;
+        margin-bottom: 25px;
     }
 
-    .control-label {
-        font-weight: 600;
-        margin-bottom: 8px;
+    .form-label {
+        font-weight: bold;
+        color: #006400;
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+        display: block;
     }
 
     .form-control {
-        border-radius: 5px;
-        border: 1px solid #ddd;
-        padding: 10px;
-        font-size: 14px;
+        height: 60px;
+        font-size: 1.6rem;
+        border: 3px solid #006400;
+        border-radius: 10px;
+        padding: 15px 20px;
+    }
+
+    .form-check-group {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin: 20px 0;
+    }
+
+    .form-check-input {
+        width: 30px;
+        height: 30px;
+    }
+
+    .form-check-label {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #006400;
+    }
+
+    .form-actions {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 3px solid #006400;
     }
 
     .btn {
-        border-radius: 5px;
-        padding: 10px 20px;
-        margin-right: 10px;
+        padding: 20px 40px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        border-radius: 15px;
+        margin: 0 15px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 3px solid transparent;
+        transition: all 0.3s ease;
     }
 
-    .info-section {
-        margin-bottom: 25px;
-        padding: 15px;
-        background-color: #f8f9fa;
-        border-radius: 5px;
+    .btn-primary {
+        background: #006400;
+        color: white;
+        border-color: #006400;
     }
 
-        .info-section h4 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 8px;
-        }
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+        border-color: #6c757d;
+    }
 
-        .info-section ul {
-            padding-left: 20px;
-        }
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
 
-        .info-section li {
-            margin-bottom: 8px;
-            color: #555;
-        }
+    .btn-icon {
+        font-size: 2rem;
+    }
 
     @@media (max-width: 768px) {
-        .dashboard-container {
-            padding: 8px;
+        .form-title {
+            font-size: 2.5rem;
         }
 
-        .col-md-8, .col-md-4 {
-            margin-bottom: 15px;
+        .form-subtitle {
+            font-size: 1.4rem;
+        }
+
+        .form-card {
+            padding: 30px 20px;
         }
 
         .btn {
-            margin-bottom: 10px;
             width: 100%;
+            margin: 10px 0;
+            justify-content: center;
         }
     }
 </style>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

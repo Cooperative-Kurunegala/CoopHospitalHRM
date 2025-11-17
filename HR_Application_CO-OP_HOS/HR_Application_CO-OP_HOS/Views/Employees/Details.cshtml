@@ -1,0 +1,703 @@
+﻿@model HR_Application_CO_OP_HOS.Models.Employee
+
+@{
+    ViewBag.Title = "Employee Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Details Container -->
+<div class="fullscreen-container details-container">
+    <div class="details-header">
+        <h1 class="page-title">👤 EMPLOYEE DETAILS</h1>
+        <p class="page-subtitle">Hospital Human Resources Management System</p>
+    </div>
+
+    <div class="details-content">
+        <!-- Display messages -->
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        <div class="details-card">
+            <!-- Employee Summary -->
+            <div class="employee-summary">
+                <div class="employee-avatar">
+                    <div class="avatar-icon">👤</div>
+                </div>
+                <div class="employee-basic-info">
+                    <h2>@Html.DisplayFor(model => model.FullName)</h2>
+                    <p class="employee-number">Employee #: @Html.DisplayFor(model => model.EmployeeNumber)</p>
+                    <p class="employee-designation">@Html.DisplayFor(model => model.DesignationID) - @Html.DisplayFor(model => model.DepartmentID)</p>
+                    <div class="employee-status">
+                        <span class="status-badge @(Model.IsActive ? "status-active" : "status-inactive")">
+                            @(Model.IsActive ? "ACTIVE" : "INACTIVE")
+                        </span>
+                        <span class="employment-duration">
+                            @{
+                                // DateOfJoin is non-nullable (System.DateTime). If it's the default value, treat as now.
+                                var joinDate = Model.DateOfJoin != default(System.DateTime) ? Model.DateOfJoin : DateTime.Now;
+                                var duration = DateTime.Now - joinDate;
+                                var years = duration.Days / 365;
+                                var months = (duration.Days % 365) / 30;
+                            }
+                            @years years @months months with us
+                        </span>
+                    </div>
+                </div>
+                <div class="employee-actions">
+                    @Html.ActionLink("✏️ EDIT", "Edit", new { id = Model.EmployeeID }, new { @class = "btn btn-warning btn-lg" })
+                    @Html.ActionLink("🗑️ DELETE", "Delete", new { id = Model.EmployeeID }, new { @class = "btn btn-danger btn-lg" })
+                    @Html.ActionLink("📋 BACK TO LIST", "Index", null, new { @class = "btn btn-secondary btn-lg" })
+                </div>
+            </div>
+
+            <!-- Basic Information Section -->
+            <div class="details-section">
+                <h3 class="section-title">👤 BASIC INFORMATION</h3>
+                <div class="row">
+                    <div class="col-md-3 detail-item">
+                        <label class="detail-label">Employee Number</label>
+                        <div class="detail-value">@Html.DisplayFor(model => model.EmployeeNumber)</div>
+                    </div>
+                    <div class="col-md-3 detail-item">
+                        <label class="detail-label">Title</label>
+                        <div class="detail-value">@(string.IsNullOrEmpty(Model.Title) ? "Not specified" : Model.Title)</div>
+                    </div>
+                    <div class="col-md-3 detail-item">
+                        <label class="detail-label">First Name</label>
+                        <div class="detail-value">@Html.DisplayFor(model => model.FirstName)</div>
+                    </div>
+                    <div class="col-md-3 detail-item">
+                        <label class="detail-label">Last Name</label>
+                        <div class="detail-value">@Html.DisplayFor(model => model.LastName)</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Full Name</label>
+                        <div class="detail-value">@Html.DisplayFor(model => model.FullName)</div>
+                    </div>
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">NIC</label>
+                        <div class="detail-value">@Html.DisplayFor(model => model.NIC)</div>
+                    </div>
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Date of Birth</label>
+                        <div class="detail-value">@(Model.DateOfBirth?.ToString("yyyy-MM-dd") ?? "Not specified")</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Gender</label>
+                        <div class="detail-value">@(string.IsNullOrEmpty(Model.Gender) ? "Not specified" : Model.Gender)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Information Section -->
+            <div class="details-section">
+                <h3 class="section-title">📞 CONTACT INFORMATION</h3>
+                <div class="row">
+                    <div class="col-md-6 detail-item">
+                        <label class="detail-label">Email</label>
+                        <div class="detail-value">
+                            @if (!string.IsNullOrEmpty(Model.Email))
+                            {
+                                <a href="mailto:@Model.Email">@Model.Email</a>
+                            }
+                            else
+                            {
+                                <text>Not specified</text>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-6 detail-item">
+                        <label class="detail-label">Phone</label>
+                        <div class="detail-value">
+                            @if (!string.IsNullOrEmpty(Model.Phone))
+                            {
+                                <a href="tel:@Model.Phone">@Model.Phone</a>
+                            }
+                            else
+                            {
+                                <text>Not specified</text>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 detail-item">
+                        <label class="detail-label">Address</label>
+                        <div class="detail-value">@(string.IsNullOrEmpty(Model.Address) ? "Not specified" : Model.Address)</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Emergency Contact</label>
+                        <div class="detail-value">@(string.IsNullOrEmpty(Model.EmergencyContactName) ? "Not specified" : Model.EmergencyContactName)</div>
+                    </div>
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Emergency Phone</label>
+                        <div class="detail-value">
+                            @if (!string.IsNullOrEmpty(Model.EmergencyContactPhone))
+                            {
+                                <a href="tel:@Model.EmergencyContactPhone">@Model.EmergencyContactPhone</a>
+                            }
+                            else
+                            {
+                                <text>Not specified</text>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Emergency Relation</label>
+                        <div class="detail-value">@(string.IsNullOrEmpty(Model.EmergencyContactRelation) ? "Not specified" : Model.EmergencyContactRelation)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Employment Details Section -->
+            <div class="details-section">
+                <h3 class="section-title">🏥 EMPLOYMENT DETAILS</h3>
+                <div class="row">
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Date of Join</label>
+                        <div class="detail-value">@(Model.DateOfJoin != default(System.DateTime) ? Model.DateOfJoin.ToString("yyyy-MM-dd") : "Not specified")</div>
+                    </div>
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Designation</label>
+                        <div class="detail-value">@Html.DisplayFor(model => model.DesignationID)</div>
+                    </div>
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Department</label>
+                        <div class="detail-value">@Html.DisplayFor(model => model.DepartmentID)</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Basic Salary</label>
+                        <div class="detail-value salary-amount">@(Model.BasicSalary != 0m ? Model.BasicSalary.ToString("C") : "Not specified")</div>
+                    </div>
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">EPF Number</label>
+                        <div class="detail-value">@(string.IsNullOrEmpty(Model.EPFNumber) ? "Not specified" : Model.EPFNumber)</div>
+                    </div>
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">ETF Number</label>
+                        <div class="detail-value">@(string.IsNullOrEmpty(Model.ETFNumber) ? "Not specified" : Model.ETFNumber)</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Employment Status</label>
+                        <div class="detail-value">
+                            <span class="status-badge @(Model.IsActive ? "status-active" : "status-inactive")">
+                                @(Model.IsActive ? "ACTIVE" : "INACTIVE")
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Date of Resignation</label>
+                        <div class="detail-value">@(Model.DateOfResignation?.ToString("yyyy-MM-dd") ?? "N/A")</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medical Information Section -->
+            <div class="details-section">
+                <h3 class="section-title">⚕️ MEDICAL INFORMATION</h3>
+                <div class="row">
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Medical License No</label>
+                        <div class="detail-value">@(string.IsNullOrEmpty(Model.MedicalLicenseNo) ? "Not specified" : Model.MedicalLicenseNo)</div>
+                    </div>
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">License Expiry Date</label>
+                        <div class="detail-value @(Model.LicenseExpiryDate.HasValue && Model.LicenseExpiryDate.Value < DateTime.Now ? "expired" : "")">
+                            @(Model.LicenseExpiryDate?.ToString("yyyy-MM-dd") ?? "Not specified")
+                            @if (Model.LicenseExpiryDate.HasValue && Model.LicenseExpiryDate.Value < DateTime.Now)
+                            {
+                                <span class="expiry-warning">(Expired)</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Blood Group</label>
+                        <div class="detail-value">@(string.IsNullOrEmpty(Model.BloodGroup) ? "Not specified" : Model.BloodGroup)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Information Section -->
+            <div class="details-section">
+                <h3 class="section-title">⚙️ SYSTEM INFORMATION</h3>
+                <div class="row">
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Created Date</label>
+                        <div class="detail-value">@(Model.CreatedDate != default(System.DateTime) ? Model.CreatedDate.ToString("yyyy-MM-dd HH:mm") : "Not available")</div>
+                    </div>
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Created By</label>
+                        <div class="detail-value">@(Model.CreatedBy.HasValue ? Model.CreatedBy.Value.ToString() : "System")</div>
+                    </div>
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Last Modified</label>
+                        <div class="detail-value">@(Model.ModifiedDate?.ToString("yyyy-MM-dd HH:mm") ?? "Not modified")</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 detail-item">
+                        <label class="detail-label">Modified By</label>
+                        <div class="detail-value">@(Model.ModifiedBy.HasValue ? Model.ModifiedBy.Value.ToString() : "N/A")</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h3 class="section-title">🚀 QUICK ACTIONS</h3>
+                <div class="action-buttons-grid">
+                    @Html.ActionLink("✏️ EDIT EMPLOYEE", "Edit", new { id = Model.EmployeeID }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("📧 SEND EMAIL", "#", new { @class = "btn btn-info", onclick = $"window.location.href='mailto:{Model.Email}'; return false;" })
+                    @Html.ActionLink("📞 CALL EMPLOYEE", "#", new { @class = "btn btn-primary", onclick = $"window.location.href='tel:{Model.Phone}'; return false;" })
+                    @Html.ActionLink("🖨️ PRINT PROFILE", "#", new { @class = "btn btn-secondary", onclick = "window.print(); return false;" })
+                    @Html.ActionLink("📋 BACK TO LIST", "Index", null, new { @class = "btn btn-outline-secondary" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .details-container {
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+    }
+
+    .details-header {
+        text-align: center;
+        padding: 40px 20px;
+        background: rgba(255,255,255,0.95);
+        margin-bottom: 30px;
+        border-radius: 15px;
+        border: 3px solid #006400;
+    }
+
+    .page-title {
+        font-size: 3rem;
+        color: #006400;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .page-subtitle {
+        font-size: 1.5rem;
+        color: #666;
+    }
+
+    .details-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .details-card {
+        background: rgba(255,255,255,0.95);
+        padding: 40px;
+        border-radius: 15px;
+        border: 3px solid #006400;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .employee-summary {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        padding: 30px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 15px;
+        border: 2px solid #006400;
+        margin-bottom: 40px;
+    }
+
+    .employee-avatar {
+        flex-shrink: 0;
+    }
+
+    .avatar-icon {
+        font-size: 6rem;
+        background: #006400;
+        color: white;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .employee-basic-info {
+        flex-grow: 1;
+    }
+
+        .employee-basic-info h2 {
+            font-size: 2.8rem;
+            color: #006400;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+    .employee-number {
+        font-size: 1.6rem;
+        color: #666;
+        margin-bottom: 5px;
+    }
+
+    .employee-designation {
+        font-size: 1.8rem;
+        color: #333;
+        margin-bottom: 15px;
+        font-weight: 500;
+    }
+
+    .employee-status {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .employment-duration {
+        font-size: 1.4rem;
+        color: #666;
+        font-style: italic;
+    }
+
+    .employee-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex-shrink: 0;
+    }
+
+    .details-section {
+        margin-bottom: 40px;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border: 2px solid #006400;
+    }
+
+    .section-title {
+        color: #006400;
+        font-size: 2rem;
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #006400;
+    }
+
+    .detail-item {
+        margin-bottom: 25px;
+    }
+
+    .detail-label {
+        font-weight: bold;
+        color: #333;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .detail-value {
+        font-size: 1.6rem;
+        color: #666;
+        padding: 12px 15px;
+        background: white;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        word-break: break-word;
+    }
+
+        .detail-value a {
+            color: #006400;
+            text-decoration: none;
+        }
+
+            .detail-value a:hover {
+                text-decoration: underline;
+            }
+
+    .salary-amount {
+        font-weight: bold;
+        color: #006400;
+        font-size: 1.8rem;
+    }
+
+    .status-badge {
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        display: inline-block;
+    }
+
+    .status-active {
+        background: #d4edda;
+        color: #155724;
+        border: 2px solid #155724;
+    }
+
+    .status-inactive {
+        background: #f8d7da;
+        color: #721c24;
+        border: 2px solid #721c24;
+    }
+
+    .expired {
+        color: #dc3545;
+        font-weight: bold;
+    }
+
+    .expiry-warning {
+        color: #dc3545;
+        font-size: 1.2rem;
+        margin-left: 10px;
+        font-weight: bold;
+    }
+
+    .quick-actions {
+        margin-top: 40px;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border: 2px solid #006400;
+    }
+
+    .action-buttons-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .btn {
+        padding: 15px 20px;
+        font-size: 1.4rem;
+        border-radius: 10px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .btn-lg {
+        padding: 12px 20px;
+        font-size: 1.4rem;
+    }
+
+    .btn-warning {
+        background: #ffc107;
+        color: #212529;
+    }
+
+        .btn-warning:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+        }
+
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+
+    .btn-outline-secondary {
+        background: transparent;
+        color: #6c757d;
+        border: 2px solid #6c757d;
+    }
+
+        .btn-outline-secondary:hover {
+            background: #6c757d;
+            color: white;
+        }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+        .btn-info:hover {
+            background: #138496;
+            transform: translateY(-2px);
+        }
+
+    .btn-primary {
+        background: #007bff;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+    .alert {
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        font-size: 1.4rem;
+    }
+
+    .alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    .alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+
+    @@media (max-width: 768px) {
+        .details-container {
+            padding: 10px;
+        }
+
+        .page-title {
+            font-size: 2rem;
+        }
+
+        .details-card {
+            padding: 20px;
+        }
+
+        .employee-summary {
+            flex-direction: column;
+            text-align: center;
+            gap: 20px;
+        }
+
+        .employee-actions {
+            width: 100%;
+        }
+
+            .employee-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+        .details-section {
+            padding: 20px;
+        }
+
+        .action-buttons-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .btn {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    @@media print {
+        .details-container {
+            background: white;
+            padding: 0;
+        }
+
+        .details-header {
+            border: 2px solid #006400;
+        }
+
+        .details-card {
+            box-shadow: none;
+            border: 2px solid #006400;
+        }
+
+        .employee-actions,
+        .quick-actions {
+            display: none;
+        }
+
+        .btn {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Add print functionality
+        const printBtn = document.querySelector('[onclick*="window.print()"]');
+        if (printBtn) {
+            printBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.print();
+            });
+        }
+
+        // Add confirmation for delete
+        const deleteBtn = document.querySelector('.btn-danger');
+        if (deleteBtn) {
+            deleteBtn.addEventListener('click', function (e) {
+                if (!confirm('Are you sure you want to delete this employee? This action cannot be undone.')) {
+                    e.preventDefault();
+                }
+            });
+        }
+
+        // Highlight expired licenses
+        const expiryDates = document.querySelectorAll('.detail-value.expired');
+        expiryDates.forEach(dateElement => {
+            dateElement.style.backgroundColor = '#f8d7da';
+            dateElement.style.borderColor = '#dc3545';
+        });
+
+        // Add smooth scrolling for section navigation
+        const sectionTitles = document.querySelectorAll('.section-title');
+        sectionTitles.forEach(title => {
+            title.style.cursor = 'pointer';
+            title.addEventListener('click', function () {
+                this.parentElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    });
+</script>

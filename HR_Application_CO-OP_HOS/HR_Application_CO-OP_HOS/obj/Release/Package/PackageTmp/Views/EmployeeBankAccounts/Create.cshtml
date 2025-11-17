@@ -1,0 +1,288 @@
+﻿<!-- Create.cshtml -->
+@model HR_Application_CO_OP_HOS.Models.EmployeeBankAccount
+
+@{
+    ViewBag.Title = "Create Employee Bank Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Create Employee Bank Account -->
+<div class="fullscreen-container dashboard-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">➕ CREATE EMPLOYEE BANK ACCOUNT</h1>
+            <p class="hospital-subtitle">Add a new bank account for employee</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Create Bank Account Record</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Form Section -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>🏦 BANK ACCOUNT INFORMATION</h2>
+        </div>
+        <div class="section-content">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-container">
+                    @Html.ValidationSummary(true, "", new { @class = "validation-summary" })
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EmployeeID, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.EmployeeID, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Employee ID" } })
+                            @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BankID, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.BankID, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Bank ID" } })
+                            @Html.ValidationMessageFor(model => model.BankID, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BranchID, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.BranchID, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Branch ID" } })
+                            @Html.ValidationMessageFor(model => model.BranchID, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.AccountNumber, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.AccountNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Account Number" } })
+                            @Html.ValidationMessageFor(model => model.AccountNumber, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group full-width">
+                            @Html.LabelFor(model => model.AccountHolderName, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.AccountHolderName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Account Holder Name" } })
+                            @Html.ValidationMessageFor(model => model.AccountHolderName, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                @Html.EditorFor(model => model.IsPrimary)
+                                <span class="checkbox-custom"></span>
+                                Primary Account
+                            </label>
+                            @Html.ValidationMessageFor(model => model.IsPrimary, "", new { @class = "validation-message" })
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                @Html.EditorFor(model => model.IsActive)
+                                <span class="checkbox-custom"></span>
+                                Active Account
+                            </label>
+                            @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "validation-message" })
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="quick-action-btn btn-primary">
+                            💾 Create Account
+                        </button>
+                        <a href="@Url.Action("Index")" class="quick-action-btn btn-secondary">
+                            📋 Back to List
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<style>
+    .dashboard-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.8rem;
+        background: rgba(0,0,0,0.2);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .dashboard-section {
+        padding: 20px;
+    }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .full-width {
+        grid-column: 1 / -1;
+    }
+
+    .form-label {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .form-control {
+        padding: 15px;
+        font-size: 1.6rem;
+        border: 2px solid #006400;
+        border-radius: 10px;
+        background: #f8f9fa;
+    }
+
+    .checkbox-group {
+        flex-direction: row;
+        align-items: center;
+        grid-column: 1 / -1;
+    }
+
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        font-size: 1.6rem;
+        cursor: pointer;
+        margin-right: 30px;
+    }
+
+    .checkbox-custom {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border: 2px solid #006400;
+        border-radius: 5px;
+        margin-right: 10px;
+        position: relative;
+    }
+
+    input[type="checkbox"]:checked + .checkbox-custom::after {
+        content: "✓";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #006400;
+        font-weight: bold;
+    }
+
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .quick-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-width: 200px;
+    }
+
+    .btn-primary {
+        background: #006400;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .quick-action-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .validation-summary {
+        color: #dc3545;
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        border-radius: 5px;
+    }
+
+    .validation-message {
+        color: #dc3545;
+        font-size: 1.4rem;
+        margin-top: 5px;
+    }
+
+    @@media (max-width: 768px) {
+        body {
+            font-size: 24px;
+        }
+
+        .hospital-name {
+            font-size: 2.5rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1.5rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 15px;
+            font-size: 1.4rem;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .checkbox-group {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+    }
+</style>

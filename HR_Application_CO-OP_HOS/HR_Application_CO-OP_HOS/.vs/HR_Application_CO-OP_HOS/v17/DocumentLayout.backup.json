@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|g:\\coop\\coophospitalhrm\\hr_application_co-op_hos\\hr_application_co-op_hos\\views\\payeetaxes\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|solutionrelative:views\\payeetaxes\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|g:\\coop\\coophospitalhrm\\hr_application_co-op_hos\\hr_application_co-op_hos\\views\\payeetaxes\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|solutionrelative:views\\payeetaxes\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|g:\\coop\\coophospitalhrm\\hr_application_co-op_hos\\hr_application_co-op_hos\\views\\payeetaxes\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|solutionrelative:views\\payeetaxes\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|g:\\coop\\coophospitalhrm\\hr_application_co-op_hos\\hr_application_co-op_hos\\views\\payeetaxes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|solutionrelative:views\\payeetaxes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|g:\\coop\\coophospitalhrm\\hr_application_co-op_hos\\hr_application_co-op_hos\\views\\payeetaxes\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|solutionrelative:views\\payeetaxes\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|g:\\coop\\coophospitalhrm\\hr_application_co-op_hos\\hr_application_co-op_hos\\views\\employees\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C8BFA8C2-2798-472A-BBF0-29F0021BC202}|HR_Application_CO-OP_HOS.csproj|solutionrelative:views\\employees\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,66 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\PayeeTaxes\\Delete.cshtml",
-              "RelativeDocumentMoniker": "Views\\PayeeTaxes\\Delete.cshtml",
-              "ToolTip": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\PayeeTaxes\\Delete.cshtml",
-              "RelativeToolTip": "Views\\PayeeTaxes\\Delete.cshtml",
-              "ViewState": "AgIAACoCAAAAAAAAAAAswD0CAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-15T11:21:32.102Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\PayeeTaxes\\Details.cshtml",
-              "RelativeDocumentMoniker": "Views\\PayeeTaxes\\Details.cshtml",
-              "ToolTip": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\PayeeTaxes\\Details.cshtml",
-              "RelativeToolTip": "Views\\PayeeTaxes\\Details.cshtml",
-              "ViewState": "AgIAADsCAAAAAAAAAAAswE4CAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-15T11:18:21.834Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\PayeeTaxes\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Views\\PayeeTaxes\\Edit.cshtml",
-              "ToolTip": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\PayeeTaxes\\Edit.cshtml",
-              "RelativeToolTip": "Views\\PayeeTaxes\\Edit.cshtml",
-              "ViewState": "AgIAANcBAAAAAAAAAAAswOoBAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-15T11:18:02.317Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\PayeeTaxes\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\PayeeTaxes\\Create.cshtml",
-              "ToolTip": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\PayeeTaxes\\Create.cshtml",
-              "RelativeToolTip": "Views\\PayeeTaxes\\Create.cshtml",
-              "ViewState": "AgIAAHwBAAAAAAAAAAAswI8BAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-15T11:17:41.99Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\PayeeTaxes\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\PayeeTaxes\\Index.cshtml",
-              "ToolTip": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\PayeeTaxes\\Index.cshtml",
-              "RelativeToolTip": "Views\\PayeeTaxes\\Index.cshtml",
-              "ViewState": "AgIAAKgBAAAAAAAAAAAswLsBAAAHAAAAAAAAAA==",
+              "DocumentMoniker": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\Employees\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Employees\\Index.cshtml",
+              "ToolTip": "G:\\Coop\\CoopHospitalHRM\\HR_Application_CO-OP_HOS\\HR_Application_CO-OP_HOS\\Views\\Employees\\Index.cshtml",
+              "RelativeToolTip": "Views\\Employees\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-15T11:17:20.343Z",
+              "WhenOpened": "2025-11-17T04:48:58.042Z",
               "EditorCaption": ""
             }
           ]

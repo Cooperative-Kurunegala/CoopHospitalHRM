@@ -1,0 +1,267 @@
+﻿﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.EmployeeAllowance>
+
+@{
+    ViewBag.Title = "Employee Allowances";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Container -->
+<div class="fullscreen-container dashboard-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">EMPLOYEE ALLOWANCES MANAGEMENT</h1>
+            <p class="hospital-subtitle">Hospital Human Resources System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Employee Allowance Records</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions-panel">
+        <div class="quick-actions-grid">
+            <a href="@Url.Action("Create")" class="quick-action-btn btn-primary">
+                <span>➕ Add New Allowance</span>
+            </a>
+            <a href="@Url.Action("Index", "Employees")" class="quick-action-btn btn-secondary">
+                <span>👥 Employee Records</span>
+            </a>
+            <a href="@Url.Action("Index", "Allowances")" class="quick-action-btn btn-info">
+                <span>💳 Allowance Types</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>📊 ALLOWANCE RECORDS</h2>
+        </div>
+        <div class="section-content">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Allowance ID</th>
+                            <th>Amount</th>
+                            <th>Effective Date</th>
+                            <th>End Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.EmployeeID)</td>
+                                <td>@Html.DisplayFor(modelItem => item.AllowanceID)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                                <td>@Html.DisplayFor(modelItem => item.EffectiveDate)</td>
+                                <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+                                <td>
+                                    <span class="badge @(item.IsActive ? "badge-success" : "badge-secondary")">
+                                        @(item.IsActive ? "Active" : "Inactive")
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        @Html.ActionLink("Details", "Details", new { id = item.EmployeeAllowanceID }, new { @class = "btn btn-info btn-sm" })
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeAllowanceID }, new { @class = "btn btn-warning btn-sm" })
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeAllowanceID }, new { @class = "btn btn-danger btn-sm" })
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+    .dashboard-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .hospital-name {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hospital-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        opacity: 0.9;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2rem;
+        background: rgba(255,255,255,0.1);
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .dashboard-section {
+        background: white;
+        margin: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .section-header {
+        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        color: white;
+        padding: 20px;
+        border-bottom: 3px solid #006400;
+    }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+    .section-content {
+        padding: 30px;
+    }
+
+    .quick-actions-panel {
+        padding: 20px;
+        background: white;
+        margin: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .quick-actions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .quick-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        text-align: center;
+        min-height: 80px;
+    }
+
+    .btn-primary {
+        background: #007bff;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+    .btn-success {
+        background: #28a745;
+        color: white;
+    }
+
+    .btn-warning {
+        background: #ffc107;
+        color: black;
+    }
+
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+    .quick-action-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        text-decoration: none;
+        color: white;
+    }
+
+    .table {
+        font-size: 1rem;
+    }
+
+    .thead-dark {
+        background: #2c3e50;
+        color: white;
+    }
+
+    .badge {
+        font-size: 0.9rem;
+        padding: 5px 10px;
+    }
+
+    .btn-group .btn {
+        margin: 2px;
+    }
+
+    @@media (max-width: 768px) {
+        .hospital-name {
+            font-size: 2rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1.2rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .quick-actions-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .table-responsive {
+            font-size: 0.9rem;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .btn-group .btn {
+                margin: 2px 0;
+            }
+    }
+</style>

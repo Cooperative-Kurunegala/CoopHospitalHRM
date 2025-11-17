@@ -1,53 +1,138 @@
 ﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.LoanCategory>
 
 @{
-    Layout = null;
+    ViewBag.Title = "Loan Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<div class="fullscreen-container dashboard-container">
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">LOAN CATEGORIES MANAGEMENT</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DefaultAllocation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LoanCategoryName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsFixedLoanInstallments)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DefaultAllocation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LoanCategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsFixedLoanInstallments)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-            </td>
-        </tr>
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>🏦 LOAN CATEGORIES</h2>
+            <div class="action-buttons">
+                @Html.ActionLink("➕ CREATE NEW", "Create", null, new { @class = "btn btn-success" })
+            </div>
+        </div>
+
+        <div class="section-content">
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.CategoryName)</th>
+                            <th>@Html.DisplayNameFor(model => model.MaxAmount)</th>
+                            <th>@Html.DisplayNameFor(model => model.InterestRate)</th>
+                            <th>@Html.DisplayNameFor(model => model.MaxInstallments)</th>
+                            <th>@Html.DisplayNameFor(model => model.IsActive)</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MaxAmount)</td>
+                                <td>@Html.DisplayFor(modelItem => item.InterestRate)%</td>
+                                <td>@Html.DisplayFor(modelItem => item.MaxInstallments)</td>
+                                <td>
+                                    <span class="status-badge @(item.IsActive ? "active" : "inactive")">
+                                        @(item.IsActive ? "ACTIVE" : "INACTIVE")
+                                    </span>
+                                </td>
+                                <td class="action-buttons">
+                                    @Html.ActionLink("✏️", "Edit", new { id = item.LoanCategoryID }, new { @class = "btn btn-primary btn-sm", title = "Edit" })
+                                    @Html.ActionLink("👁️", "Details", new { id = item.LoanCategoryID }, new { @class = "btn btn-info btn-sm", title = "Details" })
+                                    @Html.ActionLink("🗑️", "Delete", new { id = item.LoanCategoryID }, new { @class = "btn btn-danger btn-sm", title = "Delete" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .action-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
     }
-    
-    </table>
-</body>
-</html>
+
+    .table-container {
+        background: #ffffff;
+        border-radius: 15px;
+        border: 3px solid #006400;
+        overflow: hidden;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 1.6rem;
+    }
+
+        .data-table th,
+        .data-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .data-table th {
+            background: #006400;
+            color: white;
+            font-weight: bold;
+            font-size: 1.8rem;
+        }
+
+        .data-table tr:hover {
+            background: #f8f9fa;
+        }
+
+    .status-badge {
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 1.4rem;
+    }
+
+        .status-badge.active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.inactive {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+    .btn-sm {
+        padding: 10px 15px;
+        min-width: auto;
+        font-size: 1.4rem;
+    }
+
+    @@media (max-width: 768px) {
+        .data-table {
+            display: block;
+            overflow-x: auto;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+    }
+</style>

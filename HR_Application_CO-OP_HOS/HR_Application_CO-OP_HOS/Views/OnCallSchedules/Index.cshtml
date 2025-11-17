@@ -1,0 +1,454 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.OnCallSchedule>
+
+@{
+    ViewBag.Title = "On-Call Schedules Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Container -->
+<div class="fullscreen-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">ON-CALL SCHEDULES MANAGEMENT</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Manage On-Call Schedules</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions-panel">
+        <div class="quick-actions-grid">
+            <a href="@Url.Action("Create")" class="quick-action-btn btn-success">
+                <span class="btn-icon">➕</span>
+                ADD NEW SCHEDULE
+            </a>
+            <a href="@Url.Action("Index", "Dashboard")" class="quick-action-btn btn-primary">
+                <span class="btn-icon">🏠</span>
+                DASHBOARD
+            </a>
+            <a href="@Url.Action("Index", "Employees")" class="quick-action-btn btn-info">
+                <span class="btn-icon">👥</span>
+                EMPLOYEES
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-section">
+        <div class="table-container">
+            <div class="table-card">
+                <div class="table-header">
+                    <h2>📅 All On-Call Schedules</h2>
+                    <div class="table-stats">
+                        <span class="stat-badge">Total: @Model.Count()</span>
+                        <span class="stat-badge active">Active: @Model.Count(m => m.IsActive)</span>
+                        <span class="stat-badge inactive">Inactive: @Model.Count(m => !m.IsActive)</span>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.EmployeeID)</th>
+                                <th>@Html.DisplayNameFor(model => model.OnCallDate)</th>
+                                <th>@Html.DisplayNameFor(model => model.StartTime)</th>
+                                <th>@Html.DisplayNameFor(model => model.EndTime)</th>
+                                <th>@Html.DisplayNameFor(model => model.IsActive)</th>
+                                <th>@Html.DisplayNameFor(model => model.Remarks)</th>
+                                <th>@Html.DisplayNameFor(model => model.CreatedDate)</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.EmployeeID)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.OnCallDate)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.StartTime)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.EndTime)</td>
+                                    <td>
+                                        @if (item.IsActive)
+                                        {
+                                            <span class="status-badge active">✅ Active</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="status-badge inactive">❌ Inactive</span>
+                                        }
+                                    </td>
+                                    <td>@Html.DisplayFor(modelItem => item.Remarks)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <a href="@Url.Action("Edit", new { id = item.OnCallID })" class="btn-action btn-warning" title="Edit">
+                                                ✏️
+                                            </a>
+                                            <a href="@Url.Action("Details", new { id = item.OnCallID })" class="btn-action btn-info" title="Details">
+                                                👁️
+                                            </a>
+                                            <a href="@Url.Action("Delete", new { id = item.OnCallID })" class="btn-action btn-danger" title="Delete">
+                                                🗑️
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                @if (!Model.Any())
+                {
+                    <div class="empty-state">
+                        <div class="empty-icon">📅</div>
+                        <h3>No On-Call Schedules Found</h3>
+                        <p>Get started by adding your first on-call schedule.</p>
+                        <a href="@Url.Action("Create")" class="btn btn-success btn-lg">
+                            <span class="btn-icon">➕</span>
+                            ADD FIRST SCHEDULE
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .dashboard-header {
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 30px 0;
+        border-bottom: 4px solid #006400;
+    }
+
+    .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .hospital-name {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #ffffff;
+    }
+
+    .hospital-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: #cccccc;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.4rem;
+        background: rgba(0, 100, 0, 0.3);
+        padding: 15px 20px;
+        border-radius: 10px;
+    }
+
+    .quick-actions-panel {
+        padding: 30px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .quick-actions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .quick-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        padding: 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .btn-success {
+        background: #28a745;
+        color: white;
+    }
+
+        .btn-success:hover {
+            background: #218838;
+            transform: translateY(-3px);
+        }
+
+    .btn-primary {
+        background: #007bff;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-3px);
+        }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+        .btn-info:hover {
+            background: #138496;
+            transform: translateY(-3px);
+        }
+
+    .btn-icon {
+        font-size: 1.8rem;
+    }
+
+    .content-section {
+        padding: 40px 20px;
+    }
+
+    .table-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .table-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border: 3px solid #006400;
+    }
+
+    .table-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 3px solid #006400;
+    }
+
+        .table-header h2 {
+            color: #006400;
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+    .table-stats {
+        display: flex;
+        gap: 15px;
+    }
+
+    .stat-badge {
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        background: #f8f9fa;
+        border: 2px solid #dee2e6;
+    }
+
+        .stat-badge.active {
+            background: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .stat-badge.inactive {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 1.2rem;
+    }
+
+        .data-table th,
+        .data-table td {
+            padding: 15px 10px;
+            text-align: left;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .data-table th {
+            background: #006400;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+            white-space: nowrap;
+        }
+
+        .data-table tr:hover {
+            background: #f8f9fa;
+        }
+
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 12px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        white-space: nowrap;
+    }
+
+        .status-badge.active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.inactive {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+    .action-buttons {
+        display: flex;
+        gap: 8px;
+    }
+
+    .btn-action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.4rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-warning {
+        background: #ffc107;
+        color: #212529;
+    }
+
+        .btn-warning:hover {
+            background: #e0a800;
+            transform: scale(1.1);
+        }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+        .btn-info:hover {
+            background: #138496;
+            transform: scale(1.1);
+        }
+
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background: #c82333;
+            transform: scale(1.1);
+        }
+
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .empty-icon {
+        font-size: 8rem;
+        margin-bottom: 30px;
+    }
+
+    .empty-state h3 {
+        color: #6c757d;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .empty-state p {
+        color: #6c757d;
+        font-size: 1.6rem;
+        margin-bottom: 40px;
+    }
+
+    @@media (max-width: 768px) {
+        .hospital-name {
+            font-size: 2rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1.2rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .table-header {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .table-stats {
+            justify-content: center;
+        }
+
+        .quick-actions-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .data-table {
+            font-size: 1rem;
+        }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 5px;
+            }
+
+        .action-buttons {
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .btn-action {
+            width: 35px;
+            height: 35px;
+            font-size: 1.2rem;
+        }
+    }
+</style>

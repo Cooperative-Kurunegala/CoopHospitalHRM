@@ -1,95 +1,315 @@
-﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.Leave>
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.ViewModels.LeaveIndexViewModel>
 
 @{
-    Layout = null;
+    ViewBag.Title = "Leave Applications";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<!-- Full Screen Container -->
+<div class="fullscreen-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">LEAVE APPLICATIONS</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Manage Employee Leave Records</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RelatedPartyID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LeaveCategoryID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LeaveTypeID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LeaveDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LeaveAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LeaveMasterID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LeaveFrom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LeaveTo)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RelatedPartyID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LeaveCategoryID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LeaveTypeID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LeaveDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LeaveAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LeaveMasterID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LeaveFrom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LeaveTo)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-            </td>
-        </tr>
+    <!-- Quick Actions -->
+    <div class="quick-actions-panel">
+        <div class="quick-actions-grid">
+            <a href="@Url.Action("Create")" class="quick-action-btn btn-primary">
+                <span class="btn-icon">➕</span>
+                CREATE NEW LEAVE
+            </a>
+            <a href="@Url.Action("Index", "LeaveTypes")" class="quick-action-btn btn-info">
+                <span class="btn-icon">📑</span>
+                MANAGE LEAVE TYPES
+            </a>
+            <a href="@Url.Action("Index", "Employees")" class="quick-action-btn btn-success">
+                <span class="btn-icon">👥</span>
+                VIEW EMPLOYEES
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>📋 ALL LEAVE APPLICATIONS</h2>
+        </div>
+
+        <div class="section-content">
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th>Leave Type</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Total Days</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.EmployeeFullName</td>
+                                <td>@item.LeaveTypeName</td>
+                                <td>@item.StartDate.ToString("MMM dd, yyyy")</td>
+                                <td>@item.EndDate.ToString("MMM dd, yyyy")</td>
+                                <td>@item.TotalDays</td>
+                                <td>
+                                    <span class="status-badge status-@((item.Status ?? "").ToLowerInvariant())">
+                                        @item.Status
+                                    </span>
+                                </td>
+                                <td class="action-buttons">
+                                    <a href="@Url.Action("Edit", new { id = item.LeaveID })" class="btn-action btn-edit" title="Edit">
+                                        ✏️
+                                    </a>
+                                    <a href="@Url.Action("Details", new { id = item.LeaveID })" class="btn-action btn-details" title="Details">
+                                        👁️
+                                    </a>
+                                    <a href="@Url.Action("Delete", new { id = item.LeaveID })" class="btn-action btn-delete" title="Delete">
+                                        🗑️
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* (styles unchanged) */
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: #f8f9fa;
     }
-    
-    </table>
-</body>
-</html>
+
+    .dashboard-header {
+        background: linear-gradient(135deg, #006400, #004d00);
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .hospital-name {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .hospital-subtitle {
+        font-size: 1.5rem;
+        opacity: 0.9;
+        margin-bottom: 20px;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.4rem;
+        background: rgba(255,255,255,0.1);
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .quick-actions-panel {
+        padding: 30px 20px;
+        background: white;
+    }
+
+    .quick-actions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .quick-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        padding: 25px 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.6rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background: #006400;
+        color: white;
+    }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+    .btn-success {
+        background: #28a745;
+        color: white;
+    }
+
+    .quick-action-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        text-decoration: none;
+        color: white;
+    }
+
+    .dashboard-section {
+        background: white;
+        margin: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+        background: #006400;
+        color: white;
+        padding: 20px;
+        border-radius: 15px 15px 0 0;
+    }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+    .section-content {
+        padding: 30px;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 1.4rem;
+    }
+
+        .data-table th,
+        .data-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .data-table th {
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .data-table tr:hover {
+            background: #f8f9fa;
+        }
+
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .status-pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .status-approved {
+        background: #d1edff;
+        color: #004085;
+    }
+
+    .status-rejected {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 1.4rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-edit {
+        background: #ffc107;
+        color: #000;
+    }
+
+    .btn-details {
+        background: #17a2b8;
+        color: white;
+    }
+
+    .btn-delete {
+        background: #dc3545;
+        color: white;
+    }
+
+    .btn-action:hover {
+        transform: scale(1.1);
+        text-decoration: none;
+    }
+
+    @@media (max-width: 768px) {
+        .hospital-name {
+            font-size: 2rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+
+        .quick-actions-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .data-table {
+            font-size: 1.2rem;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+    }
+</style>

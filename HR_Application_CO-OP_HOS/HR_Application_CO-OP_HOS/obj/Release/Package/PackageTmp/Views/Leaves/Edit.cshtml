@@ -1,121 +1,330 @@
-﻿@model HR_Application_CO_OP_HOS.Models.Leave
+﻿﻿@model HR_Application_CO_OP_HOS.Models.Leaf
 
 @{
-    Layout = null;
+    ViewBag.Title = "Edit Leave Application";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    
-    
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>Leave</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.ID)
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.RelatedPartyID, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.RelatedPartyID, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.RelatedPartyID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.LeaveCategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.LeaveCategoryID, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.LeaveCategoryID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.LeaveTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.LeaveTypeID, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.LeaveTypeID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.LeaveDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.LeaveDate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.LeaveDate, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.CreatedBy, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.LeaveAmount, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.LeaveAmount, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.LeaveAmount, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.LeaveMasterID, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.LeaveMasterID, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.LeaveMasterID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.LeaveFrom, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.LeaveFrom, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.LeaveFrom, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.LeaveTo, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.LeaveTo, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.LeaveTo, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
+<!-- Full Screen Container -->
+<div class="fullscreen-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">EDIT LEAVE APPLICATION</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Update Leave Record</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
             </div>
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
     </div>
-</body>
-</html>
+
+    <!-- Main Content -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>✏️ EDIT LEAVE APPLICATION</h2>
+        </div>
+
+        <div class="section-content">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-container">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.LeaveID)
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EmployeeID, htmlAttributes: new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.EmployeeID, ViewBag.Employees as SelectList, "-- Select Employee --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LeaveTypeID, htmlAttributes: new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.LeaveTypeID, ViewBag.LeaveTypes as SelectList, "-- Select Leave Type --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.LeaveTypeID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LeaveCategoryID, htmlAttributes: new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.LeaveCategoryID, ViewBag.LeaveCategories as SelectList, "-- Select Category --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.LeaveCategoryID, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.Status, new SelectList(new[] { "Pending", "Approved", "Rejected" }), new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                            @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TotalDays, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.TotalDays, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TotalDays, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Reason, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.Reason, new { @class = "form-control", rows = "4", placeholder = "Enter reason for leave..." })
+                        @Html.ValidationMessageFor(model => model.Reason, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group checkbox-group">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.MedicalCertificate)
+                                @Html.LabelFor(model => model.MedicalCertificate, htmlAttributes: new { @class = "control-label" })
+                                @Html.ValidationMessageFor(model => model.MedicalCertificate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CertificatePath, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.CertificatePath, new { htmlAttributes = new { @class = "form-control", placeholder = "Optional: Path to medical certificate" } })
+                            @Html.ValidationMessageFor(model => model.CertificatePath, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <span class="btn-icon">💾</span>
+                            UPDATE LEAVE APPLICATION
+                        </button>
+                        <a href="@Url.Action("Index")" class="btn btn-secondary btn-large">
+                            <span class="btn-icon">←</span>
+                            BACK TO LIST
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: #f8f9fa;
+    }
+
+    .dashboard-header {
+        background: linear-gradient(135deg, #006400, #004d00);
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .hospital-name {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .hospital-subtitle {
+        font-size: 1.5rem;
+        opacity: 0.9;
+        margin-bottom: 20px;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.4rem;
+        background: rgba(255,255,255,0.1);
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .dashboard-section {
+        background: white;
+        margin: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+        background: #006400;
+        color: white;
+        padding: 20px;
+        border-radius: 15px 15px 0 0;
+    }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .form-container {
+        max-width: 100%;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .control-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 8px;
+        font-size: 1.4rem;
+        color: #333;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.4rem;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        transition: border-color 0.3s ease;
+    }
+
+        .form-control:focus {
+            border-color: #006400;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0,100,0,0.1);
+        }
+
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        margin-top: 25px;
+    }
+
+    .checkbox {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 20px;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 2px solid #eee;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 30px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-large {
+        padding: 20px 40px;
+        font-size: 1.6rem;
+    }
+
+    .btn-primary {
+        background: #006400;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background: #004d00;
+            transform: translateY(-2px);
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+
+    .btn-icon {
+        font-size: 1.6rem;
+    }
+
+    .text-danger {
+        color: #dc3545;
+        font-size: 1.2rem;
+        margin-top: 5px;
+    }
+
+    @@media (max-width: 768px) {
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+
+        .hospital-name {
+            font-size: 2rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+    }
+</style>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            // Calculate total days when dates change
+            $('#StartDate, #EndDate').change(function () {
+                var startDate = new Date($('#StartDate').val());
+                var endDate = new Date($('#EndDate').val());
+
+                if (startDate && endDate && startDate <= endDate) {
+                    var timeDiff = endDate - startDate;
+                    var dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;
+                    $('#TotalDays').val(dayDiff);
+                }
+            });
+        });
+    </script>
+}

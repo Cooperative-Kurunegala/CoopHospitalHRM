@@ -1,0 +1,297 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.Specialization>
+
+@{
+    ViewBag.Title = "Specialization Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Index View -->
+<div class="fullscreen-container dashboard-container">
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">SPECIALIZATION MANAGEMENT</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Manage Medical Specializations</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="action-panel">
+        @Html.ActionLink("CREATE NEW SPECIALIZATION", "Create", null, new { @class = "btn btn-primary btn-lg" })
+        <div class="stats-badge">
+            <span class="badge-count">@Model.Count()</span>
+            <span class="badge-label">Total Specializations</span>
+        </div>
+    </div>
+
+    <div class="data-container">
+        <div class="table-card">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-header">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.SpecializationName)</th>
+                            <th>@Html.DisplayNameFor(model => model.Description)</th>
+                            <th>@Html.DisplayNameFor(model => model.IsActive)</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="table-row">
+                                <td>
+                                    <strong>@Html.DisplayFor(modelItem => item.SpecializationName)</strong>
+                                </td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.Description))
+                                    {
+                                        <span class="description-text">@Html.DisplayFor(modelItem => item.Description)</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">No description</span>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="status-badge @(item.IsActive ? "badge-success" : "badge-danger")">
+                                        @(item.IsActive ? "Active" : "Inactive")
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        @Html.ActionLink("EDIT", "Edit", new { id = item.SpecializationID }, new { @class = "btn btn-warning btn-sm" })
+                                        @Html.ActionLink("DETAILS", "Details", new { id = item.SpecializationID }, new { @class = "btn btn-info btn-sm" })
+                                        @Html.ActionLink("DELETE", "Delete", new { id = item.SpecializationID }, new { @class = "btn btn-danger btn-sm" })
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .fullscreen-container {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        padding: 20px;
+    }
+
+    .dashboard-header {
+        background: rgba(255,255,255,0.1);
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 30px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .hospital-name {
+        color: white;
+        font-size: 3.5rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hospital-subtitle {
+        color: white;
+        font-size: 1.8rem;
+        text-align: center;
+        opacity: 0.9;
+        margin-bottom: 20px;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0,0,0,0.3);
+        padding: 20px;
+        border-radius: 15px;
+        color: white;
+        font-size: 1.6rem;
+    }
+
+    .action-panel {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: white;
+        border-radius: 15px;
+        border: 3px solid #006400;
+    }
+
+    .btn {
+        padding: 15px 30px;
+        font-size: 1.6rem;
+        font-weight: bold;
+        border-radius: 10px;
+        text-decoration: none;
+        border: 3px solid transparent;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn-primary {
+        background: #006400;
+        color: white;
+    }
+
+    .btn-warning {
+        background: #ffc107;
+        color: black;
+    }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+    .btn-sm {
+        padding: 8px 15px;
+        font-size: 1.2rem;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .stats-badge {
+        text-align: center;
+        background: #006400;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        min-width: 150px;
+    }
+
+    .badge-count {
+        display: block;
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .badge-label {
+        font-size: 1.2rem;
+    }
+
+    .data-container {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        border: 4px solid #006400;
+    }
+
+    .table-card {
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 20px;
+    }
+
+    .table-header {
+        background: #006400;
+        color: white;
+    }
+
+        .table-header th {
+            font-size: 1.6rem;
+            font-weight: bold;
+            padding: 20px;
+            border: none;
+        }
+
+    .table-row {
+        transition: all 0.3s ease;
+        border-bottom: 2px solid #dee2e6;
+    }
+
+        .table-row:hover {
+            background: #e9ecef;
+            transform: scale(1.01);
+        }
+
+        .table-row td {
+            padding: 20px;
+            font-size: 1.4rem;
+            vertical-align: middle;
+        }
+
+    .description-text {
+        max-width: 300px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .status-badge {
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .badge-success {
+        background: #28a745;
+        color: white;
+    }
+
+    .badge-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    @@media (max-width: 768px) {
+        .hospital-name {
+            font-size: 2.5rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 15px;
+            text-align: center;
+        }
+
+        .action-panel {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+
+        .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .description-text {
+            max-width: 150px;
+        }
+    }
+</style>

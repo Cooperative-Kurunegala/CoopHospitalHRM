@@ -1,47 +1,65 @@
-﻿@model HR_Application_CO_OP_HOS.Models.Company
+﻿﻿@model HR_Application_CO_OP_HOS.Models.Company
 
 @{
     ViewBag.Title = "Delete Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="dashboard-container">
+<!-- Full Screen Container -->
+<div class="fullscreen-container">
+    <!-- Header Section -->
     <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-trash"></i> Delete Company</h1>
-            <p class="lead">Remove company from the system</p>
+        <div class="header-content">
+            <h1 class="hospital-name">DELETE COMPANY</h1>
+            <p class="hospital-subtitle">Remove Company from System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Confirm Deletion</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-8">
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-exclamation-triangle"></i> Confirm Deletion</h3>
+    <!-- Main Content -->
+    <div class="dashboard-grid">
+        <div class="dashboard-section">
+            <div class="section-header">
+                <h2>⚠️ CONFIRM DELETION</h2>
+            </div>
+            <div class="section-content">
+                <div class="alert alert-danger">
+                    <h3>Are you sure you want to delete this company?</h3>
+                    <p class="mb-0">This action cannot be undone. All associated employees and data will be permanently removed.</p>
                 </div>
-                <div class="panel-body">
-                    <div class="alert alert-danger">
-                        <h4><i class="fa fa-warning"></i> Warning!</h4>
-                        <p>You are about to permanently delete this company. This action cannot be undone.</p>
-                    </div>
 
-                    <div class="company-details">
-                        <h5>Company to be deleted:</h5>
-                        <dl class="row">
-                            <dt class="col-sm-4">Company ID:</dt>
-                            <dd class="col-sm-8">@Model.ID</dd>
+                <div class="details-container">
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <label class="detail-label">Company Name</label>
+                            <div class="detail-value">@Html.DisplayFor(model => model.CompanyName)</div>
+                        </div>
 
-                            <dt class="col-sm-4">Company Name:</dt>
-                            <dd class="col-sm-8">@Model.companyName</dd>
-                        </dl>
+                        <div class="detail-item">
+                            <label class="detail-label">Company Code</label>
+                            <div class="detail-value">@Html.DisplayFor(model => model.CompanyCode)</div>
+                        </div>
+
+                        <div class="detail-item">
+                            <label class="detail-label">Status</label>
+                            <div class="detail-value">
+                                <span class="badge @(Model.IsActive ? "badge-success" : "badge-secondary")">
+                                    @(Model.IsActive ? "Active" : "Inactive")
+                                </span>
+                            </div>
+                        </div>
                     </div>
 
                     @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
 
-                        <div class="form-actions no-color mt-4">
-                            <button type="submit" class="btn btn-danger btn-lg" id="deleteButton">
-                                <i class="fa fa-trash"></i> Confirm Delete
+                        <div class="action-buttons">
+                            <button type="submit" class="btn btn-danger btn-lg">
+                                <i class="fas fa-trash"></i> Confirm Delete
                             </button>
                             @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary btn-lg" })
                         </div>
@@ -49,200 +67,195 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-md-4">
-            <!-- Impact Analysis Panel -->
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-chain-broken"></i> Impact Analysis</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="impact-list">
-                        <h5><i class="fa fa-exclamation-circle text-danger"></i> This will affect:</h5>
-                        <ul class="list-group">
-                            <li class="list-group-item list-group-item-danger">
-                                <i class="fa fa-users"></i> All related employee records
-                            </li>
-                            <li class="list-group-item list-group-item-danger">
-                                <i class="fa fa-money"></i> Payroll and salary records
-                            </li>
-                            <li class="list-group-item list-group-item-danger">
-                                <i class="fa fa-clock-o"></i> Attendance and time records
-                            </li>
-                            <li class="list-group-item list-group-item-danger">
-                                <i class="fa fa-file-text"></i> All associated reports
-                            </li>
-                            <li class="list-group-item list-group-item-danger">
-                                <i class="fa fa-bar-chart"></i> Analytics and statistics
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation mt-4">
-                        <div class="alert alert-info">
-                            <h6><i class="fa fa-lightbulb-o"></i> Recommendation</h6>
-                            <p class="mb-0">Consider archiving instead of deleting to preserve historical data.</p>
-                        </div>
-                    </div>
-
-                    <div class="alternative-actions mt-4">
-                        <h5><i class="fa fa-random"></i> Alternative Actions</h5>
-                        <div class="btn-group-vertical w-100">
-                            @Html.ActionLink("Edit Instead", "Edit", new { id = Model.ID }, new { @class = "btn btn-outline-warning btn-sm mb-2" })
-                            @Html.ActionLink("View Details", "Details", new { id = Model.ID }, new { @class = "btn btn-outline-info btn-sm mb-2" })
-                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-outline-secondary btn-sm" })
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
-@section Scripts {
-    <script>
-        $(document).ready(function () {
-            var confirmed = false;
-
-            $('#deleteButton').click(function (e) {
-                if (!confirmed) {
-                    e.preventDefault();
-
-                    // Show confirmation dialog with more details
-                    var companyName = '@Model.companyName';
-                    var confirmationMessage =
-                        'You are about to PERMANENTLY DELETE the company:\n\n' +
-                        'Company: ' + companyName + '\n' +
-                        'ID: @Model.ID\n\n' +
-                        'This action cannot be undone!\n\n' +
-                        'Type "DELETE" to confirm:';
-
-                    var userInput = prompt(confirmationMessage);
-
-                    if (userInput === 'DELETE') {
-                        confirmed = true;
-                        showLoading('Deleting company...');
-                        $('#deleteButton').click();
-                    } else {
-                        showError('Deletion cancelled. The company was not deleted.');
-                    }
-                }
-            });
-
-            // Add confirmation safeguard
-            $('form').submit(function (e) {
-                if (!confirmed) {
-                    e.preventDefault();
-                    showError('Please confirm deletion using the button.');
-                    return false;
-                }
-            });
-
-            function showError(message) {
-                var alertHtml = '<div class="alert alert-danger alert-dismissible fade show" role="alert">' +
-                    '<i class="fa fa-exclamation-triangle"></i> ' + message +
-                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-                    '<span aria-hidden="true">&times;</span>' +
-                    '</button>' +
-                    '</div>';
-                $('.panel-body').prepend(alertHtml);
-            }
-
-            function showLoading(message) {
-                $('#deleteButton').html('<i class="fa fa-spinner fa-spin"></i> ' + message).prop('disabled', true);
-            }
-        });
-    </script>
-}
-
 <style>
-    .dashboard-container {
-        width: 100%;
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
         min-height: 100vh;
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 0;
-        margin: 0;
     }
 
-    body {
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow-x: hidden;
-    }
-
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #2c3e50 0%, #e74c3c 100%);
+    .dashboard-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
         color: white;
-        border-radius: 0;
         padding: 40px 20px;
-        margin: 0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    .panel {
+    .hospital-name {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hospital-subtitle {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        opacity: 0.9;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.6rem;
+        background: rgba(0,0,0,0.2);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .dashboard-grid {
+        padding: 40px 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .dashboard-section {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .section-header {
+        background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+        color: white;
+        padding: 25px 30px;
+        border-bottom: 3px solid #c82333;
+    }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .alert-danger {
+        background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+        color: white;
         border: none;
         border-radius: 10px;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        margin: 20px 0;
-        background: white;
+        padding: 30px;
+        margin-bottom: 40px;
+        font-size: 1.6rem;
     }
 
-    .panel-heading {
-        border-radius: 10px 10px 0 0 !important;
-        border: none;
-        padding: 20px;
-        font-weight: 600;
+    .details-container {
+        max-width: 800px;
+        margin: 0 auto;
     }
 
-    .panel-body {
+    .details-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .detail-item {
         padding: 25px;
-    }
-
-    .company-details dl {
         background: #f8f9fa;
-        padding: 20px;
-        border-radius: 8px;
-        border-left: 4px solid #e74c3c;
+        border-radius: 10px;
+        border-left: 5px solid #dc3545;
     }
 
-    .company-details dt {
+    .detail-label {
         font-weight: 600;
-        color: #6c757d;
+        color: #343a40;
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+        display: block;
     }
 
-    .company-details dd {
-        color: #495057;
+    .detail-value {
+        font-size: 1.8rem;
+        color: #dc3545;
         font-weight: 500;
     }
 
-    .impact-list .list-group-item {
+    .badge {
+        font-size: 1.4rem;
+        padding: 10px 20px;
+        border-radius: 20px;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        padding-top: 30px;
+        border-top: 2px solid #e9ecef;
+    }
+
+    .btn {
+        padding: 15px 30px;
+        font-size: 1.6rem;
+        border-radius: 10px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
         border: none;
-        border-left: 3px solid #e74c3c;
-        margin-bottom: 5px;
-        font-weight: 500;
+        transition: all 0.3s ease;
     }
 
-    .btn-group-vertical .btn {
-        text-align: left;
-        padding: 10px 15px;
+    .btn-danger {
+        background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+        color: white;
     }
 
-    #deleteButton {
-        font-weight: 600;
+    .btn-secondary {
+        background: linear-gradient(135deg, #6c757d 0%, #868e96 100%);
+        color: white;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        text-decoration: none;
     }
 
     @@media (max-width: 768px) {
-        .dashboard-header .jumbotron {
-            padding: 30px 15px;
+        .hospital-name {
+            font-size: 2.5rem;
         }
 
-        .form-actions .btn {
+        .hospital-subtitle {
+            font-size: 1.5rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 15px;
+            font-size: 1.4rem;
+        }
+
+        .section-content {
+            padding: 20px;
+        }
+
+        .details-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+
+        .btn {
             width: 100%;
-            margin-bottom: 10px;
-        }
-
-        .company-details .row {
-            margin-bottom: 10px;
+            justify-content: center;
         }
     }
 </style>

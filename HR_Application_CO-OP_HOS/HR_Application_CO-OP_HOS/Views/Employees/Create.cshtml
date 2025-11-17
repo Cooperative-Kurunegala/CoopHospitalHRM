@@ -1,0 +1,639 @@
+﻿@model HR_Application_CO_OP_HOS.Models.Employee
+
+@{
+    ViewBag.Title = "Add New Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Form Container -->
+<div class="fullscreen-container form-container">
+    <div class="form-header">
+        <h1 class="page-title">➕ ADD NEW EMPLOYEE</h1>
+        <p class="page-subtitle">Hospital Human Resources Management System</p>
+    </div>
+
+    <div class="form-content">
+        @using (Html.BeginForm("Create", "Employees", FormMethod.Post, new { @class = "employee-form", id = "createForm" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <!-- Display error messages -->
+            if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["ErrorMessage"]
+                </div>
+            }
+
+            <div class="form-card">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger validation-summary" })
+
+                <div class="form-section">
+                    <h3 class="section-title">👤 BASIC INFORMATION</h3>
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            @Html.LabelFor(m => m.EmployeeNumber, htmlAttributes: new { @class = "control-label required" })
+                            @Html.TextBoxFor(m => m.EmployeeNumber, new { @class = "form-control", required = "required", placeholder = "EMP001", maxlength = "20", id = "EmployeeNumber" })
+                            @Html.ValidationMessageFor(m => m.EmployeeNumber, "", new { @class = "text-danger" })
+                            <small class="form-text">Unique employee identifier</small>
+                        </div>
+
+                        <div class="col-md-3 form-group">
+                            @Html.LabelFor(m => m.Title, htmlAttributes: new { @class = "control-label" })
+                            @Html.DropDownListFor(m => m.Title, new SelectList(new[] { "Mr.", "Ms.", "Mrs.", "Dr.", "Prof." }, Model?.Title), "Select Title", new { @class = "form-control", id = "Title" })
+                            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-3 form-group">
+                            @Html.LabelFor(m => m.FirstName, htmlAttributes: new { @class = "control-label required" })
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", required = "required", placeholder = "John", maxlength = "50", id = "FirstName" })
+                            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-3 form-group">
+                            @Html.LabelFor(m => m.LastName, htmlAttributes: new { @class = "control-label required" })
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", required = "required", placeholder = "Doe", maxlength = "50", id = "LastName" })
+                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            @Html.LabelFor(m => m.FullName, htmlAttributes: new { @class = "control-label required" })
+                            @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", required = "required", placeholder = "John Doe", maxlength = "100", @readonly = "readonly", id = "FullName" })
+                            @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+                            <small class="form-text">Auto-generated from name fields</small>
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            @Html.LabelFor(m => m.NIC, htmlAttributes: new { @class = "control-label required" })
+                            @Html.TextBoxFor(m => m.NIC, new { @class = "form-control", required = "required", placeholder = "123456789V", maxlength = "12", id = "NIC" })
+                            @Html.ValidationMessageFor(m => m.NIC, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            @Html.LabelFor(m => m.DateOfBirth, htmlAttributes: new { @class = "control-label required" })
+                            @Html.TextBoxFor(m => m.DateOfBirth, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", required = "required", max = DateTime.Now.ToString("yyyy-MM-dd"), id = "DateOfBirth" })
+                            @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            @Html.LabelFor(m => m.Gender, htmlAttributes: new { @class = "control-label" })
+                            @Html.DropDownListFor(m => m.Gender, new SelectList(new[] { "Male", "Female", "Other" }, Model?.Gender), "Select Gender", new { @class = "form-control", id = "Gender" })
+                            @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">📞 CONTACT INFORMATION</h3>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            @Html.LabelFor(m => m.Email, htmlAttributes: new { @class = "control-label required" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", required = "required", placeholder = "john.doe@@hospital.com", maxlength = "100", id = "Email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            @Html.LabelFor(m => m.Phone, htmlAttributes: new { @class = "control-label required" })
+                            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", required = "required", placeholder = "+94 77 123 4567", maxlength = "15", id = "Phone" })
+                            @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            @Html.LabelFor(m => m.Address, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextAreaFor(m => m.Address, new { @class = "form-control", rows = "3", placeholder = "Enter complete address", maxlength = "500", id = "Address" })
+                            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            @Html.LabelFor(m => m.EmergencyContactName, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.EmergencyContactName, new { @class = "form-control", placeholder = "Emergency contact person", maxlength = "100", id = "EmergencyContactName" })
+                            @Html.ValidationMessageFor(m => m.EmergencyContactName, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            @Html.LabelFor(m => m.EmergencyContactPhone, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.EmergencyContactPhone, new { @class = "form-control", placeholder = "Emergency contact number", maxlength = "15", id = "EmergencyContactPhone" })
+                            @Html.ValidationMessageFor(m => m.EmergencyContactPhone, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            @Html.LabelFor(m => m.EmergencyContactRelation, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.EmergencyContactRelation, new { @class = "form-control", placeholder = "Relationship", maxlength = "50", id = "EmergencyContactRelation" })
+                            @Html.ValidationMessageFor(m => m.EmergencyContactRelation, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">🏥 EMPLOYMENT DETAILS</h3>
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            @Html.LabelFor(m => m.DateOfJoin, htmlAttributes: new { @class = "control-label required" })
+                            @Html.TextBoxFor(m => m.DateOfJoin, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", required = "required", max = DateTime.Now.ToString("yyyy-MM-dd"), id = "DateOfJoin" })
+                            @Html.ValidationMessageFor(m => m.DateOfJoin, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            @Html.Label("Designation", htmlAttributes: new { @class = "control-label required" })
+                            @Html.TextBoxFor(m => m.DesignationID, new { @class = "form-control", required = "required", placeholder = "e.g., Doctor, Nurse", maxlength = "50", id = "DesignationID" })
+                            @Html.ValidationMessageFor(m => m.DesignationID, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            @Html.Label("Department", htmlAttributes: new { @class = "control-label required" })
+                            @Html.TextBoxFor(m => m.DepartmentID, new { @class = "form-control", required = "required", placeholder = "e.g., Cardiology, Pediatrics", maxlength = "50", id = "DepartmentID" })
+                            @Html.ValidationMessageFor(m => m.DepartmentID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            @Html.LabelFor(m => m.BasicSalary, htmlAttributes: new { @class = "control-label required" })
+                            @Html.TextBoxFor(m => m.BasicSalary, new { @class = "form-control", type = "number", step = "0.01", min = "0", required = "required", placeholder = "0.00", id = "BasicSalary" })
+                            @Html.ValidationMessageFor(m => m.BasicSalary, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            @Html.LabelFor(m => m.EPFNumber, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.EPFNumber, new { @class = "form-control", placeholder = "EPF number", maxlength = "20", id = "EPFNumber" })
+                            @Html.ValidationMessageFor(m => m.EPFNumber, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            @Html.LabelFor(m => m.ETFNumber, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.ETFNumber, new { @class = "form-control", placeholder = "ETF number", maxlength = "20", id = "ETFNumber" })
+                            @Html.ValidationMessageFor(m => m.ETFNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <div class="checkbox-group">
+                                @Html.LabelFor(m => m.IsActive, htmlAttributes: new { @class = "control-label" })
+                                <label class="switch">
+                                    @* If you want IsActive to be checked by default, set Model.IsActive = true in controller or keep this attribute *@
+                                    @Html.CheckBoxFor(m => m.IsActive, new { id = "IsActive" })
+                                    <span class="slider round"></span>
+                                </label>
+                                @Html.ValidationMessageFor(m => m.IsActive, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">⚕️ MEDICAL INFORMATION</h3>
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            @Html.LabelFor(m => m.MedicalLicenseNo, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.MedicalLicenseNo, new { @class = "form-control", placeholder = "Medical license number", maxlength = "50", id = "MedicalLicenseNo" })
+                            @Html.ValidationMessageFor(m => m.MedicalLicenseNo, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            @Html.LabelFor(m => m.LicenseExpiryDate, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.LicenseExpiryDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", id = "LicenseExpiryDate" })
+                            @Html.ValidationMessageFor(m => m.LicenseExpiryDate, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            @Html.LabelFor(m => m.BloodGroup, htmlAttributes: new { @class = "control-label" })
+                            @Html.DropDownListFor(m => m.BloodGroup, new SelectList(new[] { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" }, Model?.BloodGroup), "Select Blood Group", new { @class = "form-control", id = "BloodGroup" })
+                            @Html.ValidationMessageFor(m => m.BloodGroup, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success btn-lg" id="submitBtn">
+                        <span class="btn-icon">💾</span> CREATE EMPLOYEE
+                    </button>
+                    @Html.ActionLink("🚫 CANCEL", "Index", null, new { @class = "btn btn-secondary btn-lg" })
+                    <button type="button" class="btn btn-info btn-lg" id="resetBtn">
+                        <span class="btn-icon">🔄</span> RESET FORM
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .form-container {
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+    }
+
+    .form-header {
+        text-align: center;
+        padding: 40px 20px;
+        background: rgba(255,255,255,0.95);
+        margin-bottom: 30px;
+        border-radius: 15px;
+        border: 3px solid #006400;
+    }
+
+    .page-title {
+        font-size: 3rem;
+        color: #006400;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .page-subtitle {
+        font-size: 1.5rem;
+        color: #666;
+    }
+
+    .form-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .form-card {
+        background: rgba(255,255,255,0.95);
+        padding: 40px;
+        border-radius: 15px;
+        border: 3px solid #006400;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .form-section {
+        margin-bottom: 40px;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border: 2px solid #006400;
+    }
+
+    .section-title {
+        color: #006400;
+        font-size: 2rem;
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #006400;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .control-label {
+        font-weight: bold;
+        color: #333;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+        .control-label.required::after {
+            content: " *";
+            color: #dc3545;
+        }
+
+    .form-control {
+        height: 50px;
+        font-size: 1.4rem;
+        border: 2px solid #006400;
+        border-radius: 8px;
+        padding: 10px 15px;
+        transition: all 0.3s ease;
+    }
+
+        .form-control:focus {
+            border-color: #004d00;
+            box-shadow: 0 0 0 0.2rem rgba(0,100,0,0.25);
+        }
+
+        /* Apply read-only style correctly */
+        .form-control[readonly] {
+            background-color: #e9ecef;
+            opacity: 1;
+        }
+
+    textarea.form-control {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .form-actions {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 2px solid #006400;
+    }
+
+    .btn {
+        padding: 15px 30px;
+        font-size: 1.6rem;
+        border-radius: 10px;
+        margin: 0 10px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .btn-success {
+        background: #006400;
+        color: white;
+    }
+
+        .btn-success:hover {
+            background: #004d00;
+            transform: translateY(-2px);
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+        .btn-info:hover {
+            background: #138496;
+            transform: translateY(-2px);
+        }
+
+    .text-danger {
+        font-size: 1.2rem;
+        margin-top: 5px;
+        display: block;
+    }
+
+    .validation-summary {
+        padding: 15px;
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .form-text {
+        font-size: 1.2rem;
+        color: #6c757d;
+        margin-top: 5px;
+        display: block;
+    }
+
+    /* Toggle Switch */
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+    }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+        }
+
+    input:checked + .slider {
+        background-color: #006400;
+    }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+    .slider.round {
+        border-radius: 34px;
+    }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+    .alert {
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        font-size: 1.4rem;
+    }
+
+    .alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+
+    @@media (max-width: 768px) {
+        .form-container {
+            padding: 10px;
+        }
+
+        .page-title {
+            font-size: 2rem;
+        }
+
+        .form-card {
+            padding: 20px;
+        }
+
+        .form-section {
+            padding: 20px;
+        }
+
+        .btn {
+            width: 100%;
+            margin: 10px 0;
+            justify-content: center;
+        }
+
+        .checkbox-group {
+            justify-content: space-between;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('createForm');
+        const titleSelect = document.getElementById('Title');
+        const firstNameInput = document.getElementById('FirstName');
+        const lastNameInput = document.getElementById('LastName');
+        const fullNameInput = document.getElementById('FullName');
+        const resetBtn = document.getElementById('resetBtn');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Auto-generate full name
+        function updateFullName() {
+            const title = titleSelect ? titleSelect.value : '';
+            const firstName = firstNameInput ? firstNameInput.value : '';
+            const lastName = lastNameInput ? lastNameInput.value : '';
+
+            let fullName = '';
+            if (title && title !== 'Select Title') fullName += title + ' ';
+            if (firstName) fullName += firstName + ' ';
+            if (lastName) fullName += lastName;
+
+            if (fullNameInput) fullNameInput.value = fullName.trim();
+        }
+
+        // Add event listeners for name fields
+        [titleSelect, firstNameInput, lastNameInput].forEach(element => {
+            if (element) {
+                element.addEventListener('input', updateFullName);
+                element.addEventListener('change', updateFullName);
+            }
+        });
+
+        // Form reset functionality
+        if (resetBtn) {
+            resetBtn.addEventListener('click', function () {
+                if (confirm('Are you sure you want to reset the form? All entered data will be lost.')) {
+                    form.reset();
+                    // Reinitialize default values
+                    const isActiveCheckbox = document.getElementById('IsActive');
+                    if (isActiveCheckbox) {
+                        // default to checked — change if you prefer default false
+                        isActiveCheckbox.checked = true;
+                    }
+
+                    // Clear validation messages (only the dynamic messages)
+                    const validationMessages = form.querySelectorAll('.text-danger');
+                    validationMessages.forEach(msg => {
+                        // Only clear validation message nodes that are emptyable (server validation spans)
+                        if (msg.previousElementSibling || msg.tagName.toLowerCase() === 'span') {
+                            msg.textContent = '';
+                        }
+                    });
+
+                    const validationSummary = form.querySelector('.validation-summary');
+                    if (validationSummary) {
+                        validationSummary.style.display = 'none';
+                    }
+
+                    updateFullName();
+                }
+            });
+        }
+
+        // Form submission handling
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                const requiredFields = form.querySelectorAll('[required]');
+                let isValid = true;
+
+                // Basic validation
+                requiredFields.forEach(field => {
+                    // skip hidden inputs
+                    if (field.type === 'hidden') return;
+                    const val = (field.value || '').toString().trim();
+                    if (!val) {
+                        isValid = false;
+                        field.style.borderColor = '#dc3545';
+                    } else {
+                        field.style.borderColor = '#006400';
+                    }
+                });
+
+                if (!isValid) {
+                    e.preventDefault();
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+
+                // NIC validation (Sri Lankan format)
+                const nicInput = document.getElementById('NIC');
+                if (nicInput && nicInput.value) {
+                    const nicRegex = /^[0-9]{9}[vVxX]?$|^[0-9]{12}$/;
+                    if (!nicRegex.test(nicInput.value.trim())) {
+                        e.preventDefault();
+                        alert('Please enter a valid NIC number (9 digits with V/X or 12 digits).');
+                        nicInput.style.borderColor = '#dc3545';
+                        return;
+                    }
+                }
+
+                // Email validation
+                const emailInput = document.getElementById('Email');
+                if (emailInput && emailInput.value) {
+                    const emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
+                    if (!emailRegex.test(emailInput.value.trim())) {
+                        e.preventDefault();
+                        alert('Please enter a valid email address.');
+                        emailInput.style.borderColor = '#dc3545';
+                        return;
+                    }
+                }
+
+                // Show loading state (only if everything validated)
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="btn-icon">⏳</span> CREATING...';
+            });
+        }
+
+        // Real-time validation
+        if (form) {
+            const inputs = form.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function () {
+                    if (this.hasAttribute('required') && !(this.value || '').toString().trim()) {
+                        this.style.borderColor = '#dc3545';
+                    } else {
+                        this.style.borderColor = '#006400';
+                    }
+                });
+
+                input.addEventListener('input', function () {
+                    this.style.borderColor = '#006400';
+                });
+            });
+        }
+
+        // Initialize full name on load
+        updateFullName();
+    });
+</script>

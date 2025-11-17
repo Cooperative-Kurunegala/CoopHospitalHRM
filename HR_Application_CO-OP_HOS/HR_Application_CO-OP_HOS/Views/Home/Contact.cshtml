@@ -1,151 +1,100 @@
 ﻿@{
     ViewBag.Title = "Contact Support";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="page-header">
-    <h1>@ViewBag.Title</h1>
-</div>
+<div class="fullscreen-container">
+    <div class="contact-header">
+        <h1>CONTACT SUPPORT</h1>
+        <p class="subtitle">We're Here to Help You</p>
+    </div>
 
-<div class="row">
-    <div class="col-md-8">
-        <h3>Get in Touch</h3>
-        <p class="lead">
-            We're here to help with any questions or support you may need regarding the HRM System.
-        </p>
+    <div class="contact-content" style="padding:40px;">
+        <div class="content-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:40px;">
+            <!-- Main Content -->
+            <div class="main-content">
+                <div class="support-section">
+                    <h2>📞 GET IN TOUCH</h2>
+                    <p class="lead">
+                        We're here to help with any questions or support you may need regarding the HRM System.
+                    </p>
 
-        <div class="well">
-            <h4>Technical Support</h4>
-            <p>
-                For technical assistance, system issues, or bug reports, please contact our support team:
-            </p>
-            <p>
-                <strong>Email:</strong> <a href="mailto:support@ehealthcare.lk">support@ehealthcare.lk</a><br>
-                <strong>Response Time:</strong> Within 24 hours during business days
-            </p>
-        </div>
+                    <div class="support-card">
+                        <h3>🔧 TECHNICAL SUPPORT</h3>
+                        <p>For technical assistance, system issues, or bug reports, please contact our support team:</p>
+                        <div class="contact-details">
+                            <div class="contact-item"><strong>Email:</strong> <a href="mailto:support@ehealthcare.lk">support@ehealthcare.lk</a></div>
+                            <div class="contact-item"><strong>Response Time:</strong> Within 24 hours during business days</div>
+                        </div>
+                    </div>
 
-        <div class="well">
-            <h4>System Administrator</h4>
-            <p>
-                For hospital-specific queries, user access, or local system configuration:
-            </p>
-            <p>
-                <strong>Contact:</strong> Please reach out to your local system administrator<br>
-                <strong>Location:</strong> 
-            </p>
-        </div>
+                    <div class="support-card">
+                        <h3>👨‍💼 SYSTEM ADMINISTRATOR</h3>
+                        <p>For hospital-specific queries, user access, or local system configuration:</p>
+                        <div class="contact-details">
+                            <div class="contact-item"><strong>Contact:</strong> Please reach out to your local system administrator</div>
+                            <div class="contact-item"><strong>Location:</strong> Hospital IT Department</div>
+                        </div>
+                    </div>
 
-        <h4>Frequently Asked Questions</h4>
-        <div class="panel-group" id="faqAccordion">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq1">
-                            How do I reset my password?
-                        </a>
-                    </h4>
-                </div>
-                <div id="faq1" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        Contact your system administrator or send a password reset request to our support team.
+                    <div class="faq-section">
+                        <h3>❓ FREQUENTLY ASKED QUESTIONS</h3>
+                        <div class="faq-list">
+                            <div class="faq-item" style="background:#f8f9fa;border:3px solid #006400;border-radius:15px;padding:25px;">
+                                <div class="faq-question"><strong>How do I reset my password?</strong></div>
+                                <div class="faq-answer">Contact your system administrator or send a password reset request to our support team.</div>
+                            </div>
+
+                            <div class="faq-item" style="background:#f8f9fa;border:3px solid #006400;border-radius:15px;padding:25px;">
+                                <div class="faq-question"><strong>Where can I find user manuals?</strong></div>
+                                <div class="faq-answer">User manuals and documentation are available through your system administrator or can be requested from support.</div>
+                            </div>
+
+                            <div class="faq-item" style="background:#f8f9fa;border:3px solid #006400;border-radius:15px;padding:25px;">
+                                <div class="faq-question"><strong>How do I report a system bug?</strong></div>
+                                <div class="faq-answer">Please email detailed information about the issue to <a href="mailto:support@ehealthcare.lk">support@ehealthcare.lk</a> including steps to reproduce the problem.</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq2">
-                            Where can I find user manuals?
-                        </a>
-                    </h4>
-                </div>
-                <div id="faq2" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        User manuals and documentation are available through your system administrator or can be requested from support.
-                    </div>
-                </div>
-            </div>
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="info-card developer-card">
+                    <h3>👨‍💻 DEVELOPER INFORMATION</h3>
+                    <h4>eHealthcare Solutions</h4>
+                    <p>Specialized Healthcare Software Solutions</p>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq3">
-                            How do I report a system bug?
-                        </a>
-                    </h4>
-                </div>
-                <div id="faq3" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        Please email detailed information about the issue to <a href="mailto:support@ehealthcare.lk">support@ehealthcare.lk</a> including steps to reproduce the problem.
+                    <div class="contact-info"><strong>Website:</strong><br><a href="https://ehealthcare.lk" target="_blank">https://ehealthcare.lk</a></div>
+                    <div class="contact-info"><strong>Support Email:</strong><br><a href="mailto:support@ehealthcare.lk">support@ehealthcare.lk</a></div>
+
+                    <div class="services-list">
+                        <strong>Services:</strong>
+                        <ul>
+                            <li>Healthcare Software Development</li>
+                            <li>HRM Systems</li>
+                            <li>Hospital Management Systems</li>
+                            <li>Custom Healthcare Solutions</li>
+                        </ul>
                     </div>
+                </div>
+
+                <div class="info-card hospital-card">
+                    <h3>🏥 HOSPITAL INFORMATION</h3>
+                    <p>This HRM System is specifically designed and implemented for:</p>
+                    <div class="hospital-details">
+                        <strong>Leading Private Hospital</strong><br>
+                        <span>Sri Lanka</span>
+                        <p>Ensuring efficient human resources management<br>and streamlined hospital operations.</p>
+                    </div>
+                </div>
+
+                <div class="emergency-alert" style="background:#fff3cd;border:4px solid #ffc107;border-radius:15px;padding:25px;text-align:center;">
+                    <h4>🚨 EMERGENCY SUPPORT</h4>
+                    <p>For critical system outages affecting hospital operations, please contact both your local system administrator and our support team immediately.</p>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="col-md-4">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Developer Information</h3>
-            </div>
-            <div class="panel-body">
-                <h4>eHealthcare Solutions</h4>
-                <p>Specialized Healthcare Software Solutions</p>
-
-                <address>
-                    <strong>Website:</strong><br>
-                    <a href="https://ehealthcare.lk" target="_blank">https://ehealthcare.lk</a>
-                </address>
-
-                <address>
-                    <strong>Support Email:</strong><br>
-                    <a href="mailto:support@ehealthcare.lk">support@ehealthcare.lk</a>
-                </address>
-
-                <address>
-                    <strong>Services:</strong><br>
-                    Healthcare Software Development<br>
-                    HRM Systems<br>
-                    Hospital Management Systems<br>
-                    Custom Healthcare Solutions
-                </address>
-            </div>
-        </div>
-
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">Hospital Information</h3>
-            </div>
-            <div class="panel-body">
-                <h4></h4>
-                <p>This HRM System is specifically designed and implemented for:</p>
-                <p>
-                    <strong></strong><br>
-                    Ensuring efficient human resources management<br>
-                    and streamlined hospital operations.
-                </p>
-            </div>
-        </div>
-
-        <div class="alert alert-warning">
-            <h4>Emergency Support</h4>
-            <p>
-                For critical system outages affecting hospital operations,
-                please contact both your local system administrator and our support team immediately.
-            </p>
-        </div>
-    </div>
 </div>
-
-<style>
-    .well {
-        background-color: #f8f9fa;
-        border-left: 4px solid #3498db;
-    }
-
-    .panel-primary .panel-heading {
-        background-color: #2c3e50;
-        border-color: #2c3e50;
-    }
-</style>

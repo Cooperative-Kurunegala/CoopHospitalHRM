@@ -14,10 +14,15 @@ namespace HR_Application_CO_OP_HOS.Models
     
     public partial class Shift
     {
-        public int ID { get; set; }
-        public Nullable<int> ShiftCode { get; set; }
-        public string ShiftDescription { get; set; }
-        public Nullable<System.DateTime> StartDateTime { get; set; }
-        public Nullable<System.DateTime> EndDateTime { get; set; }
+        public int ShiftID { get; set; }
+        public string ShiftName { get; set; }
+        public string ShiftCode { get; set; }
+        public System.TimeSpan StartTime { get; set; }
+        public System.TimeSpan EndTime { get; set; }
+        public bool IsNightShift { get; set; }
+        public bool IsOvertimeShift { get; set; }
+        public decimal ShiftAllowance { get; set; }
+        public string Description { get; set; }
+        public bool IsActive { get; set; }
     }
 }

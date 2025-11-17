@@ -1,0 +1,254 @@
+﻿@model HR_Application_CO_OP_HOS.Models.EmployeeTraining
+
+@{
+    ViewBag.Title = "Add Training Record";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Form Container -->
+<div class="fullscreen-container form-container">
+    <div class="form-header">
+        <h1 class="page-title">🎓 ADD TRAINING RECORD</h1>
+        <p class="page-subtitle">Hospital Human Resources Management System</p>
+    </div>
+
+    <div class="form-content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-card">
+                <div class="form-section">
+                    <h3 class="section-title">📋 TRAINING INFORMATION</h3>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            @Html.LabelFor(model => model.EmployeeID, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.EmployeeID, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 form-group">
+                            @Html.LabelFor(model => model.TrainingName, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.TrainingName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TrainingName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            @Html.LabelFor(model => model.TrainingProvider, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.TrainingProvider, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TrainingProvider, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 form-group">
+                            @Html.LabelFor(model => model.Duration, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Duration, new { htmlAttributes = new { @class = "form-control", placeholder = "e.g., 2 weeks, 40 hours" } })
+                            @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">📅 TRAINING SCHEDULE</h3>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 form-group">
+                            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                            @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">📊 TRAINING STATUS</h3>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.Status,
+                                new SelectList(new[] { "Pending", "In Progress", "Completed", "Cancelled" }),
+                                "Select Status",
+                                new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 form-group">
+                            @Html.LabelFor(model => model.CertificatePath, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.CertificatePath, new { htmlAttributes = new { @class = "form-control", placeholder = "Path to certificate file" } })
+                            @Html.ValidationMessageFor(model => model.CertificatePath, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control", rows = 4, placeholder = "Additional notes or comments..." })
+                            @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success btn-lg">
+                        <span class="btn-icon">💾</span> CREATE TRAINING RECORD
+                    </button>
+                    @Html.ActionLink("📋 BACK TO LIST", "Index", null, new { @class = "btn btn-secondary btn-lg" })
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .form-container {
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+    }
+
+    .form-header {
+        text-align: center;
+        padding: 40px 20px;
+        background: rgba(255,255,255,0.95);
+        margin-bottom: 30px;
+        border-radius: 15px;
+        border: 3px solid #006400;
+    }
+
+    .page-title {
+        font-size: 3rem;
+        color: #006400;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .page-subtitle {
+        font-size: 1.5rem;
+        color: #666;
+    }
+
+    .form-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .form-card {
+        background: rgba(255,255,255,0.95);
+        padding: 40px;
+        border-radius: 15px;
+        border: 3px solid #006400;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .form-section {
+        margin-bottom: 40px;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border: 2px solid #006400;
+    }
+
+    .section-title {
+        color: #006400;
+        font-size: 2rem;
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #006400;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .control-label {
+        font-weight: bold;
+        color: #333;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .form-control {
+        height: 50px;
+        font-size: 1.4rem;
+        border: 2px solid #006400;
+        border-radius: 8px;
+        padding: 10px 15px;
+    }
+
+    textarea.form-control {
+        height: auto;
+        resize: vertical;
+    }
+
+    .form-actions {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 2px solid #006400;
+    }
+
+    .btn {
+        padding: 15px 30px;
+        font-size: 1.6rem;
+        border-radius: 10px;
+        margin: 0 10px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-success {
+        background: #006400;
+        color: white;
+    }
+
+        .btn-success:hover {
+            background: #004d00;
+            transform: translateY(-2px);
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+
+    .text-danger {
+        font-size: 1.2rem;
+        margin-top: 5px;
+        color: #dc3545;
+    }
+
+    @@media (max-width: 768px) {
+        .form-container {
+            padding: 10px;
+        }
+
+        .page-title {
+            font-size: 2rem;
+        }
+
+        .form-card {
+            padding: 20px;
+        }
+
+        .form-section {
+            padding: 20px;
+        }
+
+        .btn {
+            width: 100%;
+            margin: 10px 0;
+            justify-content: center;
+        }
+    }
+</style>

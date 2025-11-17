@@ -1,0 +1,356 @@
+﻿<!-- Details.cshtml -->
+@model HR_Application_CO_OP_HOS.Models.EmployeeLoan
+
+@{
+    ViewBag.Title = "Employee Loan Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Employee Loan Details -->
+<div class="fullscreen-container dashboard-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">👁️ LOAN DETAILS</h1>
+            <p class="hospital-subtitle">View complete loan information</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Loan: @Model.LoanNumber</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Details Section -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>💰 LOAN INFORMATION</h2>
+        </div>
+        <div class="section-content">
+            <div class="details-container">
+                <div class="details-grid">
+                    <div class="detail-card">
+                        <div class="detail-icon">👤</div>
+                        <div class="detail-content">
+                            <label>Employee ID</label>
+                            <h3>@Html.DisplayFor(model => model.EmployeeID)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">📁</div>
+                        <div class="detail-content">
+                            <label>Loan Category ID</label>
+                            <h3>@Html.DisplayFor(model => model.LoanCategoryID)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">🔢</div>
+                        <div class="detail-content">
+                            <label>Loan Number</label>
+                            <h3>@Html.DisplayFor(model => model.LoanNumber)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">💰</div>
+                        <div class="detail-content">
+                            <label>Loan Amount</label>
+                            <h3>@Html.DisplayFor(model => model.LoanAmount)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">📈</div>
+                        <div class="detail-content">
+                            <label>Interest Rate</label>
+                            <h3>@Html.DisplayFor(model => model.InterestRate)%</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">💵</div>
+                        <div class="detail-content">
+                            <label>Total Amount</label>
+                            <h3>@Html.DisplayFor(model => model.TotalAmount)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">📅</div>
+                        <div class="detail-content">
+                            <label>Monthly Installment</label>
+                            <h3>@Html.DisplayFor(model => model.MonthlyInstallment)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">🔢</div>
+                        <div class="detail-content">
+                            <label>Total Installments</label>
+                            <h3>@Html.DisplayFor(model => model.TotalInstallments)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">✅</div>
+                        <div class="detail-content">
+                            <label>Paid Installments</label>
+                            <h3>@Html.DisplayFor(model => model.PaidInstallments)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">⏳</div>
+                        <div class="detail-content">
+                            <label>Remaining Installments</label>
+                            <h3>@Html.DisplayFor(model => model.RemainingInstallments)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">💰</div>
+                        <div class="detail-content">
+                            <label>Paid Amount</label>
+                            <h3>@Html.DisplayFor(model => model.PaidAmount)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">💳</div>
+                        <div class="detail-content">
+                            <label>Remaining Amount</label>
+                            <h3>@Html.DisplayFor(model => model.RemainingAmount)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">📅</div>
+                        <div class="detail-content">
+                            <label>Start Date</label>
+                            <h3>@Html.DisplayFor(model => model.StartDate)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">📅</div>
+                        <div class="detail-content">
+                            <label>End Date</label>
+                            <h3>@Html.DisplayFor(model => model.EndDate)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">📊</div>
+                        <div class="detail-content">
+                            <label>Status</label>
+                            <div class="status-badge status-@Model.Status.ToLower()">
+                                @Html.DisplayFor(model => model.Status)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-card full-width">
+                        <div class="detail-icon">📝</div>
+                        <div class="detail-content">
+                            <label>Remarks</label>
+                            <p class="detail-description">@(string.IsNullOrEmpty(Model.Remarks) ? "No remarks provided" : Model.Remarks)</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">👨‍💼</div>
+                        <div class="detail-content">
+                            <label>Approved By</label>
+                            <h3>@Html.DisplayFor(model => model.ApprovedBy)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">📅</div>
+                        <div class="detail-content">
+                            <label>Approved Date</label>
+                            <h3>@Html.DisplayFor(model => model.ApprovedDate)</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="@Url.Action("Edit", new { id = Model.LoanID })" class="quick-action-btn btn-primary">
+                        ✏️ Edit Loan
+                    </a>
+                    <a href="@Url.Action("Index")" class="quick-action-btn btn-secondary">
+                        📋 Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .dashboard-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.8rem;
+        background: rgba(0,0,0,0.2);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .dashboard-section {
+        padding: 20px;
+    }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .detail-card {
+        display: flex;
+        padding: 20px;
+        background: #f8f9fa;
+        border: 3px solid #006400;
+        border-radius: 12px;
+        align-items: center;
+    }
+
+    .full-width {
+        grid-column: 1 / -1;
+    }
+
+    .detail-icon {
+        font-size: 3rem;
+        margin-right: 15px;
+    }
+
+    .detail-content label {
+        display: block;
+        font-size: 1.4rem;
+        color: #666;
+        margin-bottom: 5px;
+    }
+
+    .detail-content h3 {
+        font-size: 1.8rem;
+        margin: 0;
+        color: #333;
+    }
+
+    .detail-description {
+        font-size: 1.5rem;
+        color: #333;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 15px;
+        font-size: 1.3rem;
+        font-weight: bold;
+    }
+
+    .status-active {
+        background: #d4edda;
+        color: #155724;
+        border: 2px solid #c3e6cb;
+    }
+
+    .status-pending {
+        background: #fff3cd;
+        color: #856404;
+        border: 2px solid #ffeaa7;
+    }
+
+    .status-completed {
+        background: #d1ecf1;
+        color: #0c5460;
+        border: 2px solid #bee5eb;
+    }
+
+    .status-default {
+        background: #e2e3e5;
+        color: #383d41;
+        border: 2px solid #d6d8db;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .quick-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.6rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-width: 180px;
+    }
+
+    .btn-primary {
+        background: #006400;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .quick-action-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @@media (max-width: 768px) {
+        body {
+            font-size: 24px;
+        }
+
+        .hospital-name {
+            font-size: 2.5rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1.5rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 15px;
+            font-size: 1.4rem;
+        }
+
+        .details-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>

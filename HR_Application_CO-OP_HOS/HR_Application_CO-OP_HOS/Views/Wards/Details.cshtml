@@ -1,0 +1,94 @@
+﻿@model HR_Application_CO_OP_HOS.Models.Ward
+
+@{
+    ViewBag.Title = "Ward Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ward Details</title>
+    <style>
+        .details-container {
+            padding: 40px;
+            background: #ffffff;
+            border-radius: 15px;
+            border: 3px solid #006400;
+            margin: 20px;
+            max-width: 800px;
+        }
+
+        .details-header {
+            background: #006400;
+            color: white;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            margin: -40px -40px 30px -40px;
+        }
+
+        .dl-horizontal dt {
+            font-weight: bold;
+            color: #006400;
+            width: 200px;
+            font-size: 1.6rem;
+        }
+
+        .dl-horizontal dd {
+            margin-left: 220px;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .action-links {
+            margin-top: 30px;
+        }
+
+        .btn-primary {
+            background: #006400;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.6rem;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            font-size: 1.4rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="details-container">
+        <div class="details-header">
+            <h2>Ward Details</h2>
+        </div>
+
+        <dl class="dl-horizontal">
+            <dt>Ward Name</dt>
+            <dd>@Html.DisplayFor(model => model.WardName)</dd>
+
+            <dt>Ward Code</dt>
+            <dd>@Html.DisplayFor(model => model.WardCode)</dd>
+
+            <dt>Location ID</dt>
+            <dd>@Html.DisplayFor(model => model.LocationID)</dd>
+
+            <dt>Active</dt>
+            <dd>@Html.DisplayFor(model => model.IsActive)</dd>
+        </dl>
+
+        <div class="action-links">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.WardID }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary", style = "background: #6c757d;" })
+        </div>
+    </div>
+</body>
+</html>

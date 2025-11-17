@@ -1,48 +1,313 @@
-﻿@model HR_Application_CO_OP_HOS.Models.LeaveType
+﻿﻿@model HR_Application_CO_OP_HOS.Models.LeaveType
 
 @{
-    Layout = null;
+    ViewBag.Title = "Delete Leave Type";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
-</head>
-<body>
-    <h3>Are you sure you want to delete this?</h3>
-    <div>
-        <h4>LeaveType</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.TypeName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.TypeName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.LeaveDuration)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.LeaveDuration)
-            </dd>
-    
-        </dl>
-    
-        @using (Html.BeginForm()) {
-            @Html.AntiForgeryToken()
-    
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
+<!-- Full Screen Container -->
+<div class="fullscreen-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">DELETE LEAVE TYPE</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Confirm Deletion</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
             </div>
-        }
+        </div>
     </div>
-</body>
-</html>
+
+    <!-- Main Content -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>🗑️ CONFIRM DELETION</h2>
+        </div>
+
+        <div class="section-content">
+            <div class="warning-container">
+                <div class="warning-header">
+                    <div class="warning-icon">⚠️</div>
+                    <h3 class="warning-title">Are you sure you want to delete this leave type?</h3>
+                    <p class="warning-subtitle">This action cannot be undone and may affect existing leave applications.</p>
+                </div>
+
+                <div class="details-container">
+                    <div class="details-grid">
+                        <div class="detail-group">
+                            <label class="detail-label">Leave Type Name:</label>
+                            <div class="detail-value">@Html.DisplayFor(model => model.LeaveTypeName)</div>
+                        </div>
+
+                        <div class="detail-group">
+                            <label class="detail-label">Leave Code:</label>
+                            <div class="detail-value">@Html.DisplayFor(model => model.LeaveCode)</div>
+                        </div>
+
+                        <div class="detail-group">
+                            <label class="detail-label">Maximum Days Per Year:</label>
+                            <div class="detail-value">@Html.DisplayFor(model => model.MaxDaysPerYear)</div>
+                        </div>
+
+                        <div class="detail-group">
+                            <label class="detail-label">Paid Leave:</label>
+                            <div class="detail-value">
+                                <span class="status-badge @(Model.IsPaid ? "status-active" : "status-inactive")">
+                                    @(Model.IsPaid ? "Yes" : "No")
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="detail-group">
+                            <label class="detail-label">Status:</label>
+                            <div class="detail-value">
+                                <span class="status-badge @(Model.IsActive ? "status-active" : "status-inactive")">
+                                    @(Model.IsActive ? "Active" : "Inactive")
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="delete-actions">
+                        <button type="submit" class="btn btn-danger btn-large">
+                            <span class="btn-icon">🗑️</span>
+                            CONFIRM DELETE
+                        </button>
+                        <a href="@Url.Action("Index")" class="btn btn-secondary btn-large">
+                            <span class="btn-icon">←</span>
+                            CANCEL
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: #f8f9fa;
+    }
+
+    .dashboard-header {
+        background: linear-gradient(135deg, #006400, #004d00);
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .hospital-name {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .hospital-subtitle {
+        font-size: 1.5rem;
+        opacity: 0.9;
+        margin-bottom: 20px;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.4rem;
+        background: rgba(255,255,255,0.1);
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .dashboard-section {
+        background: white;
+        margin: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+        background: #dc3545;
+        color: white;
+        padding: 20px;
+        border-radius: 15px 15px 0 0;
+    }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .warning-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .warning-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 30px;
+        background: #fff3cd;
+        border: 2px solid #ffc107;
+        border-radius: 10px;
+    }
+
+    .warning-icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+    }
+
+    .warning-title {
+        color: #856404;
+        font-size: 2rem;
+        margin: 0 0 15px 0;
+    }
+
+    .warning-subtitle {
+        color: #856404;
+        font-size: 1.4rem;
+        margin: 0;
+        opacity: 0.8;
+    }
+
+    .details-container {
+        margin-bottom: 40px;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+    }
+
+    .detail-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .detail-label {
+        font-weight: bold;
+        font-size: 1.4rem;
+        color: #333;
+    }
+
+    .detail-value {
+        font-size: 1.4rem;
+        color: #666;
+        padding: 12px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #dc3545;
+    }
+
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        display: inline-block;
+    }
+
+    .status-active {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .status-inactive {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .delete-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 2px solid #eee;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 30px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-large {
+        padding: 20px 40px;
+        font-size: 1.6rem;
+    }
+
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: white;
+        }
+
+    .btn-icon {
+        font-size: 1.6rem;
+    }
+
+    @@media (max-width: 768px) {
+        .details-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .delete-actions {
+            flex-direction: column;
+        }
+
+        .hospital-name {
+            font-size: 2rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+
+        .warning-title {
+            font-size: 1.6rem;
+        }
+    }
+</style>

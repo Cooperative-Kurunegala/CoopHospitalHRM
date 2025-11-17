@@ -12,7 +12,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
 {
     public class CompaniesController : Controller
     {
-        private HREntities db = new HREntities();
+        private HospitalHRDataEntities db = new HospitalHRDataEntities();
 
         // GET: Companies
         public ActionResult Index()
@@ -46,7 +46,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,companyName")] Company company)
+        public ActionResult Create([Bind(Include = "CompanyID,CompanyName,CompanyCode,IsActive")] Company company)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,companyName")] Company company)
+        public ActionResult Edit([Bind(Include = "CompanyID,CompanyName,CompanyCode,IsActive")] Company company)
         {
             if (ModelState.IsValid)
             {

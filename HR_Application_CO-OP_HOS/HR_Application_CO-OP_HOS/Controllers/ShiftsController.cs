@@ -12,7 +12,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
 {
     public class ShiftsController : Controller
     {
-        private HREntities db = new HREntities();
+        private HospitalHRDataEntities db = new HospitalHRDataEntities();
 
         // GET: Shifts
         public ActionResult Index()
@@ -46,7 +46,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ShiftCode,ShiftDescription,StartDateTime,EndDateTime")] Shift shift)
+        public ActionResult Create([Bind(Include = "ShiftID,ShiftName,ShiftCode,StartTime,EndTime,IsNightShift,IsOvertimeShift,ShiftAllowance,Description,IsActive")] Shift shift)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ShiftCode,ShiftDescription,StartDateTime,EndDateTime")] Shift shift)
+        public ActionResult Edit([Bind(Include = "ShiftID,ShiftName,ShiftCode,StartTime,EndTime,IsNightShift,IsOvertimeShift,ShiftAllowance,Description,IsActive")] Shift shift)
         {
             if (ModelState.IsValid)
             {

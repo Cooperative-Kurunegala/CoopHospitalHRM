@@ -2,292 +2,230 @@
 
 @{
     ViewBag.Title = "Delete Shift";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="dashboard-container">
-    <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-trash"></i> Delete Shift</h1>
-            <p class="lead">Remove shift from the system</p>
-        </div>
+<!-- Full Screen Delete Confirmation -->
+<div class="fullscreen-container form-container">
+    <div class="form-header">
+        <h1 class="form-title">DELETE SHIFT</h1>
+        <p class="form-subtitle">Hospital Human Resources Management System</p>
     </div>
 
-    <div class="row no-gutters">
-        <div class="col-md-8">
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-exclamation-triangle"></i> Confirm Deletion</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="alert alert-danger">
-                        <h4><i class="fa fa-warning"></i> Warning!</h4>
-                        <p>You are about to permanently delete this shift. This action cannot be undone.</p>
-                    </div>
-
-                    <div class="confirmation-section">
-                        <h4>Shift Details to be Deleted:</h4>
-                        <table class="table table-bordered">
-                            <tr>
-                                <th>Shift Code:</th>
-                                <td>@Html.DisplayFor(model => model.ShiftCode)</td>
-                            </tr>
-                            <tr>
-                                <th>Description:</th>
-                                <td>@Html.DisplayFor(model => model.ShiftDescription)</td>
-                            </tr>
-                            <tr>
-                                <th>Start Date/Time:</th>
-                                <td>@Html.DisplayFor(model => model.StartDateTime)</td>
-                            </tr>
-                            <tr>
-                                <th>End Date/Time:</th>
-                                <td>@Html.DisplayFor(model => model.EndDateTime)</td>
-                            </tr>
-                            <tr>
-                                <th>Duration:</th>
-                                <td>
-                                    @{
-                                        // Model.StartDateTime and Model.EndDateTime are nullable (DateTime?)
-                                        // Subtraction results in TimeSpan? so check HasValue before accessing .Value
-                                        string durationText;
-                                        if (Model?.StartDateTime.HasValue == true && Model?.EndDateTime.HasValue == true)
-                                        {
-                                            TimeSpan duration = Model.EndDateTime.Value - Model.StartDateTime.Value;
-
-                                            // If end is before start, make the duration positive and optionally indicate sign
-                                            bool negative = duration < TimeSpan.Zero;
-                                            if (negative)
-                                            {
-                                                duration = duration.Negate();
-                                            }
-
-                                            // Compute total hours (could be > 24) and remaining minutes
-                                            var hours = (int)duration.TotalHours;
-                                            var minutes = duration.Minutes;
-
-                                            durationText = (negative ? "-" : "") + string.Format("{0} hours {1} minutes", hours, minutes);
-                                        }
-                                        else
-                                        {
-                                            durationText = "N/A";
-                                        }
-                                    }
-                                    @durationText
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete()">
-                                <i class="fa fa-trash"></i> Confirm Delete
-                            </button>
-                            <a href="@Url.Action("Index")" class="btn btn-secondary btn-lg">
-                                <i class="fa fa-arrow-left"></i> Cancel
-                            </a>
-                            <a href="@Url.Action("Details", new { id = Model.ID })" class="btn btn-info btn-lg">
-                                <i class="fa fa-eye"></i> View Details
-                            </a>
-                        </div>
-                    }
-                </div>
-            </div>
+    <div class="form-content">
+        <div class="alert alert-danger">
+            <h3 class="alert-heading">⚠️ WARNING: DELETE CONFIRMATION</h3>
+            <p class="mb-0">You are about to permanently delete this shift. This action cannot be undone.</p>
         </div>
 
-        <div class="col-md-4">
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-info-circle"></i> Deletion Impact</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="impact-section">
-                        <h4><i class="fa fa-exclamation-circle"></i> Potential Impacts</h4>
-                        <ul>
-                            <li>This shift will be permanently removed from the system</li>
-                            <li>Any associated employee schedules may be affected</li>
-                            <li>Historical data referencing this shift will show gaps</li>
-                            <li>This action is irreversible</li>
-                        </ul>
-                    </div>
-
-                    <div class="safety-check">
-                        <h4><i class="fa fa-shield"></i> Safety Check</h4>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="confirmCheck">
-                            <label class="form-check-label" for="confirmCheck">
-                                I understand this action cannot be undone
-                            </label>
+        <div class="details-card">
+            <div class="details-section">
+                <h3 class="section-title">Shift Information</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <label class="detail-label">Shift Name:</label>
+                            <span class="detail-value">@Html.DisplayFor(model => model.ShiftName)</span>
                         </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="backupCheck">
-                            <label class="form-check-label" for="backupCheck">
-                                I have verified this shift is not in use
-                            </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <label class="detail-label">Shift Code:</label>
+                            <span class="detail-value">@Html.DisplayFor(model => model.ShiftCode)</span>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="details-section">
+                <h3 class="section-title">Timing Information</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <label class="detail-label">Start Time:</label>
+                            <span class="detail-value">@Html.DisplayFor(model => model.StartTime)</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <label class="detail-label">End Time:</label>
+                            <span class="detail-value">@Html.DisplayFor(model => model.EndTime)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-danger btn-lg" onclick="return confirm('Are you absolutely sure you want to delete this shift? This action cannot be undone.')">
+                        <span class="btn-icon">🗑️</span>
+                        CONFIRM DELETE
+                    </button>
+                    @Html.ActionLink("CANCEL", "Index", null, new { @class = "btn btn-secondary btn-lg" })
+                </div>
+            }
         </div>
     </div>
 </div>
 
-@section Scripts {
-    <script>
-        function confirmDelete() {
-            var confirmCheck = document.getElementById('confirmCheck');
-            var backupCheck = document.getElementById('backupCheck');
-
-            if (!confirmCheck.checked || !backupCheck.checked) {
-                alert('Please check all safety confirmation boxes before deleting.');
-                return false;
-            }
-
-            return confirm('Are you absolutely sure you want to delete this shift? This action cannot be undone.');
-        }
-
-        // Disable delete button until safety checks are completed
-        document.addEventListener('DOMContentLoaded', function () {
-            var deleteButton = document.querySelector('button[type="submit"]');
-            var confirmCheck = document.getElementById('confirmCheck');
-            var backupCheck = document.getElementById('backupCheck');
-
-            function updateDeleteButton() {
-                if (confirmCheck.checked && backupCheck.checked) {
-                    deleteButton.disabled = false;
-                } else {
-                    deleteButton.disabled = true;
-                }
-            }
-
-            confirmCheck.addEventListener('change', updateDeleteButton);
-            backupCheck.addEventListener('change', updateDeleteButton);
-
-            // Initially disable the button
-            deleteButton.disabled = true;
-        });
-    </script>
-}
-
 <style>
-    .dashboard-container {
-        width: 100%;
+    .fullscreen-container {
         min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 0;
-        margin: 0;
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        padding: 20px;
     }
 
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    .form-header {
+        text-align: center;
         color: white;
-        border-radius: 0;
-        padding: 30px 20px;
-        margin: 0;
+        margin-bottom: 40px;
+        padding: 40px 20px;
     }
 
-    .panel-danger .panel-heading {
-        background-color: #e74c3c !important;
-        color: white;
+    .form-title {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
-    .panel-warning .panel-heading {
-        background-color: #f39c12 !important;
-        color: white;
+    .form-subtitle {
+        font-size: 1.8rem;
+        opacity: 0.9;
     }
 
-    .alert-danger {
-        border-radius: 8px;
-        border-left: 5px solid #c0392b;
+    .form-content {
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
-    .confirmation-section {
-        margin: 25px 0;
+    .alert {
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 30px;
+        border: 3px solid #dc3545;
+        background: #f8d7da;
     }
 
-        .confirmation-section h4 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
+    .alert-heading {
+        color: #721c24;
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
 
-        .confirmation-section table {
-            font-size: 14px;
-        }
+    .details-card {
+        background: white;
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        border: 4px solid #dc3545;
+    }
 
-        .confirmation-section th {
-            background-color: #ecf0f1;
-            width: 30%;
-        }
+    .details-section {
+        margin-bottom: 40px;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        border-left: 5px solid #dc3545;
+    }
+
+    .section-title {
+        color: #dc3545;
+        font-size: 2.2rem;
+        margin-bottom: 25px;
+        font-weight: bold;
+        border-bottom: 3px solid #dc3545;
+        padding-bottom: 10px;
+    }
+
+    .detail-item {
+        margin-bottom: 20px;
+        padding: 15px;
+        background: white;
+        border-radius: 10px;
+        border: 2px solid #e9ecef;
+    }
+
+    .detail-label {
+        font-weight: bold;
+        color: #dc3545;
+        font-size: 1.6rem;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .detail-value {
+        font-size: 1.6rem;
+        color: #333;
+        display: block;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 5px;
+        border-left: 4px solid #dc3545;
+    }
 
     .form-actions {
         text-align: center;
-        margin-top: 25px;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 3px solid #dc3545;
     }
 
-        .form-actions .btn {
-            margin: 5px;
-        }
-
-    .impact-section {
-        margin-bottom: 25px;
-        padding: 15px;
-        background-color: #fff3cd;
-        border-radius: 5px;
-        border-left: 4px solid #ffc107;
+    .btn {
+        padding: 20px 40px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        border-radius: 15px;
+        margin: 0 15px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 3px solid transparent;
+        transition: all 0.3s ease;
     }
 
-        .impact-section h4 {
-            color: #856404;
-            margin-bottom: 15px;
-        }
-
-        .impact-section ul {
-            padding-left: 20px;
-            color: #856404;
-        }
-
-        .impact-section li {
-            margin-bottom: 8px;
-        }
-
-    .safety-check {
-        padding: 15px;
-        background-color: #d1ecf1;
-        border-radius: 5px;
-        border-left: 4px solid #17a2b8;
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+        border-color: #dc3545;
     }
 
-        .safety-check h4 {
-            color: #0c5460;
-            margin-bottom: 15px;
-        }
-
-    .form-check {
-        margin-bottom: 10px;
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+        border-color: #6c757d;
     }
 
-    .form-check-label {
-        margin-left: 5px;
-        color: #0c5460;
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .btn-icon {
+        font-size: 2rem;
     }
 
     @@media (max-width: 768px) {
-        .dashboard-container {
-            padding: 8px;
+        .form-title {
+            font-size: 2.5rem;
         }
 
-        .col-md-8, .col-md-4 {
-            margin-bottom: 15px;
+        .form-subtitle {
+            font-size: 1.4rem;
         }
 
-        .form-actions .btn {
+        .details-card {
+            padding: 30px 20px;
+        }
+
+        .btn {
             width: 100%;
-            margin-bottom: 10px;
+            margin: 10px 0;
+            justify-content: center;
         }
     }
 </style>
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">

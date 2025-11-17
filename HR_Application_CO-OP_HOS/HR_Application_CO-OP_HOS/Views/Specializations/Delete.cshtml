@@ -1,0 +1,259 @@
+﻿@model HR_Application_CO_OP_HOS.Models.Specialization
+
+@{
+    ViewBag.Title = "Delete Specialization";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Delete Confirmation -->
+<div class="fullscreen-container form-container">
+    <div class="form-header">
+        <h1 class="form-title">DELETE SPECIALIZATION</h1>
+        <p class="form-subtitle">Hospital Human Resources Management System</p>
+    </div>
+
+    <div class="form-content">
+        <div class="alert alert-danger">
+            <h3 class="alert-heading">⚠️ WARNING: DELETE CONFIRMATION</h3>
+            <p class="mb-0">You are about to permanently delete this specialization. This action cannot be undone and may affect employee records.</p>
+        </div>
+
+        <div class="details-card">
+            <div class="details-section">
+                <h3 class="section-title">Specialization Information</h3>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="detail-item">
+                            <label class="detail-label">Specialization Name:</label>
+                            <span class="detail-value">@Html.DisplayFor(model => model.SpecializationName)</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="detail-item">
+                            <label class="detail-label">Current Status:</label>
+                            <span class="status-badge @(Model.IsActive ? "badge-success" : "badge-danger")">
+                                @(Model.IsActive ? "Active" : "Inactive")
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details-section">
+                <h3 class="section-title">Description</h3>
+                <div class="detail-item">
+                    <label class="detail-label">Detailed Description:</label>
+                    <div class="description-content">
+                        @if (!string.IsNullOrEmpty(Model.Description))
+                        {
+                            @Html.Raw(Model.Description.Replace("\n", "<br>"))
+                        }
+                        else
+                        {
+                            <span class="text-muted">No description provided</span>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-danger btn-lg" onclick="return confirm('Are you absolutely sure you want to delete this specialization? This action cannot be undone and may affect existing employee records.')">
+                        <span class="btn-icon">🗑️</span>
+                        CONFIRM DELETE
+                    </button>
+                    @Html.ActionLink("CANCEL", "Index", null, new { @class = "btn btn-secondary btn-lg" })
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .fullscreen-container {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        padding: 20px;
+    }
+
+    .form-header {
+        text-align: center;
+        color: white;
+        margin-bottom: 40px;
+        padding: 40px 20px;
+    }
+
+    .form-title {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .form-subtitle {
+        font-size: 1.8rem;
+        opacity: 0.9;
+    }
+
+    .form-content {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .alert {
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 30px;
+        border: 3px solid #dc3545;
+        background: #f8d7da;
+    }
+
+    .alert-heading {
+        color: #721c24;
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+
+    .details-card {
+        background: white;
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        border: 4px solid #dc3545;
+    }
+
+    .details-section {
+        margin-bottom: 40px;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        border-left: 5px solid #dc3545;
+    }
+
+    .section-title {
+        color: #dc3545;
+        font-size: 2.2rem;
+        margin-bottom: 25px;
+        font-weight: bold;
+        border-bottom: 3px solid #dc3545;
+        padding-bottom: 10px;
+    }
+
+    .detail-item {
+        margin-bottom: 20px;
+    }
+
+    .detail-label {
+        font-weight: bold;
+        color: #dc3545;
+        font-size: 1.6rem;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .detail-value {
+        font-size: 1.8rem;
+        color: #333;
+        display: block;
+        padding: 15px;
+        background: white;
+        border-radius: 10px;
+        border: 2px solid #e9ecef;
+        border-left: 4px solid #dc3545;
+    }
+
+    .description-content {
+        font-size: 1.6rem;
+        line-height: 1.6;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        border: 2px solid #e9ecef;
+        min-height: 100px;
+    }
+
+    .status-badge {
+        padding: 12px 25px;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 1.4rem;
+        display: inline-block;
+        min-width: 100px;
+        text-align: center;
+    }
+
+    .badge-success {
+        background: #28a745;
+        color: white;
+    }
+
+    .badge-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+    .form-actions {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 3px solid #dc3545;
+    }
+
+    .btn {
+        padding: 20px 40px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        border-radius: 15px;
+        margin: 0 15px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 3px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+        border-color: #dc3545;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+        border-color: #6c757d;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .btn-icon {
+        font-size: 2rem;
+    }
+
+    @@media (max-width: 768px) {
+        .form-title {
+            font-size: 2.5rem;
+        }
+
+        .form-subtitle {
+            font-size: 1.4rem;
+        }
+
+        .details-card {
+            padding: 30px 20px;
+        }
+
+        .btn {
+            width: 100%;
+            margin: 10px 0;
+            justify-content: center;
+        }
+    }
+</style>

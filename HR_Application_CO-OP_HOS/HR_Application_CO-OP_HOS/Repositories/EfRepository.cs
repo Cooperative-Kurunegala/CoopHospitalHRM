@@ -9,8 +9,8 @@ namespace HR_Application_CO_OP_HOS.Repositories
 {
     public class EfRepository<T> : IRepository<T> where T : class
     {
-        protected readonly HRMSContext _context;
-        public EfRepository(HRMSContext context) { _context = context; }
+        protected readonly HospitalHRDataEntities _context;
+        public EfRepository(HospitalHRDataEntities context) { _context = context; }
         public IEnumerable<T> GetAll() => _context.Set<T>().AsNoTracking().ToList();
         public T Get(int id) => _context.Set<T>().Find(id);
         public void Add(T entity) { _context.Set<T>().Add(entity); }

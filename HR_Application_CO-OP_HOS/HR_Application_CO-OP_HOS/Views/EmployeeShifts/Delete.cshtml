@@ -1,0 +1,268 @@
+﻿﻿@model HR_Application_CO_OP_HOS.Models.EmployeeShift
+
+@{
+    ViewBag.Title = "Delete Employee Shift";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Container -->
+<div class="fullscreen-container dashboard-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">DELETE EMPLOYEE SHIFT</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Remove Shift Assignment</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>🗑️ CONFIRM DELETION</h2>
+        </div>
+        <div class="section-content">
+            <div class="delete-warning">
+                <div class="warning-icon">⚠️</div>
+                <h3>Are you sure you want to delete this shift assignment?</h3>
+                <p class="warning-text">This action cannot be undone.</p>
+            </div>
+
+            <div class="details-container">
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <label>Related Party ID:</label>
+                        <span>@Html.DisplayFor(model => model.RelatedPartyID)</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Shift Date:</label>
+                        <span>@Html.DisplayFor(model => model.ShiftDate)</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Shift ID:</label>
+                        <span>@Html.DisplayFor(model => model.ShiftID)</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Start Time:</label>
+                        <span>@Html.DisplayFor(model => model.StartTime)</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>End Time:</label>
+                        <span>@Html.DisplayFor(model => model.EndTime)</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Active Status:</label>
+                        <span>@Html.DisplayFor(model => model.IsActive)</span>
+                    </div>
+                </div>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions">
+                    <input type="submit" value="🗑️ CONFIRM DELETE" class="btn btn-danger" />
+                    @Html.ActionLink("⬅️ BACK TO LIST", "Index", null, new { @class = "btn btn-secondary" })
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+    .dashboard-header {
+        background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .hospital-name {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hospital-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        opacity: 0.9;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2rem;
+        background: rgba(255,255,255,0.1);
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .dashboard-section {
+        background: white;
+        margin: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .section-header {
+        background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+        color: white;
+        padding: 20px 30px;
+    }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .delete-warning {
+        text-align: center;
+        background: #fff3cd;
+        border: 2px solid #ffeaa7;
+        border-radius: 10px;
+        padding: 30px;
+        margin-bottom: 40px;
+    }
+
+    .warning-icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+    }
+
+    .warning-text {
+        color: #856404;
+        font-size: 1.1rem;
+        margin-top: 10px;
+    }
+
+    .details-container {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 30px;
+        margin-bottom: 40px;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .detail-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background: white;
+        border-radius: 8px;
+        border-left: 4px solid #006400;
+    }
+
+        .detail-item label {
+            font-weight: bold;
+            color: #006400;
+            margin: 0;
+        }
+
+        .detail-item span {
+            font-weight: normal;
+            color: #333;
+        }
+
+    .form-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .btn {
+        padding: 15px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        min-width: 200px;
+    }
+
+    .btn-danger {
+        background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+        color: white;
+    }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220,53,69,0.3);
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+
+    @@media (max-width: 768px) {
+        .details-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .detail-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+
+        .btn {
+            min-width: auto;
+            width: 100%;
+        }
+
+        .hospital-name {
+            font-size: 2rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1.2rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+    }
+</style>

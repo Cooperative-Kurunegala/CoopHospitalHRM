@@ -1,262 +1,205 @@
 ﻿@model HR_Application_CO_OP_HOS.Models.PayrollRecord
-
-@{
-    ViewBag.Title = "Delete Payroll Record";
-}
-
-<div class="dashboard-container">
-    <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-trash"></i> Delete Payroll Record</h1>
-            <p class="lead">Confirm deletion of payroll record</p>
-        </div>
-    </div>
-
-    <div class="row no-gutters">
-        <!-- Warning Section -->
-        <div class="col-12">
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-exclamation-triangle"></i> Delete Confirmation</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="alert alert-danger">
-                        <h4><i class="fa fa-warning"></i> Warning!</h4>
-                        <p>You are about to delete this payroll record. This action cannot be undone.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Record Details -->
-        <div class="col-md-8">
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-info-circle"></i> Record to be Deleted</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="detail-group">
-                                <label class="detail-label">Record ID:</label>
-                                <div class="detail-value">@Model.Id</div>
-                            </div>
-                            <div class="detail-group">
-                                <label class="detail-label">Employee:</label>
-                                <div class="detail-value">
-                                    @if (Model.RelatedParty != null)
-                                    {
-                                        @Model.RelatedParty.RegistrationNumber
-                                    }
-                                    else
-                                    {
-                                        <span class="text-muted">Employee @Model.EmployeeId</span>
-                                    }
-                                </div>
-                            </div>
-                            <div class="detail-group">
-                                <label class="detail-label">Pay Period:</label>
-                                <div class="detail-value">
-                                    @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.Month), @Model.Year
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="detail-group">
-                                <label class="detail-label">Basic Salary:</label>
-                                <div class="detail-value">@Model.BasicSalary.ToString("C")</div>
-                            </div>
-                            <div class="detail-group">
-                                <label class="detail-label">Total Allowances:</label>
-                                <div class="detail-value">@Model.TotalAllowances.ToString("C")</div>
-                            </div>
-                            <div class="detail-group">
-                                <label class="detail-label">Total Deductions:</label>
-                                <div class="detail-value">@Model.TotalDeductions.ToString("C")</div>
-                            </div>
-                            <div class="detail-group">
-                                <label class="detail-label">Net Salary:</label>
-                                <div class="detail-value text-success" style="font-weight: bold;">@Model.NetSalary.ToString("C")</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Audit Information -->
-                    <div class="row" style="margin-top: 20px;">
-                        <div class="col-12">
-                            <h5><i class="fa fa-history"></i> Record History</h5>
-                            <div class="audit-info">
-                                <p><strong>Created:</strong> @(Model.CreatedDate?.ToString("MMM dd, yyyy HH:mm") ?? "N/A")</p>
-                                <p><strong>Last Modified:</strong> @(Model.ModifiedDate?.ToString("MMM dd, yyyy HH:mm") ?? "N/A")</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Confirmation Section -->
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-check-circle"></i> Confirmation</h3>
-                </div>
-                <div class="panel-body">
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.HiddenFor(model => model.Id)
-
-                        <div class="form-group">
-                            <label for="confirmationText" class="control-label">
-                                Type "DELETE" to confirm:
-                            </label>
-                            <input type="text" class="form-control" id="confirmationText"
-                                   onkeyup="validateConfirmation(this.value)"
-                                   placeholder="Type DELETE here">
-                            <small class="form-text text-muted">
-                                This extra step prevents accidental deletion.
-                            </small>
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit" id="deleteButton" class="btn btn-danger btn-block btn-lg" disabled>
-                                <i class="fa fa-trash"></i> Confirm Delete
-                            </button>
-                            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default btn-block btn-lg" })
-                        </div>
-                    }
-                </div>
-            </div>
-
-            <!-- Impact Analysis -->
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-line-chart"></i> Impact Analysis</h3>
-                </div>
-                <div class="panel-body">
-                    <ul class="impact-list">
-                        <li><i class="fa fa-times text-danger"></i> Payroll record will be permanently removed</li>
-                        <li><i class="fa fa-times text-danger"></i> Financial reports will be affected</li>
-                        <li><i class="fa fa-times text-danger"></i> Employee salary history will be impacted</li>
-                        <li><i class="fa fa-times text-danger"></i> Audit trail will show this deletion</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-@section Scripts {
-    <script>
-        function validateConfirmation(text) {
-            try {
-                var deleteButton = document.getElementById('deleteButton');
-                if (text.toUpperCase() === 'DELETE') {
-                    deleteButton.disabled = false;
-                    deleteButton.classList.remove('btn-secondary');
-                    deleteButton.classList.add('btn-danger');
-                } else {
-                    deleteButton.disabled = true;
-                    deleteButton.classList.remove('btn-danger');
-                    deleteButton.classList.add('btn-secondary');
-                }
-            } catch (error) {
-                console.error('Error validating confirmation:', error);
-            }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete Payroll Record</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
         }
 
-        // Prevent accidental form submission
-        document.addEventListener('DOMContentLoaded', function() {
-            var form = document.querySelector('form');
-            form.addEventListener('submit', function(e) {
-                var confirmationText = document.getElementById('confirmationText').value;
-                if (confirmationText.toUpperCase() !== 'DELETE') {
-                    e.preventDefault();
-                    alert('Please type "DELETE" to confirm deletion.');
-                    return false;
-                }
-
-                if (!confirm('Are you absolutely sure you want to delete this payroll record? This action cannot be undone.')) {
-                    e.preventDefault();
-                    return false;
-                }
-
-                // Show loading state
-                var deleteButton = document.getElementById('deleteButton');
-                deleteButton.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Deleting...';
-                deleteButton.disabled = true;
-            });
-        });
-    </script>
-}
-
-<style>
-    .dashboard-container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 20px;
-        margin: 0;
-    }
-
-    .detail-group {
-        margin-bottom: 15px;
-        padding: 12px;
-        background: #f8f9fa;
-        border-radius: 6px;
-        border-left: 4px solid #f39c12;
-    }
-
-    .detail-label {
-        font-weight: 600;
-        color: #2c3e50;
-        display: block;
-        margin-bottom: 5px;
-        font-size: 0.9em;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    .detail-value {
-        font-size: 1.1em;
-        color: #34495e;
-        font-weight: 500;
-    }
-
-    .impact-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-        .impact-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid #ecf0f1;
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
 
-            .impact-list li:last-child {
-                border-bottom: none;
+        .header {
+            background: #dc3545;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+            .header h1 {
+                margin: 0;
+                font-size: 2rem;
             }
 
-        .impact-list i {
-            margin-right: 10px;
-            width: 20px;
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #856404;
         }
 
-    .audit-info {
-        background: #ecf0f1;
-        padding: 15px;
-        border-radius: 6px;
-        font-size: 0.9em;
-    }
+        .content {
+            padding: 30px;
+        }
 
-    .btn-block {
-        margin-bottom: 10px;
-    }
+        .dl-horizontal {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
 
-    #deleteButton:disabled {
-        background-color: #95a5a6 !important;
-        border-color: #95a5a6 !important;
-    }
-</style>
+        dt {
+            font-weight: bold;
+            color: #006400;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        dd {
+            margin: 0;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+
+        .financial-positive {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .financial-negative {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .form-actions {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Delete Payroll Record</h1>
+        </div>
+
+        <div class="warning">
+            <h3>Are you sure you want to delete this payroll record?</h3>
+        </div>
+
+        <div class="content">
+            <dl class="dl-horizontal">
+                <dt>Employee ID</dt>
+                <dd>@Html.DisplayFor(model => model.EmployeeID)</dd>
+
+                <dt>Pay Period</dt>
+                <dd>@Html.DisplayFor(model => model.PayPeriod)</dd>
+
+                <dt>Pay Date</dt>
+                <dd>@Html.DisplayFor(model => model.PayDate)</dd>
+
+                <dt>Basic Salary</dt>
+                <dd class="financial-positive">@Html.DisplayFor(model => model.BasicSalary)</dd>
+
+                <dt>Fixed Allowances</dt>
+                <dd class="financial-positive">@Html.DisplayFor(model => model.FixedAllowances)</dd>
+
+                <dt>Variable Allowances</dt>
+                <dd class="financial-positive">@Html.DisplayFor(model => model.VariableAllowances)</dd>
+
+                <dt>Overtime Pay</dt>
+                <dd class="financial-positive">@Html.DisplayFor(model => model.OvertimePay)</dd>
+
+                <dt>Shift Allowances</dt>
+                <dd class="financial-positive">@Html.DisplayFor(model => model.ShiftAllowances)</dd>
+
+                <dt>Attendance Incentive</dt>
+                <dd class="financial-positive">@Html.DisplayFor(model => model.AttendanceIncentive)</dd>
+
+                <dt>Gross Salary</dt>
+                <dd class="financial-positive">@Html.DisplayFor(model => model.GrossSalary)</dd>
+
+                <dt>EPF Employee</dt>
+                <dd class="financial-negative">@Html.DisplayFor(model => model.EPFEmployee)</dd>
+
+                <dt>EPF Employer</dt>
+                <dd class="financial-negative">@Html.DisplayFor(model => model.EPFEmployer)</dd>
+
+                <dt>ETF Employer</dt>
+                <dd class="financial-negative">@Html.DisplayFor(model => model.ETFEmployer)</dd>
+
+                <dt>Payee Tax</dt>
+                <dd class="financial-negative">@Html.DisplayFor(model => model.PayeeTax)</dd>
+
+                <dt>Loan Deductions</dt>
+                <dd class="financial-negative">@Html.DisplayFor(model => model.LoanDeductions)</dd>
+
+                <dt>Other Deductions</dt>
+                <dd class="financial-negative">@Html.DisplayFor(model => model.OtherDeductions)</dd>
+
+                <dt>Total Deductions</dt>
+                <dd class="financial-negative">@Html.DisplayFor(model => model.TotalDeductions)</dd>
+
+                <dt>Net Salary</dt>
+                <dd class="financial-positive">@Html.DisplayFor(model => model.NetSalary)</dd>
+
+                <dt>Status</dt>
+                <dd>@Html.DisplayFor(model => model.Status)</dd>
+
+                <dt>Payment Method</dt>
+                <dd>@Html.DisplayFor(model => model.PaymentMethod)</dd>
+
+                <dt>Bank Account ID</dt>
+                <dd>@Html.DisplayFor(model => model.BankAccountID)</dd>
+
+                <dt>Generated Date</dt>
+                <dd>@Html.DisplayFor(model => model.GeneratedDate)</dd>
+
+                <dt>Generated By</dt>
+                <dd>@Html.DisplayFor(model => model.GeneratedBy)</dd>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

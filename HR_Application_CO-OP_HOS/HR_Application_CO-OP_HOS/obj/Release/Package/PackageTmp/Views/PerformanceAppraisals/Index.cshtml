@@ -1,0 +1,155 @@
+﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.PerformanceAppraisal>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Performance Appraisals</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #006400;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+            .header h1 {
+                margin: 0;
+                font-size: 2.5rem;
+            }
+
+        .action-bar {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .btn-create {
+            background: #006400;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #006400;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .action-links a {
+            margin-right: 10px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        .btn-edit {
+            background: #ffc107;
+            color: black;
+        }
+
+        .btn-details {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Performance Appraisals</h1>
+        </div>
+
+        <div class="action-bar">
+            <a href="@Url.Action("Create")" class="btn-create">Create New Appraisal</a>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Appraisal Date</th>
+                        <th>Appraisal Period</th>
+                        <th>Overall Rating</th>
+                        <th>Rating Scale</th>
+                        <th>Strengths</th>
+                        <th>Areas For Improvement</th>
+                        <th>Goals</th>
+                        <th>Appraised By</th>
+                        <th>Next Appraisal Date</th>
+                        <th>Remarks</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.EmployeeID)</td>
+                            <td>@Html.DisplayFor(modelItem => item.AppraisalDate)</td>
+                            <td>@Html.DisplayFor(modelItem => item.AppraisalPeriod)</td>
+                            <td>@Html.DisplayFor(modelItem => item.OverallRating)</td>
+                            <td>@Html.DisplayFor(modelItem => item.RatingScale)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Strengths)</td>
+                            <td>@Html.DisplayFor(modelItem => item.AreasForImprovement)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Goals)</td>
+                            <td>@Html.DisplayFor(modelItem => item.AppraisedBy)</td>
+                            <td>@Html.DisplayFor(modelItem => item.NextAppraisalDate)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Remarks)</td>
+                            <td class="action-links">
+                                <a href="@Url.Action("Edit", new { id=item.AppraisalID })" class="btn-edit">Edit</a>
+                                <a href="@Url.Action("Details", new { id=item.AppraisalID })" class="btn-details">Details</a>
+                                <a href="@Url.Action("Delete", new { id=item.AppraisalID })" class="btn-delete">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

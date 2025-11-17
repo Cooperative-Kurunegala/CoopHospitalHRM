@@ -14,17 +14,9 @@ namespace HR_Application_CO_OP_HOS.Models
     
     public partial class Location
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Location()
-        {
-            this.SplashScreenItems = new HashSet<SplashScreenItem>();
-        }
-    
-        public int ID { get; set; }
+        public int LocationID { get; set; }
         public string LocationName { get; set; }
-        public Nullable<int> OrderIndex { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SplashScreenItem> SplashScreenItems { get; set; }
+        public string Address { get; set; }
+        public bool IsActive { get; set; }
     }
 }

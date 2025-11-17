@@ -2,429 +2,277 @@
 
 @{
     ViewBag.Title = "Shift Details";
-
-    // Normalize nullable datetimes and compute duration safely
-    DateTime? start = Model?.StartDateTime;
-    DateTime? end = Model?.EndDateTime;
-    TimeSpan? duration = null;
-    int hours = 0;
-    int minutes = 0;
-    double totalMinutes = 0;
-    bool hasDuration = false;
-    string startDisplay = "N/A";
-    string endDisplay = "N/A";
-    bool isOvernight = false;
-
-    if (start.HasValue && end.HasValue)
-    {
-        duration = end.Value - start.Value;
-        hours = (int)duration.Value.TotalHours;
-        minutes = duration.Value.Minutes;
-        totalMinutes = duration.Value.TotalMinutes;
-        hasDuration = true;
-        startDisplay = start.Value.ToString("f");
-        endDisplay = end.Value.ToString("f");
-        isOvernight = start.Value.Date != end.Value.Date;
-    }
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="dashboard-container">
-    <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-eye"></i> Shift Details</h1>
-            <p class="lead">View complete shift information</p>
-        </div>
+<!-- Full Screen Details View -->
+<div class="fullscreen-container form-container">
+    <div class="form-header">
+        <h1 class="form-title">SHIFT DETAILS</h1>
+        <p class="form-subtitle">Hospital Human Resources Management System</p>
     </div>
 
-    <div class="row no-gutters">
-        <div class="col-md-8">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-info-circle"></i> Shift Information</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="detail-section">
-                                <h4><i class="fa fa-barcode"></i> Basic Information</h4>
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th>Shift Code:</th>
-                                        <td>@Html.DisplayFor(model => model.ShiftCode)</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Description:</th>
-                                        <td>@Html.DisplayFor(model => model.ShiftDescription)</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Start Date/Time:</th>
-                                        <td>@(start.HasValue ? start.Value.ToString("f") : "N/A")</td>
-                                    </tr>
-                                    <tr>
-                                        <th>End Date/Time:</th>
-                                        <td>@(end.HasValue ? end.Value.ToString("f") : "N/A")</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="detail-section">
-                                <h4><i class="fa fa-calculator"></i> Shift Analysis</h4>
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th>Duration:</th>
-                                        <td>
-                                            @if (hasDuration)
-                                            {
-                                                @($"{hours} hours {minutes} minutes")
-                                            }
-                                            else
-                                            {
-                                                <text>N/A</text>
-                                            }
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Total Minutes:</th>
-                                        <td>
-                                            @if (hasDuration)
-                                            {
-                                                @($"{totalMinutes:F0} minutes")
-                                            }
-                                            else
-                                            {
-                                                <text>N/A</text>
-                                            }
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Shift Type:</th>
-                                        <td>
-                                            @if (hasDuration)
-                                            {
-                                                if (duration.Value.TotalHours <= 8)
-                                                {
-                                                    <span class="label label-success">Regular Shift</span>
-                                                }
-                                                else if (duration.Value.TotalHours <= 12)
-                                                {
-                                                    <span class="label label-warning">Extended Shift</span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="label label-danger">Long Shift</span>
-                                                }
-                                            }
-                                            else
-                                            {
-                                                <text>N/A</text>
-                                            }
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Overnight:</th>
-                                        <td>
-                                            @if (start.HasValue && end.HasValue)
-                                            {
-                                                if (isOvernight)
-                                                {
-                                                    <span class="label label-info">Overnight Shift</span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="label label-default">Single Day</span>
-                                                }
-                                            }
-                                            else
-                                            {
-                                                <text>N/A</text>
-                                            }
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
+    <div class="form-content">
+        <div class="details-card">
+            <div class="details-section">
+                <h3 class="section-title">Basic Information</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <label class="detail-label">Shift Name:</label>
+                            <span class="detail-value">@Html.DisplayFor(model => model.ShiftName)</span>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="detail-section">
-                                <h4><i class="fa fa-clock-o"></i> Timeline</h4>
-                                <div class="timeline">
-                                    <div class="timeline-item">
-                                        <div class="timeline-point start-point">
-                                            <i class="fa fa-play-circle"></i>
-                                        </div>
-                                        <div class="timeline-content">
-                                            <h5>Shift Start</h5>
-                                            <p>@(startDisplay)</p>
-                                        </div>
-                                    </div>
-                                    <div class="timeline-item">
-                                        <div class="timeline-point end-point">
-                                            <i class="fa fa-stop-circle"></i>
-                                        </div>
-                                        <div class="timeline-content">
-                                            <h5>Shift End</h5>
-                                            <p>@(endDisplay)</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <label class="detail-label">Shift Code:</label>
+                            <span class="detail-value">@Html.DisplayFor(model => model.ShiftCode)</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-cogs"></i> Actions</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="action-buttons">
-                        <a href="@Url.Action("Edit", new { id = Model.ID })" class="btn btn-warning btn-block btn-lg">
-                            <i class="fa fa-edit"></i> Edit Shift
-                        </a>
-                        <a href="@Url.Action("Index")" class="btn btn-primary btn-block btn-lg">
-                            <i class="fa fa-list"></i> Back to List
-                        </a>
-                        <a href="@Url.Action("Create")" class="btn btn-success btn-block btn-lg">
-                            <i class="fa fa-plus"></i> Create New
-                        </a>
+            <div class="details-section">
+                <h3 class="section-title">Timing Information</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <label class="detail-label">Start Time:</label>
+                            <span class="detail-value">@Html.DisplayFor(model => model.StartTime)</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <label class="detail-label">End Time:</label>
+                            <span class="detail-value">@Html.DisplayFor(model => model.EndTime)</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-line-chart"></i> Quick Stats</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="stats-section">
-                        <div class="stat-item">
-                            <i class="fa fa-clock-o stat-icon"></i>
-                            <div class="stat-info">
-                                <h4>Shift Duration</h4>
-                                <p class="stat-number">
-                                    @if (hasDuration)
-                                    {
-                                        @($"{hours} h {minutes} m")
-                                    }
-                                    else
-                                    {
-                                        <text>N/A</text>
-                                    }
-                                </p>
-                            </div>
+            <div class="details-section">
+                <h3 class="section-title">Shift Properties</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="detail-item">
+                            <label class="detail-label">Night Shift:</label>
+                            <span class="status-badge @(Model.IsNightShift ? "badge-success" : "badge-secondary")">
+                                @(Model.IsNightShift ? "Yes" : "No")
+                            </span>
                         </div>
-                        <div class="stat-item">
-                            <i class="fa fa-calendar stat-icon"></i>
-                            <div class="stat-info">
-                                <h4>Days Covered</h4>
-                                <p class="stat-number">
-                                    @if (start.HasValue && end.HasValue)
-                                    {
-                                        if (isOvernight)
-                                        {
-                                            <text>2 Days</text>
-                                        }
-                                        else
-                                        {
-                                            <text>1 Day</text>
-                                        }
-                                    }
-                                    else
-                                    {
-                                        <text>N/A</text>
-                                    }
-                                </p>
-                            </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="detail-item">
+                            <label class="detail-label">Overtime Shift:</label>
+                            <span class="status-badge @(Model.IsOvertimeShift ? "badge-warning" : "badge-secondary")">
+                                @(Model.IsOvertimeShift ? "Yes" : "No")
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="detail-item">
+                            <label class="detail-label">Status:</label>
+                            <span class="status-badge @(Model.IsActive ? "badge-success" : "badge-danger")">
+                                @(Model.IsActive ? "Active" : "Inactive")
+                            </span>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="details-section">
+                <h3 class="section-title">Additional Information</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <label class="detail-label">Shift Allowance:</label>
+                            <span class="detail-value">@Html.DisplayFor(model => model.ShiftAllowance)</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <label class="detail-label">Description:</label>
+                            <span class="detail-value">@Html.DisplayFor(model => model.Description)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                @Html.ActionLink("EDIT", "Edit", new { id = Model.ShiftID }, new { @class = "btn btn-warning btn-lg" })
+                @Html.ActionLink("BACK TO LIST", "Index", null, new { @class = "btn btn-secondary btn-lg" })
             </div>
         </div>
     </div>
 </div>
 
 <style>
-    .dashboard-container {
-        width: 100%;
+    .fullscreen-container {
         min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 0;
-        margin: 0;
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        padding: 20px;
     }
 
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    .form-header {
+        text-align: center;
         color: white;
-        border-radius: 0;
-        padding: 30px 20px;
-        margin: 0;
+        margin-bottom: 40px;
+        padding: 40px 20px;
     }
 
-    .panel-primary .panel-heading {
-        background-color: #3498db !important;
-        color: white;
-    }
-
-    .detail-section {
-        margin-bottom: 25px;
-    }
-
-        .detail-section h4 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-
-    .table th {
-        background-color: #ecf0f1;
-        width: 40%;
-    }
-
-    .label {
-        padding: 4px 8px;
-        border-radius: 3px;
-        font-size: 12px;
-    }
-
-    .label-success {
-        background-color: #27ae60;
-    }
-
-    .label-warning {
-        background-color: #f39c12;
-    }
-
-    .label-danger {
-        background-color: #e74c3c;
-    }
-
-    .label-info {
-        background-color: #3498db;
-    }
-
-    .label-default {
-        background-color: #95a5a6;
-    }
-
-    .timeline {
-        position: relative;
-        padding: 20px 0;
-    }
-
-    .timeline-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    .timeline-point {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 15px;
-        color: white;
-        font-size: 18px;
-    }
-
-    .start-point {
-        background-color: #27ae60;
-    }
-
-    .end-point {
-        background-color: #e74c3c;
-    }
-
-    .timeline-content {
-        flex: 1;
-    }
-
-        .timeline-content h5 {
-            margin: 0;
-            color: #2c3e50;
-        }
-
-        .timeline-content p {
-            margin: 5px 0 0 0;
-            color: #7f8c8d;
-        }
-
-    .action-buttons .btn {
+    .form-title {
+        font-size: 3.5rem;
+        font-weight: bold;
         margin-bottom: 10px;
-        padding: 15px;
-        font-size: 16px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
-    .stats-section {
+    .form-subtitle {
+        font-size: 1.8rem;
+        opacity: 0.9;
+    }
+
+    .form-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .details-card {
+        background: white;
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        border: 4px solid #006400;
+    }
+
+    .details-section {
+        margin-bottom: 40px;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        border-left: 5px solid #006400;
+    }
+
+    .section-title {
+        color: #006400;
+        font-size: 2.2rem;
+        margin-bottom: 25px;
+        font-weight: bold;
+        border-bottom: 3px solid #006400;
+        padding-bottom: 10px;
+    }
+
+    .detail-item {
+        margin-bottom: 20px;
+        padding: 15px;
+        background: white;
+        border-radius: 10px;
+        border: 2px solid #e9ecef;
+    }
+
+    .detail-label {
+        font-weight: bold;
+        color: #006400;
+        font-size: 1.6rem;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .detail-value {
+        font-size: 1.6rem;
+        color: #333;
+        display: block;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 5px;
+        border-left: 4px solid #006400;
+    }
+
+    .status-badge {
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 1.4rem;
+        display: inline-block;
+        min-width: 80px;
         text-align: center;
     }
 
-    .stat-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-        padding: 15px;
-        background-color: #f8f9fa;
-        border-radius: 8px;
+    .badge-success {
+        background: #28a745;
+        color: white;
     }
 
-    .stat-icon {
-        font-size: 2rem;
-        color: #3498db;
-        margin-right: 15px;
+    .badge-warning {
+        background: #ffc107;
+        color: black;
     }
 
-    .stat-info h4 {
-        margin: 0;
-        font-size: 14px;
-        color: #7f8c8d;
+    .badge-danger {
+        background: #dc3545;
+        color: white;
     }
 
-    .stat-number {
-        margin: 5px 0 0 0;
-        font-size: 1.5rem;
+    .badge-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .form-actions {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 3px solid #006400;
+    }
+
+    .btn {
+        padding: 20px 40px;
+        font-size: 1.8rem;
         font-weight: bold;
-        color: #2c3e50;
+        border-radius: 15px;
+        margin: 0 15px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 3px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .btn-warning {
+        background: #ffc107;
+        color: black;
+        border-color: #ffc107;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+        border-color: #6c757d;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
     @@media (max-width: 768px) {
-        .dashboard-container {
-            padding: 8px;
+        .form-title {
+            font-size: 2.5rem;
         }
 
-        .col-md-8, .col-md-4 {
-            margin-bottom: 15px;
+        .form-subtitle {
+            font-size: 1.4rem;
         }
 
-        .timeline-item {
-            flex-direction: column;
-            text-align: center;
+        .details-card {
+            padding: 30px 20px;
         }
 
-        .timeline-point {
-            margin-right: 0;
-            margin-bottom: 10px;
-        }
-
-        .stat-item {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .stat-icon {
-            margin-right: 0;
-            margin-bottom: 10px;
+        .btn {
+            width: 100%;
+            margin: 10px 0;
+            justify-content: center;
         }
     }
 </style>
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">

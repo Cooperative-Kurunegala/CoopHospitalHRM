@@ -1,55 +1,279 @@
-﻿@model HR_Application_CO_OP_HOS.Models.LeaveType
+﻿﻿@model HR_Application_CO_OP_HOS.Models.LeaveType
 
 @{
-    Layout = null;
+    ViewBag.Title = "Create Leave Type";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    
-    
-    @using (Html.BeginForm()) 
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>LeaveType</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.TypeName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.TypeName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.TypeName, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.LeaveDuration, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.LeaveDuration, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.LeaveDuration, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
+<!-- Full Screen Container -->
+<div class="fullscreen-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">CREATE LEAVE TYPE</h1>
+            <p class="hospital-subtitle">Hospital Human Resources Management System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Define New Leave Type</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
             </div>
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
     </div>
-</body>
-</html>
+
+    <!-- Main Content -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>📑 LEAVE TYPE CONFIGURATION</h2>
+        </div>
+
+        <div class="section-content">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-container">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LeaveTypeName, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.LeaveTypeName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter leave type name" } })
+                            @Html.ValidationMessageFor(model => model.LeaveTypeName, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LeaveCode, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.LeaveCode, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter leave code" } })
+                            @Html.ValidationMessageFor(model => model.LeaveCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MaxDaysPerYear, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.MaxDaysPerYear, new { htmlAttributes = new { @class = "form-control", type = "number", min = "0" } })
+                            @Html.ValidationMessageFor(model => model.MaxDaysPerYear, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.IsPaid, htmlAttributes: new { @class = "control-label" })
+                            <div class="checkbox-group">
+                                @Html.EditorFor(model => model.IsPaid)
+                                @Html.LabelFor(model => model.IsPaid, htmlAttributes: new { @class = "control-label" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.IsPaid, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label" })
+                        <div class="checkbox-group">
+                            @Html.EditorFor(model => model.IsActive)
+                            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <span class="btn-icon">➕</span>
+                            CREATE LEAVE TYPE
+                        </button>
+                        <a href="@Url.Action("Index")" class="btn btn-secondary btn-large">
+                            <span class="btn-icon">←</span>
+                            BACK TO LIST
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: #f8f9fa;
+    }
+
+    .dashboard-header {
+        background: linear-gradient(135deg, #006400, #004d00);
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .hospital-name {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .hospital-subtitle {
+        font-size: 1.5rem;
+        opacity: 0.9;
+        margin-bottom: 20px;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.4rem;
+        background: rgba(255,255,255,0.1);
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .dashboard-section {
+        background: white;
+        margin: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+        background: #006400;
+        color: white;
+        padding: 20px;
+        border-radius: 15px 15px 0 0;
+    }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .control-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 8px;
+        font-size: 1.4rem;
+        color: #333;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.4rem;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        transition: border-color 0.3s ease;
+    }
+
+        .form-control:focus {
+            border-color: #006400;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0,100,0,0.1);
+        }
+
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 20px;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 2px solid #eee;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 30px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-large {
+        padding: 20px 40px;
+        font-size: 1.6rem;
+    }
+
+    .btn-primary {
+        background: #006400;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background: #004d00;
+            transform: translateY(-2px);
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+
+    .btn-icon {
+        font-size: 1.6rem;
+    }
+
+    .text-danger {
+        color: #dc3545;
+        font-size: 1.2rem;
+        margin-top: 5px;
+    }
+
+    @@media (max-width: 768px) {
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+
+        .hospital-name {
+            font-size: 2rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+    }
+</style>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,179 +1,148 @@
-﻿@model HR_Application_CO_OP_HOS.Models.Allowance
+﻿﻿@model HR_Application_CO_OP_HOS.Models.Allowance
 
 @{
     ViewBag.Title = "Delete Allowance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!-- Full Screen Container -->
-<div class="dashboard-container">
-    <!-- Header Section -->
+<div class="fullscreen-container">
     <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-trash"></i> Delete Allowance</h1>
-            <p class="lead">Remove allowance record from the system</p>
+        <div class="header-content">
+            <h1 class="hospital-name">DELETE ALLOWANCE</h1>
+            <p class="hospital-subtitle">Remove Allowance from System</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Welcome, System Administrator</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
         </div>
     </div>
 
-    <div class="row no-gutters">
-        <!-- Confirmation Section -->
-        <div class="col-md-8">
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-exclamation-triangle"></i> Confirm Deletion</h3>
+    <div class="dashboard-grid">
+        <div class="row no-gutters">
+            <div class="col-md-8 dashboard-section">
+                <div class="section-header">
+                    <h2>⚠️ CONFIRM DELETION</h2>
                 </div>
-                <div class="panel-body">
-                    <div class="alert alert-danger">
-                        <h4><i class="fa fa-warning"></i> Warning: This action cannot be undone!</h4>
-                        <p>You are about to permanently delete this allowance record. This may affect:</p>
-                        <ul>
-                            <li>Payroll calculations</li>
-                            <li>Historical records</li>
-                            <li>Employee compensation reports</li>
-                            <li>Financial audits</li>
+                <div class="section-content">
+                    <div class="alert alert-danger" style="background:#f8d7da;border:3px solid #dc3545;border-radius:15px;padding:40px;">
+                        <h3 style="color:#dc3545;margin-bottom:20px;">🚨 Warning: This action cannot be undone!</h3>
+                        <p style="font-size:1.8rem;margin-bottom:30px;">
+                            You are about to delete the following allowance. This action will permanently remove the allowance from the system.
+                        </p>
+
+                        <div class="detail-card" style="background:white;border:2px solid #dc3545;border-radius:10px;padding:30px;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="detail-item">
+                                        <strong>Allowance Name:</strong>
+                                        <span>@Html.DisplayFor(model => model.AllowanceName)</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Allowance Type:</strong>
+                                        <span>@Html.DisplayFor(model => model.AllowanceType)</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Amount:</strong>
+                                        <span>@Html.DisplayFor(model => model.Amount)</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="detail-item">
+                                        <strong>Is Percentage:</strong>
+                                        <span>
+                                            @if (Model.IsPercentage)
+                                            {
+                                                <span class="badge badge-success">Yes</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-secondary">No</span>
+                                            }
+                                        </span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Is Taxable:</strong>
+                                        <span>
+                                            @if (Model.IsTaxable)
+                                            {
+                                                <span class="badge badge-warning">Taxable</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-info">Non-Taxable</span>
+                                            }
+                                        </span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Status:</strong>
+                                        <span>
+                                            @if (Model.IsActive)
+                                            {
+                                                <span class="badge badge-success">Active</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-danger">Inactive</span>
+                                            }
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @if (!string.IsNullOrEmpty(Model.Description))
+                            {
+                                <div class="detail-item full-width">
+                                    <strong>Description:</strong>
+                                    <p style="background:#f8f9fa;padding:15px;border-radius:5px;margin-top:10px;">@Model.Description</p>
+                                </div>
+                            }
+                        </div>
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions" style="margin-top:40px;">
+                                <button type="submit" class="btn btn-danger btn-lg" onclick="return confirm('Are you absolutely sure you want to delete this allowance? This action cannot be undone.')">
+                                    <span>🗑️ Confirm Delete</span>
+                                </button>
+                                <a href="@Url.Action("Index", "Allowances")" class="btn btn-secondary btn-lg">
+                                    <span>📋 Cancel</span>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 dashboard-section">
+                <div class="section-header">
+                    <h2>💡 IMPORTANT NOTES</h2>
+                </div>
+                <div class="section-content">
+                    <div class="info-card" style="background:#fff3cd;border:3px solid #ffc107;border-radius:15px;padding:30px;">
+                        <h4 style="color:#856404;">Before Deleting:</h4>
+                        <ul style="font-size:1.6rem;color:#856404;">
+                            <li>Check if this allowance is assigned to any employees</li>
+                            <li>Ensure no active payroll records use this allowance</li>
+                            <li>Consider deactivating instead of deleting</li>
+                            <li>Backup important data if needed</li>
                         </ul>
                     </div>
 
-                    <div class="confirmation-details">
-                        <h5>Allowance Details to be Deleted:</h5>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="detail-item">
-                                    <strong>Employee:</strong>
-                                    <span>@(Model.RelatedParty?.RegistrationNumber ?? "N/A") - @(Model.RelatedParty?.RelatedPartyName ?? "N/A")</span>
-                                </div>
-                                <div class="detail-item">
-                                    <strong>Allowance Type:</strong>
-                                    <span>@Html.DisplayFor(model => model.AllowanceType)</span>
-                                </div>
-                                <div class="detail-item">
-                                    <strong>Amount:</strong>
-                                    <span class="text-danger">@Html.DisplayFor(model => model.Amount)</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="detail-item">
-                                    <strong>Effective Date:</strong>
-                                    <span>@Html.DisplayFor(model => model.EffectiveDate)</span>
-                                </div>
-                                <div class="detail-item">
-                                    <strong>Created Date:</strong>
-                                    <span>@Html.DisplayFor(model => model.CreatedDate)</span>
-                                </div>
-                                <div class="detail-item">
-                                    <strong>Record ID:</strong>
-                                    <span>@Html.DisplayFor(model => model.Id)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    @using (Html.BeginForm("Delete", "Allowances", FormMethod.Post, new { id = "deleteForm" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.HiddenFor(model => model.Id)
-
-                        <div class="form-group mt-4">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="confirmDelete" required>
-                                <label class="custom-control-label text-danger" for="confirmDelete">
-                                    I understand that this action cannot be undone and I accept the consequences
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-group mt-4">
-                            <label for="deleteReason">Reason for deletion (optional):</label>
-                            <textarea class="form-control" id="deleteReason" name="deleteReason" rows="3" placeholder="Enter reason for deleting this record..."></textarea>
-                        </div>
-
-                        <div class="form-group mt-4 text-center">
-                            <button type="submit" id="deleteButton" class="btn btn-danger btn-lg" disabled>
-                                <i class="fa fa-trash"></i> Confirm Permanent Deletion
-                            </button>
-                            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary btn-lg" })
-                        </div>
-                    }
-                </div>
-            </div>
-        </div>
-
-        <!-- Impact Analysis -->
-        <div class="col-md-4">
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-bar-chart"></i> Impact Analysis</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="impact-item">
-                        <i class="fa fa-user text-primary"></i>
-                        <div>
-                            <strong>Employee Impact</strong>
-                            <div class="text-muted">
-                                This will affect 1 employee's compensation record
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="impact-item mt-3">
-                        <i class="fa fa-money text-success"></i>
-                        <div>
-                            <strong>Financial Impact</strong>
-                            <div class="text-muted">
-                                Monthly: @Model.Amount.ToString("C")<br>
-                                Annual: @((Model.Amount * 12).ToString("C"))
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="impact-item mt-3">
-                        <i class="fa fa-history text-info"></i>
-                        <div>
-                            <strong>Historical Impact</strong>
-                            <div class="text-muted">
-                                Record created: @Model.CreatedDate?.ToString("yyyy-MM-dd")<br>
-                                Active for: @((DateTime.Now - Model.EffectiveDate).Days) days
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="impact-item mt-3">
-                        <i class="fa fa-exclamation-circle text-danger"></i>
-                        <div>
-                            <strong>Risk Level</strong>
-                            <div class="text-danger">
-                                <span class="badge badge-danger">HIGH</span>
-                                <small class="d-block">This action is irreversible</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Alternative Actions -->
-            <div class="panel panel-info mt-4">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-lightbulb-o"></i> Alternative Actions</h3>
-                </div>
-                <div class="panel-body">
-                    <p class="text-muted">Consider these alternatives before deleting:</p>
-
-                    <div class="alternative-actions">
-                        <div class="alternative-item">
-                            @Html.ActionLink("Edit Instead", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning btn-block btn-sm mb-2" })
-                            <small class="text-muted">Modify the allowance instead of deleting</small>
-                        </div>
-
-                        <div class="alternative-item">
-                            @Html.ActionLink("View Details", "Details", new { id = Model.Id }, new { @class = "btn btn-info btn-block btn-sm mb-2" })
-                            <small class="text-muted">Review full details before deciding</small>
-                        </div>
-
-                        <div class="alternative-item">
-                            <button class="btn btn-outline-secondary btn-block btn-sm mb-2" onclick="history.back()">
-                                Go Back
-                            </button>
-                            <small class="text-muted">Return to previous page</small>
-                        </div>
+                    <div class="action-grid" style="margin-top:30px;">
+                        <a href="@Url.Action("Edit", "Allowances", new { id = Model.AllowanceID })" class="action-card">
+                            <div class="action-icon">✏️</div>
+                            <span>Edit Instead</span>
+                        </a>
+                        <a href="@Url.Action("Details", "Allowances", new { id = Model.AllowanceID })" class="action-card">
+                            <div class="action-icon">👁️</div>
+                            <span>View Details</span>
+                        </a>
+                        <a href="@Url.Action("Index", "EmployeeAllowances")" class="action-card">
+                            <div class="action-icon">💼</div>
+                            <span>Check Assignments</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -181,139 +150,40 @@
     </div>
 </div>
 
-@section Scripts {
-    <script>
-        $(document).ready(function () {
-            // Enable/disable delete button based on confirmation
-            $('#confirmDelete').change(function () {
-                if (this.checked) {
-                    $('#deleteButton').prop('disabled', false);
-                } else {
-                    $('#deleteButton').prop('disabled', true);
-                }
-            });
-
-            // Delete form submission
-            $('#deleteForm').submit(function (e) {
-                if (!confirm('FINAL WARNING: Are you absolutely sure you want to permanently delete this allowance record? This action cannot be undone!')) {
-                    e.preventDefault();
-                    return false;
-                }
-
-                // Show loading state
-                $('#deleteButton').html('<i class="fa fa-spinner fa-spin"></i> Deleting...').prop('disabled', true);
-            });
-
-            // Add some visual feedback
-            $('.impact-item').hover(function () {
-                $(this).css('transform', 'scale(1.02)');
-            }, function () {
-                $(this).css('transform', 'scale(1)');
-            });
-        });
-    </script>
-}
-
 <style>
-    .dashboard-container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 20px;
-        margin: 0;
-    }
-
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-        color: white;
-        border-radius: 15px;
-        padding: 30px;
-        margin-bottom: 25px;
-    }
-
-    .panel {
-        border: none;
-        border-radius: 15px;
-        box-shadow: 0 5px 25px rgba(0,0,0,0.1);
-        margin-bottom: 25px;
-        background: white;
-    }
-
-    .panel-heading {
-        border-radius: 15px 15px 0 0 !important;
-        border: none;
-        padding: 20px;
-        font-weight: 600;
-    }
-
-    .panel-body {
-        padding: 25px;
-    }
-
-    .confirmation-details {
-        background: #f8f9fa;
-        padding: 20px;
-        border-radius: 10px;
-        border: 1px solid #e9ecef;
-        margin: 20px 0;
-    }
-
     .detail-item {
-        margin-bottom: 10px;
-        padding: 8px;
-        background: white;
-        border-radius: 5px;
-    }
-
-        .detail-item strong {
-            display: block;
-            color: #2c3e50;
-            font-size: 0.9em;
-        }
-
-        .detail-item span {
-            color: #34495e;
-            font-weight: 500;
-        }
-
-    .impact-item {
+        padding: 12px 0;
+        border-bottom: 1px solid #dee2e6;
+        font-size: 1.8rem;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        padding: 15px;
-        background: #f8f9fa;
-        border-radius: 8px;
-        margin-bottom: 10px;
-        transition: all 0.3s ease;
     }
 
-        .impact-item i {
-            font-size: 1.5rem;
-            margin-right: 15px;
-            width: 30px;
-        }
-
-    .alternative-item {
-        margin-bottom: 15px;
-        padding: 10px;
-        border-left: 3px solid #3498db;
-        background: #f8f9fa;
-        border-radius: 5px;
-    }
-
-    .btn-lg {
-        padding: 15px 30px;
-        font-size: 1.1rem;
-        border-radius: 10px;
-        margin: 5px;
-    }
-
-    .custom-control-input:checked ~ .custom-control-label::before {
-        background-color: #e74c3c;
-        border-color: #e74c3c;
+    .full-width {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .badge {
-        font-size: 0.8em;
-        padding: 5px 10px;
+        font-size: 1.4rem;
+        padding: 8px 12px;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .btn-lg {
+        padding: 20px 40px;
+        font-size: 1.8rem;
+        border-radius: 10px;
+        border: none;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
     }
 </style>

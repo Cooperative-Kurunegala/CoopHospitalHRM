@@ -12,13 +12,12 @@ namespace HR_Application_CO_OP_HOS.Controllers
 {
     public class AllowancesController : Controller
     {
-        private HREntities db = new HREntities();
+        private HospitalHRDataEntities db = new HospitalHRDataEntities();
 
         // GET: Allowances
         public ActionResult Index()
         {
-            var allowances = db.Allowances.Include(a => a.RelatedParty);
-            return View(allowances.ToList());
+            return View(db.Allowances.ToList());
         }
 
         // GET: Allowances/Details/5
@@ -39,7 +38,6 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // GET: Allowances/Create
         public ActionResult Create()
         {
-            ViewBag.EmployeeId = new SelectList(db.RelatedParties, "ID", "RegistrationNumber");
             return View();
         }
 
@@ -48,7 +46,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,EmployeeId,AllowanceType,Amount,EffectiveDate,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy")] Allowance allowance)
+        public ActionResult Create([Bind(Include = "AllowanceID,AllowanceName,AllowanceType,Amount,IsPercentage,PercentageOf,IsTaxable,Description,IsActive")] Allowance allowance)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +55,6 @@ namespace HR_Application_CO_OP_HOS.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EmployeeId = new SelectList(db.RelatedParties, "ID", "RegistrationNumber", allowance.EmployeeId);
             return View(allowance);
         }
 
@@ -73,7 +70,6 @@ namespace HR_Application_CO_OP_HOS.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.EmployeeId = new SelectList(db.RelatedParties, "ID", "RegistrationNumber", allowance.EmployeeId);
             return View(allowance);
         }
 
@@ -82,7 +78,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,EmployeeId,AllowanceType,Amount,EffectiveDate,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy")] Allowance allowance)
+        public ActionResult Edit([Bind(Include = "AllowanceID,AllowanceName,AllowanceType,Amount,IsPercentage,PercentageOf,IsTaxable,Description,IsActive")] Allowance allowance)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +86,6 @@ namespace HR_Application_CO_OP_HOS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.EmployeeId = new SelectList(db.RelatedParties, "ID", "RegistrationNumber", allowance.EmployeeId);
             return View(allowance);
         }
 

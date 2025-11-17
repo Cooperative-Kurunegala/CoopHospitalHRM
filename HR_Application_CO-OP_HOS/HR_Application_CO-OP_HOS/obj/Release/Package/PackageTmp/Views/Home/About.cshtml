@@ -1,97 +1,86 @@
 ﻿@{
     ViewBag.Title = "About HRM System";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="page-header">
-    <h1>@ViewBag.Title</h1>
-</div>
-
-<div class="row">
-    <div class="col-md-8">
-        <h3>Human Resources Management System</h3>
-        <p class="lead">
-            Comprehensive HRM solution designed specifically for 
-        </p>
-
-        <h4>System Overview</h4>
-        <p>
-            This Human Resources Management (HRM) web application is built using ASP.NET MVC framework
-            and provides a complete solution for managing hospital staff, attendance, payroll, leaves,
-            and other HR operations.
-        </p>
-
-        <h4>Key Features</h4>
-        <ul>
-            <li><strong>Employee Management:</strong> Complete employee lifecycle management</li>
-            <li><strong>Attendance Tracking:</strong> Real-time attendance monitoring and reporting</li>
-            <li><strong>Payroll Processing:</strong> Automated salary calculations and disbursements</li>
-            <li><strong>Leave Management:</strong> Comprehensive leave application and approval system</li>
-            <li><strong>Shift Management:</strong> Flexible roster and shift planning</li>
-            <li><strong>Financial Integration:</strong> Bank and payment system integration</li>
-            <li><strong>Reporting & Analytics:</strong> Detailed reports and insights</li>
-        </ul>
-
-        <h4>Modules Included</h4>
-        <div class="row">
-            <div class="col-md-6">
-                <ul>
-                    <li>Admission Management</li>
-                    <li>Attendance & Time Management</li>
-                    <li>Payroll & Compensation</li>
-                    <li>Employee Management</li>
-                    <li>Leave Management</li>
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <ul>
-                    <li>Financial Management</li>
-                    <li>System Administration</li>
-                    <li>Channeling Management</li>
-                    <li>Charge Management</li>
-                    <li>Insurance Claims</li>
-                </ul>
-            </div>
-        </div>
+<div class="fullscreen-container">
+    <div class="about-header">
+        <h1>ABOUT HRM SYSTEM</h1>
+        <p class="subtitle">Hospital Human Resources Management Solution</p>
     </div>
 
-    <div class="col-md-4">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">System Information</h3>
-            </div>
-            <div class="panel-body">
-                <p><strong>Version:</strong> 1.0</p>
-                <p><strong>Framework:</strong> ASP.NET MVC</p>
-                <p><strong>Database:</strong> SQL Server</p>
-                <p><strong>Modules:</strong> 60+</p>
-                <p><strong>Last Updated:</strong> @DateTime.Now.ToString("MMMM yyyy")</p>
-            </div>
-        </div>
+    <div class="about-content" style="padding:30px;">
+        <div class="row no-gutters">
+            <div class="col-md-8">
+                <div class="info-section">
+                    <h2>🏥 System Overview</h2>
+                    <p class="lead">
+                        Comprehensive HRM solution specifically designed for Leading Private Hospital in Sri Lanka,
+                        providing complete workforce management capabilities for healthcare professionals.
+                    </p>
 
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <h3 class="panel-title">Developer</h3>
-            </div>
-            <div class="panel-body">
-                <h4>eHealthcare Solutions</h4>
-                <p>Specialized in healthcare software solutions</p>
-                <p>
-                    <strong>Website:</strong> <a href="https://ehealthcare.lk" target="_blank">https://ehealthcare.lk</a><br>
-                    <strong>Email:</strong> <a href="mailto:support@ehealthcare.lk">support@ehealthcare.lk</a>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <h3>🎯 Core Features</h3>
+                            <div class="feature-list">
+                                <div class="feature-badge">Employee Management</div>
+                                <div class="feature-badge">Attendance Tracking</div>
+                                <div class="feature-badge">Payroll Processing</div>
+                                <div class="feature-badge">Leave Management</div>
+                                <div class="feature-badge">Shift Management</div>
+                                <div class="feature-badge">Financial Integration</div>
+                            </div>
+                        </div>
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="alert alert-info">
-            <h4>For </h4>
-            <p>
-                This system is customized specifically to meet the unique requirements of ,
-                ensuring seamless integration with existing hospital workflows and processes.
-            </p>
+                        <div class="feature-item">
+                            <h3>📦 Hospital Modules</h3>
+                            <div class="modules-grid">
+                                <div class="module-column">
+                                    <ul>
+                                        <li>Employee Records Management</li>
+                                        <li>Attendance & Time Tracking</li>
+                                        <li>Payroll & Compensation</li>
+                                        <li>Leave Management System</li>
+                                        <li>Shift & Roster Management</li>
+                                    </ul>
+                                </div>
+                                <div class="module-column">
+                                    <ul>
+                                        <li>Financial Management</li>
+                                        <li>Bank & Account Management</li>
+                                        <li>Tax Management</li>
+                                        <li>System Administration</li>
+                                        <li>Reporting & Analytics</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="sidebar-info">
+                    <div class="info-card">
+                        <h3>📋 System Information</h3>
+                        <div class="info-list">
+                            <div class="info-item"><strong>Version:</strong> 2.0</div>
+                            <div class="info-item"><strong>Framework:</strong> ASP.NET MVC</div>
+                            <div class="info-item"><strong>Database:</strong> SQL Server</div>
+                            <div class="info-item"><strong>Modules:</strong> 60+</div>
+                            <div class="info-item"><strong>Last Updated:</strong> @DateTime.Now.ToString("MMMM yyyy")</div>
+                        </div>
+                    </div>
+
+                    <div class="info-card developer-info">
+                        <h3>👨‍💻 Developer</h3>
+                        <h4>eHealthcare Solutions</h4>
+                        <p>Specialized in healthcare software solutions</p>
+                        <div class="contact-info"><strong>Website:</strong> <a href="https://ehealthcare.lk" target="_blank">ehealthcare.lk</a></div>
+                        <div class="contact-info"><strong>Email:</strong> <a href="mailto:support@ehealthcare.lk">support@ehealthcare.lk</a></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

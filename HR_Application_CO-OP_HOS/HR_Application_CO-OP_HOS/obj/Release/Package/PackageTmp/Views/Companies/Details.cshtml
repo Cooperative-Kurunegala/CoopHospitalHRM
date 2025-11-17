@@ -1,114 +1,56 @@
-﻿@model HR_Application_CO_OP_HOS.Models.Company
+﻿﻿@model HR_Application_CO_OP_HOS.Models.Company
 
 @{
     ViewBag.Title = "Company Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="dashboard-container">
+<!-- Full Screen Container -->
+<div class="fullscreen-container">
+    <!-- Header Section -->
     <div class="dashboard-header">
-        <div class="jumbotron">
-            <h1><i class="fa fa-building"></i> Company Details</h1>
-            <p class="lead">View complete company information</p>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-8">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-info-circle"></i> Basic Information</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="details-section">
-                        <dl class="row details-dl">
-                            <dt class="col-sm-4">Company ID:</dt>
-                            <dd class="col-sm-8">@Model.ID</dd>
-
-                            <dt class="col-sm-4">Company Name:</dt>
-                            <dd class="col-sm-8">@Model.companyName</dd>
-                        </dl>
-                    </div>
-
-                    <div class="action-buttons mt-4">
-                        <div class="btn-group" role="group">
-                            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-warning btn-lg" })
-                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary btn-lg" })
-                            @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "btn btn-danger btn-lg" })
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <!-- Related Data Panel -->
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-line-chart"></i> Related Statistics</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="statistics-section">
-                        <div class="stat-item text-center mb-4">
-                            <div class="stat-icon">
-                                <i class="fa fa-users fa-3x text-primary"></i>
-                            </div>
-                            <h3 id="employeeCount">--</h3>
-                            <p class="text-muted">Total Employees</p>
-                        </div>
-
-                        <div class="stat-item text-center mb-4">
-                            <div class="stat-icon">
-                                <i class="fa fa-money fa-3x text-success"></i>
-                            </div>
-                            <h3 id="payrollCount">--</h3>
-                            <p class="text-muted">Payroll Records</p>
-                        </div>
-
-                        <div class="stat-item text-center">
-                            <div class="stat-icon">
-                                <i class="fa fa-clock-o fa-3x text-warning"></i>
-                            </div>
-                            <h3 id="attendanceCount">--</h3>
-                            <p class="text-muted">Attendance Records</p>
-                        </div>
-                    </div>
-
-                    <div class="quick-links mt-4">
-                        <h5><i class="fa fa-external-link"></i> Quick Links</h5>
-                        <div class="list-group">
-                            <a href="@Url.Action("Index", "RelatedParties", new { companyId = Model.ID })" class="list-group-item list-group-item-action">
-                                <i class="fa fa-users text-primary"></i> View Employees
-                            </a>
-                            <a href="@Url.Action("Index", "PayrollRecords", new { companyId = Model.ID })" class="list-group-item list-group-item-action">
-                                <i class="fa fa-money text-success"></i> View Payroll
-                            </a>
-                            <a href="@Url.Action("Index", "AttendanceRecords", new { companyId = Model.ID })" class="list-group-item list-group-item-action">
-                                <i class="fa fa-clock-o text-warning"></i> View Attendance
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <div class="header-content">
+            <h1 class="hospital-name">COMPANY DETAILS</h1>
+            <p class="hospital-subtitle">View Company Information</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Company: @Model.CompanyName</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
             </div>
         </div>
     </div>
 
-    <!-- Additional Information Section -->
-    <div class="row mt-4">
-        <div class="col-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-history"></i> System Information</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h5>Creation Information</h5>
-                            <p class="text-muted">This company record was created in the system.</p>
+    <!-- Main Content -->
+    <div class="dashboard-grid">
+        <div class="dashboard-section">
+            <div class="section-header">
+                <h2>🏢 COMPANY INFORMATION</h2>
+            </div>
+            <div class="section-content">
+                <div class="details-container">
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <label class="detail-label">Company Name</label>
+                            <div class="detail-value">@Html.DisplayFor(model => model.CompanyName)</div>
                         </div>
-                        <div class="col-md-6">
-                            <h5>Last Updated</h5>
-                            <p class="text-muted">Record maintained in the central database.</p>
+
+                        <div class="detail-item">
+                            <label class="detail-label">Company Code</label>
+                            <div class="detail-value">@Html.DisplayFor(model => model.CompanyCode)</div>
                         </div>
+
+                        <div class="detail-item">
+                            <label class="detail-label">Status</label>
+                            <div class="detail-value">
+                                <span class="badge @(Model.IsActive ? "badge-success" : "badge-secondary")">
+                                    @(Model.IsActive ? "Active" : "Inactive")
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.CompanyID }, new { @class = "btn btn-warning btn-lg" })
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary btn-lg" })
                     </div>
                 </div>
             </div>
@@ -116,131 +58,182 @@
     </div>
 </div>
 
-@section Scripts {
-    <script>
-        $(document).ready(function () {
-            // Load statistics (simulated)
-            loadStatistics();
-
-            function loadStatistics() {
-                // Simulate API call to get statistics
-                setTimeout(function () {
-                    $('#employeeCount').text('0');
-                    $('#payrollCount').text('0');
-                    $('#attendanceCount').text('0');
-                }, 1000);
-            }
-
-            // Print functionality
-            $('.btn-print').click(function () {
-                window.print();
-            });
-        });
-    </script>
-}
-
 <style>
-    .dashboard-container {
-        width: 100%;
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
         min-height: 100vh;
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 0;
-        margin: 0;
     }
 
-    body {
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow-x: hidden;
-    }
-
-    .dashboard-header .jumbotron {
-        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    .dashboard-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
         color: white;
-        border-radius: 0;
         padding: 40px 20px;
-        margin: 0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    .panel {
-        border: none;
+    .hospital-name {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hospital-subtitle {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        opacity: 0.9;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.6rem;
+        background: rgba(0,0,0,0.2);
+        padding: 20px;
         border-radius: 10px;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        margin: 20px 0;
+        margin-top: 20px;
+    }
+
+    .dashboard-grid {
+        padding: 40px 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .dashboard-section {
         background: white;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        overflow: hidden;
     }
 
-    .panel-heading {
-        border-radius: 10px 10px 0 0 !important;
-        border: none;
-        padding: 20px;
-        font-weight: 600;
+    .section-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+        padding: 25px 30px;
+        border-bottom: 3px solid #004d00;
     }
 
-    .panel-body {
-        padding: 25px;
-    }
-
-    .details-dl dt {
-        font-weight: 600;
-        color: #6c757d;
-        padding: 8px 0;
-    }
-
-    .details-dl dd {
-        color: #495057;
-        padding: 8px 0;
-        border-bottom: 1px solid #e9ecef;
-    }
-
-    .stat-item {
-        padding: 20px;
-        border: 1px solid #e9ecef;
-        border-radius: 8px;
-        background: #f8f9fa;
-    }
-
-        .stat-item h3 {
-            font-size: 2rem;
+        .section-header h2 {
+            margin: 0;
+            font-size: 2.2rem;
             font-weight: bold;
-            margin: 10px 0;
-            color: #2c3e50;
         }
 
-    .quick-links .list-group-item {
+    .section-content {
+        padding: 40px;
+    }
+
+    .details-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .detail-item {
+        padding: 25px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border-left: 5px solid #006400;
+    }
+
+    .detail-label {
+        font-weight: 600;
+        color: #343a40;
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .detail-value {
+        font-size: 1.8rem;
+        color: #006400;
+        font-weight: 500;
+    }
+
+    .badge {
+        font-size: 1.4rem;
+        padding: 10px 20px;
+        border-radius: 20px;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        padding-top: 30px;
+        border-top: 2px solid #e9ecef;
+    }
+
+    .btn {
+        padding: 15px 30px;
+        font-size: 1.6rem;
+        border-radius: 10px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
         border: none;
-        border-left: 3px solid transparent;
-        margin-bottom: 5px;
         transition: all 0.3s ease;
     }
 
-        .quick-links .list-group-item:hover {
-            border-left-color: #3498db;
-            background-color: #f8f9fa;
-        }
+    .btn-warning {
+        background: linear-gradient(135deg, #ffc107 0%, #ffdb70 100%);
+        color: #212529;
+    }
 
-    .btn-group .btn {
-        margin: 0 5px;
+    .btn-secondary {
+        background: linear-gradient(135deg, #6c757d 0%, #868e96 100%);
+        color: white;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        text-decoration: none;
     }
 
     @@media (max-width: 768px) {
-        .dashboard-header .jumbotron {
-            padding: 30px 15px;
+        .hospital-name {
+            font-size: 2.5rem;
         }
 
-        .btn-group {
-            display: flex;
+        .hospital-subtitle {
+            font-size: 1.5rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 15px;
+            font-size: 1.4rem;
+        }
+
+        .section-content {
+            padding: 20px;
+        }
+
+        .details-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .action-buttons {
             flex-direction: column;
         }
 
-            .btn-group .btn {
-                margin: 5px 0;
-                width: 100%;
-            }
-
-        .details-dl .row {
-            margin-bottom: 10px;
+        .btn {
+            width: 100%;
+            justify-content: center;
         }
     }
 </style>

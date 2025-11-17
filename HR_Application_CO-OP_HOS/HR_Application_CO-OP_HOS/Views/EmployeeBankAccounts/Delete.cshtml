@@ -1,0 +1,304 @@
+﻿<!-- Delete.cshtml -->
+@model HR_Application_CO_OP_HOS.Models.EmployeeBankAccount
+
+@{
+    ViewBag.Title = "Delete Employee Bank Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Delete Employee Bank Account -->
+<div class="fullscreen-container dashboard-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">🗑️ DELETE BANK ACCOUNT</h1>
+            <p class="hospital-subtitle">Remove bank account from the system</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Delete Confirmation</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Section -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>⚠️ DELETE CONFIRMATION</h2>
+        </div>
+        <div class="section-content">
+            <div class="alert alert-warning">
+                <div class="alert-icon">⚠️</div>
+                <div class="alert-content">
+                    <h3>Are you sure you want to delete this bank account?</h3>
+                    <p>This action cannot be undone. Payroll transactions linked to this account will need to be updated.</p>
+                </div>
+            </div>
+
+            <div class="details-container">
+                <div class="details-grid">
+                    <div class="detail-card">
+                        <div class="detail-icon">👤</div>
+                        <div class="detail-content">
+                            <label>Employee ID</label>
+                            <h3>@Html.DisplayFor(model => model.EmployeeID)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">🏦</div>
+                        <div class="detail-content">
+                            <label>Bank ID</label>
+                            <h3>@Html.DisplayFor(model => model.BankID)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">🏢</div>
+                        <div class="detail-content">
+                            <label>Branch ID</label>
+                            <h3>@Html.DisplayFor(model => model.BranchID)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">🔢</div>
+                        <div class="detail-content">
+                            <label>Account Number</label>
+                            <h3>@Html.DisplayFor(model => model.AccountNumber)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">📛</div>
+                        <div class="detail-content">
+                            <label>Account Holder Name</label>
+                            <h3>@Html.DisplayFor(model => model.AccountHolderName)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">⭐</div>
+                        <div class="detail-content">
+                            <label>Primary Account</label>
+                            <div class="status-badge @(Model.IsPrimary ? "status-active" : "status-inactive")">
+                                @(Model.IsPrimary ? "Yes" : "No")
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">✅</div>
+                        <div class="detail-content">
+                            <label>Account Status</label>
+                            <div class="status-badge @(Model.IsActive ? "status-active" : "status-inactive")">
+                                @(Model.IsActive ? "Active" : "Inactive")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions">
+                        <button type="submit" class="quick-action-btn btn-danger">
+                            🗑️ Confirm Delete
+                        </button>
+                        <a href="@Url.Action("Index")" class="quick-action-btn btn-secondary">
+                            📋 Back to List
+                        </a>
+                        <a href="@Url.Action("Details", new { id = Model.AccountID })" class="quick-action-btn btn-info">
+                            👁️ View Details
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .dashboard-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.8rem;
+        background: rgba(0,0,0,0.2);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .dashboard-section {
+        padding: 20px;
+    }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .alert {
+        display: flex;
+        padding: 30px;
+        background: #fff3cd;
+        border: 3px solid #ffc107;
+        border-radius: 15px;
+        margin-bottom: 40px;
+    }
+
+    .alert-icon {
+        font-size: 4rem;
+        margin-right: 20px;
+    }
+
+    .alert-content h3 {
+        color: #856404;
+        margin-bottom: 10px;
+        font-size: 2.2rem;
+    }
+
+    .alert-content p {
+        color: #856404;
+        font-size: 1.6rem;
+        margin: 0;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .detail-card {
+        display: flex;
+        padding: 30px;
+        background: #f8f9fa;
+        border: 3px solid #006400;
+        border-radius: 15px;
+        align-items: center;
+    }
+
+    .detail-icon {
+        font-size: 4rem;
+        margin-right: 20px;
+    }
+
+    .detail-content label {
+        display: block;
+        font-size: 1.6rem;
+        color: #666;
+        margin-bottom: 5px;
+    }
+
+    .detail-content h3 {
+        font-size: 2rem;
+        margin: 0;
+        color: #333;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    .status-active {
+        background: #d4edda;
+        color: #155724;
+        border: 2px solid #c3e6cb;
+    }
+
+    .status-inactive {
+        background: #f8d7da;
+        color: #721c24;
+        border: 2px solid #f5c6cb;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .quick-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-width: 200px;
+    }
+
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+
+    .quick-action-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @@media (max-width: 768px) {
+        body {
+            font-size: 24px;
+        }
+
+        .hospital-name {
+            font-size: 2.5rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1.5rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 15px;
+            font-size: 1.4rem;
+        }
+
+        .alert {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .alert-icon {
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+
+        .details-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>

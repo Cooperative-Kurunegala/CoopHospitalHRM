@@ -14,20 +14,29 @@ namespace HR_Application_CO_OP_HOS.Models
     
     public partial class PayrollRecord
     {
-        public int Id { get; set; }
-        public int EmployeeId { get; set; }
-        public int Month { get; set; }
-        public int Year { get; set; }
+        public int PayrollID { get; set; }
+        public int EmployeeID { get; set; }
+        public string PayPeriod { get; set; }
+        public System.DateTime PayDate { get; set; }
         public decimal BasicSalary { get; set; }
-        public decimal TotalAllowances { get; set; }
+        public decimal FixedAllowances { get; set; }
+        public decimal VariableAllowances { get; set; }
+        public decimal OvertimePay { get; set; }
+        public decimal ShiftAllowances { get; set; }
+        public decimal AttendanceIncentive { get; set; }
+        public decimal GrossSalary { get; set; }
+        public decimal EPFEmployee { get; set; }
+        public decimal EPFEmployer { get; set; }
+        public decimal ETFEmployer { get; set; }
+        public decimal PayeeTax { get; set; }
+        public decimal LoanDeductions { get; set; }
+        public decimal OtherDeductions { get; set; }
         public decimal TotalDeductions { get; set; }
         public decimal NetSalary { get; set; }
+        public string Status { get; set; }
+        public string PaymentMethod { get; set; }
+        public Nullable<int> BankAccountID { get; set; }
         public System.DateTime GeneratedDate { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
-        public Nullable<System.DateTime> ModifiedDate { get; set; }
-        public Nullable<int> ModifiedBy { get; set; }
-    
-        public virtual RelatedParty RelatedParty { get; set; }
+        public Nullable<int> GeneratedBy { get; set; }
     }
 }

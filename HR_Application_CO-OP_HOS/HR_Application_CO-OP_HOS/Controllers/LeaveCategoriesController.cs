@@ -12,7 +12,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
 {
     public class LeaveCategoriesController : Controller
     {
-        private HREntities db = new HREntities();
+        private HospitalHRDataEntities db = new HospitalHRDataEntities();
 
         // GET: LeaveCategories
         public ActionResult Index()
@@ -46,7 +46,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,CategoryName,LeaveCode")] LeaveCategory leaveCategory)
+        public ActionResult Create([Bind(Include = "LeaveCategoryID,CategoryName,Description")] LeaveCategory leaveCategory)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace HR_Application_CO_OP_HOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,CategoryName,LeaveCode")] LeaveCategory leaveCategory)
+        public ActionResult Edit([Bind(Include = "LeaveCategoryID,CategoryName,Description")] LeaveCategory leaveCategory)
         {
             if (ModelState.IsValid)
             {

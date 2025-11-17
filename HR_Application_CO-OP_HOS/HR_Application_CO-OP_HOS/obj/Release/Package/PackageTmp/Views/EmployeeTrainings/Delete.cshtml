@@ -1,0 +1,264 @@
+﻿@model HR_Application_CO_OP_HOS.Models.EmployeeTraining
+
+@{
+    ViewBag.Title = "Delete Training Record";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Full Screen Delete Container -->
+<div class="fullscreen-container delete-container">
+    <div class="delete-header">
+        <h1 class="page-title">🗑️ DELETE TRAINING RECORD</h1>
+        <p class="page-subtitle">Hospital Human Resources Management System</p>
+    </div>
+
+    <div class="delete-content">
+        <div class="delete-card">
+            <div class="warning-section">
+                <div class="warning-icon">⚠️</div>
+                <h3 class="warning-title">ARE YOU SURE YOU WANT TO DELETE THIS TRAINING RECORD?</h3>
+                <p class="warning-text">This action cannot be undone. The training record will be permanently removed from the system.</p>
+            </div>
+
+            <div class="training-details">
+                <div class="detail-summary">
+                    <div class="training-icon">🎓</div>
+                    <div class="training-info">
+                        <h4>@Html.DisplayFor(model => model.TrainingName)</h4>
+                        <p>Employee ID: @Html.DisplayFor(model => model.EmployeeID)</p>
+                        <p>Provider: @Html.DisplayFor(model => model.TrainingProvider)</p>
+                        <p>Duration: @Html.DisplayFor(model => model.Duration)</p>
+                        <p>Status: <span class="status-badge @GetStatusClass(Model.Status)">@Html.DisplayFor(model => model.Status)</span></p>
+                    </div>
+                </div>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="delete-actions">
+                    <button type="submit" class="btn btn-danger btn-lg">
+                        <span class="btn-icon">🗑️</span> CONFIRM DELETE
+                    </button>
+                    @Html.ActionLink("🚫 CANCEL", "Index", null, new { @class = "btn btn-secondary btn-lg" })
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .delete-container {
+        padding: 20px;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        min-height: 100vh;
+    }
+
+    .delete-header {
+        text-align: center;
+        padding: 40px 20px;
+        background: rgba(255,255,255,0.95);
+        margin-bottom: 30px;
+        border-radius: 15px;
+        border: 3px solid #dc3545;
+    }
+
+    .page-title {
+        font-size: 3rem;
+        color: #dc3545;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .page-subtitle {
+        font-size: 1.5rem;
+        color: #666;
+    }
+
+    .delete-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .delete-card {
+        background: rgba(255,255,255,0.95);
+        padding: 40px;
+        border-radius: 15px;
+        border: 3px solid #dc3545;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .warning-section {
+        text-align: center;
+        padding: 30px;
+        background: #f8d7da;
+        border: 2px solid #dc3545;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+
+    .warning-icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+    }
+
+    .warning-title {
+        color: #721c24;
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+
+    .warning-text {
+        color: #721c24;
+        font-size: 1.6rem;
+        line-height: 1.5;
+    }
+
+    .training-details {
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border: 2px solid #006400;
+        margin-bottom: 30px;
+    }
+
+    .detail-summary {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .training-icon {
+        font-size: 6rem;
+        background: #006400;
+        color: white;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .training-info h4 {
+        font-size: 2.4rem;
+        color: #006400;
+        margin-bottom: 10px;
+    }
+
+    .training-info p {
+        font-size: 1.6rem;
+        color: #666;
+        margin-bottom: 5px;
+    }
+
+    .delete-actions {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 2px solid #dc3545;
+    }
+
+    .btn {
+        padding: 15px 30px;
+        font-size: 1.6rem;
+        border-radius: 10px;
+        margin: 0 10px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+
+    @@media (max-width: 768px) {
+        .delete-container {
+            padding: 10px;
+        }
+
+        .page-title {
+            font-size: 2rem;
+        }
+
+        .delete-card {
+            padding: 20px;
+        }
+
+        .detail-summary {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .btn {
+            width: 100%;
+            margin: 10px 0;
+            justify-content: center;
+        }
+    }
+</style>
+
+@functions {
+    public string GetStatusClass(string status)
+    {
+        switch (status?.ToLower())
+        {
+            case "completed":
+                return "status-completed";
+            case "in progress":
+                return "status-inprogress";
+            case "pending":
+                return "status-pending";
+            case "cancelled":
+                return "status-cancelled";
+            default:
+                return "status-pending";
+        }
+    }
+}
+
+<style>
+    .status-completed {
+        background: #d4edda;
+        color: #155724;
+        border: 2px solid #155724;
+    }
+
+    .status-inprogress {
+        background: #fff3cd;
+        color: #856404;
+        border: 2px solid #856404;
+    }
+
+    .status-pending {
+        background: #cce7ff;
+        color: #004085;
+        border: 2px solid #004085;
+    }
+
+    .status-cancelled {
+        background: #f8d7da;
+        color: #721c24;
+        border: 2px solid #721c24;
+    }
+</style>

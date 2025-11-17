@@ -1,525 +1,228 @@
-﻿@model HR_Application_CO_OP_HOS.Models.Designation
+﻿<!-- Details.cshtml -->
+@model HR_Application_CO_OP_HOS.Models.Designation
 
 @{
-    Layout = null;
+    ViewBag.Title = "Designation Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Designation Details - HRM System</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Full Screen Layout */
-        body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .container-full {
-            width: 100%;
-            padding: 20px;
-            margin: 0;
-        }
-
-        /* Header Styles */
-        .page-header {
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .page-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Details Container */
-        .details-container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-            margin-bottom: 30px;
-        }
-
-        .details-header {
-            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
-            color: white;
-            padding: 25px;
-        }
-
-        .details-body {
-            padding: 40px;
-        }
-
-        /* Details Styles */
-        .details-group {
-            margin-bottom: 30px;
-        }
-
-        .details-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 10px;
-        }
-
-        .detail-item {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-left: 4px solid #3498db;
-        }
-
-        .detail-label {
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
-
-        .detail-value {
-            color: #7f8c8d;
-            font-size: 1.2rem;
-        }
-
-        .detail-value-time {
-            color: #27ae60;
-            font-weight: 600;
-            font-size: 1.3rem;
-        }
-
-        .detail-value-notset {
-            color: #e74c3c;
-            font-style: italic;
-        }
-
-        /* Time Visualization */
-        .time-visualization {
-            background: #2c3e50;
-            border-radius: 10px;
-            padding: 25px;
-            color: white;
-            margin-bottom: 25px;
-        }
-
-        .time-slot {
-            background: #34495e;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-left: 4px solid #3498db;
-        }
-
-        .time-label {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .time-range {
-            color: #bdc3c7;
-        }
-
-        /* Button Styles */
-        .btn-modern {
-            border: none;
-            border-radius: 10px;
-            padding: 15px 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            font-size: 1.1rem;
-            text-decoration: none;
-            display: inline-block;
-            margin: 5px;
-        }
-
-        .btn-edit {
-            background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%);
-            color: white;
-        }
-
-        .btn-back {
-            background: linear-gradient(135deg, #95a5a6 0%, #bdc3c7 100%);
-            color: white;
-        }
-
-        .btn-delete {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: white;
-        }
-
-        .btn-modern:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            text-decoration: none;
-            color: white;
-        }
-
-        /* Stats Panel */
-        .stats-panel {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 25px;
-            margin-top: 30px;
-            border-left: 4px solid #9b59b6;
-        }
-
-        .stats-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 20px;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #2c3e50;
-        }
-
-        .stat-label {
-            color: #7f8c8d;
-            font-size: 1.1rem;
-        }
-
-        /* Responsive */
-        @@media (max-width: 768px) {
-            .container-full {
-                padding: 10px;
-            }
-
-            .page-title {
-                font-size: 2rem;
-            }
-
-            .details-body {
-                padding: 20px;
-            }
-
-            .btn-modern {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            .stat-item {
-                margin-bottom: 20px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container-full">
-        <!-- Page Header -->
-        <div class="page-header">
-            <div class="row align-items-center">
-                <div class="col-md-8">
-                    <h1 class="page-title">
-                        <i class="fa fa-id-card-o"></i> Designation Details
-                    </h1>
-                    <p class="page-subtitle">Complete information about the designation configuration</p>
-                </div>
-                <div class="col-md-4 text-right">
-                    <div class="action-buttons">
-                        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn-modern btn-edit" })
-                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn-modern btn-back" })
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <!-- Main Details -->
-            <div class="col-lg-8">
-                <div class="details-container">
-                    <div class="details-header">
-                        <h3 class="mb-0">
-                            <i class="fa fa-info-circle"></i> @Model.designationName
-                            <small class="float-right">ID: #@Model.ID</small>
-                        </h3>
-                    </div>
-                    <div class="details-body">
-                        <!-- Basic Information -->
-                        <div class="details-group">
-                            <h4 class="details-title"><i class="fa fa-info"></i> Basic Information</h4>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="detail-item">
-                                        <div class="detail-label">Designation Name</div>
-                                        <div class="detail-value">@Model.designationName</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Time Visualization -->
-                        <div class="time-visualization">
-                            <h4 class="text-white mb-4"><i class="fa fa-clock-o"></i> Daily Schedule Overview</h4>
-                            <div class="time-slot">
-                                <div class="time-label">Expected Working Hours</div>
-                                <div class="time-range">
-                                    @if (Model.ExpectedIn.HasValue && Model.ExpectedOut.HasValue)
-                                    {
-                                        @Model.ExpectedIn.Value.ToString("hh:mm tt") <i class="fa fa-arrow-right"></i> @Model.ExpectedOut.Value.ToString("hh:mm tt")
-                                    }
-                                    else
-                                    {
-                                        <span class="detail-value-notset">Not configured</span>
-                                    }
-                                </div>
-                            </div>
-                            <div class="time-slot">
-                                <div class="time-label">Attendance In Capture Window</div>
-                                <div class="time-range">
-                                    @if (Model.AttendanceInCaptureStart.HasValue && Model.AttendanceInCaptureEnd.HasValue)
-                                    {
-                                        @Model.AttendanceInCaptureStart.Value.ToString("hh:mm tt") <i class="fa fa-arrow-right"></i> @Model.AttendanceInCaptureEnd.Value.ToString("hh:mm tt")
-                                    }
-                                    else
-                                    {
-                                        <span class="detail-value-notset">Not configured</span>
-                                    }
-                                </div>
-                            </div>
-                            <div class="time-slot">
-                                <div class="time-label">Attendance Out Capture Window</div>
-                                <div class="time-range">
-                                    @if (Model.AttendanceOutCaptureStart.HasValue && Model.AttendanceOutCaptureEnd.HasValue)
-                                    {
-                                        @Model.AttendanceOutCaptureStart.Value.ToString("hh:mm tt") <i class="fa fa-arrow-right"></i> @Model.AttendanceOutCaptureEnd.Value.ToString("hh:mm tt")
-                                    }
-                                    else
-                                    {
-                                        <span class="detail-value-notset">Not configured</span>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Detailed Time Configuration -->
-                        <div class="details-group">
-                            <h4 class="details-title"><i class="fa fa-cog"></i> Detailed Time Configuration</h4>
-
-                            <!-- Expected Times -->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-item">
-                                        <div class="detail-label">Expected In Time</div>
-                                        <div class="@(Model.ExpectedIn.HasValue ? "detail-value-time" : "detail-value-notset")">
-                                            @if (Model.ExpectedIn.HasValue)
-                                            {
-                                                @Model.ExpectedIn.Value.ToString("hh:mm tt")
-                                            }
-                                            else
-                                            {
-                                                <text>Not set</text>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="detail-item">
-                                        <div class="detail-label">Expected Out Time</div>
-                                        <div class="@(Model.ExpectedOut.HasValue ? "detail-value-time" : "detail-value-notset")">
-                                            @if (Model.ExpectedOut.HasValue)
-                                            {
-                                                @Model.ExpectedOut.Value.ToString("hh:mm tt")
-                                            }
-                                            else
-                                            {
-                                                <text>Not set</text>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- In Capture Times -->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-item">
-                                        <div class="detail-label">In Capture Start</div>
-                                        <div class="@(Model.AttendanceInCaptureStart.HasValue ? "detail-value" : "detail-value-notset")">
-                                            @if (Model.AttendanceInCaptureStart.HasValue)
-                                            {
-                                                @Model.AttendanceInCaptureStart.Value.ToString("hh:mm tt")
-                                            }
-                                            else
-                                            {
-                                                <text>Not set</text>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="detail-item">
-                                        <div class="detail-label">In Capture End</div>
-                                        <div class="@(Model.AttendanceInCaptureEnd.HasValue ? "detail-value" : "detail-value-notset")">
-                                            @if (Model.AttendanceInCaptureEnd.HasValue)
-                                            {
-                                                @Model.AttendanceInCaptureEnd.Value.ToString("hh:mm tt")
-                                            }
-                                            else
-                                            {
-                                                <text>Not set</text>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Out Capture Times -->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-item">
-                                        <div class="detail-label">Out Capture Start</div>
-                                        <div class="@(Model.AttendanceOutCaptureStart.HasValue ? "detail-value" : "detail-value-notset")">
-                                            @if (Model.AttendanceOutCaptureStart.HasValue)
-                                            {
-                                                @Model.AttendanceOutCaptureStart.Value.ToString("hh:mm tt")
-                                            }
-                                            else
-                                            {
-                                                <text>Not set</text>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="detail-item">
-                                        <div class="detail-label">Out Capture End</div>
-                                        <div class="@(Model.AttendanceOutCaptureEnd.HasValue ? "detail-value" : "detail-value-notset")">
-                                            @if (Model.AttendanceOutCaptureEnd.HasValue)
-                                            {
-                                                @Model.AttendanceOutCaptureEnd.Value.ToString("hh:mm tt")
-                                            }
-                                            else
-                                            {
-                                                <text>Not set</text>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Action Buttons -->
-                        <div class="text-center mt-4">
-                            @Html.ActionLink("Edit Designation", "Edit", new { id = Model.ID }, new { @class = "btn-modern btn-edit" })
-                            @Html.ActionLink("Delete Designation", "Delete", new { id = Model.ID }, new { @class = "btn-modern btn-delete" })
-                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn-modern btn-back" })
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Stats Panel -->
-            <div class="col-lg-4">
-                <div class="stats-panel">
-                    <h4 class="stats-title"><i class="fa fa-bar-chart"></i> Quick Statistics</h4>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="stat-item">
-                                <div class="stat-number" id="employeeCount">--</div>
-                                <div class="stat-label">Employees</div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="stat-item">
-                                <div class="stat-number" id="attendanceRate">--</div>
-                                <div class="stat-label">Attendance Rate</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Configuration Summary -->
-                <div class="stats-panel mt-4">
-                    <h4 class="stats-title"><i class="fa fa-check-circle"></i> Configuration Status</h4>
-                    <div class="detail-item">
-                        <div class="detail-label">Time Configuration</div>
-                        <div class="detail-value">
-                            @if (Model.ExpectedIn.HasValue && Model.ExpectedOut.HasValue)
-                            {
-                                <span class="text-success"><i class="fa fa-check"></i> Complete</span>
-                            }
-                            else
-                            {
-                                <span class="text-warning"><i class="fa fa-exclamation-triangle"></i> Partial</span>
-                            }
-                        </div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Capture Windows</div>
-                        <div class="detail-value">
-                            @{
-                                var captureConfigs = new[] {
-                                    Model.AttendanceInCaptureStart, Model.AttendanceInCaptureEnd,
-                                    Model.AttendanceOutCaptureStart, Model.AttendanceOutCaptureEnd
-                                };
-                                var configuredCount = captureConfigs.Count(c => c.HasValue);
-                            }
-                            <span class="@(configuredCount == 4 ? "text-success" : configuredCount > 0 ? "text-warning" : "text-danger")">
-                                @configuredCount/4 configured
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quick Actions -->
-                <div class="stats-panel mt-4">
-                    <h4 class="stats-title"><i class="fa fa-rocket"></i> Quick Actions</h4>
-                    <div class="d-grid gap-2">
-                        @Html.ActionLink("Create New Designation", "Create", null, new { @class = "btn-modern", style = "background: #27ae60; color: white;" })
-                        @Html.ActionLink("View All Designations", "Index", null, new { @class = "btn-modern btn-back" })
-                        @Html.ActionLink("System Settings", "Index", "AppSettings", null, new { @class = "btn-modern", style = "background: #34495e; color: white;" })
-                    </div>
-                </div>
+<!-- Full Screen Designation Details -->
+<div class="fullscreen-container dashboard-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">👁️ DESIGNATION DETAILS</h1>
+            <p class="hospital-subtitle">View complete designation information</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Designation: @Model.DesignationName</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
             </div>
         </div>
     </div>
 
-    <script>
-        // Simulate loading statistics
-        $(document).ready(function () {
-            setTimeout(function () {
-                $('#employeeCount').text('24');
-                $('#attendanceRate').text('92%');
-            }, 1000);
+    <!-- Details Section -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>📊 DESIGNATION INFORMATION</h2>
+        </div>
+        <div class="section-content">
+            <div class="details-container">
+                <div class="details-grid">
+                    <div class="detail-card">
+                        <div class="detail-icon">🎯</div>
+                        <div class="detail-content">
+                            <label>Designation Name</label>
+                            <h3>@Model.DesignationName</h3>
+                        </div>
+                    </div>
 
-            // Add some interactive elements
-            $('.detail-item').hover(
-                function() {
-                    $(this).css('transform', 'translateX(5px)');
-                },
-                function() {
-                    $(this).css('transform', 'translateX(0)');
-                }
-            );
-        });
-    </script>
-</body>
-</html>
+                    <div class="detail-card">
+                        <div class="detail-icon">📊</div>
+                        <div class="detail-content">
+                            <label>Grade</label>
+                            <h3>@(string.IsNullOrEmpty(Model.Grade) ? "N/A" : Model.Grade)</h3>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">📝</div>
+                        <div class="detail-content">
+                            <label>Description</label>
+                            <p class="detail-description">@(string.IsNullOrEmpty(Model.Description) ? "No description provided" : Model.Description)</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">✅</div>
+                        <div class="detail-content">
+                            <label>Status</label>
+                            <div class="status-badge @(Model.IsActive ? "status-active" : "status-inactive")">
+                                @(Model.IsActive ? "Active" : "Inactive")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="@Url.Action("Edit", new { id = Model.DesignationID })" class="quick-action-btn btn-primary">
+                        ✏️ Edit Designation
+                    </a>
+                    <a href="@Url.Action("Index")" class="quick-action-btn btn-secondary">
+                        📋 Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .dashboard-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.8rem;
+        background: rgba(0,0,0,0.2);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .dashboard-section {
+        padding: 20px;
+    }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .detail-card {
+        display: flex;
+        padding: 30px;
+        background: #f8f9fa;
+        border: 3px solid #006400;
+        border-radius: 15px;
+        align-items: center;
+    }
+
+    .detail-icon {
+        font-size: 4rem;
+        margin-right: 20px;
+    }
+
+    .detail-content label {
+        display: block;
+        font-size: 1.6rem;
+        color: #666;
+        margin-bottom: 5px;
+    }
+
+    .detail-content h3 {
+        font-size: 2rem;
+        margin: 0;
+        color: #333;
+    }
+
+    .detail-description {
+        font-size: 1.6rem;
+        color: #333;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    .status-active {
+        background: #d4edda;
+        color: #155724;
+        border: 2px solid #c3e6cb;
+    }
+
+    .status-inactive {
+        background: #f8d7da;
+        color: #721c24;
+        border: 2px solid #f5c6cb;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .quick-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-width: 200px;
+    }
+
+    .btn-primary {
+        background: #006400;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .quick-action-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @@media (max-width: 768px) {
+        body {
+            font-size: 24px;
+        }
+
+        .hospital-name {
+            font-size: 2.5rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1.5rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 15px;
+            font-size: 1.4rem;
+        }
+
+        .details-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>

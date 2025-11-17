@@ -1,51 +1,273 @@
-﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.Bank>
+﻿﻿@model IEnumerable<HR_Application_CO_OP_HOS.Models.Bank>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Banks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<!-- Full Screen Container -->
+<div class="fullscreen-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <h1 class="hospital-name">BANK MANAGEMENT</h1>
+            <p class="hospital-subtitle">Manage Bank Information</p>
+            <div class="admin-info">
+                <span class="admin-welcome">Bank Directory</span>
+                <span class="current-date">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</span>
+            </div>
+        </div>
+    </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.BankName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsEnabled)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th></th>
-    </tr>
+    <!-- Action Panel -->
+    <div class="quick-actions-panel">
+        <div class="quick-actions-grid">
+            <a href="@Url.Action("Create")" class="quick-action-btn btn-primary">
+                <span>➕ Create New Bank</span>
+            </a>
+            <a href="@Url.Action("Index", "BankBranches")" class="quick-action-btn btn-secondary">
+                <span>🏢 Manage Branches</span>
+            </a>
+            <a href="@Url.Action("Index", "EmployeeBankAccounts")" class="quick-action-btn btn-info">
+                <span>💳 Employee Accounts</span>
+            </a>
+        </div>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BankName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsEnabled)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    <!-- Main Content -->
+    <div class="dashboard-grid">
+        <div class="dashboard-section">
+            <div class="section-header">
+                <h2>🏦 BANKS</h2>
+            </div>
+            <div class="section-content">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.BankName)</th>
+                                <th>@Html.DisplayNameFor(model => model.BankCode)</th>
+                                <th>@Html.DisplayNameFor(model => model.IsActive)</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.BankName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.BankCode)</td>
+                                    <td>
+                                        <span class="badge @(item.IsActive ? "badge-success" : "badge-secondary")">
+                                            @(item.IsActive ? "Active" : "Inactive")
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            @Html.ActionLink("Details", "Details", new { id = item.BankID }, new { @class = "btn btn-info btn-sm" })
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.BankID }, new { @class = "btn btn-warning btn-sm" })
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.BankID }, new { @class = "btn btn-danger btn-sm" })
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-</table>
+<style>
+    .fullscreen-container {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+    .dashboard-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .hospital-name {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hospital-subtitle {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        opacity: 0.9;
+    }
+
+    .admin-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.6rem;
+        background: rgba(0,0,0,0.2);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .quick-actions-panel {
+        padding: 30px 20px;
+        background: #ffffff;
+        border-bottom: 4px solid #006400;
+    }
+
+    .quick-actions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .quick-action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 25px 20px;
+        border: none;
+        border-radius: 15px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        text-align: center;
+        min-height: 100px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+    }
+
+    .btn-secondary {
+        background: linear-gradient(135deg, #6c757d 0%, #868e96 100%);
+        color: white;
+    }
+
+    .btn-info {
+        background: linear-gradient(135deg, #17a2b8 0%, #6fdcf0 100%);
+        color: white;
+    }
+
+    .quick-action-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        text-decoration: none;
+        color: white;
+    }
+
+    .dashboard-grid {
+        padding: 40px 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .dashboard-section {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+
+    .section-header {
+        background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        color: white;
+        padding: 25px 30px;
+        border-bottom: 3px solid #004d00;
+    }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+
+    .section-content {
+        padding: 40px;
+    }
+
+    .table {
+        font-size: 1.6rem;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+        .table th {
+            background: #343a40;
+            color: white;
+            font-weight: 600;
+            padding: 20px 15px;
+            border: none;
+            font-size: 1.7rem;
+        }
+
+        .table td {
+            padding: 18px 15px;
+            vertical-align: middle;
+            border-color: #dee2e6;
+            font-size: 1.5rem;
+        }
+
+    .table-hover tbody tr:hover {
+        background-color: rgba(0, 100, 0, 0.05);
+        transform: scale(1.01);
+        transition: all 0.2s ease;
+    }
+
+    .badge {
+        font-size: 1.4rem;
+        padding: 8px 15px;
+        border-radius: 20px;
+    }
+
+    .btn-group .btn {
+        margin: 2px;
+        font-size: 1.4rem;
+        padding: 8px 15px;
+        border-radius: 8px;
+    }
+
+    @@media (max-width: 768px) {
+        .hospital-name {
+            font-size: 2.5rem;
+        }
+
+        .hospital-subtitle {
+            font-size: 1.5rem;
+        }
+
+        .admin-info {
+            flex-direction: column;
+            gap: 15px;
+            font-size: 1.4rem;
+        }
+
+        .quick-actions-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .section-content {
+            padding: 20px;
+        }
+
+        .table-responsive {
+            font-size: 1.4rem;
+        }
+    }
+</style>
